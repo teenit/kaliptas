@@ -1,0 +1,33 @@
+.products__wrap{
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px .2px #00000011;
+    padding: 30px;
+}
+.products__table{
+    width: 100%;
+}
+.products__tr{
+    padding: 10px;
+}
+.products__td{
+    text-align: center;
+}
+.product__td__row{
+    padding-top: 50px;
+}
+.products__td__bold{
+    font-weight: 600;
+    text-align: center;
+}
+.static__arrow{
+    margin-left: 5px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.td__arrow__change{
+    transform: rotate(180deg);
+}
+.td__span{
+    cursor: pointer;
+}

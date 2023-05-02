@@ -1,0 +1,24 @@
+.categories__wrap{
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 25px;
+    background-color: var(--light-purple-color);
+}
+.categories__in{
+    padding: 20px 0;
+}
+.categories__title{
+    margin: 0;
+    text-align: center;
+}
+.categories__table{
+    width: 85%;
+    margin: auto;
+    margin-top: 25px;
+}
+.categories__thead{
+    width: 100%;
+}
+.categories__td__row{
+    padding-top: 50px;
+}

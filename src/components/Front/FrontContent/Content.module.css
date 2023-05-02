@@ -1,0 +1,25 @@
+.wrapper {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    cursor: default;
+}
+:hover{
+    transition: all .3s;
+}
+:root{
+    --box-shadow: 0px 0px 15px 0px #cbced4;
+}
+
+.inner {
+    width: 75%;
+    height: max-content;
+    padding: 25px 0px;
+
+}
+
+
+
+
+

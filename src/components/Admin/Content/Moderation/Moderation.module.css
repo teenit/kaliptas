@@ -1,0 +1,69 @@
+.wrap{
+    width: 100%;
+    min-height: 100vh;
+}
+.in{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.item{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-purple-color);
+    cursor: pointer;
+}
+.item__image{
+    width: 30px;
+}
+.item__change{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--purple-color);
+}
+/**/
+.td__btn{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+}
+.close__btn{
+    width: 28px;
+    height: 22px;
+    margin: auto;
+    border: solid 2px var(--purple-color);
+    padding: 10px;
+    border-radius: 6px;
+    background: url(../../../../img/admin/Линия\ 887\ копия.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    cursor: pointer;
+}
+.accept__btn{
+    width: 28px;
+    height: 22px;
+    margin: auto;
+    border: solid 2px #1c9e73;
+    background-color: #1c9e73;
+    padding: 10px;
+    border-radius: 6px;
+    background: url(../../../../img/admin/Фигура\ 820\ копия\ 2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 130%;
+    cursor: pointer;
+    overflow: hidden;
+}

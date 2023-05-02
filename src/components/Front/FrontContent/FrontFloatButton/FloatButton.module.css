@@ -1,0 +1,16 @@
+.float__button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--light-purple-color);
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.float__button:hover{
+    background-color: var(--purple-color);
+    transform: scale(1.05,1.05);
+}

@@ -1,0 +1,73 @@
+.wrap{
+    width: 100%;
+    min-height: 100vh;
+    margin-top: var(--margin-top);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+.in{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.in__big{
+    grid-template-columns: 1fr;
+    box-shadow: 0 0 10px 0 #00000022;
+    border-radius: 20px;
+}
+.top__shops, .top__categories{
+    box-shadow: 0 0 10px 0 #00000022;
+    border-radius: 20px;
+}
+.shop__in{
+    padding: 30px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+.shop__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shop__item > h3, .shop__item > h4, .shop__item > h2, .shop__item > p{
+    white-space: nowrap;
+    margin: 0;
+}
+.mark{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+.mark > a{
+    color: #1c9e73;
+    text-decoration: underline; 
+}
+.shop__logo{
+    width: 35%;
+}
+.shop__logo__sec{
+    width: 45px;
+}
+.star{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("./../../../../img/admin/star.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+}
+.star > h2{
+    color: #ffffff;
+}
+.shop__item__big > p{
+    font-size: 14px;
+}
+/**/
+.top__categories{
+    text-align: center;
+}

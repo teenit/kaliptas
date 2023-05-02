@@ -1,0 +1,74 @@
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../public/fonts/Montserrat/Montserrat-Bold.eot');
+	src: local('Montserrat Bold'), local('Montserrat-Bold'),
+		url('../public/fonts/Montserrat/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../public/fonts/Montserrat/Montserrat-Bold.woff') format('woff'),
+		url('../public/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../public/fonts/Montserrat/Montserrat-Regular.eot');
+	src: local('Montserrat Regular'), local('Montserrat-Regular'),
+		url('../public/fonts/Montserrat/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../public/fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+		url('../public/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+body{
+  	margin: 0;
+  	padding: 0;
+  	font-family: "Montserrat";
+  	font-weight: normal;
+	font-style: normal;
+}
+*{
+	box-sizing: border-box;
+}
+:root{
+	--purple-color: #9134b3;
+	--light-purple-color: #e7c3f5;
+	--green-color: #1c9e73;
+	--mint-color: #6ec6c1;
+	--margin-top: 50px;
+}
+a{
+  	text-decoration: none;
+}
+li{
+ 	list-style: none;
+}
+
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--purple-color) var(--light-purple-color);
+  }
+  ::selection{
+	background-color: var(--purple-color);
+	color: var(--light-purple-color);
+  }
+  *::-webkit-scrollbar {
+	width: 8px;
+  }
+  *::-webkit-scrollbar-track {
+	background: var(--light-purple-color);
+  }
+  *::-webkit-scrollbar-thumb {
+	background-color: var(--purple-color);
+	border-radius: 20px;
+	border: 0px none var(--purple-color);
+  }
+  
+	.lineLoading{
+		width: 0;
+		height: 5px;
+		background-color: #65ecc5;
+		transition: all .3s;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}

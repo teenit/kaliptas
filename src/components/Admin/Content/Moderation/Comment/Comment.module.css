@@ -1,0 +1,34 @@
+.comment__wrap{
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px .2px #00000011;
+    padding: 30px;
+}
+.comment__table{
+    width: 100%;
+}
+.comment__tr{
+    padding: 10px;
+}
+.comment__td{
+    text-align: center;
+}
+.comment__td__bold{
+    font-weight: 600;
+    text-align: center;
+}
+.comment__td__row{
+    padding-top: 50px;
+    text-align: center; 
+}
+.static__arrow{
+    margin-left: 5px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.td__arrow__change{
+    transform: rotate(180deg);
+}
+.td__span{
+    cursor: pointer;
+}

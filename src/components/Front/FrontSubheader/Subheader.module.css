@@ -1,0 +1,94 @@
+.wrap {
+    width: 100%;
+    height: max-content;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9134b3;
+    color: white;
+    cursor: default;
+    padding: 5px 0px;
+}
+
+.inner {
+    width: 75%;
+    height: max-content;
+    min-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    width: max-content;
+    height: 45px;
+    border: none;
+    background: linear-gradient(90deg, #1c9e73, #6ec6c1);
+    border-radius:20px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0px 33px;
+}
+
+.input {
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-self: center;
+    padding-left: 15px;
+    cursor: default;
+}
+
+.options {
+    width: 15%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.icon {
+    width: 15%;
+    cursor: pointer;
+    background-color: yellow;
+}
+.input:focus {
+    outline: none;
+}
+@media screen and (max-width:950px){
+    .input{
+        width: 45%;
+    }
+    .options{
+        width: 30%;
+    }
+
+}
+@media screen and (max-width:850px){
+    .options{
+        width: 35%;
+    }
+    .inner{
+        gap: 5%;
+    }
+
+}
+@media screen and (max-width:550px){
+    .options{
+        width: 45%;
+    }
+    .inner{
+        gap: 2.5%;
+    }
+    .button{
+        width: 25%;
+        font-size: 12px;
+        padding: 0;
+    }
+
+}

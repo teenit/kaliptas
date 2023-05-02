@@ -1,0 +1,49 @@
+.wrap{
+    min-height: 100vh;
+    margin-top: 30px;
+}
+.add__wrap{
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 8px .5px #00000022;
+    display: flex;
+    align-items: center;
+}
+.add__in{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title > h2{
+    margin: 0;
+}
+.add__shop{
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: solid 2px var(--purple-color);
+    background-color: var(--purple-color);
+    cursor: pointer;
+}
+.span{
+    position: absolute;
+    left: 50%;
+    height: 2px;
+    width: 50%;
+    background-color: #ffffff;
+    display: block;
+    transition: all .3s;
+}
+.span1{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.span2{
+    width: 2px;
+    height: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}

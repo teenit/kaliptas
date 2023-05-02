@@ -1,0 +1,148 @@
+.wrap{
+    width: 100%;
+    height: max-content;
+    background: #e7c3f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    padding: 10px 0px;
+}
+.inner{
+    width: 75%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+}
+.inner__left{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    width:40%;
+    height: max-content;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+}
+.logo > a >img{
+width: 100%;
+}
+.list{
+    width: 170px;
+    height: max-content;
+    background-color: var(--light-purple-color);
+    border-top: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    padding: 10px 0px;
+    gap: 10px;
+}
+.city{
+    width: 75px;
+    height: max-content;
+    background-color: var(--light-purple-color);
+    border-top: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    padding: 10px 0px;
+    gap: 10px;
+}
+.list>li, .city>li{
+    cursor: pointer;
+}
+
+
+.inner__right{
+
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 10px;
+
+}
+.inner__right >p>a{
+    font-weight: 500;
+    color: black;
+}
+.inner__right >p{
+font-weight: 500;
+margin:0;
+display: flex;
+align-self: center;
+}
+.lang{
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: space-between;
+    font-size: 10px;
+    margin: 0;
+}
+.lang__line{
+    width: 2px;
+    height: 50%;
+    background-color: #9134b3;
+    display: flex;
+    align-self: center;
+}
+.lang > p {
+ display: flex;
+ align-self: center;
+ font-weight: bold;
+}
+.lang p:hover{
+    color: #9134b3;
+    cursor: pointer;
+    transition: all .3s;
+}
+.lang  p:focus{
+    color: #9134b3;
+
+}
+.list>li:hover,.city>li:hover{
+    color: var(--purple-color);
+}
+
+@media screen and (max-width:950px) {
+    .inner p{
+        font-size: 12px;
+    }
+    .inner{
+        width: 95%;
+    }
+
+
+}
+@media screen and (max-width:850px) {
+    .inner__left{
+        justify-content: start;
+        gap: 10px;
+    }
+}
+@media screen and (max-width:550px) {
+    .inner__left{
+        width: 55%;
+    }
+    .lang{
+        width: 45%;
+    }
+    .inner p,.inner a{
+        font-size: 7px;
+    }
+}
+@media screen and (max-width:400px) {
+    .inner p,.inner a{
+        font-size: 5px;
+    }
+}

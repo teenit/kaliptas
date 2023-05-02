@@ -1,0 +1,9 @@
+.line{
+    width: 50%;
+    height: 5px;
+    background-color: #65ecc5;
+    transition: all .3s;
+    position: absolute;
+    top: 0;
+    left: 00;
+}

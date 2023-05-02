@@ -1,0 +1,23 @@
+
+.offer p{
+    font-size: 21px;
+}
+.offer__cards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 15px;
+
+}
+.offer__card{
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+}
+@media screen and (max-width:850px){
+    .offer__cards{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+}

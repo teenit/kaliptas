@@ -1,0 +1,28 @@
+.cat__list{
+    overflow: hidden;
+    height: 30px;
+}
+.cat__list.active{
+    height: auto;
+}
+.p__list{
+    line-height: 30px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.img__arrow{
+    width: 20px;
+    height: 20px;
+    transition: all .3s;
+    transform: rotate(180deg);
+
+}
+.img__arrow.active{
+    transform: rotate(0deg);
+}
+.ul__list{
+    padding: 0;
+    padding-left: 10px;
+}

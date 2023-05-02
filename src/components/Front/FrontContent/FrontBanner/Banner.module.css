@@ -1,0 +1,27 @@
+.banner__wrap{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    padding: 75px 0px;
+}
+.banner{
+    width: 100%;
+    height: 300px;
+    background:  linear-gradient(135deg, #1c9e73, #6ec6c1);
+    border-radius: 10px;
+}
+.banner__button{
+    width: 30%;
+    height: 50px;
+    border-radius: 25px;
+    position: relative;
+    top: 70%;
+    left: 65%;
+    border: 0;
+    background: #fff;
+    cursor: pointer;
+}
+.banner__button:hover{
+    transform: scale(1.05,1.05);
+}

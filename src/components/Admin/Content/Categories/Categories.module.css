@@ -1,0 +1,20 @@
+.cat__list{
+    overflow: hidden;
+    height: 60px;
+}
+.cat__list.active{
+    height: auto;
+}
+.label__cat{
+    display: flex;
+    align-items: center;
+}
+.imgArrow{
+    width: 20px;
+    height: 20px;
+    transition: all .3s;
+}
+.wrap{
+    width: 100%;
+    margin-top: 30px;
+}

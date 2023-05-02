@@ -1,0 +1,42 @@
+{
+    "main":"Main",
+    "users":"Users",
+    "shops":"Stores",
+    "moderation":"Moderation",
+    "communication":"Communication",
+    "advertising":"Commercial",
+
+    "Super Admin":"Super Admin",
+    "Customer":"Customer",
+    "Seller":"Seller",
+    "Manager":"Manager",
+    "Admin":"Admin",
+
+    "fio":"Full name",
+    "phone":"Phone number",
+    "type":"User type",
+    "status":"Status",
+
+    "bestShopOfMonth":"Best stores of month",
+    "item":"items",
+    "reviews":"reviews",
+    "topCategories":"Top categories",
+    "chart":"Chart",
+    "soldItems":"Sold goods",
+
+    "t1000":"Store has been successfully created",
+    "t4000":"Unexpected error occurred, try again later",
+    "t1001":"Store with such slug has been already created, try another slug",
+    "t1002":"User has been successfully updated",
+    "t1003":"Authentication was successful",
+    "t4001":"Time allocated on entering code is up. Log in again",
+    "t4002":"Entered code is not correct",
+    "t1004":"User has been successfully added",
+    "t4003":"User cannot be registered. Check the data accuracy",
+    "t4004":"Database connection failed",
+
+    "logo":"Logo",
+    "name":"Naming",
+    "contact":"Contacts",
+    "rating":"Rating"
+}

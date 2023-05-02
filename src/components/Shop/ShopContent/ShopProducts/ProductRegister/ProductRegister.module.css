@@ -1,0 +1,333 @@
+.wrap{
+    background-color: #00000022;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.form{
+    transition: all .3s;
+    overflow-y: scroll;
+    height: 90vh;
+    min-width: 50%;
+    background-color: #ffffff;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    box-shadow: 0 0 10px 1px #00000022;
+    padding: 30px;
+}
+.form__in{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 80%;
+    margin: auto;
+}
+.input__div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.input__div__dop{
+    display: flex;
+    align-items: center;
+}
+.input__div h2{
+    margin: 0;
+    text-align: center;
+}
+
+.input__label{
+    position: relative;
+    font-weight: 600;
+}
+.input__label > p{
+    margin: 0;
+    text-align: center;
+}
+.langs{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+.input__lang__spec{
+    color: var(--purple-color);
+}
+.input__lang{
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input, .textarea{
+    width: 100%;
+    padding: 9px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 5px .1px #00000022;
+    font-family: "Montserrat";
+  	font-weight: normal;
+	font-style: normal;
+    font-size: 16px;
+    resize: none;
+    overflow-y: scroll;
+    transition: all .3s;
+}
+.textarea{
+    border-top-right-radius: none;
+    border-bottom-right-radius: none;
+}
+.select{
+    width: 100%;
+    padding: 9px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 5px .1px #00000022;
+    
+}
+.input__small{
+    max-width: 60%;
+    margin: auto;
+}
+.select{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 70%;
+    margin: auto;
+    font-size: 14px;   
+}
+.select__input__wrap{
+    width: 100%;
+    background-color: #ffffff;
+}
+.input__select{
+    border: none;
+    font-size: 16px;
+    font-family: "Montserrat";
+  	font-weight: normal;
+	font-style: normal;
+    background-color: #ffffff;
+}
+.select__in{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px 0;
+}
+.select__p{
+    padding: 5px 2px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.add__price{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 2px var(--purple-color);
+    background-color: var(--purple-color);
+    cursor: pointer;
+}
+.span{
+    position: absolute;
+    left: 50%;
+    height: 2px;
+    width: 50%;
+    background-color: #ffffff;
+    display: block;
+    transition: all .3s;
+}
+.span1{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.span2{
+    width: 2px;
+    height: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.input__price__wrap{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.arrow{
+    transition: all .3s;
+}
+.arrow__deg{
+    transform: rotate(180deg);
+}
+.btn__wrap{
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form__btn__save{
+    border: solid 2px #1c9e73;
+    background-color: #ffffff;
+}
+.form__btn__send{
+    border: solid 2px #1c9e73;
+    background-color: #1c9e73;
+    color: #ffffff;
+}
+.form__btn{
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 16px;
+}
+.img__main__wrap{
+    cursor: pointer;
+    width: 142px;
+    height: 142px;
+    background: url(../../../../../img/admin/Прямоугольник\ 25.png);
+}
+
+.inp__img__wrap{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.image__wrap__dop{
+    display: block;
+    width: 142px;
+    height: 142px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image__wrap{
+    display: none;
+}
+.input__image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.image__wrap__small{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    overflow-x: scroll;
+
+}
+.imgs{
+    width: 142px;
+    height: 142px;
+}
+.inp__imgs__wrap{
+    width: 100%;
+    max-width: 500px;
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.imgs__wrap{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.imgs__main__wrap{
+    width: 100%;
+    height: 100%;
+    background-color: #c4bfbf;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgs__plus{
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+.imgs__plus__one{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 5px;
+    width: 100%;
+    display: block;
+    background-color: #000;
+}
+.imgs__plus__two{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    height: 5px;
+    width: 100%;
+    display: block;
+    background-color: #000;
+}
+.cat__select{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    box-shadow: 0 0 5px 0 #00000022;
+    border-radius: 10px;
+
+}
+.cat__selected{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    text-align: center;
+    max-width: 500px;
+}
+.delete__cat{
+    width: 10px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.del__one{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    height: 2px;
+    width: 100%;
+    background-color: #f00;
+}
+.del__two{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    height: 2px;
+    width: 100%;
+    background-color: #f00;
+}
+.cat__elem{
+    padding: 10px;
+    border: solid 2px var(--purple-color);
+    border-radius: 10px;
+    display: flex;
+}
+.sel__cat{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.cat__arrow{
+    transition: all .3s;
+}
+.cat__arrow.active{
+    transform: rotate(180deg);
+}

@@ -1,0 +1,75 @@
+.wrap {
+    width: 100%;
+    height: max-content;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    padding: 20px;
+}
+.content{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-weight: 300;
+}
+.photo{
+    min-width: 50%;
+    height: 150px;
+    min-height: 100px;
+    max-height: 200px;
+    background-color: #000;
+}
+.bottom{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.avaible {
+    width: max-content;
+    height: 25px;
+    border-radius: 25px;
+    border: solid 1.5px var(--purple-color);
+    padding: 0px 40px;
+    display: flex;
+    align-self: center;
+}
+.panel{
+    width: 100%;
+    min-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+.panel>h3{
+    color: var(--purple-color);
+    font-size: 20px;
+    margin: 0;
+}
+.icons{
+    width: 33%;
+    display: flex;
+    justify-content: space-between;
+}
+.icon{
+width: 40%;
+height: 25px;
+background: black;
+cursor: pointer;
+}
+.buy__button{
+    width: 100%;
+    height: 40px;
+    border: none;
+    background: linear-gradient(90deg, #1c9e73, #6ec6c1);
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.buy__button:hover{
+    transform: scale(1.05);
+}

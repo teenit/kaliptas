@@ -1,0 +1,88 @@
+.wrap{
+    min-height: 100vh;
+    margin-top: 20px;
+}
+.add__shop{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: solid 2px var(--purple-color);
+    cursor: pointer;
+}
+.span{
+    position: absolute;
+    left: 50%;
+    height: 2px;
+    width: 80%;
+    background-color: var(--purple-color);
+    display: block;
+    transition: all .3s;
+}
+.span1{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.span2{
+    width: 2px;
+    height: 80%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+/**/
+.main__wrap{
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 1px #00000022;
+    padding: 30px;
+}
+.table{
+    width: 100%;
+}
+.tr{
+    padding: 10px;
+}
+.td{
+    text-align: center;
+}
+.td__row{
+    text-align: center;
+    padding: 50px 0 0 0;
+}
+.td__row__bold{
+    font-weight: 600;
+}
+/**/
+.form__wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000022;
+}
+.static__arrow{
+    margin-left: 5px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.td__arrow__change{
+    transform: rotate(180deg);
+}
+.td__span{
+    cursor: pointer;
+}
+.td__check{
+    width: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.td__check__true{
+    background-color: rgb(103, 166, 103);
+}
+.td__check__false{
+    background-color: rgb(255, 243, 225);
+}
