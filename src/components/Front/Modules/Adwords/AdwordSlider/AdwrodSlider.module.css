@@ -1,0 +1,102 @@
+.wrap{
+    width: 100%;
+    position: relative;
+}
+.inner{
+    border-radius: 10px;
+    background: url("./../../../../../img/front/Слой\ 682.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: bottom;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;   
+}
+.slider{
+    display: grid;
+    width: 100%;
+    transition: all .3s;
+}
+.slide{
+    padding: 20px 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.slide__btn{
+    min-width: 25%;
+}
+.btn{
+    width: 100%;
+    color: #000000;
+    display: block;
+    margin: 0 0 30px 0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    border: none;
+    background-color: #ffffff;
+}
+.slide__text{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    color: #ffffff;
+}
+.title{
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.sub__title{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 10px;
+}
+.sub__title__inner{
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.title__dop{
+    font-size: 35px;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.line{
+    width: 70px;
+    height: 15px;
+    background-color: #ffffff;
+}
+.title__price{
+    font-size: 130px;
+    margin: 0;
+}
+.dot{
+    width: 20px;
+    height: 12px;
+    border-radius: 20px;
+    background-color: #9f69b2;
+    cursor: pointer;
+}
+.dots{
+    position: absolute;
+    transform: translateY(-50%);
+    right: 3%;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.dot__active{
+    background-color: var(--purple-color);
+}

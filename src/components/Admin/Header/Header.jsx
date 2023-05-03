@@ -7,6 +7,7 @@ import logo from "./../../../img/logo.png"
 import { NavLink } from "react-router-dom";
 import BurgerMenu from "./Burger/BurgerMenu";
 import ArrowImg from "../../../img/admin/Фигура 504 копия 2.png"
+import PhoneNumber from "./PhoneNumbers/PhoneNumber";
 
 const Header = () =>{
       const [state, setState] = useState(false)
@@ -25,11 +26,7 @@ const Header = () =>{
                                 <img className={`${s.static__arrow} ${state ? s.td__arrow__change : null}`} src={ArrowImg} alt="Стрелка" onClick={()=>{
                                     setState(!state)
                                 }}/>
-                                {state ? <div className={s.phone__full}>
-                                    <a href="tel:+380 67 456 2343">+995 97 456 2343</a>
-                                    <a href="tel:+380 67 456 2343">+995 97 456 2343</a>
-                                    <a href="tel:+380 67 456 2343">+995 97 456 2343</a>
-                                </div>: null}
+                                {state ? <PhoneNumber close = {()=>setState(!state)}/> : null}
                             </div>
                         </div>
                         <div className={s.lang__burg}>
