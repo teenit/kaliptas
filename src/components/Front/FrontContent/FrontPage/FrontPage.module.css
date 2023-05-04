@@ -14,3 +14,8 @@
 .product__in{
     margin-top: 15px;
 }
+.slider__wrap{
+    width: 75%;
+    margin: auto;
+    margin-top: 55px;
+}
