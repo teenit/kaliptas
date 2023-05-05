@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import React from "react";
-import s from "./AdwrodSlide.module.css"
+import s from "./FrontSlide.module.css"
 
 
-const AdwordSlide = ({ item }) => {
+const FrontSlide = ({ item }) => {
 
     return (
         <div className={s.slide} style={{
@@ -31,4 +31,4 @@ const AdwordSlide = ({ item }) => {
     )
 }
 
-export default AdwordSlide;
+export default FrontSlide;

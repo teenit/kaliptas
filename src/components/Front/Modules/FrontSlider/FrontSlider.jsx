@@ -1,10 +1,10 @@
 import React from "react";
-import s from "./AdwrodSlider.module.css"
+import s from "./FrontSlider.module.css"
 import { useState } from "react";
 import { useEffect } from "react";
-import AdwordSlide from "./AdwordSlide/AswordSlide";
+import FrontSlide from "./FrontSlide/FrontSlide";
 
-const AdwordSlider = ({ data }) => {
+const FrontSlider = ({ data }) => {
 
     const [state, setState] = useState({
         sliderPosition: 0,
@@ -43,7 +43,7 @@ const AdwordSlider = ({ data }) => {
                     marginLeft: `${-state.sliderPosition}%`
                 }}>
                     {
-                        state.data.map((item, index) => <AdwordSlide item={item} key={index} />)
+                        state.data.map((item, index) => <FrontSlide item={item} key={index} />)
                     }
                 </div>
                 <div className={s.dots__wrap}>
@@ -69,4 +69,4 @@ const AdwordSlider = ({ data }) => {
         </div>
     )
 }
-export default AdwordSlider
+export default FrontSlider

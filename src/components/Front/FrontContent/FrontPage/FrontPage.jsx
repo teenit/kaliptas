@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./FrontPage.module.css";
 import ProductList from "./Product/ProductList";
-import AdwordSlider from "../../Modules/AdwordSlider/AdwordSlider";
+import FrontSlider from "../../Modules/FrontSlider/FrontSlider";
 
 const FrontPage = () => {
     const relatedProductList = [
@@ -95,7 +95,7 @@ const FrontPage = () => {
         <div className={s.wrap}>
             <div className={s.slider__wrap}>
 
-                <AdwordSlider data={firstSliderContent} />
+                <FrontSlider data={firstSliderContent} />
             </div>
             <div className={s.in}>
                 <h3 className={s.title}>Похожие товары</h3>
