@@ -14,9 +14,9 @@ import Products from "./Products/Products";
 
 const Moderation = () =>{
     const [state, setState] = useState({
-        showProduct: false,
+        showProduct: true,
         showComment: false,
-        showCategories: true
+        showCategories: false
     })
 
 

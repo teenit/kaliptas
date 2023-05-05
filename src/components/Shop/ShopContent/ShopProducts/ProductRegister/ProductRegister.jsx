@@ -9,8 +9,8 @@ import ProductPriceDefault from "./ProductPrice/ProductPriceDefault";
 import ProductImage from "./ProguctImage/ProductImage";
 import ProductImages from "./ProguctImage/ProductImages";
 import loadImg from './../../../../../img/admin/loading.gif';
-const ProductRegister = ({close,shop}) =>{
-    const [lookCat,setLookCat] = useState([])
+const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
+    const [lookCat,setLookCat] = useState(stateProduct.categories)
     const [control, setControl] = useState({
         selectPrice: false,
         selectCategories: false,
@@ -32,40 +32,7 @@ const ProductRegister = ({close,shop}) =>{
     
 
    
-     const [state, setState] = useState({
-        price:{
-            price:'',
-            discount:''
-        },
-        title:{
-            en: "",
-            ge: "",
-            ru: ""
-        },
-        description:{
-            en: "",
-            ge: "",
-            ru: ""
-        },
-        categories: [],
-        characteritics:{
-            en: "",
-            ge: "",
-            ru: ""
-        },
-        type:{
-            variable: false,
-            defaulte: true
-        },
-        prices:[{
-            variable:'',
-            price:'',
-            discountPrice:''
-        }],
-        slug:'',
-        image:'',
-        images:[]
-    })
+     const [state, setState] = useState({...stateProduct})
     const [loadedImg, setLoadedImg] = useState({
         image:false,
         images:false
@@ -82,17 +49,11 @@ const ProductRegister = ({close,shop}) =>{
     function uploadImages(files){
         setLoadedImg({...loadedImg,images:true})
             apiMultipartUpload((arg)=>{
-                setState({...state,images:arg})
+                setState({...state,images:[...state.images,...arg]})
                 setLoadedImg({...loadedImg,image:false})
             },[],files,"manage/shop/upload-img.php",0,shop.id,1);
-       
-
     }
-    function saveProduct(newMas,status){
-        
-        setState({...state,categories:newMas,status:status})
-        return console.log(state)  
-    }
+   
     const onClickHendler = (index,e)=>{
         const newItems = lookCat.map((item,i)=>{
             if(i === index){
@@ -104,20 +65,25 @@ const ProductRegister = ({close,shop}) =>{
         setLookCat(newItems)
     }
     const onClickHendlerPso = (defCats, favCats)=>{
+       
         const newItems = defCats.map((item)=>{
-            favCats.forEach((elem)=>{
-                if(item.id == elem.catID){
-                    return {...item,good:true,checked:false}
-                }
-            })
-            return {...item,checked:false}
+            
+            if(stateProduct.categories.some(elem => elem.id == item.id)){
+                return {...item}
+            }else if(favCats.some(elem => elem.catID == item.id)){
+                return {...item,good:true,checked:true}
+            }else{
+                return {...item,checked:false}
+            }
         });
+
         setLookCat(newItems)
     }
     
     useEffect(()=>{
         api((arg)=>{
             api((arg1)=>{
+                console.log(arg,arg1)
                 onClickHendlerPso(arg,arg1);
             },{shopID:shop.id},"manage/categories/get-favorite.php");
         },{},"manage/categories/get-categories.php");
@@ -132,6 +98,7 @@ const ProductRegister = ({close,shop}) =>{
     return(
         <Modal>
             <div className={s.wrap} onClick={(e)=>e.target.className === s.wrap ? close() : null}>
+                
                 <div className={s.form}>
                 <form action="" onSubmit={sendForm}> 
                     <div className={s.form__in}>
@@ -229,11 +196,7 @@ const ProductRegister = ({close,shop}) =>{
                         <div className={s.input__div}>
                             <label htmlFor="" className={s.input__label}>
                                 <p>Описание</p>
-                                <div className={s.langs}>
-                                    <span className={`${s.input__lang} ${control.langGeDisc ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'ge', langGeDisc: true, langEnDisc: false, langeRuDisc: false})}}>Ge</span>
-                                    <span className={`${s.input__lang} ${control.langEnDisc ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'en', langGeDisc: false, langEnDisc: true, langeRuDisc: false})}}>En</span>
-                                    <span className={`${s.input__lang} ${control.langeRuDisc ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'ru', langGeDisc: false, langEnDisc: false, langeRuDisc: true})}}>Ru</span>
-                                </div>
+                        
                             </label>
                             <textarea required value={state.description[control.lang]} className={s.textarea} name="" id="" cols="30" rows="10" onChange={(event)=>{
                                 setState({...state, description: {...state.description, [control.lang]: event.target.value}})
@@ -242,21 +205,16 @@ const ProductRegister = ({close,shop}) =>{
                         <div className={s.input__div}>
                             <label htmlFor="" className={s.input__label}>
                                 <p>Характеристики</p>
-                                <div className={s.langs}>
-                                    <span className={`${s.input__lang} ${control.langGeChar ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'ge', langGeChar: true, langEnChar: false, langeRuChar: false})}}>Ge</span>
-                                    <span className={`${s.input__lang} ${control.langEnChar ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'en', langGeChar: false, langEnChar: true, langeRuChar: false})}}>En</span>
-                                    <span className={`${s.input__lang} ${control.langeRuChar ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'ru', langGeChar: false, langEnChar: false, langeRuChar: true})}}>Ru</span>
-                                </div>
+                               
                             </label>
                             <textarea required value={state.characteritics[control.lang]} className={s.textarea} name="" id="" cols="30" rows="10" onChange={(event)=>{
                                 setState({...state, characteritics: {...state.characteritics, [control.lang]: event.target.value}})
                             }}></textarea>
                         </div>
-                        <ProductImage loadedImg = {loadedImg} setLoadedImg = {(arg)=>setLoadedImg({...loadedImg,image:arg})} uploadImage = {(file,index)=>{uploadImage(file,index)
-                        console.log(file.files[0])}} 
+                        <ProductImage image={state.image} loadedImg = {loadedImg} setLoadedImg = {(arg)=>setLoadedImg({...loadedImg,image:arg})} uploadImage = {(file,index)=>{uploadImage(file,index)
+                        }} 
                         addState={(arg)=>{}}/>
-                        <ProductImages addState={(arg)=>{
-                            
+                        <ProductImages images={state.images} addState={(arg)=>{
                             uploadImages(arg);
                             console.log(arg.files)
                             }} />
@@ -268,12 +226,12 @@ const ProductRegister = ({close,shop}) =>{
                         onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
                             setState({...state,categories:newMas});
-                            saveProduct(newMas,"moderation");
+                            saveProduct(state,newMas,"moderation");
                         }}>Отправить</button>
                         <button disabled = {loadedImg.image || loadedImg.images ? true : false} onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
                             setState({...state,categories:newMas});
-                            saveProduct(newMas,"draft");
+                            saveProduct(state,newMas,"draft");
                         }} className={`${s.form__btn} ${s.form__btn__save}`}>Сохранить как черновик</button>
                 </div>
                 {

@@ -2,7 +2,7 @@ import React from "react";
 import s from './../ProductRegister.module.css'
 import { useState } from "react";
 
-const ProductImages =({addState})=>{
+const ProductImages =({addState,images})=>{
     const [previewImgS, setPreviewImgS] = useState([]);
     function handleFilesSelect(evt,setImg) {
             var files = evt.target.files;
@@ -40,10 +40,10 @@ const ProductImages =({addState})=>{
                     </div>
                 </label>
             </div>
+           
             {
-                previewImgS.map(item=><div key={item} className={s.imgs__wrap}><img className={s.input__image} src={item}/></div>)
+                images.map(item=><div key={item} className={s.imgs__wrap}><img className={s.input__image} src={item}/></div>)
             }
-
         </div>
     </div>
     )

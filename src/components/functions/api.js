@@ -13,8 +13,7 @@ export function api(apiFunc, obj, url){
     }else{
         obj.email = localStorage.getItem('email');
     }
-    if(url == "manage/shop/add-product.php")
-    return apiFunc(obj) 
+   
     axios({
         url: serverAdress(url),
         method: "POST",

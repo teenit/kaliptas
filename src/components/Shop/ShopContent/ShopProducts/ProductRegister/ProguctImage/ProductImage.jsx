@@ -1,10 +1,10 @@
 import React from "react";
 import s from './../ProductRegister.module.css'
 import { useState } from "react";
-const ProductImage = ({addState,uploadImage})=>{
+const ProductImage = ({addState,uploadImage,image})=>{
 
     const [previewImg, setPreviewImg] = useState('');
-    const [showImg, setShowImg] = useState(false)
+    const [showImg, setShowImg] = useState(true)
     function handleFileSelect(evt,setImg) {
         var file = evt.target.files; // FileList object
         var f = file[0];
@@ -35,7 +35,7 @@ const ProductImage = ({addState,uploadImage})=>{
                 <div className={s.inp__img__wrap}>
                     <label htmlFor="mainImg" className={s.img__main__wrap} onClick={()=>{}}></label>
                     <div className={showImg ? s.image__wrap__dop : s.image__wrap}>
-                        <img className={s.input__image} src={previewImg} alt="" />
+                        <img className={s.input__image} src={previewImg ? previewImg : image } alt="" />
                     </div> 
                 </div>
              </div>

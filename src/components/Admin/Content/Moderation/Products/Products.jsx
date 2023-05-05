@@ -1,8 +1,9 @@
-import React, { useState }  from "react";
+import React, { useEffect, useState }  from "react";
 import s from "./Products.module.css";
 import ProductsRow from "./ProductsRow";
 import ArrowImg from "../../../../../img/admin/Фигура 504 копия 2.png";
 import { useTranslation } from "react-i18next";
+import { api } from "../../../../functions/api";
 const Products = () =>{
     const {t} = useTranslation()
     const [changePos, setChangePos] = useState({
@@ -10,6 +11,12 @@ const Products = () =>{
         napArr: false,
         shopArr: false
     })
+    const [moderation,setModeration] = useState([])
+    useEffect(()=>{
+        api((arg)=>{
+            setModeration(arg)
+        },{},"manage/shops/get-moderation.php")
+    },[])
     return(
         <div className={s.products__wrap}>
             <table className={s.products__table}>
@@ -51,7 +58,10 @@ const Products = () =>{
                     </tr>
                 </thead>
                 <tbody>
-                    <ProductsRow />
+                    {
+                        moderation.map((item,index)=><ProductsRow key={item.id} index={index} moderation = {item} />)
+                    }
+                    
                 </tbody>
             </table>
         </div>
