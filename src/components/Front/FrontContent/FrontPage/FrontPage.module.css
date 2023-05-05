@@ -1,6 +1,6 @@
 .wrap{
     width: 100%;
-    min-height: 100vh;
+    min-height: 300vh;
 }
 .in{
     width: 75%;
@@ -17,5 +17,19 @@
 .slider__wrap{
     width: 75%;
     margin: auto;
+    margin-top: 55px;
+}
+.kaliptas__desc{
+    margin-top: 55px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px .5px #00000022;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.categories{
+    margin-top: 55px;
+}
+.adword__slider{
     margin-top: 55px;
 }

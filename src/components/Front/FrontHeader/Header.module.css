@@ -1,148 +1,106 @@
 .wrap{
     width: 100%;
-    height: max-content;
     background: #e7c3f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: default;
-    padding: 10px 0px;
+    padding: 20px 0px;
 }
 .inner{
     width: 75%;
-    height: max-content;
     display: flex;
     justify-content: space-between;
 }
 .inner__left{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 35px;
 }
-
 .logo{
-    width:40%;
-    height: max-content;
     cursor: pointer;
     display: flex;
     align-self: center;
 }
-.logo > a >img{
-width: 100%;
+.logo__image{
+    width: 150px;
 }
-.list{
-    width: 170px;
-    height: max-content;
-    background-color: var(--light-purple-color);
-    border-top: none;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+.city__wrap, .phone__wrap{
+    position: relative;
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    padding: 10px 0px;
-    gap: 10px;
-}
-.city{
-    width: 75px;
-    height: max-content;
-    background-color: var(--light-purple-color);
-    border-top: none;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    padding: 10px 0px;
-    gap: 10px;
-}
-.list>li, .city>li{
-    cursor: pointer;
-}
-
-
-.inner__right{
-
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    gap: 10px;
-
-}
-.inner__right >p>a{
-    font-weight: 500;
-    color: black;
-}
-.inner__right >p{
-font-weight: 500;
-margin:0;
-display: flex;
-align-self: center;
-}
-.lang{
-    width: max-content;
-    display: flex;
-    flex-direction: row;
+    align-items: center;
     gap: 5px;
-    justify-content: space-between;
-    font-size: 10px;
-    margin: 0;
 }
-.lang__line{
-    width: 2px;
-    height: 50%;
-    background-color: #9134b3;
+.city__wrap__change, .phone__wrap__change{
+    padding: 0 20px;
+}
+.phone__wrap > a{
+    color: #000000;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.city__full, .phone__full{
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 155%;
+    box-sizing: border-box;
+    background-color: var(--light-purple-color);
+    border-top: none;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
     display: flex;
-    align-self: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
 }
-.lang > p {
- display: flex;
- align-self: center;
- font-weight: bold;
+.phone__full > a, .city__full > a{
+    color: #000000;
+    white-space: nowrap;
 }
-.lang p:hover{
-    color: #9134b3;
+.arrow{
+    width: 12px;
     cursor: pointer;
     transition: all .3s;
 }
-.lang  p:focus{
-    color: #9134b3;
-
+.arrow__change{
+    transform: rotate(180deg);
 }
-.list>li:hover,.city>li:hover{
-    color: var(--purple-color);
+.city__title{
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0;
 }
-
-@media screen and (max-width:950px) {
-    .inner p{
-        font-size: 12px;
-    }
-    .inner{
-        width: 95%;
-    }
-
-
+.inner__right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
-@media screen and (max-width:850px) {
-    .inner__left{
-        justify-content: start;
-        gap: 10px;
-    }
+.delivery__link > a{
+    font-size: 14px;
+    color: #000000;
+    white-space: nowrap;
 }
-@media screen and (max-width:550px) {
-    .inner__left{
-        width: 55%;
-    }
-    .lang{
-        width: 45%;
-    }
-    .inner p,.inner a{
-        font-size: 7px;
-    }
+.delivery__link{
+    margin: 0;
 }
-@media screen and (max-width:400px) {
-    .inner p,.inner a{
-        font-size: 5px;
-    }
+.lang{
+    margin: 0;
+    cursor: pointer;
+}
+.lang__wrap{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+.lang__line{
+    width: 1.5px;
+    height: 20px;
+    background-color: #9134b3;
+    display: flex;
+    align-self: center;
 }

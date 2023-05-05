@@ -8,7 +8,11 @@ const AdwordSlide = ({ item }) => {
 
     return (
         <div className={s.slide} style={{
-            background: "url(" + item.backUrl + ")"
+            background: "url(" + item.backUrl + ")",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat"
+            
         }}>
             <div className={s.slide__in}>
                 <div className={s.slide__text}>

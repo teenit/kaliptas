@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Store.module.css";
 import Header from "../Header/Header";
-import { Footer } from "../Footer/Footer";
 import StoreContent from "./StoreContent/StoreContent";
 import StoreNavigation from "./StoreContent/StoreNavigation";
 import { useParams } from "react-router-dom";
