@@ -17,3 +17,8 @@
     border-radius: 10px;
     width: 200px;
 }
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

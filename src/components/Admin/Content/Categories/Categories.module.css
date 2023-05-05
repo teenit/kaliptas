@@ -1,3 +1,7 @@
+.wrap{
+    width: 100%;
+    min-height: 100vh;
+}
 .cat__list{
     overflow: hidden;
     height: 60px;
@@ -8,13 +12,152 @@
 .label__cat{
     display: flex;
     align-items: center;
+    gap: 5px;
+}
+.label__cat > span{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 2px;
 }
 .imgArrow{
+    cursor: pointer;
     width: 20px;
     height: 20px;
     transition: all .3s;
 }
-.wrap{
+.imgArrow.active{
+    transform: rotate(180deg);
+}
+/**/
+.add__wrap,.categories{
+    margin-top: 35px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 8px .5px #00000022;
+}
+.categories__wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.wrap__list__pad{
+    padding-left: 20px;
+}
+.categories__in{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.categories__in > h3{
+    margin: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.categ__arrow__change{
+    transform: rotate(180deg);
+}
+.title > h2{
+    margin: 0;
+    font-size: 22px;
+}
+.categories__text > h2{
+    margin: 0;
+    font-size: 22px;
+    cursor: pointer;
+}
+.categ__arrow{
+    width: 25px;
+    height: 25px;
+    transition: all .3s;
+}
+.add__in, .categories__text{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add__shop{
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: solid 2px var(--purple-color);
+    background-color: var(--purple-color);
+    cursor: pointer;
+}
+.span{
+    position: absolute;
+    left: 50%;
+    height: 2px;
+    width: 50%;
+    background-color: #ffffff;
+    display: block;
+    transition: all .3s;
+}
+.span1{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.span2{
+    width: 2px;
+    height: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+/**/
+.in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px .5px #00000022;
+    border-radius: 20px;
+    margin-top: 35px;
+    padding: 40px 0;
+}
+.form{
+    min-width: 75%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.input__wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.input__in{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.input__wrap > p{
+    font-weight: 600;
+    margin: 0;
+}
+.check{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.inp{
     width: 100%;
-    margin-top: 30px;
+    margin: auto;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: none;
+    border: solid 2px var(--purple-color);
+}
+.btn{
+    width: 40%;
+    margin: auto;
+    margin-top: 15px;
+    padding: 10px 0;
+    border-radius: 15px;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--green-color);
 }

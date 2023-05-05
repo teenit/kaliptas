@@ -23,11 +23,11 @@ const Languages = () =>{
             <div className={s.line}></div>
             <div className={s.languages__item}><span onClick={()=>{
                 changeLang('ru/')
-            }}>Рус</span></div>
+            }}>Ru</span></div>
             <div className={s.line}></div>
             <div className={s.languages__item}><span onClick={()=>{
                 changeLang('en/')
-            }}>Eng</span></div>
+            }}>En</span></div>
         </div>
     )
 }
