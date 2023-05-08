@@ -15,7 +15,7 @@ const FrontContent = () => {
         <div className={s.wrapper}>
             <Routes>
                 <Route path={''} element = {<FrontPage />}/>
-                <Route path={'/product/:link'} element = {<FrontProduct />}/>
+                <Route path={'/product/:id'} element = {<FrontProduct />}/>
                 <Route path={'/cart'} element = {<Cart />}/>
                 <Route path={'/contact'} element = {<Contacts />}/>
                 <Route path={'/cabinet'} element = {<Cabinet />}/>
