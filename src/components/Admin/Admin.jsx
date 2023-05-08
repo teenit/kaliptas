@@ -5,7 +5,7 @@ import s from "./Admin.module.css";
 import Content from "./Content/Content";
 import Header from "./Header/Header";
 import { Navigation } from "./Navigation/Navigation";
-import { Footer } from "./Footer/Footer";
+import { Footer } from "../Footer/Footer";
 
 const Admin = () =>{
     const[show, setShow] = useState(false);
