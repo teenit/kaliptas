@@ -2,9 +2,9 @@ import React from "react";
 import s from "./FrontPage.module.css";
 import ProductList from "./Product/ProductList";
 import AdwordSlider from "../../Modules/AdwordSlider/AdwordSlider";
-import AdwordSliderSecond from "../../Modules/AdwordSliderSecond/AdwordSliderSecond";
 import arrowImg from "./../../../../img/collapse-arrow-50.png"
 import { useState } from "react";
+import AdwordSlide from "../../Modules/AdwordSlider/AdwordSlide/AswordSlide";
 
 const FrontPage = () => {
     const relatedProductList = [
@@ -313,7 +313,7 @@ const FrontPage = () => {
                 </div>
 
                 <div className={s.adword__slider}>
-                    <AdwordSliderSecond data={SecondSliderContent}/>
+                    <AdwordSlide item={SecondSliderContent}/>
                    
                 </div>
 
@@ -353,7 +353,7 @@ const FrontPage = () => {
                 </div>
 
                 <div className={s.adword__slider}>
-                    <AdwordSliderSecond data={ThirdSliderContent}/>
+                    <AdwordSlide item={ThirdSliderContent}/>
                 </div>
             </div>
         </div>
