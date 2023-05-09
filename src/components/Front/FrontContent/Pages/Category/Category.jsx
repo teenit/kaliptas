@@ -96,12 +96,11 @@ function Category(props) {
         <div className={s.wrap}>
             <div className={s.nav__container}>
                 <Link to="../catalog"><HomeIcon/></Link>
-                >
                 {
                     category.getParents().map((cat, index) => {
                         return(
                             <span>
-                                <Link key={index} to={"../catalog/" + cat.id}>{cat.title}</Link>>
+                                 <span className={s.span__sign}>></span><Link key={index} to={"../catalog/" + cat.id}>{cat.title}</Link>
                             </span>
                         )
                     })
@@ -109,26 +108,33 @@ function Category(props) {
             </div>
             <div className={s.main__container}>
                 <div className={s.filter__container}>
-                    <div>Price:
-                        <input type="text" value={value[0]} onChange={(event)=>{
-                            let newValue = +event.target.value;
-                            if (newValue < value[1]) {
-                                setValue([newValue, value[1]])
-                            }
-                        }}/>
-                        <input type="text" value={value[1]} onChange={(event)=>{
-                            let newValue = +event.target.value;
-                            if (newValue > value[0]) {
-                                setValue([value[0], newValue])
-                            }
-                        }}/>
-                        <button onClick={(event)=> applyFilter()}>Ok</button>
+                    <div>
+                        <b>Диапазон цен</b>
+                        <div className={s.input__line}>
+                            <input className={s.filter__input} type="text" value={value[0]} onChange={(event)=>{
+                                let newValue = +event.target.value;
+                                if (newValue < value[1]) {
+                                    setValue([newValue, value[1]])
+                                }
+                            }}/>
+                            <div className={s.connector}></div>
+                            <input className={s.filter__input} type="text" value={value[1]} onChange={(event)=>{
+                                let newValue = +event.target.value;
+                                if (newValue > value[0]) {
+                                    setValue([value[0], newValue])
+                                }
+                            }}/>
+                            <div className={s.apply} onClick={(event)=> applyFilter()}>Ok</div>
+                        </div>
+
+
                     </div>
                     <Slider
                         getAriaLabel={() => 'Temperature range'}
                         value={value}
                         onChange={handleChange}
                         valueLabelDisplay="auto"
+                        size="small"
                         // getAriaValueText={valuetext}
                         min={0}
                         max={maxPrice}
