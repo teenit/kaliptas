@@ -2,42 +2,12 @@ import React from "react";
 import s from "./Catalog.module.css";
 import ProductList from "../../FrontPage/Product/ProductList";
 import FrontSlide from "../../../Modules/FrontSlider/FrontSlide/FrontSlide";
+import {Link} from "react-router-dom";
+import {CategoryObject} from "../Category/CategoryObject";
 
 const Catalog = ()=>{
     const categories = [
-        {
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },{
-            title: "Title",
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryLink: "link"
-        },
+        new CategoryObject("1")
     ]
 
     const relatedProductList = [
@@ -102,12 +72,16 @@ const Catalog = ()=>{
             <div className={s.category__container}>
                 {categories.map((item, index)=> {
                     return (
-                        <a className={s.category__link} href={item.categoryLink}>
+                        <Link className={s.category__link}
+                              to={{
+                                  pathname: item.categoryName
+                              }
+                        } key={index}>
                             <div className={s.category} key={index}>
                                 <img src={item.imageUrl} alt={item.title}/>
                                 <h5>{item.title}</h5>
                             </div>
-                        </a>
+                        </Link>
                     )
                 })}
             </div>
