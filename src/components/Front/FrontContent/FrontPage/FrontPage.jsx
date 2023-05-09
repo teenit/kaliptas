@@ -53,66 +53,18 @@ const FrontPage = () => {
             price: 15,
             dopPrice: 10,
         },
+        {
+            imgUrl: "",
+            imgAlt: "Мягкая игрушка",
+            title: "Мягкая игрушка мопс-бревно Валера",
+            id: 6,
+            reviews: 17,
+            price: 15,
+            dopPrice: 10,
+        },
     ]; // Must be loadRelated()
 
-    const relatedSecondProductList = [
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 11,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 12,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 13,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 14,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 15,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-    ];
-
     const relatedViewedProducts = [
-        {
-            imgUrl: "",
-            imgAlt: "Фотоапарат Panasonic Lumix",
-            title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
-            id: 6,
-            reviews: 197,
-            price: 1999,
-            dopPrice: 1499,
-        },
         {
             imgUrl: "",
             imgAlt: "Фотоапарат Panasonic Lumix",
@@ -148,15 +100,12 @@ const FrontPage = () => {
             reviews: 197,
             price: 1999,
             dopPrice: 1499,
-        }
-    ]
-
-    const relatedSecondViewedProducts = [
+        },
         {
             imgUrl: "",
             imgAlt: "Фотоапарат Panasonic Lumix",
             title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
-            id: 16,
+            id: 11,
             reviews: 197,
             price: 1999,
             dopPrice: 1499,
@@ -165,10 +114,59 @@ const FrontPage = () => {
             imgUrl: "",
             imgAlt: "Фотоапарат Panasonic Lumix",
             title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
-            id: 17,
+            id: 12,
             reviews: 197,
             price: 1999,
             dopPrice: 1499,
+        },
+        
+    ]
+
+    const relatedSecondProductList = [
+        {
+            imgUrl: "",
+            imgAlt: "Мягкая игрушка",
+            title: "Мягкая игрушка мопс-бревно Валера",
+            id: 13,
+            reviews: 17,
+            price: 15,
+            dopPrice: 10,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Мягкая игрушка",
+            title: "Мягкая игрушка мопс-бревно Валера",
+            id: 14,
+            reviews: 17,
+            price: 15,
+            dopPrice: 10,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Мягкая игрушка",
+            title: "Мягкая игрушка мопс-бревно Валера",
+            id: 15,
+            reviews: 17,
+            price: 15,
+            dopPrice: 10,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Мягкая игрушка",
+            title: "Мягкая игрушка мопс-бревно Валера",
+            id: 16,
+            reviews: 17,
+            price: 15,
+            dopPrice: 10,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Мягкая игрушка",
+            title: "Мягкая игрушка мопс-бревно Валера",
+            id: 17,
+            reviews: 17,
+            price: 15,
+            dopPrice: 10,
         },
         {
             imgUrl: "",
@@ -179,6 +177,11 @@ const FrontPage = () => {
             price: 1999,
             dopPrice: 1499,
         },
+    ];
+
+    
+
+    const relatedSecondViewedProducts = [
         {
             imgUrl: "",
             imgAlt: "Фотоапарат Panasonic Lumix",
@@ -196,7 +199,43 @@ const FrontPage = () => {
             reviews: 197,
             price: 1999,
             dopPrice: 1499,
-        }
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Фотоапарат Panasonic Lumix",
+            title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
+            id: 21,
+            reviews: 197,
+            price: 1999,
+            dopPrice: 1499,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Фотоапарат Panasonic Lumix",
+            title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
+            id: 22,
+            reviews: 197,
+            price: 1999,
+            dopPrice: 1499,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Фотоапарат Panasonic Lumix",
+            title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
+            id: 23,
+            reviews: 197,
+            price: 1999,
+            dopPrice: 1499,
+        },
+        {
+            imgUrl: "",
+            imgAlt: "Фотоапарат Panasonic Lumix",
+            title: "Фотоапарат Panasonic Lumix DMC-G80 Kit 12",
+            id: 24,
+            reviews: 197,
+            price: 1999,
+            dopPrice: 1499,
+        },
     ]
     
     const categories = [
@@ -314,7 +353,6 @@ const FrontPage = () => {
 
                 <div className={s.adword__slider}>
                     <FrontSlide item={SecondSliderContent}/>
-                   
                 </div>
 
                 <h3 className={s.title}>Похожие товары</h3>

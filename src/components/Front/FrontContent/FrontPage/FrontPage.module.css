@@ -32,6 +32,8 @@
 }
 .adword__slider{
     margin-top: 55px;
+    border-radius: 20px;
+    overflow: hidden;
 }
 .categories__wrap{
     display: grid;
