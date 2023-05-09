@@ -9,6 +9,7 @@ import Cabinet from "./Pages/Cabinet/Cabinet";
 import Catalog from "./Pages/Catalog/Catalog";
 import Order from "./Pages/Order/Order";
 import TextPage from "./Pages/TextPage/TextPage";
+import Category from "./Pages/Category/Category";
 const FrontContent = () => {
 
     return (
@@ -20,6 +21,7 @@ const FrontContent = () => {
                 <Route path={'/contact'} element = {<Contacts />}/>
                 <Route path={'/cabinet'} element = {<Cabinet />}/>
                 <Route path={'/catalog'} element = {<Catalog />}/>
+                <Route path={'/catalog/:id'} element={<Category />}/>
                 <Route path={'/order'} element = {<Order />}/>
                 <Route path={'/page/*'} element = {<TextPage />}/>
             </Routes>
