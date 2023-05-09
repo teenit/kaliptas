@@ -21,7 +21,7 @@ const FrontContent = () => {
                 <Route path={'/contact'} element = {<Contacts />}/>
                 <Route path={'/cabinet'} element = {<Cabinet />}/>
                 <Route path={'/catalog'} element = {<Catalog />}/>
-                <Route path={'/catalog/:categoryName'} element={<Category />}/>
+                <Route path={'/catalog/:id'} element={<Category />}/>
                 <Route path={'/order'} element = {<Order />}/>
                 <Route path={'/page/*'} element = {<TextPage />}/>
             </Routes>

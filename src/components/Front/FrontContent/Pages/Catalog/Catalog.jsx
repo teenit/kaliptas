@@ -1,14 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import s from "./Catalog.module.css";
 import ProductList from "../../FrontPage/Product/ProductList";
 import FrontSlide from "../../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import {Link} from "react-router-dom";
 import {CategoryObject} from "../Category/CategoryObject";
+import {api} from "../../../../functions/api";
 
 const Catalog = ()=>{
-    const categories = [
-        new CategoryObject("1")
-    ]
+    //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
+    const [loadedCategories, setLoadedCategories] = useState([]);
+    const [isLoaded, setLoaded] = useState(false)
+
+    api((response)=>{
+        if (response !== undefined && ! isLoaded) {
+            setLoadedCategories(response.map((item)=>{
+                return new CategoryObject(item);
+            }))
+            setLoaded(true)
+        }
+    }, {}, "content/category/get-all-categories.php")
+
+    // const categories = [
+    //     new CategoryObject("1")
+    // ]
 
     const relatedProductList = [
         {
@@ -70,11 +84,11 @@ const Catalog = ()=>{
     return(
         <div className={s.wrap}>
             <div className={s.category__container}>
-                {categories.map((item, index)=> {
+                {loadedCategories.map((item, index)=> {
                     return (
                         <Link className={s.category__link}
                               to={{
-                                  pathname: item.categoryName
+                                  pathname: item.id
                               }
                         } key={index}>
                             <div className={s.category} key={index}>
@@ -85,7 +99,7 @@ const Catalog = ()=>{
                     )
                 })}
             </div>
-            <h3 className={s.title}>Похожие товары</h3>
+            <h3 className={s.title}>{}Похожие товары</h3>
             <div className={s.product__in}>
                 <ProductList cards={relatedProductList} />
             </div>

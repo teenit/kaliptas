@@ -1,49 +1,28 @@
 export class CategoryObject {
 
-    constructor(id) {
-        this.id = id;
-        let categoryData = this.loadCategory()
-        this.title = categoryData.title;
-        this.categoryParentQueue = categoryData.categoryPath;
-        this.categoryName = categoryData.categoryName;
-        this.imageUrl = categoryData.imageUrl;
+    constructor(category) {
+        console.log("Received category info: ", category)
+        this.id = category.id;
+        this.imageUrl = category.category.image;
+        this.title = category.category.title.en;
+
+        this.parenId = category.parentId;
+    }
+
+    static emptyCategory() {
+        return new CategoryObject(JSON.parse("{\"id\":\"19\",\"parent_id\":\"0\",\"category\":{\"title\":{\"en\":\"Sports, recreation, tourism\",\"ru\":\"Спорт, отдых, туризм\",\"ge\":\"სპორტი, დასვენება, ტურიზმი\"},\"description\":{\"en\":\"\",\"ru\":\"\",\"ge\":\"\"},\"image\":\"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png\"}}"));
     }
 
     id;
     title;
     imageUrl;
-    categoryParentQueue;
-    categoryName;
-
-    loadCategory() {
-        return {
-            title: "temp title " + this.id,
-            imageUrl: "https://www.textures4photoshop.com/tex/thumbs/fireworks-png-transparent-background-thumb36.png",
-            categoryPath: this.toQueue("some/link"),
-            categoryName: "category"+this.id
-        }
-    }
-
-    toQueue(link) {
-        let queue = [];
-        while (link.indexOf("/") !== -1) {
-            let index = link.indexOf("/");
-            let subLink = link.substring(0, index);
-            if (subLink.length > 0 && subLink !== "/"){
-                queue.push(subLink);
-            }
-
-            link = link.substring(index + 1)
-        }
-
-        if (link.length > 0 && link !== "/"){
-            queue.push(link);
-        }
-
-        return queue;
-    }
+    parenId;
 
     loadProducts() {
+        if (this.id === "22") {
+            return []
+        }
+
         return [{
             imgUrl: "",
             imgAlt: "Мягкая игрушка",
@@ -85,6 +64,19 @@ export class CategoryObject {
             price: 5000,
             dopPrice: 10,
         },
+        ]
+    }
+
+    getParents() {
+        return [
+            {
+                id:19,
+                title: "Page 1"
+            },
+            {
+                id: 20,
+                title: "Page 2"
+            }
         ]
     }
 }

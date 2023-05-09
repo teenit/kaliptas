@@ -27,21 +27,24 @@ export function api(apiFunc, obj, url){
         } 
     })
     .then((data)=>{
-        console.log(data);
+        console.log("Received data: ", data);
         apiFunc(data.data)
         document.getElementById('lineLoading').style.width = 0;
     })
     .catch((error)=>{
-       
-        console.log(error)
-        let div = document.createElement('div');
-        div.innerHTML = t(error.response.status);
-        div.className = "error__message"
-        document.getElementById('error').append(div);
-        setTimeout(()=>{
-            div.remove();
-        },5000)
-
+        try {
+            console.log(error)
+            let div = document.createElement('div');
+            div.innerHTML = t(error.response.status);
+            div.className = "error__message"
+            document.getElementById('error').append(div);
+            setTimeout(()=>{
+                div.remove();
+            },5000)
+        } catch (jsError) {
+            console.log("Error: ", error)
+            console.log("Js error: ", jsError)
+        }
     })
 }
 

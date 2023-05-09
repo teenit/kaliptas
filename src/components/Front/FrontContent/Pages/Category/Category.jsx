@@ -1,15 +1,35 @@
 import React, {useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {CategoryObject} from "./CategoryObject";
 import s from "./Category.module.css"
 import ProductList from "../../FrontPage/Product/ProductList";
 import ProductCard from "../../FrontPage/Product/ProductCard/ProductCard";
 import {Slider} from "@mui/material";
+import {api} from "../../../../functions/api";
+import HomeIcon from '@mui/icons-material/Home';
 
 function Category(props) {
-    const params = useParams();
-    const categoryName = params.categoryName;
-    const category = new CategoryObject(categoryName);
+    const id = useParams().id;
+    const [isLoaded, setLoaded] = useState(false)
+    const [products, setProducts] = useState([]);
+    const [displayedProducts, setDisplayedProducts] = useState({
+        products : products
+    })
+    const [category, setCategory] = useState(CategoryObject.emptyCategory);
+
+    api((response)=>{
+        if (response !== undefined && ! isLoaded) {
+            setLoaded(true);
+            console.log("From category creation",response)
+            let loadedCategory = new CategoryObject(response[0]);
+            let loadedProducts = loadedCategory.loadProducts()
+            setCategory(loadedCategory)
+            setProducts(loadedProducts);
+            setDisplayedProducts({products: loadedProducts});
+        }
+    }, {
+        catID: id
+    }, "content/category/get-id-category.php")
 
     const relatedProductList = [
         {
@@ -58,23 +78,14 @@ function Category(props) {
             dopPrice: 10,
         },
     ]; // Must be loadRelated()
-
     const youWatchedList = relatedProductList;
 
-    const products = category.loadProducts();
-
-    const [displayedProducts, setDisplayedProducts] = useState({
-        products : products
-    })
-
+    //Price filter
     const maxPrice = 10000;
-
     const [value, setValue] = React.useState([0, maxPrice]);
-
     const handleChange = (event, newValue) => {
         setValue(newValue)
     };
-
     const applyFilter = function () {
         const filteredProducts = products.filter((item)=> item.price >= value[0] && item.price <= value[1])
 
@@ -84,7 +95,17 @@ function Category(props) {
     return (
         <div className={s.wrap}>
             <div className={s.nav__container}>
-
+                <Link to="../catalog"><HomeIcon/></Link>
+                >
+                {
+                    category.getParents().map((cat, index) => {
+                        return(
+                            <span>
+                                <Link key={index} to={"../catalog/" + cat.id}>{cat.title}</Link>>
+                            </span>
+                        )
+                    })
+                }
             </div>
             <div className={s.main__container}>
                 <div className={s.filter__container}>
