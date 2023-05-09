@@ -9,7 +9,8 @@ import ProductPriceDefault from "./ProductPrice/ProductPriceDefault";
 import ProductImage from "./ProguctImage/ProductImage";
 import ProductImages from "./ProguctImage/ProductImages";
 import loadImg from './../../../../../img/admin/loading.gif';
-const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
+import ProductСharacteristic from "./ProductСharacteristic/ProductСharacteristic";
+const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     const [lookCat,setLookCat] = useState(stateProduct.categories)
     const [control, setControl] = useState({
         selectPrice: false,
@@ -29,7 +30,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
         langeRuChar: false,
         lang: 'ge'
     })
-    
+    const lng = localStorage.getItem('LNG').toLowerCase()
 
    
      const [state, setState] = useState({...stateProduct})
@@ -65,22 +66,20 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
         setLookCat(newItems)
     }
     const onClickHendlerPso = (defCats, favCats)=>{
-       
         const newItems = defCats.map((item)=>{
-            
             if(stateProduct.categories.some(elem => elem.id == item.id)){
-                return {...item}
+                return {...item,checked:true,good:true}
             }else if(favCats.some(elem => elem.catID == item.id)){
-                return {...item,good:true,checked:true}
+                return {...item,good:true,checked:false}
             }else{
-                return {...item,checked:false}
+                return {...item,good:false,checked:false}
             }
         });
-
         setLookCat(newItems)
     }
     
     useEffect(()=>{
+        console.log(stateProduct)
         api((arg)=>{
             api((arg1)=>{
                 console.log(arg,arg1)
@@ -128,7 +127,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
                                         lookCat.map((item,ind)=>{
                                             return item.checked ?
                                                 <div className={s.cat__elem} key={item.id}>
-                                                <span className={s.cat__title__look}>{item.category.title.en}</span> 
+                                                <span className={s.cat__title__look}>{item.category.title[lng]}</span> 
                                                 <div className={s.delete__cat} onClick={()=>{
                                                     onClickHendler(ind,false)
                                                   
@@ -185,9 +184,9 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
                             </label>
                             <div className={s.input__price__wrap}>
                                 {
-                                    state.type.variable ? <ProductPriceVar prices={state.prices} addState = {(arg)=>{
+                                    state.type.variable ? <ProductPriceVar lang = {control.lang} prices={state.prices} addState = {(arg)=>{
                                         setState({...state,prices:arg});
-                                    }} /> : <ProductPriceDefault price={state.price} addState = {(arg)=>{
+                                    }} /> : <ProductPriceDefault lang = {control.lang} price={state.price} addState = {(arg)=>{
                                         setState({...state,price:arg});
                                     }} />
                                 }
@@ -207,9 +206,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
                                 <p>Характеристики</p>
                                
                             </label>
-                            <textarea required value={state.characteritics[control.lang]} className={s.textarea} name="" id="" cols="30" rows="10" onChange={(event)=>{
-                                setState({...state, characteritics: {...state.characteritics, [control.lang]: event.target.value}})
-                            }}></textarea>
+                             <ProductСharacteristic char={state.characteristic} lang={control.lang} addState = {(arg)=>{setState({...state,characteristic:arg})}}/>
                         </div>
                         <ProductImage image={state.image} loadedImg = {loadedImg} setLoadedImg = {(arg)=>setLoadedImg({...loadedImg,image:arg})} uploadImage = {(file,index)=>{uploadImage(file,index)
                         }} 
@@ -226,13 +223,13 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct}) =>{
                         onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
                             setState({...state,categories:newMas});
-                            saveProduct(state,newMas,"moderation");
-                        }}>Отправить</button>
+                            saveProduct(state,newMas,btn.btn1.status);
+                        }}>{btn.btn1.title[lng]}</button>
                         <button disabled = {loadedImg.image || loadedImg.images ? true : false} onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
                             setState({...state,categories:newMas});
-                            saveProduct(state,newMas,"draft");
-                        }} className={`${s.form__btn} ${s.form__btn__save}`}>Сохранить как черновик</button>
+                            saveProduct(state,newMas,btn.btn2.status);
+                        }} className={`${s.form__btn} ${s.form__btn__save}`}>{btn.btn2.title[lng]}</button>
                 </div>
                 {
                     loadedImg.image || loadedImg.images ? <img src={loadImg} alt="" /> : null

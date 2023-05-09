@@ -161,3 +161,7 @@
     cursor: pointer;
     background-color: var(--green-color);
 }
+.load__img{
+    width: 100px;
+    margin: auto;
+}

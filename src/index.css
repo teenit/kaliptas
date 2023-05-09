@@ -63,12 +63,23 @@ li{
 	border: 0px none var(--purple-color);
   }
   
-	.lineLoading{
-		width: 0;
-		height: 5px;
-		background-color: #65ecc5;
-		transition: all .3s;
-		position: fixed;
-		top: 0;
-		left: 0;
-	}
+.lineLoading{
+	width: 0;
+	height: 5px;
+	background-color: #65ecc5;
+	transition: all .3s;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+#error{
+	position: fixed;
+	top: 5px;
+	right: 5px;
+	width: max-content;
+}
+.error__message{
+	padding: 10px;
+	background-color: #1c9e73;
+	width: max-content;
+}

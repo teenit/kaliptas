@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import s from './Categories.module.css';
-import { api } from "../../../functions/api";
+import { api, serverAdress } from "../../../functions/api";
 import { createSlug } from "../../../functions/createSlug";
 import CreateTreeHTML from "./CreateTree/CreateTreeHTML";
 import CreateTreeList from "./CreateTree/CreateTreeList";
 import imgArrow from "../../../../img/collapse-arrow-50.png";
+import imgLoading from "../../../../img/admin/loading.gif";
 import { use } from "i18next";
+import axios from "axios";
 
 const createTreeData = (arr, idProp, parentProp) => {
     const tree = Object.fromEntries(arr.map(n => [ n[idProp], { ...n, children: [] } ]));
@@ -14,6 +16,7 @@ const createTreeData = (arr, idProp, parentProp) => {
 const Categories = ()=>{
     const [cats,setCats] = useState([]);
     const [lng, setLng] = useState(localStorage.getItem('LNG').toLocaleLowerCase())
+    const [loading,setLoading] = useState(false)
     const [showList, setShowList] = useState(false)
     const [showForm, setShowForm] = useState(false)
     const [showCateg, setShowCateg] = useState(true)
@@ -34,28 +37,48 @@ const Categories = ()=>{
             ge:""
         },
         parent_id:0,
+        image:null
 
     })
-    const sendForm = (e)=>{
-        e.preventDefault()
 
-        api((arg)=>{
-            setState({...state,title:{
-                en:"",
-                ru:"",
-                ge:""
-            },
-            description:{
-                en:"",
-                ru:"",
-                ge:""
-            },
-            parent_id:0})
+    function uploadImageCategory(formData){
+
+        axios({
+            url: serverAdress("manage/categories/create-category.php"),
+            method: "POST",
+            header: { "Content-Type": "multipart/form-data" },
+            data: formData,
+            onUploadProgress: (event) => {
+                console.log(event)
+                document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
+            } 
+        })
+        .then((data)=>{
+            console.log(data);
+            setLoading(false)
             api((arg)=>{
-                 setCats(createTreeData(arg,'id','parent_id'));
-             },{},"manage/categories/get-categories.php")
+                setCats(createTreeData(arg,'id','parent_id'));
+            },{},"manage/categories/get-categories.php")
+        })
+        .catch((error)=>{
+           
+            console.log(error)
+    
+        })
+    }
 
-        },{...state},"manage/categories/create-category.php")
+    const sendForm = (e)=>{
+        setLoading(true)
+        e.preventDefault()
+        let formData = new FormData();
+        formData.append("image",state.image[0]);
+        formData.append("title",JSON.stringify(state.title));
+        formData.append("description",JSON.stringify(state.description));
+        formData.append("parent_id",state.parent_id);
+        formData.append("id",localStorage.getItem('id'));
+        formData.append("token",localStorage.getItem('token'));
+
+      return  uploadImageCategory(formData)
     }
     return(
         <div className={s.wrap}>
@@ -116,9 +139,17 @@ const Categories = ()=>{
                         <h3>Родительские категории</h3>
                         <img className={`${s.imgArrow} ${showList ? s.active : ''}`} src={imgArrow} alt="Стрелка" />
                     </div>
-                    {showList ? <CreateTreeList data={cats} setState = {(arg)=>setState({...state,"parent_id":arg})}/>:null}
+                    {showList ? <CreateTreeList lng = {lng} data={cats} setState = {(arg)=>setState({...state,"parent_id":arg})}/>:null}
                 </div>
-                <button className={s.btn}>Cоздать категорию</button>
+                <div className={s.cat__in__img}>
+                    <div className={s.cat__img__load}>
+                        <label htmlFor="cat__img">
+                            <input type="file" id="cat__img" onChange={(e)=>{setState({...state,image:e.target.files})}}/>
+                        </label>
+                    </div>
+                </div>
+                <button disabled = {loading} className={s.btn}>Cоздать категорию</button>
+                {loading ? <img className={s.load__img} src={imgLoading} alt="" />:null}
                 </form>
             </div> : null}
             </div>

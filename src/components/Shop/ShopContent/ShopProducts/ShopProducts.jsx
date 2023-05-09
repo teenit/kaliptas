@@ -22,17 +22,29 @@ const ShopProducts = ({shop})=>{
             ru: ""
         },
         categories: [],
-        characteritics:{
-            en: "",
-            ge: "",
-            ru: ""
-        },
+        characteristic:[{
+            title:{
+                en: "",
+                ge: "",
+                ru: ""
+            },
+            value:{
+                en: "",
+                ge: "",
+                ru: ""
+            }
+        }],
         type:{
             variable: false,
             defaulte: true
         },
         prices:[{
-            variable:'',
+            variable:{
+                ge:"",
+                en:"",
+                ru:""
+
+            },
             price:'',
             discountPrice:''
         }],
@@ -43,7 +55,7 @@ const ShopProducts = ({shop})=>{
     function saveProduct(objState,newMas,status){
         setStateProduct({...objState,categories:newMas,status:status})
         api((arg)=>{
-            alert(arg)
+            console.log(arg)
             setCloseModal(!closeModal)
         },{...objState,categories:newMas,status:status},"manage/shop/add-product.php")
     }
@@ -64,6 +76,22 @@ const ShopProducts = ({shop})=>{
                             stateProduct={stateProduct} 
                             shop = {shop} 
                             close = {()=>setCloseModal(!closeModal)}
+                            btn = {{btn1:{
+                                title:{
+                                    ge:"გაგზავნა",
+                                    en:"Send",
+                                    ru:"Отправить"
+                                },
+                                status:"moderation"
+                            },btn2:{
+                                title:{
+                                    ge:"მონახაზად შენახვა",
+                                    en:"Save as draft",
+                                    ru:"Сохранить как черновик"
+                                },
+                                status:"draft"
+                            }
+                        }}
                             saveProduct = {(objState,newMas,status)=>{saveProduct(objState,newMas,status)}} />  : null}
         </div>
     )

@@ -13,16 +13,27 @@ const ProductsRow = ({moderation,index}) =>{
         setLookProduct({...lookProduct,look:arg})
     }
     function saveProduct(obj, masCategories, status){
-      //  return console.log()
+       /* if(obj.title.en == "" || obj.title.ge == "" || obj.title.ru == "")
+        if(obj.description.en == "" || obj.description.ge == "" || obj.description.ru == "")
+        if(obj.characteritics.en == "" || obj.characteritics.ge == "" || obj.characteritics.ru == "")
+        if(obj.image == "")
+        if(obj.images.length < 1)
+        if(obj.type.defaulte){
+
+        }else{
+
+        }*/
+      // return console.log(obj)
+        
         api((arg)=>{
-            alert(arg)
+            console.log(arg)
             close(false)
         },{...obj,
             categories:masCategories,
             status:status,
             productID:moderation.value.productID,
             shopID:moderation.value.shopID,
-            link:moderation.value.link
+            link:Math.floor(Math.random()*1000)
             },"manage/shop/update-product.php")
     }
     return(
@@ -36,6 +47,22 @@ const ProductsRow = ({moderation,index}) =>{
             {
                 lookProduct.look ? <ProductRegister 
                 stateProduct={stateProduct} 
+                btn = {{btn1:{
+                    title:{
+                        ge:"გამოაქვეყნეთ",
+                        en:"Publish",
+                        ru:"Опубликовать"
+                    },
+                    status:"published"
+                },btn2:{
+                    title:{
+                        ge:"Უარი თქვას",
+                        en:"Reject",
+                        ru:"Отклонить"
+                    },
+                    status:"rejected"
+                }
+            }}
                 shop = {{id:moderation.value.shopID}} 
                 saveProduct={(obj, masCategories, status)=>{saveProduct(obj, masCategories, status)}} 
                 close = {()=>{close(false)}}/> : null

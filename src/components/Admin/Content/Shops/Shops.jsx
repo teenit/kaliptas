@@ -11,15 +11,21 @@ const Shops = () =>{
     const {t} = useTranslation()
     const [state, setState] = useState(false);
     const [newStore, setNewStore] = useState({
-        nameGE:"",
-        nameEN:"",
-        nameRU:"",
-        descriptionGE:"",
-        descriptionEN:"",
-        descriptionRU:"",
-        typeProductsGE:"",
-        typeProductsEN:"",
-        typeProductsRU:"",
+        title:{
+            en:"",
+            ru:"",
+            ge:""
+        },
+        description:{
+            en:"",
+            ru:"",
+            ge:""
+        },
+        typeProducts:{
+            en:"",
+            ru:"",
+            ge:""
+        },
         slug:""
     })
     const [shops, setShops] = useState([]);
@@ -89,7 +95,7 @@ const Shops = () =>{
                                         contArr: false,
                                         raitArr: !changePos.raitArr,
                                         rekArr: false})
-                                }}>{t('rating')}</span>
+                                }}>{t('products')}</span>
                                 <img className={`${s.static__arrow} ${changePos.raitArr ? s.td__arrow__change : null}`} src={ArrowImg} alt="Стрелка" />
                             </td>
                             <td className={s.td}>

@@ -4,10 +4,12 @@ import s from './CatCreateTreeHTML.module.css';
 import imgArrow from './../../../../../../img/collapse-arrow-50.png'
 const CatCreateTreeHTML = ({data,addCategory}) => {
     const [stateCat, setStateCat] = useState({})
+    const lng = localStorage.getItem("LNG").toLowerCase()
     return (
         <ul>
             {   
                 data.map((n)=>{
+                    console.log(n.category.title)
                     return(
                         <li data-id={['cat'+n.id]} 
                             className={`${s.cat__list} ${stateCat['cat'+n.id] ? s.active: ''} ${'cat'+n.id}`} 
@@ -16,7 +18,7 @@ const CatCreateTreeHTML = ({data,addCategory}) => {
                                 <span className={s.plus} onClick={()=>addCategory({parent_id:n.parent_id,catID:n.id,category:n.category})}>
                                     <span>+</span>
                                 </span>
-                                <span>{n.category.title.en}</span> 
+                                <span>{n.category.title[lng]}</span> 
                                 <img className={`${s.img__arrow} 
                                      ${stateCat['cat'+n.id] ? s.active: ''}`} 
                                      src={imgArrow} alt="" 

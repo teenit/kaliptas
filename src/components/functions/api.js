@@ -1,4 +1,6 @@
 import axios from "axios";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export function serverAdress(arg){
    // return "http://kaliptas/" + arg;
@@ -29,7 +31,18 @@ export function api(apiFunc, obj, url){
         apiFunc(data.data)
         document.getElementById('lineLoading').style.width = 0;
     })
-    .catch((error)=>{console.log(error.response.data)})
+    .catch((error)=>{
+       
+        console.log(error)
+        let div = document.createElement('div');
+        div.innerHTML = t(error.response.status);
+        div.className = "error__message"
+        document.getElementById('error').append(div);
+        setTimeout(()=>{
+            div.remove();
+        },5000)
+
+    })
 }
 
 export function apiMultipartUpload(apiFunc,links, files, url, index,shopID,count){

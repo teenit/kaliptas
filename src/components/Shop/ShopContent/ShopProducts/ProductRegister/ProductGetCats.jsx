@@ -10,7 +10,7 @@ const ProductGetCats = ({cats,addCat,addState})=>{
             {
                 cats.map((item,index)=>{
                     return(
-                        <div key={item.id} className={s.cat__item}>
+                        <div key={item.id} className={`${s.cat__item} ${item.good ? s.cat__category__good : ''}`}>
                             <label htmlFor={`catList${item.id}`}>
                                 <input checked = {item.checked} value={item.id} type="checkbox" id={`catList${item.id}`} onChange={(e)=>{
                                    // cats[index].checked = e.target.checked;

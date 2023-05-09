@@ -34,8 +34,10 @@ const ProductImage = ({addState,uploadImage,image})=>{
                 }} />
                 <div className={s.inp__img__wrap}>
                     <label htmlFor="mainImg" className={s.img__main__wrap} onClick={()=>{}}></label>
-                    <div className={showImg ? s.image__wrap__dop : s.image__wrap}>
-                        <img className={s.input__image} src={previewImg ? previewImg : image } alt="" />
+                    <div onClick={()=>console.log(image)} className={showImg ? s.image__wrap__dop : s.image__wrap}>
+                        {   previewImg || image ?
+                            <img className={s.input__image} src={previewImg ? previewImg : image } alt="" /> : null
+                        }
                     </div> 
                 </div>
              </div>

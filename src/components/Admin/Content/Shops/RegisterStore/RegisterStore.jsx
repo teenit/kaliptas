@@ -17,25 +17,25 @@ const RegisterStore = ({close,newStore,setNewStore,regStore}) =>{
                 <div className={s.input__div}>
                     <label htmlFor="">Название магазина</label>
                     <div className={s.input__div__in}>
-                        <input value={newStore.nameGE} className={s.reg__inp} required type="text" placeholder="На грузинском*" onChange={(event)=>{setNewStore({...newStore, nameGE: event.target.value})}}/>
-                        <input value={newStore.nameEN} className={s.reg__inp} type="text" placeholder="На английском" onChange={(event)=>{setNewStore({...newStore, nameEN: event.target.value})}}/>
-                        <input value={newStore.nameRU} className={s.reg__inp} type="text" placeholder="На русском" onChange={(event)=>{setNewStore({...newStore, nameRU: event.target.value})}}/>
+                        <input value={newStore.title.ge} className={s.reg__inp} required type="text" placeholder="На грузинском*" onChange={(event)=>{setNewStore({...newStore, title:{...newStore.title,ge:event.target.value}})}}/>
+                        <input value={newStore.title.en} className={s.reg__inp} type="text" placeholder="На английском" onChange={(event)=>{setNewStore({...newStore, title:{...newStore.title,en:event.target.value}})}}/>
+                        <input value={newStore.title.ru} className={s.reg__inp} type="text" placeholder="На русском" onChange={(event)=>{setNewStore({...newStore, title:{...newStore.title,ru:event.target.value}})}}/>
                     </div>
                 </div>
                 <div className={s.input__div}>
                     <label htmlFor="">Описание магазина</label>
                     <div className={s.input__div__in}>
-                        <textarea value={newStore.descriptionGE} className={s.reg__text} required name="" id="" cols="30" rows="4" placeholder="На грузинском*" onChange={(event)=>{setNewStore({...newStore, descriptionGE: event.target.value})}}></textarea>
-                        <textarea value={newStore.descriptionEN} className={s.reg__text} name="" id="" cols="30" rows="4" placeholder="На английском" onChange={(event)=>{setNewStore({...newStore, descriptionEN: event.target.value})}}></textarea>
-                        <textarea value={newStore.descriptionRU} className={s.reg__text} name="" id="" cols="30" rows="4" placeholder="На русском" onChange={(event)=>{setNewStore({...newStore, descriptionRU: event.target.value})}}></textarea>
+                        <textarea value={newStore.description.ge} className={s.reg__text} required name="" id="" cols="30" rows="4" placeholder="На грузинском*" onChange={(event)=>{setNewStore({...newStore, description:{...newStore.description,ge:event.target.value}})}}></textarea>
+                        <textarea value={newStore.description.en} className={s.reg__text} name="" id="" cols="30" rows="4" placeholder="На английском" onChange={(event)=>{setNewStore({...newStore, description:{...newStore.description,en:event.target.value}})}}></textarea>
+                        <textarea value={newStore.description.ru} className={s.reg__text} name="" id="" cols="30" rows="4" placeholder="На русском" onChange={(event)=>{setNewStore({...newStore, description:{...newStore.description,ru:event.target.value}})}}></textarea>
                     </div>
                 </div>
                 <div className={s.input__div}>
                     <label htmlFor="">Тип продукции</label>
                     <div className={s.input__div__in}>
-                        <input value={newStore.typeProductsGE} className={s.reg__inp} required type="text" placeholder="На грузинском*" onChange={(event)=>{setNewStore({...newStore, typeProductsGE: event.target.value})}}/>
-                        <input value={newStore.typeProductsEN} className={s.reg__inp} type="text" placeholder="На английском" onChange={(event)=>{setNewStore({...newStore, typeProductsEN: event.target.value})}}/>
-                        <input value={newStore.typeProductsRU} className={s.reg__inp} type="text" placeholder="На русском" onChange={(event)=>{setNewStore({...newStore, typeProductsRU: event.target.value})}}/>
+                        <input value={newStore.typeProducts.ge} className={s.reg__inp} required type="text" placeholder="На грузинском*" onChange={(event)=>{setNewStore({...newStore, typeProducts: {...newStore.typeProducts,ge:event.target.value}})}}/>
+                        <input value={newStore.typeProducts.en} className={s.reg__inp} type="text" placeholder="На английском" onChange={(event)=>{setNewStore({...newStore, typeProducts: {...newStore.typeProducts,en:event.target.value}})}}/>
+                        <input value={newStore.typeProducts.ru} className={s.reg__inp} type="text" placeholder="На русском" onChange={(event)=>{setNewStore({...newStore, typeProducts: {...newStore.typeProducts,ru:event.target.value}})}}/>
                     </div>
                 </div>
                 <div className={s.input__div}>

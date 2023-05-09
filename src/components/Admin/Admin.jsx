@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Auth } from "../Auth/Auth";
 import { useAuth } from "../functions/useAuth";
 import s from "./Admin.module.css";
@@ -9,7 +9,9 @@ import { Footer } from "../Footer/Footer";
 
 const Admin = () =>{
     const[show, setShow] = useState(false);
-    return useAuth() ? (
+    const [auth, setAuth]= useState( false);
+    useAuth((arg)=>{setAuth(arg)})
+    return auth ? (
         <div className={s.wrap}>
             <div className={s.header}>
                 <Header />

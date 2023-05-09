@@ -2,13 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { replaceStr } from "../../../../../functions/replaceStr";
 import s from './ProductPrice.module.css'
-const ProductPriceVar = ({addState,prices})=>{
-
+const ProductPriceVar = ({addState,prices,lang})=>{
+    console.log(lang)
     const [state,setState] = useState(prices)
     const onClickHendler = (index,keyObj,e)=>{
         const newItems = state.map((item,i)=>{
             if(i === index){
-                return {...item,[keyObj]:e}
+                if(keyObj == 'variable') {
+                    return {...item,variable:{...item.variable,[lang]:e}}
+                }else{
+                    return {...item,[keyObj]:e}
+                }
+                
             }else{
                 return {...item}
             }
@@ -23,10 +28,18 @@ const ProductPriceVar = ({addState,prices})=>{
                         return(
                             <div key={index} className={s.var__item}>
                                 <div className={s.var__title}>
-                                    <input className={s.var__title__inp} value={elem.variable} type="text" placeholder="Вариация" onChange={(e)=>{
+                                    {lang == 'ge' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder="Вариация" onChange={(e)=>{
                                         onClickHendler(index,'variable',replaceStr(e.target.value));
                                         addState(state)
-                                    }}/>
+                                    }}/>:null}
+                                    {lang == 'en' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder="Вариация" onChange={(e)=>{
+                                        onClickHendler(index,'variable',replaceStr(e.target.value));
+                                        addState(state)
+                                    }}/>:null}
+                                    {lang == 'ru' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder="Вариация" onChange={(e)=>{
+                                        onClickHendler(index,'variable',replaceStr(e.target.value));
+                                        addState(state)
+                                    }}/>:null}
                                 </div>
                                 <div className={s.var__price}>
                                     <div>
@@ -49,7 +62,11 @@ const ProductPriceVar = ({addState,prices})=>{
                 }
                 <div className={s.var__plus} onClick={()=>{
                     setState([...state,{
-                        variable:'',
+                        variable:{
+                            ge:"",
+                            en:"",
+                            ru:""
+                        },
                         price:'',
                         discountPrice:''
                     }])

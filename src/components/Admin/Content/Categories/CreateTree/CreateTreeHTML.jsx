@@ -13,6 +13,7 @@ const CreateTreeHTML = ({data}) => {
                         <p className={s.p__list} onClick={(e)=>{
                             setStateCat({...stateCat,['cat'+n.id]:!stateCat['cat'+n.id]})
                             }}>
+                                 <span><img className={s.img__cat} src={n.category.image} alt="" /></span>
                             <span>{n.category.title[lng]}</span>
                             <img className={`${s.img__arrow} ${stateCat['cat'+n.id] ? s.active: ''}`} src={imgArrow} alt="" />
                         </p>
