@@ -11,7 +11,6 @@ import ProductList from "../FrontPage/Product/ProductList";
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
 
 const FrontProduct = ()=>{
-    // localhost:3000/params/someId
     const getProductById= {
         title: "Подушка Miniso Супер кот",
         reviews: 6,
@@ -254,7 +253,7 @@ const FrontProduct = ()=>{
         backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
     }
     const params = useParams();
-    const productId = params.id;
+    const productId = params.link;
     const productObject = getProductById;
     const [state, setState] = useState({
         showDesc: true,
@@ -431,6 +430,20 @@ const FrontProduct = ()=>{
                                         </div>
                                     </div>    
                                 : 
+                                null}
+                                {state.showPhoto ? 
+                                    <div className={s.desc__full}>
+                                        <div className={s.text}>
+                                            <h3>Фото</h3>
+                                            <p>{productObject.title}</p>
+                                        </div>
+                                        <div className={s.prod}>
+                                            <div className={s.prod__img}>
+                                                <img className={s.prod__dop__img} src={productObject.imgMain} alt="Главное изображение" />
+                                            </div>
+                                        </div>
+                                    </div>  
+                                :
                                 null}
                             </div>
                         </div>

@@ -368,3 +368,8 @@
 .inStock__dop > p, .notInStock__dop > p{
     margin: 0;
 }
+.prod__img__desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
