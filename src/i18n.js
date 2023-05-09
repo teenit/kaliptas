@@ -8,6 +8,6 @@ i18next
     .use(I18nextBrowserLanguageDetector)
     .use(I18NextHttpBackend)
     .init({
-        debug:true,
+        debug:false,
         fallbackLng: localStorage.getItem('lang') == '' ? 'ge' : localStorage.getItem('lang'),
     })

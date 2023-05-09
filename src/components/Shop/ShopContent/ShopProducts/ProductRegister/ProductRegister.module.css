@@ -331,3 +331,6 @@
 .cat__arrow.active{
     transform: rotate(180deg);
 }
+.cat__category__good{
+    background-color: var(--mint-color);
+}
