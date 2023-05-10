@@ -8,14 +8,14 @@ export function serverAdress(arg){
 }
 
 export function api(apiFunc, obj, url){
-    obj.id = localStorage.getItem('id');
+   // obj.id = localStorage.getItem('id');
     obj.token = localStorage.getItem('token');
     if(obj?.email){
 
     }else{
         obj.email = localStorage.getItem('email');
     }
-   
+   console.log(obj)
     axios({
         url: serverAdress(url),
         method: "POST",

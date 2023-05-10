@@ -136,18 +136,19 @@ const FrontProduct = ()=>{
     const [ready,setReady] = useState(false)
     const [productObject, setProduct] = useState({});
     const params = useParams();
-    const [productId, setId] =  useState(params.link);
-
+    const [productId, setId] =  useState(params.id);
+    console.log(params)
     useEffect(()=>{
         setId(params.id)
         api((response)=>{
-            // productId;
             console.log("Response:", response)
-            let loadedProduct = new ProductObject(response[6], "ru");
+            let loadedProduct = new ProductObject(response, "ru");
             setProduct(loadedProduct)
             setImage(loadedProduct.mainPhoto)
             setReady(true);
-        }, {}, "content/products/get-all-products.php")
+        }, {
+            productID: productId
+        }, "content/products/get-product-by-id.php")
     }, [params.id, productId])
 
     const [image, setImage] = useState(

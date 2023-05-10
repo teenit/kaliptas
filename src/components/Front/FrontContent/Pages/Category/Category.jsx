@@ -14,6 +14,15 @@ function Category(props) {
     const [id, setId] = useState(params.id);
     console.log("Id: ", id);
     const [products, setProducts] = useState([]);
+    //{
+    //             imgUrl: "",
+    //             imgAlt: "Мягкая игрушка",
+    //             title: "Мягкая игрушка мопс-бревно Валера",
+    //             id: 1,
+    //             reviews: 17,
+    //             price: 1000,
+    //             dopPrice: 10,
+    //         }
     const [displayedProducts, setDisplayedProducts] = useState({
         products : products
     })
@@ -24,6 +33,7 @@ function Category(props) {
         api((response)=>{
             let loadedCategory = new CategoryObject(response[0]);
             let loadedProducts = loadedCategory.loadProducts()
+            console.log("Loaded: ", loadedProducts)
             setCategory(loadedCategory)
             setProducts(loadedProducts);
             setDisplayedProducts({products: loadedProducts});

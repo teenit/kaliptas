@@ -1,3 +1,6 @@
+import {api} from "../../../../functions/api";
+import {ProductObject} from "../../FrontProduct/ProductObject";
+
 export class CategoryObject {
 
     constructor(category) {
@@ -19,6 +22,19 @@ export class CategoryObject {
     title;
     imageUrl;
     parenId;
+
+    // loadProducts() {
+    //
+    //     let loaded = [];
+    //
+    //     api((response)=>{
+    //         loaded = response.map((product)=>{
+    //             return new ProductObject(product);
+    //         })
+    //     }, {}, "content/products/get-all-products.php")
+    //
+    //     return loaded;
+    // }
 
     loadProducts() {
         if (this.id === "22") {
