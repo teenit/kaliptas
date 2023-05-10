@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from './ShopProducts.module.css';
 import ProductRegister from "./ProductRegister/ProductRegister";
 import { api } from "../../../functions/api";
 
 const ShopProducts = ({shop})=>{
     const [closeModal, setCloseModal] = useState(false);
+    const [products,setProducts] = useState([])
     const [stateProduct, setStateProduct] = useState({
         shopID:shop.id,
         price:{
@@ -20,6 +21,9 @@ const ShopProducts = ({shop})=>{
             en: "",
             ge: "",
             ru: ""
+        },
+        inStock:{
+            amount:0,
         },
         categories: [],
         characteristic:[{
@@ -59,6 +63,12 @@ const ShopProducts = ({shop})=>{
             setCloseModal(!closeModal)
         },{...objState,categories:newMas,status:status},"manage/shop/add-product.php")
     }
+    useEffect(()=>{
+        api((arg)=>{
+            setProducts(arg)
+            console.log(JSON.parse(arg.product))
+        },{shopID:shop.id},"manage/shop/get-products-id.php")
+    },[])
     return(
         <div className={s.wrap}>
             <div className={s.add__wrap}>

@@ -9,7 +9,8 @@ import ProductPriceDefault from "./ProductPrice/ProductPriceDefault";
 import ProductImage from "./ProguctImage/ProductImage";
 import ProductImages from "./ProguctImage/ProductImages";
 import loadImg from './../../../../../img/admin/loading.gif';
-import ProductСharacteristic from "./ProductСharacteristic/ProductСharacteristic";
+import ProductCharacteristic from "./ProductCharacteristic/ProductCharacteristic";
+import { replaceStrTextarea } from "../../../../functions/replaceStr";
 const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     const [lookCat,setLookCat] = useState(stateProduct.categories)
     const [control, setControl] = useState({
@@ -193,6 +194,16 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                             </div>
                         </div>
                         <div className={s.input__div}>
+                            <label className={s.input__label} htmlFor="">
+                                <p>Количество на складе</p>
+                            </label>
+                            <input type="number" value={state.inStock.amount} onChange={(e)=>{
+                                setState({...state,inStock:{...state.inStock,amount:e.target.value}})
+                            }}
+
+                               />
+                        </div>
+                        <div className={s.input__div}>
                             <label htmlFor="" className={s.input__label}>
                                 <p>Описание</p>
                         
@@ -206,12 +217,12 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                                 <p>Характеристики</p>
                                
                             </label>
-                             <ProductСharacteristic char={state.characteristic} lang={control.lang} addState = {(arg)=>{setState({...state,characteristic:arg})}}/>
+                             <ProductCharacteristic char={state.characteristic} lang={control.lang} addState = {(arg)=>{setState({...state,characteristic:arg})}}/>
                         </div>
                         <ProductImage image={state.image} loadedImg = {loadedImg} setLoadedImg = {(arg)=>setLoadedImg({...loadedImg,image:arg})} uploadImage = {(file,index)=>{uploadImage(file,index)
                         }} 
                         addState={(arg)=>{}}/>
-                        <ProductImages images={state.images} addState={(arg)=>{
+                        <ProductImages images={state.images} setState = {(arg)=>setState({...state,images:arg})} addState={(arg)=>{
                             uploadImages(arg);
                             console.log(arg.files)
                             }} />
@@ -223,12 +234,18 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
                             setState({...state,categories:newMas});
-                            saveProduct(state,newMas,btn.btn1.status);
+                            saveProduct({...state,description:{...state.description,
+                                ge:replaceStrTextarea(state.description.ge),
+                                ru:replaceStrTextarea(state.description.ru),
+                                en:replaceStrTextarea(state.description.en)}},newMas,btn.btn1.status);
                         }}>{btn.btn1.title[lng]}</button>
                         <button disabled = {loadedImg.image || loadedImg.images ? true : false} onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
                             setState({...state,categories:newMas});
-                            saveProduct(state,newMas,btn.btn2.status);
+                            saveProduct({...state,description:{...state.description,
+                                ge:replaceStrTextarea(state.description.ge),
+                                ru:replaceStrTextarea(state.description.ru),
+                                en:replaceStrTextarea(state.description.en)}},newMas,btn.btn2.status);
                         }} className={`${s.form__btn} ${s.form__btn__save}`}>{btn.btn2.title[lng]}</button>
                 </div>
                 {

@@ -2,7 +2,7 @@ import React from "react";
 import s from './../ProductRegister.module.css'
 import { useState } from "react";
 
-const ProductImages =({addState,images})=>{
+const ProductImages =({addState,images,setState})=>{
     const [previewImgS, setPreviewImgS] = useState([]);
     function handleFilesSelect(evt,setImg) {
             var files = evt.target.files;
@@ -22,6 +22,17 @@ const ProductImages =({addState,images})=>{
             reader.readAsDataURL(f);
         }
     }
+    const removeItem = (index)=>{
+        const newItems = images.filter((item,i)=>{
+            if(i === index){
+                
+            }else{
+                return {...item}
+            }
+        });
+        console.log(newItems)
+        setState(newItems)
+    }
     return(
         <div className={s.input__div}>
         <label htmlFor="" className={s.input__label}>
@@ -30,6 +41,7 @@ const ProductImages =({addState,images})=>{
         <input style={{display:"none"}} type="file" multiple name="images[]" id="mainImgS" onChange={(e)=>{
             handleFilesSelect(e,(arg)=>{setPreviewImgS(arg)});
             addState(e.target)
+            console.log(images)
         }} />
         <div className={s.inp__imgs__wrap}>
             <div className={s.imgs__wrap}>
@@ -42,7 +54,16 @@ const ProductImages =({addState,images})=>{
             </div>
            
             {
-                images.map(item=><div key={item} className={s.imgs__wrap}><img className={s.input__image} src={item}/></div>)
+                images.map((item,index)=>{
+                    return(
+                    <div key={item} className={s.imgs__wrap}>
+                    <img className={s.input__image} src={item}/>
+                   
+                    <div className={s.remove__elem} onClick={()=>{removeItem(index)}}>
+                                    <span className={s.remove__elem__one}></span>
+                                    <span className={s.remove__elem__two}></span>
+                                </div>
+                    </div>)})
             }
         </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { replaceStr } from "../../../../../functions/replaceStr";
 import s from './../ProductPrice/ProductPrice.module.css'
-const ProductСharacteristic = ({char,lang,addState}) =>{
+const ProductCharacteristic = ({char,lang,addState}) =>{
 
     const [state,setState] = useState(char)
     const onClickHendler = (index,keyObj,e)=>{
@@ -14,8 +14,18 @@ const ProductСharacteristic = ({char,lang,addState}) =>{
         });
         setState(newItems);
     }
-
-    console.log(char)
+    const removeItem = (index)=>{
+        if(state.length === 1) return alert("Нельзя удалить последний элемент")
+        const newItems = state.filter((item,i)=>{
+            if(i === index){
+                
+            }else{
+                return {...item}
+            }
+        });
+        console.log(newItems)
+        setState(newItems)
+    }
 
     return(
         <div>
@@ -53,7 +63,12 @@ const ProductСharacteristic = ({char,lang,addState}) =>{
                                         addState(state)
                                     }}/>:null}
                                 </div>
-                                
+                                <div className={s.remove__elem} onClick={()=>{removeItem(index);
+        addState(state)
+    }}>
+                                    <span className={s.remove__elem__one}></span>
+                                    <span className={s.remove__elem__two}></span>
+                                </div>
                             </div>
                         )
                     })
@@ -81,4 +96,4 @@ const ProductСharacteristic = ({char,lang,addState}) =>{
     )
 }
 
-export default ProductСharacteristic;
+export default ProductCharacteristic;
