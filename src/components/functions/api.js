@@ -32,19 +32,14 @@ export function api(apiFunc, obj, url){
         document.getElementById('lineLoading').style.width = 0;
     })
     .catch((error)=>{
-        try {
-            console.log(error)
-            let div = document.createElement('div');
-            div.innerHTML = t(error.response.status);
-            div.className = "error__message"
-            document.getElementById('error').append(div);
-            setTimeout(()=>{
-                div.remove();
-            },5000)
-        } catch (jsError) {
-            console.log("Error: ", error)
-            console.log("Js error: ", jsError)
-        }
+        console.log(error)
+        let div = document.createElement('div');
+        div.innerHTML = t(error.response.status);
+        div.className = "error__message"
+        document.getElementById('error').append(div);
+        setTimeout(()=>{
+            div.remove();
+        },5000)
     })
 }
 

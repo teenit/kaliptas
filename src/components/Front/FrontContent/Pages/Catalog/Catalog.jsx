@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import s from "./Catalog.module.css";
 import ProductList from "../../FrontPage/Product/ProductList";
 import FrontSlide from "../../../Modules/FrontSlider/FrontSlide/FrontSlide";
@@ -9,20 +9,14 @@ import {api} from "../../../../functions/api";
 const Catalog = ()=>{
     //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
     const [loadedCategories, setLoadedCategories] = useState([]);
-    const [isLoaded, setLoaded] = useState(false)
 
-    api((response)=>{
-        if (response !== undefined && ! isLoaded) {
+    useEffect(()=>{
+        api((response)=>{
             setLoadedCategories(response.map((item)=>{
                 return new CategoryObject(item);
             }))
-            setLoaded(true)
-        }
-    }, {}, "content/category/get-all-categories.php")
-
-    // const categories = [
-    //     new CategoryObject("1")
-    // ]
+        }, {}, "content/category/get-all-categories.php")
+    }, [])
 
     const relatedProductList = [
         {

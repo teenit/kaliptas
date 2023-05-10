@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import s from './FrontProduct.module.css'
 import { useParams } from "react-router-dom";
 import star from "./../../../../img/front/Многоугольник 1 копия 3.png"
@@ -9,6 +9,8 @@ import heart from "./../../../../img/front/icons8-heart-6422.png"
 import ves from "./../../../../img/front/весы.png"
 import ProductList from "../FrontPage/Product/ProductList";
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
+import {api} from "../../../functions/api";
+import {ProductObject} from "./ProductObject";
 
 const FrontProduct = ()=>{
     const getProductById= {
@@ -131,6 +133,21 @@ const FrontProduct = ()=>{
         ],
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam hic neque omnis veniam fugit. Iste dolores magni voluptatem saepe culpa deserunt itaque quae? Neque consequuntur veniam culpa facilis officia quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum unde, nulla explicabo adipisci corporis, impedit ipsum deleniti maiores id animi sequi incidunt! Repellendus quidem corrupti ab suscipit nostrum labore ratione? Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perferendis sed consequatur reiciendis, possimus totam sint ab labore corporis."
     };
+    const [ready,setReady] = useState(false)
+    const [product, setProduct] = useState({});
+
+    useEffect(()=>{
+        api((response)=>{
+
+            console.log("Response:", response)
+            let loadedProduct = new ProductObject(response[0], "ru");
+            setProduct(loadedProduct)
+            console.log("Product:", product)
+
+            setReady(true);
+        }, {}, "content/products/get-all-products.php")
+    }, [])
+
     const [image, setImage] = useState(
         getProductById.imgMain
     )

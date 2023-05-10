@@ -1,0 +1,361 @@
+[
+    {
+        "productID": "18",
+        "product": {
+            "price": {
+                "price": "",
+                "discount": ""
+            },
+            "prices": [
+                {
+                    "variable": {
+                        "ge": "wqdiowq",
+                        "en": "",
+                        "ru": ""
+                    },
+                    "price": "12",
+                    "discountPrice": "1122"
+                },
+                {
+                    "variable": {
+                        "ge": "wefnw",
+                        "en": "",
+                        "ru": ""
+                    },
+                    "price": "12",
+                    "discountPrice": "2"
+                }
+            ],
+            "title": {
+                "en": "",
+                "ge": "foiwe",
+                "ru": ""
+            },
+            "description": {
+                "en": "",
+                "ge": "erpgije<br />ergge kergeor goer",
+                "ru": ""
+            },
+            "characteristic": [
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "erkg",
+                        "ru": ""
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "jpejrenger gkjelr",
+                        "ru": ""
+                    }
+                },
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "ergmpergker gerg",
+                        "ru": ""
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "ergkmlerger ge ",
+                        "ru": ""
+                    }
+                }
+            ],
+            "categories": [],
+            "type": {
+                "variable": true,
+                "defaulte": false
+            },
+            "image": "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372187638051.png",
+            "images": [
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372188327032.png",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372188338051.png",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372188447838.1400.jpg",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/16837218842798003.png",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/1683721884195946076.webp"
+            ],
+            "status": "moderation"
+        },
+        "link": "",
+        "status": "moderation",
+        "type": {
+            "variable": true,
+            "defaulte": false
+        },
+        "article": "1018",
+        "categories": [],
+        "active": "false"
+    },
+    {
+        "productID": "19",
+        "product": {
+            "price": {
+                "price": "",
+                "discount": ""
+            },
+            "prices": [
+                {
+                    "variable": {
+                        "ge": "wefwe",
+                        "en": "",
+                        "ru": ""
+                    },
+                    "price": "23",
+                    "discountPrice": "223"
+                },
+                {
+                    "variable": {
+                        "ge": "rl;gwe",
+                        "en": "",
+                        "ru": ""
+                    },
+                    "price": "1",
+                    "discountPrice": "2"
+                }
+            ],
+            "title": {
+                "en": "",
+                "ge": "wekfo",
+                "ru": ""
+            },
+            "description": {
+                "en": "",
+                "ge": "ekgmer er glerg er<br />ergerg erg erg<br />erg er glker gkle r",
+                "ru": ""
+            },
+            "characteristic": [
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "wepo",
+                        "ru": ""
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "wejiw",
+                        "ru": ""
+                    }
+                },
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "wekl",
+                        "ru": ""
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "koewfj",
+                        "ru": ""
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": "23",
+                    "parent_id": "21",
+                    "category": {
+                        "title": {
+                            "en": "Sleeping bag",
+                            "ru": "Спальник",
+                            "ge": "საძილე ტომარა"
+                        },
+                        "description": {
+                            "en": "",
+                            "ru": "",
+                            "ge": ""
+                        },
+                        "image": "https://kaliptas.people-ua.org/manage/categories/uploads/1683424785w512h5121390848562sleepingbag512.png"
+                    },
+                    "good": false,
+                    "checked": true
+                }
+            ],
+            "inStock": {
+                "amount": "7"
+            },
+            "type": {
+                "variable": true,
+                "defaulte": false
+            },
+            "image": "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372242347838.1400.jpg",
+            "images": [
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372243027032.png",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372243038051.png",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372243047838.1400.jpg",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/16837224312798003.png",
+                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/1683722431195946076.webp"
+            ],
+            "status": "moderation"
+        },
+        "link": "",
+        "status": "moderation",
+        "type": {
+            "variable": true,
+            "defaulte": false
+        },
+        "article": "1019",
+        "categories": [
+            {
+                "id": "23",
+                "parent_id": "21",
+                "category": {
+                    "title": {
+                        "en": "Sleeping bag",
+                        "ru": "Спальник",
+                        "ge": "საძილე ტომარა"
+                    },
+                    "description": {
+                        "en": "",
+                        "ru": "",
+                        "ge": ""
+                    },
+                    "image": "https://kaliptas.people-ua.org/manage/categories/uploads/1683424785w512h5121390848562sleepingbag512.png"
+                },
+                "good": false,
+                "checked": true
+            }
+        ],
+        "active": "false"
+    },
+    {
+        "productID": "20",
+        "product": {
+            "price": {
+                "price": "40",
+                "discount": "35"
+            },
+            "prices": [
+                {
+                    "variable": {
+                        "ge": "",
+                        "en": "",
+                        "ru": ""
+                    },
+                    "price": "",
+                    "discountPrice": ""
+                }
+            ],
+            "title": {
+                "en": "",
+                "ge": "",
+                "ru": "Мужские часы CASIO MTP-V004GL-7A"
+            },
+            "description": {
+                "en": "",
+                "ge": "",
+                "ru": "Мужские часы MTP-V004GL-7A – перед Вами модель известного японского бренда наручных часов Сasio из коллекции Casio Classic. Рассмотрим самые важные характеристики этой модели. Фирменная гарантия 24 мес. Корпус эти часов изготовлен из материала: Нержавеющая сталь. Браслет часов типа: Кожаный ремешок. Циферблат часов защищен стеклом: Минеральное – устойчивым к царапинам и влаги. Водозащита данной модели составляет: 30 метров. В часах используется механизм типа: Кварцевый (Батарейка)."
+            },
+            "characteristic": [
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Пол"
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Мужские"
+                    }
+                },
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Материал корпуса"
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Нержавеющая сталь"
+                    }
+                },
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Материал ремешка"
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Кожа"
+                    }
+                },
+                {
+                    "title": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Материал циферблата"
+                    },
+                    "value": {
+                        "en": "",
+                        "ge": "",
+                        "ru": "Минеральное стекл"
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": "28",
+                    "parent_id": "24",
+                    "category": {
+                        "title": {
+                            "en": "Clothes and accessories",
+                            "ru": "Одежда и аксессуары",
+                            "ge": "ტანსაცმელი და აქსესუარები"
+                        },
+                        "description": {
+                            "en": "",
+                            "ru": "",
+                            "ge": ""
+                        },
+                        "image": "https://kaliptas.people-ua.org/manage/categories/uploads/1683464252png-transparent-computer-icons-clothes-hanger-cloakroom-others-cdr-clothes-hanger-desktop-wallpaper.png"
+                    },
+                    "good": false,
+                    "checked": true
+                }
+            ],
+            "inStock": {
+                "amount": "199"
+            },
+            "type": {
+                "variable": false,
+                "defaulte": true
+            },
+            "image": "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/1683725760lock1.jpg",
+            "images": [],
+            "status": "moderation"
+        },
+        "link": "",
+        "status": "moderation",
+        "type": {
+            "variable": false,
+            "defaulte": true
+        },
+        "article": "1020",
+        "categories": [
+            {
+                "id": "28",
+                "parent_id": "24",
+                "category": {
+                    "title": {
+                        "en": "Clothes and accessories",
+                        "ru": "Одежда и аксессуары",
+                        "ge": "ტანსაცმელი და აქსესუარები"
+                    },
+                    "description": {
+                        "en": "",
+                        "ru": "",
+                        "ge": ""
+                    },
+                    "image": "https://kaliptas.people-ua.org/manage/categories/uploads/1683464252png-transparent-computer-icons-clothes-hanger-cloakroom-others-cdr-clothes-hanger-desktop-wallpaper.png"
+                },
+                "good": false,
+                "checked": true
+            }
+        ],
+        "active": "false"
+    }
+]

@@ -337,9 +337,9 @@ const FrontPage = () => {
                 <div className={s.categories}>
                     <div className={s.categories__wrap}>
                         {
-                            categories.map((item)=>{
+                            categories.map((item, index)=>{
                                 return(
-                                    <div className={s.category}>{item.name}</div>
+                                    <div key={index} className={s.category}>{item.name}</div>
                                 )
                             })
                         }

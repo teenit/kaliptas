@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Subheader.module.css'
 import catalogImg from "./../../../img/front/catalog.png"
-import { NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import profileImg from "./../../../img/front/profile.png";
 import fewImg from "./../../../img/front/few.png";
 import likedImg from "./../../../img/front/heart.png";
@@ -13,7 +13,7 @@ const FrontSubheader = ()=>{
             <div className={s.inner}>
                 <div className={s.button}>
                     <img src={catalogImg} alt="Каталог" />
-                    <a className={s.catalog__title} href="">Каталог</a>
+                    <Link className={s.catalog__title} to="/catalog">Каталог</Link>
                 </div>    
                 <div className={s.input__wrap}>
                     <input type="text" placeholder="Поиск" className={s.input}/>
@@ -22,9 +22,6 @@ const FrontSubheader = ()=>{
                 <div className={s.options}>
                     <div className={s.icon}>
                         <img className={s.icon__image} src={profileImg} alt="Профиль" />
-                    </div>
-                    <div className={s.icon}>
-                        <img className={s.icon__image} src={fewImg} alt="Сравнение" />
                     </div>
                     <div className={s.icon}>
                         <img className={s.icon__image} src={likedImg} alt="Лайкнутые" />

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {CategoryObject} from "./CategoryObject";
 import s from "./Category.module.css"
@@ -9,27 +9,29 @@ import {api} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
 
 function Category(props) {
-    const id = useParams().id;
-    const [isLoaded, setLoaded] = useState(false)
+    const params = useParams();
+    const [ready,setReady] = useState(false)
+    const [id, setId] = useState(params.id);
+    console.log("Id: ", id);
     const [products, setProducts] = useState([]);
     const [displayedProducts, setDisplayedProducts] = useState({
         products : products
     })
-    const [category, setCategory] = useState(CategoryObject.emptyCategory);
+    const [category, setCategory] = useState(CategoryObject.emptyCategory(id));
 
-    api((response)=>{
-        if (response !== undefined && ! isLoaded) {
-            setLoaded(true);
-            console.log("From category creation",response)
+    useEffect(()=>{
+        setId(params.id);
+        api((response)=>{
             let loadedCategory = new CategoryObject(response[0]);
             let loadedProducts = loadedCategory.loadProducts()
             setCategory(loadedCategory)
             setProducts(loadedProducts);
             setDisplayedProducts({products: loadedProducts});
-        }
-    }, {
-        catID: id
-    }, "content/category/get-id-category.php")
+            setReady(true);
+        },{
+            catID: id
+        },"content/category/get-id-category.php")
+    },[id, params.id])
 
     const relatedProductList = [
         {
@@ -92,19 +94,21 @@ function Category(props) {
         setDisplayedProducts({ products: filteredProducts});
     }
 
-    return (
+    return ready ?(
         <div className={s.wrap}>
             <div className={s.nav__container}>
                 <Link to="../catalog"><HomeIcon/></Link>
                 {
                     category.getParents().map((cat, index) => {
                         return(
-                            <span>
-                                 <span className={s.span__sign}>></span><Link key={index} to={"../catalog/" + cat.id}>{cat.title}</Link>
+                            <span  key={index}>
+                                 <span className={s.span__sign}>></span><Link to={"../catalog/" + cat.id}>{cat.title}</Link>
                             </span>
                         )
                     })
                 }
+                <span className={s.span__sign}>></span>
+                <span>{category.title}</span>
             </div>
             <div className={s.main__container}>
                 <div className={s.filter__container}>
@@ -157,7 +161,7 @@ function Category(props) {
                 <ProductList cards={youWatchedList} />
             </div>
         </div>
-    );
+    ):null
 }
 
 export default Category;

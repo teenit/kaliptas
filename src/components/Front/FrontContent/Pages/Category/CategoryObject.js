@@ -1,7 +1,7 @@
 export class CategoryObject {
 
     constructor(category) {
-        console.log("Received category info: ", category)
+        // console.log("Received category info: ", category)
         this.id = category.id;
         this.imageUrl = category.category.image;
         this.title = category.category.title.en;
@@ -9,8 +9,10 @@ export class CategoryObject {
         this.parenId = category.parentId;
     }
 
-    static emptyCategory() {
-        return new CategoryObject(JSON.parse("{\"id\":\"19\",\"parent_id\":\"0\",\"category\":{\"title\":{\"en\":\"Sports, recreation, tourism\",\"ru\":\"Спорт, отдых, туризм\",\"ge\":\"სპორტი, დასვენება, ტურიზმი\"},\"description\":{\"en\":\"\",\"ru\":\"\",\"ge\":\"\"},\"image\":\"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png\"}}"));
+    static emptyCategory(id) {
+        let empty = new CategoryObject(JSON.parse("{\"id\":\"19\",\"parent_id\":\"0\",\"category\":{\"title\":{\"en\":\"\",\"ru\":\"\",\"ge\":\"\"},\"description\":{\"en\":\"\",\"ru\":\"\",\"ge\":\"\"},\"image\":\"\"}}"));
+        empty.id = id;
+        return empty;
     }
 
     id;
@@ -74,7 +76,7 @@ export class CategoryObject {
                 title: "Page 1"
             },
             {
-                id: 20,
+                id: 22,
                 title: "Page 2"
             }
         ]

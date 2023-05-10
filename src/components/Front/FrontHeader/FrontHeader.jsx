@@ -4,6 +4,7 @@ import logo from './../../../img/logo.png';
 import arrowImg from './../../../img/collapse-arrow-50.png'
 import City from "./Cities/City";
 import Phone from "./Phones/Phone"
+import {Link} from "react-router-dom";
 
 const FrontHeader  =()=>{
 
@@ -15,7 +16,7 @@ const FrontHeader  =()=>{
             <div className={s.inner}>
                 <div className={s.inner__left}>
                     <div className={s.logo}>
-                        <a href="#"><img className={s.logo__image} src={logo} alt="Логотип"/></a>
+                        <Link to="/"><img className={s.logo__image} src={logo} alt="Логотип"/></Link>
                     </div>
 
                     <div className={`${s.city__wrap} ${city ? s.city__wrap__change : null}`} tabIndex={0} onClick={()=>{
