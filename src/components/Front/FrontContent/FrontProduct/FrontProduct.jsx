@@ -134,22 +134,24 @@ const FrontProduct = ()=>{
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam hic neque omnis veniam fugit. Iste dolores magni voluptatem saepe culpa deserunt itaque quae? Neque consequuntur veniam culpa facilis officia quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum unde, nulla explicabo adipisci corporis, impedit ipsum deleniti maiores id animi sequi incidunt! Repellendus quidem corrupti ab suscipit nostrum labore ratione? Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perferendis sed consequatur reiciendis, possimus totam sint ab labore corporis."
     };
     const [ready,setReady] = useState(false)
-    const [product, setProduct] = useState({});
+    const [productObject, setProduct] = useState({});
+    const params = useParams();
+    const [productId, setId] =  useState(params.link);
 
     useEffect(()=>{
+        setId(params.id)
         api((response)=>{
-
+            // productId;
             console.log("Response:", response)
-            let loadedProduct = new ProductObject(response[0], "ru");
+            let loadedProduct = new ProductObject(response[6], "ru");
             setProduct(loadedProduct)
-            console.log("Product:", product)
-
+            setImage(loadedProduct.mainPhoto)
             setReady(true);
         }, {}, "content/products/get-all-products.php")
-    }, [])
+    }, [params.id, productId])
 
     const [image, setImage] = useState(
-        getProductById.imgMain
+        productObject.mainPhoto
     )
     const relatedProductList = [
         {
@@ -269,9 +271,7 @@ const FrontProduct = ()=>{
         skidca: "50 %",
         backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
     }
-    const params = useParams();
-    const productId = params.link;
-    const productObject = getProductById;
+    const legacyProductObject = getProductById;
     const [state, setState] = useState({
         showDesc: true,
         showChar: false,
@@ -279,7 +279,7 @@ const FrontProduct = ()=>{
         showQuest: false,
         showPhoto: false
     })
-    return(
+    return ready ?(
         <div className={s.main}>
             <div className={s.wrap}>
                 <div className={s.in}>
@@ -297,7 +297,7 @@ const FrontProduct = ()=>{
                                         <img className={s.star} src={star} alt="Оценка" />
                                         <img className={s.star} src={dopStar} alt="Оценка" />
                                     </div>
-                                    <a href="#" className={s.reviews__text}>{productObject.reviews} отзывов</a>
+                                    <a href="#" className={s.reviews__text}>{legacyProductObject.reviews} отзывов</a>
                                 </div>
                                 <div className={s.line}></div>
                                 <div className={s.code}>
@@ -312,17 +312,14 @@ const FrontProduct = ()=>{
                                         <img className={s.prod__dop__img} src={image} alt="Главное изображение" />
                                     </div>
                                 </div>
-                                <div className={s.prod__slider} style={{
-                                    display:"grid",
-                                    gridTemplateColumns: `repeat(${productObject.dopImgAmount}, 1fr)`
-                                }}>
+                                <div className={s.prod__slider}>
                                     {
-                                        productObject.dopImages.map((item,index)=>{
+                                        productObject.photos.map((item,index)=>{
                                             return(
                                                 <div key={index} className={s.slide} onClick={()=>{
-                                                    setImage(item.dopImg)
+                                                    setImage(item)
                                                 }}> 
-                                                    <img className={s.slide__dop} src={item.dopImg} alt="Дополнительное изображение" />
+                                                    <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
                                                 </div>
                                             )
                                         })
@@ -364,7 +361,7 @@ const FrontProduct = ()=>{
                                             <h3>Доставка: </h3>
                                             <select className={s.select} name="" id="">
                                                 {
-                                                    productObject.cities.map((item,index)=>{
+                                                    legacyProductObject.cities.map((item,index)=>{
                                                         return(
                                                             <option key={index} value={item.name}>{item.name}</option>
                                                         )
@@ -422,7 +419,7 @@ const FrontProduct = ()=>{
                                             <p>{productObject.title}</p>
                                         </div>
                                         <div className={s.text__dop}>
-                                            <p>{productObject.desc}</p>
+                                            <p>{productObject.description}</p>
                                         </div>
                                     </div>    
                                 : 
@@ -435,11 +432,11 @@ const FrontProduct = ()=>{
                                         </div>
                                         <div className={s.text__dop}>
                                             {
-                                                productObject.itemChar.map((item, index)=>{
+                                                productObject.properties.map((item, index)=>{
                                                     return(
                                                         <div key={index} className={`${s.char} ${(index + 1) % 2 == 0 ? s.char__dop : null}`}>
-                                                            <p className={s.char__title}>{item.typeName}</p>
-                                                            <p>{item.type}</p>
+                                                            <p className={s.char__title}>{item.title}</p>
+                                                            <p>{item.value}</p>
                                                         </div>
                                                     )
                                                 })
@@ -456,7 +453,7 @@ const FrontProduct = ()=>{
                                         </div>
                                         <div className={s.prod}>
                                             <div className={s.prod__img}>
-                                                <img className={s.prod__dop__img} src={productObject.imgMain} alt="Главное изображение" />
+                                                <img className={s.prod__dop__img} src={productObject.mainPhoto} alt="Главное изображение" />
                                             </div>
                                         </div>
                                     </div>  
@@ -468,7 +465,7 @@ const FrontProduct = ()=>{
                     <div className={s.dop__in}>
                         <div className={s.in__desc}>
                             <div className={s.img} style={{
-                                background: "url(" + productObject.imgMain + ")",
+                                backgroundImage: "url(" + productObject.mainPhoto + ")",
                                 backgroundPosition: "center",
                                 backgroundSize: "cover",
                                 backgroundRepeat: "no-repeat"
@@ -511,7 +508,7 @@ const FrontProduct = ()=>{
                     <FrontSlide item={SliderContent}/>
                 </div>
         </div>
-    )
+    ) : null
    
 }
 export default FrontProduct;

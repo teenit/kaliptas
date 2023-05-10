@@ -12,6 +12,7 @@ export class ProductObject{
         })
         this.photos = product.product.images
         this.mainPhoto = product.product.image
+        this.inStock = product.product.inStock
     }
 
     price
@@ -21,4 +22,5 @@ export class ProductObject{
     photos
     properties
     mainPhoto
+    inStock = false;
 }
