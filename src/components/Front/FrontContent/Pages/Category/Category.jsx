@@ -7,6 +7,7 @@ import ProductCard from "../../FrontPage/Product/ProductCard/ProductCard";
 import {Slider} from "@mui/material";
 import {api} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
+import {ProductObject} from "../../FrontProduct/ProductObject";
 
 function Category(props) {
     const params = useParams();
@@ -32,64 +33,25 @@ function Category(props) {
         setId(params.id);
         api((response)=>{
             let loadedCategory = new CategoryObject(response[0]);
-            let loadedProducts = loadedCategory.loadProducts()
-            console.log("Loaded: ", loadedProducts)
             setCategory(loadedCategory)
-            setProducts(loadedProducts);
-            setDisplayedProducts({products: loadedProducts});
-            setReady(true);
+            api((response)=>{
+                let loadedProducts = response.map((product)=>{
+                                return new ProductObject(product);
+                })
+                console.log("Loaded: ", loadedProducts)
+
+                setProducts(loadedProducts);
+                setDisplayedProducts({products: loadedProducts});
+                setReady(true);
+            }, {
+                catID: id
+            }, "content/products/get-products-by-category-id.php")
         },{
             catID: id
         },"content/category/get-id-category.php")
     },[id, params.id])
 
-    const relatedProductList = [
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 2,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 3,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 4,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 5,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-    ]; // Must be loadRelated()
+    const relatedProductList = [22,23]; // Must be loadRelated()
     const youWatchedList = relatedProductList;
 
     //Price filter
@@ -104,7 +66,7 @@ function Category(props) {
         setDisplayedProducts({ products: filteredProducts});
     }
 
-    return ready ?(
+    return ready ? (
         <div className={s.wrap}>
             <div className={s.nav__container}>
                 <Link to="../catalog"><HomeIcon/></Link>
@@ -157,7 +119,7 @@ function Category(props) {
                 <div className={s.cards__container}>
                     {displayedProducts.products.map((item, index)=>{
                         return (
-                            <ProductCard item={item} key={index} />
+                            <ProductCard id={item.id} key={index} />
                         );
                     })}
                 </div>

@@ -1,5 +1,6 @@
 import {api} from "../../../../functions/api";
 import {ProductObject} from "../../FrontProduct/ProductObject";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 export class CategoryObject {
 
@@ -31,59 +32,11 @@ export class CategoryObject {
     //         loaded = response.map((product)=>{
     //             return new ProductObject(product);
     //         })
-    //     }, {}, "content/products/get-all-products.php")
-    //
-    //     return loaded;
+    //     }, {
+    //         catId: this.id
+    //     // }, "content/products/get-all-products.php")
+    //     }, "content/products/get-products-by-category-id.php")
     // }
-
-    loadProducts() {
-        if (this.id === "22") {
-            return []
-        }
-
-        return [{
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 1000,
-            dopPrice: 10,
-        },{
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 2000,
-            dopPrice: 10,
-        },{
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 3000,
-            dopPrice: 10,
-        },{
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 4000,
-            dopPrice: 10,
-        },{
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 5000,
-            dopPrice: 10,
-        },
-        ]
-    }
 
     getParents() {
         return [

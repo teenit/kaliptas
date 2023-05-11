@@ -10,7 +10,7 @@ const ProductList = ({ cards }) => {
 
     return (
         <div className={s.wrap__list}>
-            {state.cards.map((item) => <ProductCard item={item} key={item.id} />)}
+            {state.cards.map((id, index) => <ProductCard id={id} key={index} />)}
         </div>
     );
 };

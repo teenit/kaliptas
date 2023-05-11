@@ -42,6 +42,8 @@
 }
 .title__link > h4{
     color: #000000;
+    height: 28px;
+    overflow: hidden;
 }
 .section__img{
     display: flex;
@@ -62,6 +64,14 @@
     font-size: 16px;
     font-weight: 600;
     color: var(--purple-color);
+}
+.buy{
+    padding: 3px 20px;
+    background-color: #C269E8;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
 }
 .add__to{
     display: flex;

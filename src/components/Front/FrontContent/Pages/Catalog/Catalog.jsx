@@ -18,53 +18,7 @@ const Catalog = ()=>{
         }, {}, "content/category/get-all-categories.php")
     }, [])
 
-    const relatedProductList = [
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 1,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 2,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 3,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 4,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-        {
-            imgUrl: "",
-            imgAlt: "Мягкая игрушка",
-            title: "Мягкая игрушка мопс-бревно Валера",
-            id: 5,
-            reviews: 17,
-            price: 15,
-            dopPrice: 10,
-        },
-    ]; // Must be loadRelated()
+    const relatedProductList = [22,23]; // Must be loadRelated()
 
     const youWatchedList = relatedProductList;
 

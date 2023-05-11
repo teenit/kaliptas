@@ -6,24 +6,40 @@ import heartImgSec from "../../../../../../img/front/icons8-heart-642.png";
 import mainImg from "../../../../../../img/front/Слой 1095.png";
 import star from "../../../../../../img/front/Многоугольник 1 копия 3.png";
 import starDop from "../../../../../../img/front/Многоугольник 1 копия 4.png";
+import {api} from "../../../../../functions/api";
+import {ProductObject} from "../../../FrontProduct/ProductObject";
+import {Link} from "react-router-dom";
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ id }) => {
     const [liked, setLiked] = useState({
-        like: localStorage.getItem("like" + item.id),
+        like: localStorage.getItem("like" + id),
     });
+    console.log(id)
+    const [ready, setReady] = useState(false);
+    const [product, setProduct] = useState(new ProductObject());
 
-    return (
+    useEffect(()=>{
+        api((response)=>{
+            let loadedProduct = new ProductObject(response, "ru");
+            setProduct(loadedProduct);
+            setReady(true)
+        }, {
+            productID: id
+        }, "content/products/get-product-by-id.php")
+    },[id])
+
+    return ready ? (
         <div className={s.in}>
             <div className={s.in__dop}>
                 <div className={s.section__img}>
-                    <a className={s.img__link} href="#">
-                        <img className={s.main__image} src={mainImg} alt={item.imgAlt} />
-                    </a>
+                    <Link className={s.img__link} to={"/product/" + product.id}>
+                        <img className={s.main__image} src={product.mainPhoto} alt={product.title} />
+                    </Link>
                 </div>
                 <div className={s.section}>
-                    <a className={s.title__link} href="#">
-                        <h4 className={s.title}>{item.title}</h4>
-                    </a>
+                    <Link className={s.title__link} to={"/product/" + product.id}>
+                        <h4 className={s.title}>{product.title}</h4>
+                    </Link>
                 </div>
                 <div className={`${s.section} ${s.section__dop}`}>
                     <div className={s.stars}>
@@ -35,7 +51,7 @@ const ProductCard = ({ item }) => {
                     </div>
                     <div className={s.reviews}>
                         <a className={s.review__link} href="#">
-                            {item.reviews} отзывов
+                            0 отзывов
                         </a>
                     </div>
                 </div>
@@ -43,9 +59,15 @@ const ProductCard = ({ item }) => {
                     <div className={s.price__wrap}>
                         <div className={s.not__price}>
                             <div className={s.line}></div>
-                            <p className={s.price}>{item.dopPrice}$</p>
+                            <p className={s.price}>{product.price}$</p>
                         </div>
-                        <p className={s.price__dop}>{item.price}$</p>
+                        <p className={s.price__dop}>{product.discount}$</p>
+                    </div>
+                </div>
+                <div className={`${s.section} ${s.section__dop}`}>
+
+                    <div className={s.buy}>
+                        Купить
                     </div>
                     <div className={s.add__to}>
                         {liked.like == "true" ? (
@@ -54,7 +76,7 @@ const ProductCard = ({ item }) => {
                                 src={heartImgSec}
                                 alt="Зарисованое"
                                 onClick={() => {
-                                    localStorage.setItem(`like${item.id}`, false);
+                                    localStorage.setItem(`like${id}`, false);
                                     setLiked({ like: false });
                                 }}
                             />
@@ -64,7 +86,7 @@ const ProductCard = ({ item }) => {
                                 src={heartImg}
                                 alt="Не зарисованое"
                                 onClick={() => {
-                                    localStorage.setItem(`like${item.id}`, true);
+                                    localStorage.setItem(`like${id}`, true);
                                     setLiked({ like: "true" });
                                 }}
                             />
@@ -73,6 +95,6 @@ const ProductCard = ({ item }) => {
                 </div>
             </div>
         </div>
-    );
+    ) : null;
 };
 export default ProductCard;
