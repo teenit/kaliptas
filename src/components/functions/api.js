@@ -37,6 +37,39 @@ export function api(apiFunc, obj, url){
     })
 }
 
+
+export async function apiResponse(obj, url){
+    // obj.id = localStorage.getItem('id');
+     obj.token = localStorage.getItem('token');
+     if(obj?.email){
+ 
+     }else{
+         obj.email = localStorage.getItem('email');
+     }
+   return await axios({
+         url: serverAdress(url),
+         method: "POST",
+         header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
+         data: JSON.stringify(obj),
+         onUploadProgress: (event) => {
+             console.log(event)
+             document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
+         } 
+     })
+     .then((data)=>{
+         console.log("Received data: ", data);
+        
+         document.getElementById('lineLoading').style.width = 0;
+         return data.data
+     })
+     .catch((error)=>{
+         console.log(error)
+         
+     })
+ }
+ 
+
+
 export function apiMultipartUpload(apiFunc,links, files, url, index,shopID,count){
     const objImage = new FormData();
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from './ShopProducts.module.css';
 import ProductRegister from "./ProductRegister/ProductRegister";
-import { api } from "../../../functions/api";
+import { api, apiResponse } from "../../../functions/api";
 import ShopProduct from "./ShopProduct/ShopProduct";
 
 const ShopProducts = ({shop})=>{
@@ -64,13 +64,12 @@ const ShopProducts = ({shop})=>{
             setCloseModal(!closeModal)
         },{...objState,categories:newMas,status:status},"manage/shop/add-product.php")
     }
+
+
     useEffect(()=>{
-        api((arg)=>{
-            console.log(arg)
-            setProducts(arg)
-           
-        },{shopID:shop.id},"manage/shop/get-products-id.php")
+        apiResponse({shopID:shop.id},"manage/shop/get-products-id.php").then((data)=>setProducts(data))
     },[])
+   
     return(
         <div className={s.wrap}>
             <div className={s.add__wrap}>
