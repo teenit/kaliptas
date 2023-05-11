@@ -19,7 +19,7 @@ export function api(apiFunc, obj, url){
     axios({
         url: serverAdress(url),
         method: "POST",
-        header: {'Content-Type': 'application/json;charset=utf-8'},
+        header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
         data: JSON.stringify(obj),
         onUploadProgress: (event) => {
             console.log(event)
@@ -33,13 +33,7 @@ export function api(apiFunc, obj, url){
     })
     .catch((error)=>{
         console.log(error)
-        let div = document.createElement('div');
-        div.innerHTML = t(error.response.status);
-        div.className = "error__message"
-        document.getElementById('error').append(div);
-        setTimeout(()=>{
-            div.remove();
-        },5000)
+        
     })
 }
 

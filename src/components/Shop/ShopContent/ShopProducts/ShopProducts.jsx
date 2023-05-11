@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import s from './ShopProducts.module.css';
 import ProductRegister from "./ProductRegister/ProductRegister";
 import { api } from "../../../functions/api";
+import ShopProduct from "./ShopProduct/ShopProduct";
 
 const ShopProducts = ({shop})=>{
     const [closeModal, setCloseModal] = useState(false);
@@ -65,8 +66,9 @@ const ShopProducts = ({shop})=>{
     }
     useEffect(()=>{
         api((arg)=>{
+            console.log(arg)
             setProducts(arg)
-            console.log(JSON.parse(arg.product))
+           
         },{shopID:shop.id},"manage/shop/get-products-id.php")
     },[])
     return(
@@ -81,7 +83,11 @@ const ShopProducts = ({shop})=>{
                         <span className={`${s.span} ${s.span2}`}></span>
                     </div>
                 </div>
+            
             </div>
+            {
+                products.map((item,index)=><ShopProduct index={index} productItem={item} key={item.productID}/>)
+            }
             {closeModal ? <ProductRegister 
                             stateProduct={stateProduct} 
                             shop = {shop} 

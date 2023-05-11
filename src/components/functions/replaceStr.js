@@ -6,6 +6,6 @@ export function replaceStr(arg){
 
 
 export function replaceStrTextarea(arg){
-    let a = arg.replaceAll("'", "’").replaceAll("`","’").replaceAll(/\n/g, "<br />");
+    let a = arg.replaceAll("'", "’").replaceAll("`","’").replaceAll('"','\\"');
     return a;
 }
