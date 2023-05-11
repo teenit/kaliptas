@@ -8,6 +8,7 @@ const CartRow = ({item}) =>{
     const [state, setState] = useState({
         amount: 0
     })
+    console.log(item);
     return(
         <div className={s.row__wrap}>
             {
@@ -24,24 +25,24 @@ const CartRow = ({item}) =>{
                                 <div className={s.amount}>
                                     <div className={s.minus}>
                                         <img src={cartMinus} alt="Минус" onClick={()=>{
-                                            
+                                            setState({...state, amount: state.amount - 1})
                                         }}/>
                                     </div>
                                     <div className={s.amount__in}>
-                                        <p>{item.amount}</p>
+                                        <p>{state.amount}</p>
                                     </div>
                                     <div className={s.plus}>
                                         <img src={cartPlus} alt="Плюс" onClick={()=>{
-                                            
+                                            setState({...state, amount: state.amount + 1})
                                         }}/>
                                     </div>
                                 </div>
                                 <div className={s.prices}>
                                     <div className={s.plice__in}>
-                                        <p className={s.price__aver}>{item.averPrice}$</p>
+                                        <p className={s.price__aver}>{item.price}$</p>
                                         <div className={s.line}></div>
                                     </div>
-                                    <p className={s.price__skid}>{item.skidPrice}$</p>
+                                    <p className={s.price__skid}>{state.amount * item.discount}$</p>
                                 </div>
                                 <div className={s.delete}>
                                     <img src={deletebtn} alt="Удалить" />

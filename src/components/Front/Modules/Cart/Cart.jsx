@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Cart.module.css"
 import CartRow from "./CartRow/CartRow";
 import chrest from "./../../../../img/front/chrest.png"
 import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
+import {api, apiResponse} from "../../../functions/api"
 
 const Cart = ({close}) =>{
     const tempProd = {
@@ -136,10 +137,58 @@ const Cart = ({close}) =>{
         ],
         "active": "false"
     };
+    
+    const productIdList = [
+        {
+            id: 22,
+            count: 1
+        }
+    ];
+
+    const [ready, setReady] = useState(true);
+
+    const [productsAndCount, setProductsAndCount] = useState([{
+        product: new ProductObject(tempProd),
+        count: 1
+    }])
+
+    // useEffect(()=>{
+    //     console.log("Set effect");
+    //     let i =0;
+    //     let products = [];
+
+    //     // apiResponse((response)=>{
+    //     //     let loadedProduct = new ProductObject(response);
+    //     //     console.log(loadedProduct)
+
+    //     //     return ({
+    //     //         product: loadedProduct,
+    //     //         count: prod.count
+    //     //     })
+    //     // },{
+    //     //     productID: prod.id
+    //     // }, "content/products/get-product-by-id.php")
+
+
+    //     products = productIdList.map((prod)=>{
+    //         let response = apiResponse({
+    //             productID: prod.id
+    //         }, "content/products/get-product-by-id.php").finally((res, err)=>{
+    //             return res;
+    //         })
+    //         console.log("Response", response)
+    //         return new ProductObject(response[0]);
+    //     })
+    //     setProductsAndCount(products)
+    //     setReady(true)
+    //     console.log("Products: ", products)
+    // }, [])
+
     const ProductMas = [
         new ProductObject(tempProd, "ru")
     ]
-    return(
+
+    return ready ? (
         <div className={s.wrap}>
             <div className={s.in}>
                 <div className={s.title}>
@@ -149,7 +198,7 @@ const Cart = ({close}) =>{
                     }} />
                 </div>
                 <div className={s.row}>
-                    <CartRow item={ProductMas}/>
+                    <CartRow item={productsAndCount}/>
                 </div>
                 <div className={s.res}>
                     <div className={s.sum}>
@@ -160,6 +209,6 @@ const Cart = ({close}) =>{
             </div>
             </div>
         </div>
-    )
+    ) : null;
 }
 export default Cart
