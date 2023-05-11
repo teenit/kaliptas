@@ -1,0 +1,81 @@
+.row__wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+.title > p{
+    margin: 0;
+    font-size: 14px;
+}
+.image > img{
+    display: block;
+    width: 100%;
+}
+.amount{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.minus, .plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.minus > img, .plus > img{
+    width: 16px;
+    cursor: pointer;
+}
+.amount__in{
+    padding: 5px 25px;
+    border-radius: 15px;
+    background-color: #e3bff1;
+}
+.amount__in > p{
+    margin: 0;
+}
+.prices{
+    display: flex;
+    flex-direction: column;
+}
+.plice__in{
+    position: relative;
+}
+.line{
+    width: 90%;
+    height: 1.5px;
+    background-color: #00000033;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+.plice__in > p{
+    margin: 0;
+    color: #00000033;
+}
+.price__skid{
+    margin: 0;
+    color: var(--purple-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+.delete > img{
+    cursor: pointer;
+}
+.main__line{
+    width: 90%;
+    display: block;
+    height: .5px;
+    background-color: #e3bff1;
+    margin: auto;
+}
