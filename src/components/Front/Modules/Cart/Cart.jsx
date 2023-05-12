@@ -148,7 +148,7 @@ const Cart = ({close}) =>{
     const [ready, setReady] = useState(true);
 
     const [productsAndCount, setProductsAndCount] = useState([{
-        product: new ProductObject(tempProd),
+        product: new ProductObject(tempProd, "ru"),
         count: 1
     }])
 
@@ -198,7 +198,11 @@ const Cart = ({close}) =>{
                     }} />
                 </div>
                 <div className={s.row}>
-                    <CartRow item={productsAndCount}/>
+                    {
+                        productsAndCount.map((item, index)=>{
+                            return <CartRow item={item} key={index}/>
+                        })
+                    }
                 </div>
                 <div className={s.res}>
                     <div className={s.sum}>
