@@ -6,187 +6,48 @@ import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
 import {api, apiResponse} from "../../../functions/api"
 
 const Cart = ({close}) =>{
-    const tempProd = {
-        "productID": "19",
-        "product": {
-            "price": {
-                "price": "",
-                "discount": ""
-            },
-            "prices": [
-                {
-                    "variable": {
-                        "ge": "wefwe",
-                        "en": "",
-                        "ru": ""
-                    },
-                    "price": "23",
-                    "discountPrice": "223"
-                },
-                {
-                    "variable": {
-                        "ge": "rl;gwe",
-                        "en": "",
-                        "ru": ""
-                    },
-                    "price": "1",
-                    "discountPrice": "2"
-                }
-            ],
-            "title": {
-                "en": "",
-                "ge": "wekfo",
-                "ru": ""
-            },
-            "description": {
-                "en": "",
-                "ge": "ekgmer er glerg er<br />ergerg erg erg<br />erg er glker gkle r",
-                "ru": ""
-            },
-            "characteristic": [
-                {
-                    "title": {
-                        "en": "",
-                        "ge": "wepo",
-                        "ru": ""
-                    },
-                    "value": {
-                        "en": "",
-                        "ge": "wejiw",
-                        "ru": ""
-                    }
-                },
-                {
-                    "title": {
-                        "en": "",
-                        "ge": "wekl",
-                        "ru": ""
-                    },
-                    "value": {
-                        "en": "",
-                        "ge": "koewfj",
-                        "ru": ""
-                    }
-                }
-            ],
-            "categories": [
-                {
-                    "id": "23",
-                    "parent_id": "21",
-                    "category": {
-                        "title": {
-                            "en": "Sleeping bag",
-                            "ru": "Спальник",
-                            "ge": "საძილე ტომარა"
-                        },
-                        "description": {
-                            "en": "",
-                            "ru": "",
-                            "ge": ""
-                        },
-                        "image": "https://kaliptas.people-ua.org/manage/categories/uploads/1683424785w512h5121390848562sleepingbag512.png"
-                    },
-                    "good": false,
-                    "checked": true
-                }
-            ],
-            "inStock": {
-                "amount": "7"
-            },
-            "type": {
-                "variable": true,
-                "defaulte": false
-            },
-            "image": "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372242347838.1400.jpg",
-            "images": [
-                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372243027032.png",
-                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372243038051.png",
-                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/168372243047838.1400.jpg",
-                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/16837224312798003.png",
-                "https://kaliptas.people-ua.org/manage/shop/uploads/products/9/1683722431195946076.webp"
-            ],
-            "status": "moderation"
-        },
-        "link": "",
-        "status": "moderation",
-        "type": {
-            "variable": true,
-            "defaulte": false
-        },
-        "article": "1019",
-        "categories": [
-            {
-                "id": "23",
-                "parent_id": "21",
-                "category": {
-                    "title": {
-                        "en": "Sleeping bag",
-                        "ru": "Спальник",
-                        "ge": "საძილე ტომარა"
-                    },
-                    "description": {
-                        "en": "",
-                        "ru": "",
-                        "ge": ""
-                    },
-                    "image": "https://kaliptas.people-ua.org/manage/categories/uploads/1683424785w512h5121390848562sleepingbag512.png"
-                },
-                "good": false,
-                "checked": true
-            }
-        ],
-        "active": "false"
-    };
-    
     const productIdList = [
         {
             id: 22,
             count: 1
+        },
+        {
+            id: 23,
+            count: 2
+        },{
+            id: 20,
+            count: 2
         }
     ];
 
     const [ready, setReady] = useState(true);
 
-    const [productsAndCount, setProductsAndCount] = useState([{
-        product: new ProductObject(tempProd, "ru"),
-        count: 1
-    }])
+    const [productsAndCount, setProductsAndCount] = useState([])
 
-    // useEffect(()=>{
-    //     console.log("Set effect");
-    //     let i =0;
-    //     let products = [];
+    useEffect(()=>{
+        console.log("Set effect");
+        let promiseList = [];
+        
+        for (let i = 0; i < productIdList.length; i++) {
+            let prod = productIdList[i]
+            promiseList.push(apiResponse({
+                productID: prod.id
+            }, "content/products/get-product-by-id.php"));
+        }
 
-    //     // apiResponse((response)=>{
-    //     //     let loadedProduct = new ProductObject(response);
-    //     //     console.log(loadedProduct)
-
-    //     //     return ({
-    //     //         product: loadedProduct,
-    //     //         count: prod.count
-    //     //     })
-    //     // },{
-    //     //     productID: prod.id
-    //     // }, "content/products/get-product-by-id.php")
-
-
-    //     products = productIdList.map((prod)=>{
-    //         let response = apiResponse({
-    //             productID: prod.id
-    //         }, "content/products/get-product-by-id.php").finally((res, err)=>{
-    //             return res;
-    //         })
-    //         console.log("Response", response)
-    //         return new ProductObject(response[0]);
-    //     })
-    //     setProductsAndCount(products)
-    //     setReady(true)
-    //     console.log("Products: ", products)
-    // }, [])
-
-    const ProductMas = [
-        new ProductObject(tempProd, "ru")
-    ]
+        Promise.all(promiseList).then((values)=>{
+            console.log("Promise result: ", values)
+            let tempProductsAndCount = [...productsAndCount];
+            for (let i = 0; i < values.length; i++) {
+                tempProductsAndCount.push({
+                            product: new ProductObject(values[i], "ru"),
+                            count: productIdList[i].count
+                        });
+            }
+            setProductsAndCount(tempProductsAndCount)
+            setReady(true)
+        })
+    }, [])
 
     return ready ? (
         <div className={s.wrap}>
