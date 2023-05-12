@@ -238,9 +238,7 @@ const FrontProduct = ()=>{
                                             <img src={cart} alt="" />
                                             <a href="#">Купить</a>
                                         </div>
-                                        <div className={s.ves__wrap}>
-                                            <img src={ves} alt="В сравнение" />
-                                        </div>
+                                        
                                         <div className={s.heart__wrap}>
                                             <img src={heart} alt="Лайкнуть" />
                                         </div>
@@ -343,8 +341,21 @@ const FrontProduct = ()=>{
                                             <p>{productObject.title}</p>
                                         </div>
                                         <div className={s.prod}>
-                                            <div className={s.prod__img}>
-                                                <img className={s.prod__dop__img} src={productObject.mainPhoto} alt="Главное изображение" />
+                                            <div className={s.prod__img__dop}>
+                                                <div className={s.prod__img__in}>
+                                                    <img className={s.prod__dop__img__sec} src={productObject.mainPhoto} alt="Главное изображение" />
+                                                </div>
+                                                <div className={s.dop__photos__wrap}>
+                                                {
+                                                    productObject.photos.map((item, index)=>{
+                                                        return(
+                                                            <div key={index} className={s.photos__wrap}>
+                                                                <img src={item} alt="" />
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>  
@@ -355,12 +366,9 @@ const FrontProduct = ()=>{
                     </div>
                     <div className={s.dop__in}>
                         <div className={s.in__desc}>
-                            <div className={s.img} style={{
-                                backgroundImage: "url(" + productObject.mainPhoto + ")",
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                                backgroundRepeat: "no-repeat"
-                            }}></div>
+                            <div className={s.img}>
+                                <img src={productObject.mainPhoto} alt={productObject.title} />
+                            </div>
                             <div className={s.dop__desc}>
                                 <p>{productObject.title}</p>
                                 {productObject.inStock ? 
@@ -377,7 +385,6 @@ const FrontProduct = ()=>{
                                 <div className={s.price__dop}>
                                     <p>{productObject.price}$</p>
                                     <div className={s.buttons}>
-                                        <img src={ves} alt="" />
                                         <img src={heart} alt="" />
                                     </div>
                                 </div>
