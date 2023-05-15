@@ -4,30 +4,31 @@ import CartRow from "./CartRow/CartRow";
 import chrest from "./../../../../img/front/chrest.png"
 import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
 import {api, apiResponse} from "../../../functions/api"
+import {getCart} from "../../../functions/cartControll";
 
 const Cart = ({close}) =>{
-    const productIdList = [
-        {
-            id: 22,
-            count: 1
-        },
-        {
-            id: 23,
-            count: 2
-        },{
-            id: 20,
-            count: 2
+    const loadCart = ()=>{
+        console.log("Entries",Object.entries(getCart()))
+
+        return Object.entries(getCart())
+        .map((entry)=>{
+        return {
+            id: entry[0],
+            count: entry[1]
         }
-    ];
+    })}
+
+    const [productIdList, setProductIdList] = useState(loadCart());
 
     const [ready, setReady] = useState(true);
 
     const [productsAndCount, setProductsAndCount] = useState([])
 
-    useEffect(()=>{
-        console.log("Set effect");
+    const loadProducts = function () {
         let promiseList = [];
-        
+        console.log("Load products:", productIdList)
+        setProductIdList(loadCart())
+
         for (let i = 0; i < productIdList.length; i++) {
             let prod = productIdList[i]
             promiseList.push(apiResponse({
@@ -40,13 +41,17 @@ const Cart = ({close}) =>{
             let tempProductsAndCount = [...productsAndCount];
             for (let i = 0; i < values.length; i++) {
                 tempProductsAndCount.push({
-                            product: new ProductObject(values[i], "ru"),
-                            count: productIdList[i].count
-                        });
+                    product: new ProductObject(values[i], "ru"),
+                    count: productIdList[i].count
+                });
             }
             setProductsAndCount(tempProductsAndCount)
             setReady(true)
         })
+    }
+
+    useEffect(()=>{
+        loadProducts();
     }, [])
 
     return ready ? (

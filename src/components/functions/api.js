@@ -15,19 +15,19 @@ export function api(apiFunc, obj, url){
     }else{
         obj.email = localStorage.getItem('email');
     }
-   console.log(obj)
+   // console.log(obj)
     axios({
         url: serverAdress(url),
         method: "POST",
         header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
         data: JSON.stringify(obj),
         onUploadProgress: (event) => {
-            console.log(event)
+            // console.log(event)
             document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
         } 
     })
     .then((data)=>{
-        console.log("Received data: ", data);
+        // console.log("Received data: ", data);
         apiFunc(data.data)
         document.getElementById('lineLoading').style.width = 0;
     })

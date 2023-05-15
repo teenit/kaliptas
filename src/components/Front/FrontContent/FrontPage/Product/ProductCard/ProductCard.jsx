@@ -3,24 +3,28 @@ import s from "./ProductCard.module.css";
 import { useState } from "react";
 import heartImg from "../../../../../../img/front/icons8-heart-64.png";
 import heartImgSec from "../../../../../../img/front/icons8-heart-642.png";
-import mainImg from "../../../../../../img/front/Слой 1095.png";
 import star from "../../../../../../img/front/Многоугольник 1 копия 3.png";
 import starDop from "../../../../../../img/front/Многоугольник 1 копия 4.png";
 import {api} from "../../../../../functions/api";
 import {ProductObject} from "../../../FrontProduct/ProductObject";
 import {Link} from "react-router-dom";
+import {buy, decrementById, getCountById, incrementById} from "../../../../../functions/cartControll";
+import cartMinus from "../../../../../../img/front/cartMinus.png";
+import cartPlus from "../../../../../../img/front/cartPlus.png";
 
 const ProductCard = ({ id }) => {
     const [liked, setLiked] = useState({
         like: localStorage.getItem("like" + id),
     });
     const [ready, setReady] = useState(false);
-    const [product, setProduct] = useState(new ProductObject());
+    const [product, setProduct] = useState({});
+    const [countInCart, setCountInCart] = useState(0);
 
     useEffect(()=>{
         api((response)=>{
             let loadedProduct = new ProductObject(response, "ru");
             setProduct(loadedProduct);
+            setCountInCart(getCountById(id))
             setReady(true)
         }, {
             productID: id
@@ -65,9 +69,33 @@ const ProductCard = ({ id }) => {
                 </div>
                 <div className={`${s.section} ${s.section__dop}`}>
 
-                    <div className={s.buy}>
-                        Купить
-                    </div>
+                    {
+                        countInCart > 0
+                            ? (<div className={s.amount}>
+                                <div className={s.minus}>
+                                    <img src={cartMinus} alt="Минус" onClick={()=>{
+                                        decrementById(id);
+                                        setCountInCart(getCountById(id));
+                                    }}/>
+                                </div>
+                                <div className={s.amount__in}>
+                                    <p>{countInCart}</p>
+                                </div>
+                                <div className={s.plus}>
+                                    <img src={cartPlus} alt="Плюс" onClick={()=>{
+                                        incrementById(id);
+                                        setCountInCart(getCountById(id));
+                                    }}/>
+                                </div>
+                            </div>)
+                            : (<div className={s.buy} onClick={(event)=>{
+                                buy(id);
+                                setCountInCart(1);
+                            }}>
+                            Купить
+                        </div>)
+                    }
+
                     <div className={s.add__to}>
                         {liked.like == "true" ? (
                             <img
