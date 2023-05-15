@@ -1,7 +1,6 @@
 export class ProductObject{
     constructor(product, language) {
         if (product === undefined) {
-            console.log("Product unset")
             return;
         }
 

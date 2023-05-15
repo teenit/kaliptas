@@ -1,53 +1,60 @@
 import {api} from "../../../../functions/api";
 import {ProductObject} from "../../FrontProduct/ProductObject";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 export class CategoryObject {
 
-    constructor(category) {
-        // console.log("Received category info: ", category)
+    constructor(category, products, parents, language) {
+
+        this.responseCategory = {...category};
+
+        if (products !== undefined){
+            this.responseProducts = [...products];
+        }
+
+        if (parents !== undefined) {
+            this.responseParents = [...parents];
+        }
+
+        if (language !== undefined) {
+            this.language = language;
+        }
+
+        this.products = this.responseProducts.map((product)=>{
+            return new ProductObject(product, language);
+        })
+
+        this.parentCategories = this.parseParents(this.responseParents);
+
         this.id = category.id;
         this.imageUrl = category.category.image;
-        this.title = category.category.title.en;
-
+        this.title = category.category.title[language];
         this.parenId = category.parentId;
     }
 
-    static emptyCategory(id) {
-        let empty = new CategoryObject(JSON.parse("{\"id\":\"19\",\"parent_id\":\"0\",\"category\":{\"title\":{\"en\":\"\",\"ru\":\"\",\"ge\":\"\"},\"description\":{\"en\":\"\",\"ru\":\"\",\"ge\":\"\"},\"image\":\"\"}}"));
-        empty.id = id;
-        return empty;
+    static getIdFromResponse(category) {
+        return category.id;
     }
 
+    responseCategory = [];
+    responseParents = [];
+    responseProducts = [];
     id;
     title;
     imageUrl;
     parenId;
+    products = [];
+    parentCategories = [];
+    language = "en";
 
-    // loadProducts() {
-    //
-    //     let loaded = [];
-    //
-    //     api((response)=>{
-    //         loaded = response.map((product)=>{
-    //             return new ProductObject(product);
-    //         })
-    //     }, {
-    //         catId: this.id
-    //     // }, "content/products/get-all-products.php")
-    //     }, "content/products/get-products-by-category-id.php")
-    // }
+    parseParents(parents) {
 
-    getParents() {
-        return [
-            {
-                id:19,
-                title: "Page 1"
-            },
-            {
-                id: 22,
-                title: "Page 2"
-            }
-        ]
+        return parents.length > 0
+            ? parents.map((parent)=>{
+                return {
+                    id: parent.id,
+                    title: parent.value.title[this.language]
+                }
+            })
+            : []
     }
 }

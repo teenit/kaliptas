@@ -9,16 +9,17 @@ import {api} from "../../../../functions/api";
 const Catalog = ()=>{
     //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
     const [loadedCategories, setLoadedCategories] = useState([]);
+    const [language, setLanguage] = useState("ru");
 
     useEffect(()=>{
         api((response)=>{
             setLoadedCategories(response.map((item)=>{
-                return new CategoryObject(item);
+                return new CategoryObject(item, undefined, undefined, language);
             }))
         }, {}, "content/category/get-all-categories.php")
     }, [])
 
-    const relatedProductList = [22,23]; // Must be loadRelated()
+    const relatedProductList = [37,38]; // Must be loadRelated()
 
     const youWatchedList = relatedProductList;
 

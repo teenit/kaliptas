@@ -14,7 +14,6 @@ const ProductCard = ({ id }) => {
     const [liked, setLiked] = useState({
         like: localStorage.getItem("like" + id),
     });
-    console.log(id)
     const [ready, setReady] = useState(false);
     const [product, setProduct] = useState(new ProductObject());
 

@@ -5,16 +5,14 @@ import s from "./Category.module.css"
 import ProductList from "../../FrontPage/Product/ProductList";
 import ProductCard from "../../FrontPage/Product/ProductCard/ProductCard";
 import {Slider} from "@mui/material";
-import {api} from "../../../../functions/api";
+import {api, apiResponse} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
-import {ProductObject} from "../../FrontProduct/ProductObject";
 
 function Category(props) {
     const params = useParams();
     const [ready,setReady] = useState(false)
     const [id, setId] = useState(params.id);
-    console.log("Id: ", id);
-    const [products, setProducts] = useState([]);
+    const language = localStorage.getItem("LNG").toLowerCase()
     //{
     //             imgUrl: "",
     //             imgAlt: "Мягкая игрушка",
@@ -24,34 +22,57 @@ function Category(props) {
     //             price: 1000,
     //             dopPrice: 10,
     //         }
-    const [displayedProducts, setDisplayedProducts] = useState({
-        products : products
-    })
-    const [category, setCategory] = useState(CategoryObject.emptyCategory(id));
+    const [displayedProducts, setDisplayedProducts] = useState([])
+    const [category, setCategory] = useState({});
 
     useEffect(()=>{
         setId(params.id);
-        api((response)=>{
-            let loadedCategory = new CategoryObject(response[0]);
-            setCategory(loadedCategory)
-            api((response)=>{
-                let loadedProducts = response.map((product)=>{
-                                return new ProductObject(product);
+
+        api((categoryResponse)=> {
+                // let loadedCategory = new CategoryObject(response[0]);
+                // setCategory(loadedCategory)
+
+                if (categoryResponse === undefined) {
+                    throw new Error("Category response is null");
+                }
+
+                let categoryId = CategoryObject.getIdFromResponse(categoryResponse);
+                let productsPromise = apiResponse({
+                    catID: categoryId
+                }, "content/products/get-products-by-category-id.php");
+
+                let parentCatsPromise = apiResponse({
+                    catID: id
+                }, "content/category/get-tree-categories-by-id.php");
+
+                Promise.all([productsPromise, parentCatsPromise]).then((promiseResponses) => {
+                    if (promiseResponses[0] === undefined) {
+                        throw new Error("Product response is null");
+                    }
+
+                    if (promiseResponses[1] === undefined) {
+                        throw new Error("Parents response is null");
+                    }
+
+                    let endCategory = new CategoryObject(
+                        categoryResponse[0],
+                        promiseResponses[0],
+                        promiseResponses[1],
+                        language)
+
+                    setCategory(endCategory);
+
+                    console.log("Category", endCategory);
+                    setDisplayedProducts(endCategory.products);
+                    setReady(true);
                 })
-                console.log("Loaded: ", loadedProducts)
-
-                setProducts(loadedProducts);
-                setDisplayedProducts({products: loadedProducts});
-                setReady(true);
-            }, {
+            }
+            ,{
                 catID: id
-            }, "content/products/get-products-by-category-id.php")
-        },{
-            catID: id
-        },"content/category/get-id-category.php")
-    },[id, params.id])
+            },"content/category/get-id-category.php");
+    },[id, params.id]);
 
-    const relatedProductList = [22,23]; // Must be loadRelated()
+    const relatedProductList = [37,38]; // Must be loadRelated()
     const youWatchedList = relatedProductList;
 
     //Price filter
@@ -61,9 +82,9 @@ function Category(props) {
         setValue(newValue)
     };
     const applyFilter = function () {
-        const filteredProducts = products.filter((item)=> item.price >= value[0] && item.price <= value[1])
+        const filteredProducts = category.products.filter((item)=> item.price >= value[0] && item.price <= value[1])
 
-        setDisplayedProducts({ products: filteredProducts});
+        setDisplayedProducts(filteredProducts);
     }
 
     return ready ? (
@@ -71,13 +92,14 @@ function Category(props) {
             <div className={s.nav__container}>
                 <Link to="../catalog"><HomeIcon/></Link>
                 {
-                    category.getParents().map((cat, index) => {
+                    category.parentCategories.length !== 0 ?
+                    category.parentCategories.map((cat, index) => {
                         return(
                             <span  key={index}>
                                  <span className={s.span__sign}>></span><Link to={"../catalog/" + cat.id}>{cat.title}</Link>
                             </span>
                         )
-                    })
+                    }) : null
                 }
                 <span className={s.span__sign}>></span>
                 <span>{category.title}</span>
@@ -117,11 +139,14 @@ function Category(props) {
                     />
                 </div>
                 <div className={s.cards__container}>
-                    {displayedProducts.products.map((item, index)=>{
-                        return (
-                            <ProductCard id={item.id} key={index} />
-                        );
-                    })}
+                    {displayedProducts.length > 0
+                        ? displayedProducts.map((item, index)=>{
+                            return (
+                                <ProductCard id={item.id} key={index} />
+                            );
+                            })
+                        : null
+                    }
                 </div>
             </div>
             <h3 className={s.title}>Похожие товары</h3>
