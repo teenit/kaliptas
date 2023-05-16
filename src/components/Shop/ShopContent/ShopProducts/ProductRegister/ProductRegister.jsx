@@ -33,7 +33,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     })
     const lng = localStorage.getItem('LNG').toLowerCase()
 
-   
+   console.log(stateProduct)
      const [state, setState] = useState({...stateProduct})
     const [loadedImg, setLoadedImg] = useState({
         image:false,
@@ -244,7 +244,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                                     ru:replaceStrTextarea(state.title.ru),
                                     en:replaceStrTextarea(state.title.en)}
                             }
-                                ,newMas,btn.btn1.status);
+                                ,newMas,btn.btn1.status,"manage/shop/add-product.php");
                         }}>{btn.btn1.title[lng]}</button>
                         <button disabled = {loadedImg.image || loadedImg.images ? true : false} onClick={()=>{
                             let newMas = lookCat.filter(item => item.checked);
@@ -257,7 +257,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                                     ge:replaceStrTextarea(state.title.ge),
                                     ru:replaceStrTextarea(state.title.ru),
                                     en:replaceStrTextarea(state.title.en)}
-                            },newMas,btn.btn2.status);
+                            },newMas,btn.btn2.status,"manage/shop/add-product.php");
                         }} className={`${s.form__btn} ${s.form__btn__save}`}>{btn.btn2.title[lng]}</button>
                 </div>
                 {

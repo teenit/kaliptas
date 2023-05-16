@@ -31,3 +31,7 @@
 .td__span{
     cursor: pointer;
 }
+.edit__img{
+    width: 20px;
+    height: 20px;
+}

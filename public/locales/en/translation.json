@@ -5,7 +5,7 @@
     "moderation":"Moderation",
     "communication":"Communication",
     "advertising":"Commercial",
-
+    "published":"Published",
     "Super Admin":"Super Admin",
     "Customer":"Customer",
     "Seller":"Seller",
@@ -39,5 +39,6 @@
     "name":"Naming",
     "contact":"Contacts",
     "rating":"Rating",
-    "405":"Access is limited, please wait for activation"
+    "405":"Access is limited, please wait for activation",
+    "Photo":"Photo"
 }

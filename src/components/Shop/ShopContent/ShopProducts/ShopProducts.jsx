@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import s from './ShopProducts.module.css';
+import ss from './ShopProduct/style.module.css';
 import ProductRegister from "./ProductRegister/ProductRegister";
 import { api, apiResponse } from "../../../functions/api";
 import ShopProduct from "./ShopProduct/ShopProduct";
@@ -7,8 +8,10 @@ import ShopProduct from "./ShopProduct/ShopProduct";
 const ShopProducts = ({shop})=>{
     const [closeModal, setCloseModal] = useState(false);
     const [products,setProducts] = useState([])
+    console.log(shop)
     const [stateProduct, setStateProduct] = useState({
         shopID:shop.id,
+        shopTitle:shop.shop.title,
         price:{
             price:'',
             discount:''
@@ -84,9 +87,33 @@ const ShopProducts = ({shop})=>{
                 </div>
             
             </div>
+            <div className={s.wrap__products}>
+
+            
+            <div className={ss.wrap}>
+            <div className={ss.inner}>
+                <div className={ss.number}>
+                    <span>№</span>
+                </div>
+                <div className={ss.image}>
+                    Фото
+                </div>
+                <div className={ss.title}>Название</div>
+                <div className={ss.article}>Артикул</div>
+                <div className={ss.amount}>Количество</div>
+                <div className={ss.price}>Цена</div>
+                <div className={ss.status}>Статус</div>
+            </div>
+        </div>
             {
-                products.map((item,index)=><ShopProduct index={index} productItem={item} key={item.productID}/>)
+                products.map((item,index)=><ShopProduct 
+                setStateProduct = {(arg)=>setStateProduct({...arg})}
+                index={index} 
+                shop = {shop}
+                productItem={item} 
+                key={item.productID}/>)
             }
+        </div>
             {closeModal ? <ProductRegister 
                             stateProduct={stateProduct} 
                             shop = {shop} 
