@@ -1,8 +1,36 @@
 .inner{
     width: 100%;
     display: grid;
-    grid-template-columns: 5% 10% 30% 10% 10% 10%;
+    grid-template-columns: 5% 10% 30% 10% 10% 10% 1fr 1fr;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
 }
 .img{
     width: 100%;
+    max-width: 40px;
+}
+.wrap{
+    border-bottom: solid 1px gray;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.inner > div{
+    display: flex;
+    align-items: center;   
+}
+.moderation{
+    background-color: rgba(249, 178, 0, 0.331);
+}
+.published{
+    background-color: var(--green-color);
+}
+.control__img{
+    width: 25px;
+}
+.draft{
+    background-color: rgba(223, 211, 180, 0.331);
+}
+.rejected{
+    background-color: rgba(219, 53, 53, 0.331);
 }

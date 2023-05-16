@@ -1,52 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./Products.module.css";
 import FormButton from "../FormButtons/FormButton";
 import ProductRegister from "../../../../Shop/ShopContent/ShopProducts/ProductRegister/ProductRegister";
 import { useState } from "react";
-import { api } from "../../../../functions/api";
+import { api, apiResponse } from "../../../../functions/api";
+import { t } from "i18next";
+import editImg from './../../../../../img/admin/icons8-edit-50.png'
 
 const ProductsRow = ({moderation,index}) =>{
-    const [stateProduct, setStateProduct] = useState({...moderation.value.product})
+    const [stateProduct, setStateProduct] = useState(null)
     const [lookProduct, setLookProduct] = useState({look:false})
     const [lng,setLng] = useState(localStorage.getItem("LNG").toLowerCase())
     function close(arg){
         setLookProduct({...lookProduct,look:arg})
     }
+    function getProduct(){
+        apiResponse({productID:moderation.value.productID},"manage/admin/get-product-by-id.php").then((data)=>{
+            setStateProduct({...data})
+            setLookProduct({...lookProduct,look:true})
+        })
+    }
     function saveProduct(obj, masCategories, status){
-       /* if(obj.title.en == "" || obj.title.ge == "" || obj.title.ru == "")
-        if(obj.description.en == "" || obj.description.ge == "" || obj.description.ru == "")
-        if(obj.characteritics.en == "" || obj.characteritics.ge == "" || obj.characteritics.ru == "")
-        if(obj.image == "")
-        if(obj.images.length < 1)
-        if(obj.type.defaulte){
-
-        }else{
-
-        }*/
-      // return console.log(obj)
-        
+       // return console.log(moderation)
         api((arg)=>{
             console.log(arg)
             close(false)
         },{...obj,
             categories:masCategories,
             status:status,
+            modID:moderation.id,
             productID:moderation.value.productID,
             shopID:moderation.value.shopID,
             link:Math.floor(Math.random()*1000)
-            },"manage/shop/update-product.php")
+            },"manage/shop/update-product-and-activate.php")
     }
+
     return(
+    
         <tr className={s.products__tr}> 
             <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>{index + 1}</span></td>
-            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td} onClick={()=>setLookProduct({...lookProduct,look:true})}>00</span></td>
-            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>{moderation.value.product.title[lng]}</span></td>
-            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>Направление</span></td>
-            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>Магазин</span></td>
-            <FormButton />
+            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td} ><img style={{width:"40px"}} src={moderation.value.image}/></span></td>
+            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>{moderation.value.title[lng]}</span></td>
+            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>{t(moderation.value.whatModeration)}</span></td>
+            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}>{moderation.value.shopTitle[lng]}</span></td>
+            <td className={`${s.products__td} ${s.product__td__row}`}><span className={s.span__td}><img className={s.edit__img} onClick={()=>getProduct()} src={editImg} alt="" /></span></td>
+            
             {
                 lookProduct.look ? <ProductRegister 
-                stateProduct={stateProduct} 
+                stateProduct={stateProduct.product} 
                 btn = {{btn1:{
                     title:{
                         ge:"გამოაქვეყნეთ",

@@ -24,7 +24,7 @@ const Products = () =>{
                 <thead className={s.products__thead}>
                     <tr className={s.products__tr}>
                         <td className={s.products__td}></td>
-                        <td className={`${s.products__td} ${s.products__td__bold}`}>{t('picture')}</td>
+                        <td className={`${s.products__td} ${s.products__td__bold}`}>{t('Photo')}</td>
                         <td className={`${s.products__td} ${s.products__td__bold}`}>
                             <span className={s.td__span} onClick={()=>{
                                 setChangePos({...changePos, 
@@ -42,7 +42,7 @@ const Products = () =>{
                                     nameArr: false,
                                     shopArr: false
                                 })
-                            }}>{t('destination')}</span>
+                            }}>{t('category')}</span>
                             <img className={`${s.static__arrow} ${changePos.napArr ? s.td__arrow__change : null}`} src={ArrowImg} alt="Стрелка" />
                         </td>
                         <td className={`${s.products__td} ${s.products__td__bold}`}>
@@ -60,7 +60,7 @@ const Products = () =>{
                 </thead>
                 <tbody>
                     {
-                        moderation.map((item,index)=><ProductsRow key={item.id} index={index} moderation = {item} />)
+                        moderation.map((item,index)=>item.type === 'product'?<ProductsRow key={item.id} index={index} moderation = {item} />:'')
                     }
                     
                 </tbody>
