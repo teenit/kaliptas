@@ -6,7 +6,7 @@ import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
 import {api, apiResponse} from "../../../functions/api"
 import {getCart} from "../../../functions/cartControll";
 
-const Cart = ({close}) =>{
+const Cart = ({close, }) =>{
     const loadCart = ()=>{
         console.log("Entries",Object.entries(getCart()))
 
@@ -19,18 +19,17 @@ const Cart = ({close}) =>{
     })}
 
     const [productIdList, setProductIdList] = useState(loadCart());
-
     const [ready, setReady] = useState(true);
-
-    const [productsAndCount, setProductsAndCount] = useState([])
+    const [productsAndCount, setProductsAndCount] = useState([]);
 
     const loadProducts = function () {
         let promiseList = [];
+        let cartList = loadCart();
+        setProductIdList(cartList)
         console.log("Load products:", productIdList)
-        setProductIdList(loadCart())
 
-        for (let i = 0; i < productIdList.length; i++) {
-            let prod = productIdList[i]
+        for (let i = 0; i < cartList.length; i++) {
+            let prod = cartList[i]
             promiseList.push(apiResponse({
                 productID: prod.id
             }, "content/products/get-product-by-id.php"));
@@ -38,13 +37,14 @@ const Cart = ({close}) =>{
 
         Promise.all(promiseList).then((values)=>{
             console.log("Promise result: ", values)
-            let tempProductsAndCount = [...productsAndCount];
+            let tempProductsAndCount = [];
             for (let i = 0; i < values.length; i++) {
                 tempProductsAndCount.push({
                     product: new ProductObject(values[i], "ru"),
                     count: productIdList[i].count
                 });
             }
+            console.log("Prod:",tempProductsAndCount)
             setProductsAndCount(tempProductsAndCount)
             setReady(true)
         })
@@ -66,7 +66,7 @@ const Cart = ({close}) =>{
                 <div className={s.row}>
                     {
                         productsAndCount.map((item, index)=>{
-                            return <CartRow item={item} key={index}/>
+                            return <CartRow item={item} key={index} change={()=>{loadProducts()}}/>
                         })
                     }
                 </div>

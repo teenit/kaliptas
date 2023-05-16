@@ -3,13 +3,15 @@ import s from "./CartRow.module.css"
 import cartMinus from "./../../../../../img/front/cartMinus.png"
 import cartPlus from "./../../../../../img/front/cartPlus.png"
 import deletebtn from "./../../../../../img/front/deletebtn.png"
+import {decrementById, deleteById, incrementById} from "../../../../functions/cartControll";
+import {unmountComponentAtNode} from "react-dom";
 
-const CartRow = ({item}) =>{
+const CartRow = (props) =>{
+    console.log(props)
     const [state, setState] = useState({
-        amount: item.count
+        amount: props.item.count
     })
-    const product = item.product;
-    console.log(item);
+    const product = props.item.product;
     return(
         <div className={s.row__wrap}>
             <div>
@@ -24,6 +26,8 @@ const CartRow = ({item}) =>{
                         <div className={s.minus}>
                             <img src={cartMinus} alt="Минус" onClick={()=>{
                                 setState({...state, amount: state.amount - 1})
+                                decrementById(product.id)
+                                props.change();
                             }}/>
                         </div>
                         <div className={s.amount__in}>
@@ -32,6 +36,8 @@ const CartRow = ({item}) =>{
                         <div className={s.plus}>
                             <img src={cartPlus} alt="Плюс" onClick={()=>{
                                 setState({...state, amount: state.amount + 1})
+                                incrementById(product.id)
+                                props.change();
                             }}/>
                         </div>
                     </div>
@@ -43,7 +49,10 @@ const CartRow = ({item}) =>{
                         <p className={s.price__skid}>{state.amount * product.discount}$</p>
                     </div>
                     <div className={s.delete}>
-                        <img src={deletebtn} alt="Удалить" />
+                        <img src={deletebtn} alt="Удалить" onClick={()=>{
+                            deleteById(product.id)
+                            props.change()
+                        }}/>
                     </div>
                 </div>
                 {

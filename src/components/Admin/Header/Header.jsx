@@ -12,14 +12,15 @@ import PhoneNumber from "./PhoneNumbers/PhoneNumber";
 const Header = () =>{
       const [state, setState] = useState(false)
       const [burgMenu, setBurgMenu] = useState(false)
-      return(
+    const language = localStorage.getItem("LNG").toLowerCase()
+    return(
         <div className={s.header}>
             <div className={s.big__header}>
                 <div className={s.small__header}>
                     <div className={s.small__header__in}>
                         <div className={s.logo__phone}>
                             <div className={s.logo}>
-                               <NavLink to={'/' + localStorage.getItem('lang')}><img className={s.logo__img} src={logo} alt="Логотип" /></NavLink> 
+                               <NavLink to={'/' + language}><img className={s.logo__img} src={logo} alt="Логотип" /></NavLink>
                             </div>
                             <div className={s.phone}>
                                 <a href="tel:+380 67 456 2343">+995 97 456 2343</a>
