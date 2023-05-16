@@ -104,3 +104,7 @@
     display: flex;
     align-self: center;
 }
+.lang__dop{
+    color: #9134b3;
+    font-weight: 600;
+}

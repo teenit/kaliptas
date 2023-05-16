@@ -5,9 +5,11 @@ import arrowImg from './../../../img/collapse-arrow-50.png'
 import City from "./Cities/City";
 import Phone from "./Phones/Phone"
 import {Link} from "react-router-dom";
+import Language from "./Language/Language";
+import { useTranslation } from "react-i18next";
 
 const FrontHeader  =()=>{
-
+    const {t} = useTranslation()
     const[phone,setPhone] =  useState(false)
     const[city,setCity] = useState(false)
 
@@ -37,14 +39,8 @@ const FrontHeader  =()=>{
                     
                 </div>
                 <div className={s.inner__right}>
-                    <p className={s.delivery__link}><a href="#">Оплата и доставка</a></p>
-                    <div className={s.lang__wrap}>
-                        <p className={s.lang} tabIndex={0}>Ru</p>
-                        <div className={s.lang__line}></div>
-                        <p className={s.lang} tabIndex={0}>Ge</p>
-                        <div className={s.lang__line}></div>
-                        <p className={s.lang} tabIndex={0}>En</p>
-                    </div>
+                    <p className={s.delivery__link}><a href="#">{t('main')}</a></p>
+                    <Language />
                 </div>
             </div>      
         </header>

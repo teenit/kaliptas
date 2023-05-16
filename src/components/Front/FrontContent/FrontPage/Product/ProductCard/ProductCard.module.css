@@ -50,9 +50,12 @@
     align-items: flex-start;
     justify-content: center;
 }
+.img__link{
+    height: 100px;
+}
 .main__image{
-    width: 90px;
-    height: 90px;
+    display: block;
+    height: 100%;
 }
 .price{
     font-size: 12px;
