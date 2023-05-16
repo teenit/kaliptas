@@ -7,15 +7,18 @@ import fewImg from "./../../../img/front/few.png";
 import likedImg from "./../../../img/front/heart.png";
 import corzImg from "./../../../img/front/corz.png"
 import Cart from "../Modules/Cart/Cart";
+import {getLanguageForLink} from "../../functions/getLanguage";
 
 const FrontSubheader = ()=>{
     const [showCart, setShowCart] = useState(false)
+    const language = getLanguageForLink()
+    const catalogLink = (language.length>0?"/" + language:"") + "/catalog";
     return(
         <div className={s.wrap}>
             <div className={s.inner}>
                 <div className={s.button}>
                     <img src={catalogImg} alt="Каталог" />
-                    <Link className={s.catalog__title} to="/catalog">Каталог</Link>
+                    <Link className={s.catalog__title} to={catalogLink}>Каталог</Link>
                 </div>    
                 <div className={s.input__wrap}>
                     <input type="text" placeholder="Поиск" className={s.input}/>

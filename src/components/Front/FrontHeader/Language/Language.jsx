@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./../Header.module.css"
 
 const Language = () =>{
     const changeLang = (arg)=>{
-        let a = localStorage.getItem('lang');
-        let b = window.location.pathname;
-        let c = '';
-        if(a === 'ru' || a === 'en'){
-            c = b.slice(4);
+        let newLanguage = localStorage.getItem('LNG').toLowerCase();
+        let defaultLocation = window.location.pathname;
+        let newLocation = '';
+        if(newLanguage !== "ge"){
+            newLocation = defaultLocation.slice(4);
         }else{
-            c = b.slice(1)
+            newLocation = defaultLocation.slice(1)
         }
-        let link = `${window.location.origin}/${arg}${c}`;
-        localStorage.setItem('lang','')
-        window.location.href = link;
+        window.location.href = `${window.location.origin}/${arg}${newLocation}`;
     }
     return(
         <div className={s.lang__wrap}>

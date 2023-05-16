@@ -7,12 +7,13 @@ import ProductCard from "../../FrontPage/Product/ProductCard/ProductCard";
 import {Slider} from "@mui/material";
 import {api, apiResponse} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
+import {getLanguageForLink} from "../../../../functions/getLanguage";
 
 function Category(props) {
     const params = useParams();
     const [ready,setReady] = useState(false)
     const [id, setId] = useState(params.id);
-    const language = localStorage.getItem("LNG").toLowerCase()
+    const language = getLanguageForLink()
     const [displayedProducts, setDisplayedProducts] = useState([])
     const [category, setCategory] = useState({});
 

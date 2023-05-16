@@ -5,6 +5,7 @@ import chrest from "./../../../../img/front/chrest.png"
 import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
 import {api, apiResponse} from "../../../functions/api"
 import {getCart} from "../../../functions/cartControll";
+import {getLanguageForLink, getRealLanguage} from "../../../functions/getLanguage";
 
 const Cart = ({close, }) =>{
     const loadCart = ()=>{
@@ -17,6 +18,8 @@ const Cart = ({close, }) =>{
             count: entry[1]
         }
     })}
+
+    const language = getLanguageForLink();
 
     const [productIdList, setProductIdList] = useState(loadCart());
     const [ready, setReady] = useState(true);
@@ -40,7 +43,7 @@ const Cart = ({close, }) =>{
             let tempProductsAndCount = [];
             for (let i = 0; i < values.length; i++) {
                 tempProductsAndCount.push({
-                    product: new ProductObject(values[i], "ru"),
+                    product: new ProductObject(values[i], getRealLanguage()),
                     count: productIdList[i].count
                 });
             }
