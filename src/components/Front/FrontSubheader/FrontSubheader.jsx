@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from './Subheader.module.css'
 import catalogImg from "./../../../img/front/catalog.png"
 import {Link, NavLink} from "react-router-dom";
@@ -6,8 +6,10 @@ import profileImg from "./../../../img/front/profile.png";
 import fewImg from "./../../../img/front/few.png";
 import likedImg from "./../../../img/front/heart.png";
 import corzImg from "./../../../img/front/corz.png"
+import Cart from "../Modules/Cart/Cart";
 
 const FrontSubheader = ()=>{
+    const [showCart, setShowCart] = useState(false)
     return(
         <div className={s.wrap}>
             <div className={s.inner}>
@@ -27,12 +29,18 @@ const FrontSubheader = ()=>{
                         <img className={s.icon__image} src={likedImg} alt="Лайкнутые" />
                     </div>
                     <div className={s.icon}>
-                        <NavLink to={'cart'}>
-                            <img className={s.icon__image} src={corzImg} alt="Корзина" />
-                        </NavLink>
+                        <img className={s.icon__image} src={corzImg} alt="Корзина" onClick={()=>{
+                            setShowCart(true)
+                            console.log(showCart)
+                        }}/>
                     </div>
                 </div>
             </div>
+            {
+                showCart ? 
+                    <Cart close={()=>{setShowCart(false)}}/>
+                : null
+            }
         </div>
     )
 }

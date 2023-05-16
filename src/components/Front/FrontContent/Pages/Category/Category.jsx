@@ -13,15 +13,6 @@ function Category(props) {
     const [ready,setReady] = useState(false)
     const [id, setId] = useState(params.id);
     const language = localStorage.getItem("LNG").toLowerCase()
-    //{
-    //             imgUrl: "",
-    //             imgAlt: "Мягкая игрушка",
-    //             title: "Мягкая игрушка мопс-бревно Валера",
-    //             id: 1,
-    //             reviews: 17,
-    //             price: 1000,
-    //             dopPrice: 10,
-    //         }
     const [displayedProducts, setDisplayedProducts] = useState([])
     const [category, setCategory] = useState({});
 
@@ -38,7 +29,7 @@ function Category(props) {
 
                 let categoryId = CategoryObject.getIdFromResponse(categoryResponse);
                 let productsPromise = apiResponse({
-                    catID: categoryId
+                    catID: id
                 }, "content/products/get-products-by-category-id.php");
 
                 let parentCatsPromise = apiResponse({
@@ -93,10 +84,10 @@ function Category(props) {
                 <Link to="../catalog"><HomeIcon/></Link>
                 {
                     category.parentCategories.length !== 0 ?
-                    category.parentCategories.map((cat, index) => {
+                    category.parentCategories.slice(0, category.parentCategories.length - 1).map((cat, index) => {
                         return(
                             <span  key={index}>
-                                 <span className={s.span__sign}>></span><Link to={"../catalog/" + cat.id}>{cat.title}</Link>
+                                 <span className={s.span__sign}>></span><Link to={"/"+ language + "/catalog/" + cat.id}>{cat.title}</Link>
                             </span>
                         )
                     }) : null
