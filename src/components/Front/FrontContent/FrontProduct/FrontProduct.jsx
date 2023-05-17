@@ -137,7 +137,7 @@ const FrontProduct = ()=>{
     const [ready,setReady] = useState(false)
     const [productObject, setProduct] = useState({});
     const params = useParams();
-    const [productId, setId] =  useState(params.id);
+    const [productId, setId] =  useState(ProductObject.getIdFromLink(params.id));
     console.log(params)
     useEffect(()=>{
         setId(params.id)

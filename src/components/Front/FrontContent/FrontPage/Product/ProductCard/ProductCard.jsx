@@ -36,12 +36,12 @@ const ProductCard = ({ id }) => {
         <div className={s.in}>
             <div className={s.in__dop}>
                 <div className={s.section__img}>
-                    <Link className={s.img__link} to={getLanguageForRootLink() + "/product/" + product.id}>
+                    <Link className={s.img__link} to={getLanguageForRootLink() + "/product/" + product.getLink()}>
                         <img className={s.main__image} src={product.mainPhoto} alt={product.title} />
                     </Link>
                 </div>
                 <div className={s.section}>
-                    <Link className={s.title__link} to={getLanguageForRootLink() + "/product/" + product.id}>
+                    <Link className={s.title__link} to={getLanguageForRootLink() + "/product/" + product.getLink()}>
                         <h4 className={s.title}>{product.title}</h4>
                     </Link>
                 </div>

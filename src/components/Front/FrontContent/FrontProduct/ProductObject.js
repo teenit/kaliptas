@@ -5,6 +5,7 @@ export class ProductObject{
         }
 
         this.id = product.productID
+        this.tag = product.link
         this.description = product.product.description[language]
         this.title = product.product.title[language]
         this.article = product.article
@@ -22,6 +23,7 @@ export class ProductObject{
     }
 
     id
+    tag
     price
     discount
     title
@@ -31,4 +33,12 @@ export class ProductObject{
     properties
     mainPhoto
     inStock = false;
+
+    getLink() {
+        return this.id + "-" + this.tag;
+    }
+
+    static getIdFromLink(link) {
+        return link.slice(0, link.indexOf("-"))
+    }
 }
