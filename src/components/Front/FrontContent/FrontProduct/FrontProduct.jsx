@@ -311,6 +311,16 @@ const FrontProduct = ()=>{
                                     </div>    
                                 : 
                                 null}
+                                {state.showQuest ? 
+                                    <div className={s.desc__full}>
+                                        <div className={s.text}>
+                                            <h3>Отзывы о</h3>
+                                            <p>{productObject.title}</p>
+                                        </div>
+                                        <p>development in progress</p>
+                                    </div>    
+                                : 
+                                null}
                                 {state.showPhoto ? 
                                     <div className={s.desc__full}>
                                         <div className={s.text}>
