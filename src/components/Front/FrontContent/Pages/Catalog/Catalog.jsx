@@ -11,31 +11,20 @@ const Catalog = ()=>{
     const [loadedCategories, setLoadedCategories] = useState([]);
     const [language, setLanguage] = useState("ru");
 
-    useEffect(()=>{
-        api((response)=>{
-            setLoadedCategories(response.map((item)=>{
-                return new CategoryObject(item, undefined, undefined, language);
-            }))
-            showCategories()
-            console.log("effect")
-        }, {}, "content/category/get-all-categories.php")
-
-        
-    }, [])
-
-    // const [ready, setReady] = useState(true)
+    let showPerClick = 11;
     const [dopLoadedCategories, setDopLoadedCategories] = useState([])
-    const [amountOfCategories, setAmountOfCategories] = useState(11);
+    const [amountOfCategories, setAmountOfCategories] = useState(0);
     const [lastDisplayedCategoryIndex, setLastDisplayedCategoryIndex] = useState(0);
 
-    const showCategories = () =>{
-        let newAmount = amountOfCategories + 11
+    const showCategories = (allCategories) =>{
+        let newAmount = amountOfCategories + showPerClick;
         setAmountOfCategories(newAmount);
+        console.log(newAmount)
         let ms = [];
 
         let i = lastDisplayedCategoryIndex
-        while(i < newAmount && i < loadedCategories.length){
-            ms.push(loadedCategories[i])
+        while(i < newAmount && i < allCategories.length){
+            ms.push(allCategories[i])
             i++
         }
         setLastDisplayedCategoryIndex(i)
@@ -43,6 +32,18 @@ const Catalog = ()=>{
         setDopLoadedCategories([...dopLoadedCategories, ...ms])
     }
 
+    useEffect(()=>{
+        api((response)=>{
+            let localLoadedCategories = response.map((item)=>{
+                return new CategoryObject(item, undefined, undefined, language);
+            })
+
+            setLoadedCategories(localLoadedCategories);
+
+            showCategories(localLoadedCategories)
+            console.log("Effect")
+        }, {}, "content/category/get-all-categories.php")
+    }, [language])
 
     const relatedProductList = []; // Must be loadRelated()
     const youWatchedList = relatedProductList;
@@ -72,7 +73,7 @@ const Catalog = ()=>{
                 })}                
                 <div className={s.show__more}>
                     <button className={s.btn} onClick={()=>{
-                        showCategories()
+                        showCategories(loadedCategories)
                         }}>Показать еще</button>
                 </div>
             </div>
