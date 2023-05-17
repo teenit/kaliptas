@@ -11,6 +11,7 @@ import {getLanguageForLink} from "../../functions/getLanguage";
 const FrontHeader  =()=>{
     const {t} = useTranslation()
     const[phone,setPhone] =  useState(false)
+    const lang = getLanguageForLink()
 
     return(
         <header className={s.wrap}>

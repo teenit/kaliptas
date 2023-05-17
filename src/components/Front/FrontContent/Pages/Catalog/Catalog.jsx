@@ -10,7 +10,6 @@ import {getRealLanguage} from "../../../../functions/getLanguage";
 const Catalog = ()=>{
     //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
     const [loadedCategories, setLoadedCategories] = useState([]);
-    // const [language, setLanguage] = useState(localStorage.getItem('LNG').toLowerCase());
 
     let showPerClick = 11;
     const [dopLoadedCategories, setDopLoadedCategories] = useState([])
@@ -36,14 +35,14 @@ const Catalog = ()=>{
     useEffect(()=>{
         api((response)=>{
             let localLoadedCategories = response.map((item)=>{
-                return new CategoryObject(item, undefined, undefined, language);
+                return new CategoryObject(item, undefined, undefined,  getRealLanguage());
             })
 
             setLoadedCategories(localLoadedCategories);
 
             showCategories(localLoadedCategories)
         }, {}, "content/category/get-all-categories.php")
-    }, [language])
+    }, [])
 
     const relatedProductList = []; // Must be loadRelated()
     const youWatchedList = relatedProductList;
