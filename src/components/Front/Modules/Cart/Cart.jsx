@@ -19,8 +19,6 @@ const Cart = ({close, }) =>{
         }
     })}
 
-    const language = getLanguageForLink();
-
     const [productIdList, setProductIdList] = useState(loadCart());
     const [ready, setReady] = useState(true);
     const [productsAndCount, setProductsAndCount] = useState([]);

@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 import {buy, decrementById, getCountById, incrementById} from "../../../../../functions/cartControll";
 import cartMinus from "../../../../../../img/front/cartMinus.png";
 import cartPlus from "../../../../../../img/front/cartPlus.png";
+import {getLanguageForRootLink, getRealLanguage} from "../../../../../functions/getLanguage";
 
 const ProductCard = ({ id }) => {
     const [liked, setLiked] = useState({
@@ -22,7 +23,7 @@ const ProductCard = ({ id }) => {
 
     useEffect(()=>{
         api((response)=>{
-            let loadedProduct = new ProductObject(response, "ru");
+            let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct);
             setCountInCart(getCountById(id))
             setReady(true)
@@ -35,12 +36,12 @@ const ProductCard = ({ id }) => {
         <div className={s.in}>
             <div className={s.in__dop}>
                 <div className={s.section__img}>
-                    <Link className={s.img__link} to={"/product/" + product.id}>
+                    <Link className={s.img__link} to={getLanguageForRootLink() + "/product/" + product.id}>
                         <img className={s.main__image} src={product.mainPhoto} alt={product.title} />
                     </Link>
                 </div>
                 <div className={s.section}>
-                    <Link className={s.title__link} to={"/product/" + product.id}>
+                    <Link className={s.title__link} to={getLanguageForRootLink() + "/product/" + product.id}>
                         <h4 className={s.title}>{product.title}</h4>
                     </Link>
                 </div>

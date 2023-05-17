@@ -7,12 +7,11 @@ import fewImg from "./../../../img/front/few.png";
 import likedImg from "./../../../img/front/heart.png";
 import corzImg from "./../../../img/front/corz.png"
 import Cart from "../Modules/Cart/Cart";
-import {getLanguageForLink} from "../../functions/getLanguage";
+import {getLanguageForLink, getLanguageForRootLink} from "../../functions/getLanguage";
 
 const FrontSubheader = ()=>{
     const [showCart, setShowCart] = useState(false)
-    const language = getLanguageForLink()
-    const catalogLink = (language.length>0?"/" + language:"") + "/catalog";
+    const catalogLink = getLanguageForRootLink() + "/catalog";
     return(
         <div className={s.wrap}>
             <div className={s.inner}>

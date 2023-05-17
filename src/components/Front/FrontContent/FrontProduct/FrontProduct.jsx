@@ -11,6 +11,7 @@ import ProductList from "../FrontPage/Product/ProductList";
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import {api} from "../../../functions/api";
 import {ProductObject} from "./ProductObject";
+import {getRealLanguage} from "../../../functions/getLanguage";
 
 const FrontProduct = ()=>{
     const getProductById= {
@@ -142,7 +143,7 @@ const FrontProduct = ()=>{
         setId(params.id)
         api((response)=>{
             console.log("Response:", response)
-            let loadedProduct = new ProductObject(response, "ru");
+            let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
             setImage(loadedProduct.mainPhoto)
             setReady(true);
@@ -188,7 +189,7 @@ const FrontProduct = ()=>{
                                         <img className={s.star} src={star} alt="Оценка" />
                                         <img className={s.star} src={dopStar} alt="Оценка" />
                                     </div>
-                                    <a href="#" className={s.reviews__text}>{legacyProductObject.reviews} отзывов</a>
+                                    <a href="#" className={s.reviews__text}>0 отзывов</a>
                                 </div>
                                 <div className={s.line}></div>
                                 <div className={s.code}>
@@ -241,30 +242,6 @@ const FrontProduct = ()=>{
                                         
                                         <div className={s.heart__wrap}>
                                             <img src={heart} alt="Лайкнуть" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={s.desc__part}>
-                                    <div className={s.city__wrap}>
-                                        <div className={s.city}>
-                                            <h3>Доставка: </h3>
-                                            <select className={s.select} name="" id="">
-                                                {
-                                                    legacyProductObject.cities.map((item,index)=>{
-                                                        return(
-                                                            <option key={index} value={item.name}>{item.name}</option>
-                                                        )
-                                                    })
-                                                }
-                                            </select>
-                                        </div>
-                                        <div className={s.price__del}>
-                                            <p>С отделения почты</p>
-                                            <p>5$</p>
-                                        </div>
-                                        <div className={s.price__del}>
-                                            <p>Доставка за адресом</p>
-                                            <p>10$</p>
                                         </div>
                                     </div>
                                 </div>

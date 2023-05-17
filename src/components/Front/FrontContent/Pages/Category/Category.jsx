@@ -7,13 +7,12 @@ import ProductCard from "../../FrontPage/Product/ProductCard/ProductCard";
 import {Slider} from "@mui/material";
 import {api, apiResponse} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
-import {getLanguageForLink} from "../../../../functions/getLanguage";
+import {getLanguageForLink, getLanguageForRootLink, getRealLanguage} from "../../../../functions/getLanguage";
 
 function Category(props) {
     const params = useParams();
     const [ready,setReady] = useState(false)
     const [id, setId] = useState(params.id);
-    const language = getLanguageForLink()
     const [displayedProducts, setDisplayedProducts] = useState([])
     const [category, setCategory] = useState({});
 
@@ -50,7 +49,7 @@ function Category(props) {
                         categoryResponse[0],
                         promiseResponses[0],
                         promiseResponses[1],
-                        language)
+                        getRealLanguage())
 
                     setCategory(endCategory);
 
@@ -88,7 +87,7 @@ function Category(props) {
                     category.parentCategories.slice(0, category.parentCategories.length - 1).map((cat, index) => {
                         return(
                             <span  key={index}>
-                                 <span className={s.span__sign}>></span><Link to={"/"+ language + "/catalog/" + cat.id}>{cat.title}</Link>
+                                 <span className={s.span__sign}>></span><Link to={getLanguageForRootLink() + "/catalog/" + cat.id}>{cat.title}</Link>
                             </span>
                         )
                     }) : null

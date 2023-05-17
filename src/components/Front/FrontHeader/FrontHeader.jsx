@@ -6,19 +6,18 @@ import Phone from "./Phones/Phone"
 import {Link} from "react-router-dom";
 import Language from "./Language/Language";
 import { useTranslation } from "react-i18next";
-import {getLanguageForLink} from "../../functions/getLanguage";
+import {getLanguageForLink, getLanguageForRootLink} from "../../functions/getLanguage";
 
 const FrontHeader  =()=>{
     const {t} = useTranslation()
     const[phone,setPhone] =  useState(false)
-    const lang = getLanguageForLink()
 
     return(
         <header className={s.wrap}>
             <div className={s.inner}>
                 <div className={s.inner__left}>
                     <div className={s.logo}>
-                        <Link to={lang.length > 0 ? "/" + getLanguageForLink() + "/" : "/"}><img className={s.logo__image} src={logo} alt="Логотип"/></Link>
+                        <Link to={getLanguageForRootLink()}><img className={s.logo__image} src={logo} alt="Логотип"/></Link>
                     </div>
                     <div className={`${s.phone__wrap} ${phone ? s.phone__wrap__change : null}`} tabIndex={0} onClick={()=>{
                         setPhone(!phone)
