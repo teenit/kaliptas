@@ -12,18 +12,41 @@ const Catalog = ()=>{
     const [loadedCategories, setLoadedCategories] = useState([]);
     // const [language, setLanguage] = useState(localStorage.getItem('LNG').toLowerCase());
 
+    let showPerClick = 11;
+    const [dopLoadedCategories, setDopLoadedCategories] = useState([])
+    const [amountOfCategories, setAmountOfCategories] = useState(0);
+    const [lastDisplayedCategoryIndex, setLastDisplayedCategoryIndex] = useState(0);
+
+    const showCategories = (allCategories) =>{
+        let newAmount = amountOfCategories + showPerClick;
+        setAmountOfCategories(newAmount);
+        console.log(newAmount)
+        let ms = [];
+
+        let i = lastDisplayedCategoryIndex
+        while(i < newAmount && i < allCategories.length){
+            ms.push(allCategories[i])
+            i++
+        }
+        setLastDisplayedCategoryIndex(i)
+
+        setDopLoadedCategories([...dopLoadedCategories, ...ms])
+    }
+
     useEffect(()=>{
         api((response)=>{
-            setLoadedCategories(response.map((item)=>{
-                return new CategoryObject(item, undefined, undefined, getRealLanguage());
-            }))
+            let localLoadedCategories = response.map((item)=>{
+                return new CategoryObject(item, undefined, undefined, language);
+            })
+
+            setLoadedCategories(localLoadedCategories);
+
+            showCategories(localLoadedCategories)
         }, {}, "content/category/get-all-categories.php")
-    }, [])
+    }, [language])
 
-    const relatedProductList = [37,38]; // Must be loadRelated()
-
+    const relatedProductList = []; // Must be loadRelated()
     const youWatchedList = relatedProductList;
-
     const slideData = {
         title: "Время осеннего",
         titleDop: "шопинга!",
@@ -34,12 +57,12 @@ const Catalog = ()=>{
     return(
         <div className={s.wrap}>
             <div className={s.category__container}>
-                {loadedCategories.map((item, index)=> {
+                {dopLoadedCategories.map((item, index)=> {
                     return (
                         <Link className={s.category__link}
-                              to={{
-                                  pathname: item.id
-                              }
+                            to={{
+                                pathname: item.id
+                            }
                         } key={index}>
                             <div className={s.category} key={index}>
                                 <img src={item.imageUrl} alt={item.title}/>
@@ -47,7 +70,12 @@ const Catalog = ()=>{
                             </div>
                         </Link>
                     )
-                })}
+                })}                
+                <div className={s.show__more}>
+                    <button className={s.btn} onClick={()=>{
+                        showCategories(loadedCategories)
+                        }}>Показать еще</button>
+                </div>
             </div>
             <h3 className={s.title}>{}Похожие товары</h3>
             <div className={s.product__in}>
