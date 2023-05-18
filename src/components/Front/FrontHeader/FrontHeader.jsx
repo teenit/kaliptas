@@ -29,7 +29,6 @@ const FrontHeader  =()=>{
                     
                 </div>
                 <div className={s.inner__right}>
-                    <p className={s.delivery__link}><a href="#">{t('main')}</a></p>
                     <Language />
                 </div>
             </div>      

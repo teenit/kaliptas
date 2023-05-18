@@ -5,9 +5,7 @@ import FrontSlider from "../../Modules/FrontSlider/FrontSlider";
 import { useState } from "react";
 import arrowImg from "./../../../../img/collapse-arrow-50.png"
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
-import {apiResponse} from "../../../functions/api";
-import {CategoryObject} from "../Pages/Category/CategoryObject";
-import {getRealLanguage} from "../../../functions/getLanguage";
+import { useTranslation } from "react-i18next";
 
 const FrontPage = () => {
     const relatedProductList = [50,50,50,50,50,50,50,50]; // Must be loadRelated()
@@ -16,6 +14,7 @@ const FrontPage = () => {
     const relatedSecondViewedProducts = relatedProductList
     
     const [categories, setCategories] = useState([])
+    const {t} = useTranslation()
 
     useEffect(()=>{
         let loadedCategoryPromise = apiResponse({}, "content/category/get-all-categories.php");
@@ -93,7 +92,7 @@ const FrontPage = () => {
 
             <div className={s.in}>
 
-                <h3 className={s.title}>Похожие товары</h3>
+                <h3 className={s.title}>{t("frontPage-similarProducts")}</h3>
                 <div className={s.product__in}>
                     <ProductList cards={relatedProductList} />
                 </div>
@@ -110,7 +109,7 @@ const FrontPage = () => {
                     </div>
                 </div>
 
-                <h3 className={s.title}>Вы смотрели</h3>
+                <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
                 <div className={s.product__in}>
                     <ProductList cards={relatedViewedProducts}/>
                 </div>
@@ -119,12 +118,12 @@ const FrontPage = () => {
                     <FrontSlide item={SecondSliderContent}/>
                 </div>
 
-                <h3 className={s.title}>Похожие товары</h3>
+                <h3 className={s.title}>{t("frontPage-similarProducts")}</h3>
                 <div className={s.product__in}>
                     <ProductList cards={relatedSecondProductList}/>
                 </div>
 
-                <h3 className={s.title}>Вы смотрели</h3>
+                <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
                 <div className={s.product__in}>
                     <ProductList cards={relatedSecondViewedProducts}/>
                 </div>
@@ -139,16 +138,7 @@ const FrontPage = () => {
                         </div>
                         <div className={s.text__wrap__desc}>
                             <p className={`${s.text__desc} ${showDesc ? s.text__full__desc : s.text__aver__desc}`}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium quibusdam, aliquam accusamus aut incidunt laudantium fugiat impedit nam dolore ratione nulla recusandae mollitia dolor quos nisi doloremque beatae! Culpa!
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis magni quas vitae exercitationem maxime. A, eum placeat quaerat ex fugiat veritatis, voluptatum quia, quos magni quibusdam totam ut commodi recusandae.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laudantium. Temporibus perspiciatis harum minus vero dicta, facilis, ullam fugit voluptatum hic illo veritatis obcaecati optio blanditiis magnam cumque, sed delectus?
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aut quidem saepe explicabo facilis! Veniam quis ex quod, molestiae similique iste id assumenda. Assumenda vel quisquam quas dolores modi ex.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem sapiente quasi nisi! Nemo, id facilis odit neque accusantium ab doloribus voluptas, dolores laborum a enim dolorum assumenda in. Nam, ipsa!
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati odit eligendi exercitationem magni incidunt, in placeat similique a quam facilis expedita eaque atque voluptates quibusdam iusto, quo nostrum doloribus quia!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sequi placeat eveniet reprehenderit in eos, architecto ex nisi quis molestiae nesciunt quisquam quaerat vel eius nemo deleniti quas sunt quibusdam?
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam sit libero excepturi expedita eaque, molestiae fugiat quod modi in nesciunt assumenda maiores dolore consectetur dolor laudantium ipsum officia! Voluptatum, aspernatur.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam dolore dolores tempora ipsa quas delectus ex, porro non, obcaecati et, animi qui! Fugit sequi at temporibus cupiditate tenetur iste eveniet?
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia accusamus quas in! Quaerat illo rem accusantium. Voluptate, necessitatibus minus! Porro similique accusamus atque voluptatibus facilis eveniet, quia debitis velit consequuntur?
+                                {t('frontPage-description')}
                             </p>
                         </div>
                     </div>

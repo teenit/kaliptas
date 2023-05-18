@@ -5,7 +5,15 @@
     "moderation":"Модерация",
     "communication":"Коммуникация",
     "advertising":"Реклама",
+
+    "products":"Товары",
+    "category":"Категория",
+    "parentCategory":"Родительская категория",
+    "store":"Магазин",
     "published":"Опубликовано",
+    "photo":"Фото",
+    "comment":"Комментарий",
+    "date":"Дата",
 
     "Super Admin":"Супер Админ",
     "Customer":"Покупатель",
@@ -40,5 +48,37 @@
     "name":"Название",
     "contact":"Контакты",
     "rating":"Рейтинг",
-    "405":"Доступ ограничено, ожидайте активации"
+    "405":"Доступ ограничено, ожидайте активации",
+
+    "frontSubheader-search":"Поиск",
+    "frontSubheader-catalog":"Каталог",
+
+    "frontPage-youVisited":"Вы смотрели",
+    "frontPage-similarProducts":"Похожие товары",
+    "frontPage-description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium quibusdam, aliquam accusamus aut incidunt laudantium fugiat impedit nam dolore ratione nulla recusandae mollitia dolor quos nisi doloremque beatae! Culpa! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis magni quas vitae exercitationem maxime. A, eum placeat quaerat ex fugiat veritatis, voluptatum quia, quos magni quibusdam totam ut commodi recusandae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laudantium. Temporibus perspiciatis harum minus vero dicta, facilis, ullam fugit voluptatum hic illo veritatis obcaecati optio blanditiis magnam cumque, sed delectus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aut quidem saepe explicabo facilis! Veniam quis ex quod, molestiae similique iste id assumenda. Assumenda vel quisquam quas dolores modi ex. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem sapiente quasi nisi! Nemo, id facilis odit neque accusantium ab doloribus voluptas, dolores laborum a enim dolorum assumenda in. Nam, ipsa! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati odit eligendi exercitationem magni incidunt, in placeat similique a quam facilis expedita eaque atque voluptates quibusdam iusto, quo nostrum doloribus quia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sequi placeat eveniet reprehenderit in eos, architecto ex nisi quis molestiae nesciunt quisquam quaerat vel eius nemo deleniti quas sunt quibusdam? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam sit libero excepturi expedita eaque, molestiae fugiat quod modi in nesciunt assumenda maiores dolore consectetur dolor laudantium ipsum officia! Voluptatum, aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam dolore dolores tempora ipsa quas delectus ex, porro non, obcaecati et, animi qui! Fugit sequi at temporibus cupiditate tenetur iste eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia accusamus quas in! Quaerat illo rem accusantium. Voluptate, necessitatibus minus! Porro similique accusamus atque voluptatibus facilis eveniet, quia debitis velit consequuntur?",
+
+    "category-priceRange":"Диапазон цен",
+
+    "catalog-button":"Показать еще",
+
+    "frontProduct-isAvaible":"В наличии",
+    "frontProduct-isNotAvaible":"Нет в наличии",
+    "frontProduct-buyButton":"Купить",
+    "frontProduct-guarantee":"Гарантия:",
+    "frontProduct-guaranteeInfo":"Возвращение товара в течении 14 дней после покупки",
+    "frontProduct-titleFeedbacks":" отзывов",
+    "frontProduct-vendorCode":"Код: ",
+    "frontProduct-menuDescription":"Описание",
+    "frontProduct-menuChar":"Характеристики",
+    "frontProduct-menuFeedbacks":"Отзывы",
+    "frontProduct-menuQuestions":"Вопросы",
+    "frontProduct-menuImages":"Фото",
+    "frontProduct-description":"Описание ",
+    "frontProduct-char":"Характеристики ",
+    "frontProduct-feedbacks":"Отзывы о ",
+    "frontProduct-questions":"Вопросы о ",
+    "frontProduct-images":"Фото "
+    
+
+
 }

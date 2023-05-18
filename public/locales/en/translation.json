@@ -5,7 +5,19 @@
     "moderation":"Moderation",
     "communication":"Communication",
     "advertising":"Commercial",
+
+    "products":"Products",
+    "category":"Category",
+    "parentCategory":"Parent Category",
+    "store":"Store",
     "published":"Published",
+    "photo":"Photo",
+    "comment":"Comment",
+    "date":"Date",
+
+
+
+
     "Super Admin":"Super Admin",
     "Customer":"Customer",
     "Seller":"Seller",
@@ -40,5 +52,38 @@
     "contact":"Contacts",
     "rating":"Rating",
     "405":"Access is limited, please wait for activation",
-    "Photo":"Photo"
+    "Photo":"Photo",
+
+    "frontSubheader-search":"Search",
+    "frontSubheader-catalog":"Catalog",
+
+
+
+    "frontPage-youVisited":"You visited",
+    "frontPage-similarProducts":"Similar products",
+    "frontPage-description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium quibusdam, aliquam accusamus aut incidunt laudantium fugiat impedit nam dolore ratione nulla recusandae mollitia dolor quos nisi doloremque beatae! Culpa! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis magni quas vitae exercitationem maxime. A, eum placeat quaerat ex fugiat veritatis, voluptatum quia, quos magni quibusdam totam ut commodi recusandae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laudantium. Temporibus perspiciatis harum minus vero dicta, facilis, ullam fugit voluptatum hic illo veritatis obcaecati optio blanditiis magnam cumque, sed delectus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aut quidem saepe explicabo facilis! Veniam quis ex quod, molestiae similique iste id assumenda. Assumenda vel quisquam quas dolores modi ex. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem sapiente quasi nisi! Nemo, id facilis odit neque accusantium ab doloribus voluptas, dolores laborum a enim dolorum assumenda in. Nam, ipsa! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati odit eligendi exercitationem magni incidunt, in placeat similique a quam facilis expedita eaque atque voluptates quibusdam iusto, quo nostrum doloribus quia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sequi placeat eveniet reprehenderit in eos, architecto ex nisi quis molestiae nesciunt quisquam quaerat vel eius nemo deleniti quas sunt quibusdam? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam sit libero excepturi expedita eaque, molestiae fugiat quod modi in nesciunt assumenda maiores dolore consectetur dolor laudantium ipsum officia! Voluptatum, aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam dolore dolores tempora ipsa quas delectus ex, porro non, obcaecati et, animi qui! Fugit sequi at temporibus cupiditate tenetur iste eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia accusamus quas in! Quaerat illo rem accusantium. Voluptate, necessitatibus minus! Porro similique accusamus atque voluptatibus facilis eveniet, quia debitis velit consequuntur?",
+    
+    "category-priceRange":"Price range",
+
+    "catalog-button":"Show more",
+
+    "frontProduct-isAvaible":"Is avaible",
+    "frontProduct-isNotAvaible":"Is not avaible",
+    "frontProduct-buyButton":"Buy",
+    "frontProduct-guarantee":"Guarantee:",
+    "frontProduct-guaranteeInfo":"Return of goods within 14 days after purchase",
+    "frontProduct-titleFedbacks":" feedbacks",
+    "frontProduct-vendorCode":"Vendor code: ",
+    "frontProduct-menuDescription":"Description",
+    "frontProduct-menuChar":"Characteristics",
+    "frontProduct-menuFeedbacks":"Feedbacks",
+    "frontProduct-menuQuestions":"Questions",
+    "frontProduct-menuImages":"Images",
+    "frontProduct-description":"Description of ",
+    "frontProduct-char":"Characteristics of ",
+    "frontProduct-feedbacks":"Feedbacks about ",
+    "frontProduct-questions":"Questions about ",
+    "frontProduct-images":"Images of "
+
+
 }

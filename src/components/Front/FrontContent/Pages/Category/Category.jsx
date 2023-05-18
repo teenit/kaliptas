@@ -8,8 +8,10 @@ import {Slider} from "@mui/material";
 import {api, apiResponse} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
 import {getLanguageForLink, getLanguageForRootLink, getRealLanguage} from "../../../../functions/getLanguage";
+import {useTranslation} from 'react-i18next'
 
 function Category(props) {
+    const {t}  = useTranslation()
     const params = useParams();
     const [ready,setReady] = useState(false)
     const [id, setId] = useState(params.id);
@@ -97,7 +99,7 @@ function Category(props) {
             <div className={s.main__container}>
                 <div className={s.filter__container}>
                     <div>
-                        <b>Диапазон цен</b>
+                        <b>{t('category-priceRange')}</b>
                         <div className={s.input__line}>
                             <input className={s.filter__input} type="text" value={value[0]} onChange={(event)=>{
                                 let newValue = +event.target.value;
@@ -139,11 +141,11 @@ function Category(props) {
                     }
                 </div>
             </div>
-            <h3 className={s.title}>Похожие товары</h3>
+            <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
                 <ProductList cards={relatedProductList} />
             </div>
-            <h3 className={s.title}>Вы смотрели</h3>
+            <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
                 <ProductList cards={youWatchedList} />
             </div>
