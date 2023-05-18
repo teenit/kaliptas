@@ -28,7 +28,7 @@ export class CategoryObject {
         this.id = category.id;
         this.imageUrl = category.category.image;
         this.title = category.category.title[language];
-        this.parenId = category.parentId;
+        this.parenId = category["parent_id"];
     }
 
     static getIdFromResponse(category) {

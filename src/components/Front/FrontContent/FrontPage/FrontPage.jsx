@@ -1,49 +1,38 @@
-import React from "react";
+import React, {useEffect} from "react";
 import s from "./FrontPage.module.css";
 import ProductList from "./Product/ProductList";
 import FrontSlider from "../../Modules/FrontSlider/FrontSlider";
 import { useState } from "react";
 import arrowImg from "./../../../../img/collapse-arrow-50.png"
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
+import {apiResponse} from "../../../functions/api";
+import {CategoryObject} from "../Pages/Category/CategoryObject";
+import {getRealLanguage} from "../../../functions/getLanguage";
 
 const FrontPage = () => {
-    const relatedProductList = [22, 23]; // Must be loadRelated()
-
-    const relatedViewedProducts = [
-        22, 23]
-
-    const relatedSecondProductList = [22,23];
-
+    const relatedProductList = [50,50,50,50,50,50,50,50]; // Must be loadRelated()
+    const relatedViewedProducts = relatedProductList
+    const relatedSecondProductList = relatedProductList;
+    const relatedSecondViewedProducts = relatedProductList
     
+    const [categories, setCategories] = useState([])
 
-    const relatedSecondViewedProducts = [22,23]
-    
-    const categories = [
-        {
-            name: "Cпорт",
-            id: 1
-        },
-        {
-            name: "Книги",
-            id: 2
-        },
-        {
-            name: "Сантехника",
-            id: 3
-        },
-        {
-            name: "Зоотовары",
-            id: 4
-        },
-        {
-            name: "Для дома",
-            id: 5
-        },
-        {
-            name: "Для офиса",
-            id: 6
-        },
-    ]
+    useEffect(()=>{
+        let loadedCategoryPromise = apiResponse({}, "content/category/get-all-categories.php");
+
+        Promise.all([loadedCategoryPromise]).then((responses)=>{
+            let localLoadedCategories = responses[0].map((item)=>{
+                return new CategoryObject(item, undefined, undefined,  getRealLanguage());
+            }).filter(cat=>cat.parenId==="0")
+            setCategories(localLoadedCategories.map((cat)=>{
+                return {
+                    name: cat.title,
+                    id: cat.id
+                }
+            }))
+        })
+
+    }, [])
 
     const firstSliderContent = [
         {
@@ -91,12 +80,7 @@ const FrontPage = () => {
         backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
     }
 
-    const ThirdSliderContent = {
-        title: "Время осеннего",
-        titleDop: "шопинга!",
-        skidca: "50 %",
-        backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
-    }
+    const ThirdSliderContent = SecondSliderContent;
 
     const [showDesc, setShowDesc] = useState(false)
 
