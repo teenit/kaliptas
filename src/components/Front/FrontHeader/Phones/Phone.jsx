@@ -1,7 +1,7 @@
 import React from "react";
 import s from './../Header.module.css'
 
-const City = ({close}) =>{
+const Phones = ({close}) =>{
     return(
         <div className={s.phone__full} onClick={(e)=>e.target.className === s.phone__full ? close() : null}>
             <a href="tel:+995 066 666 66 66">+995 066 666 66 66</a>
@@ -10,4 +10,4 @@ const City = ({close}) =>{
         </div>
     )
 }
-export default City
+export default Phones

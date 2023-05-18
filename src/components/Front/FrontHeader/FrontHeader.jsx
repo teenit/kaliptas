@@ -6,6 +6,9 @@ import Phone from "./Phones/Phone"
 import {Link} from "react-router-dom";
 import Language from "./Language/Language";
 import { useTranslation } from "react-i18next";
+import {getLanguageForLink} from "../../functions/getLanguage";
+import Burger from "./Burger/Burger";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import {getLanguageForLink, getLanguageForRootLink} from "../../functions/getLanguage";
 
 const FrontHeader  =()=>{
@@ -31,7 +34,11 @@ const FrontHeader  =()=>{
                 <div className={s.inner__right}>
                     <Language />
                 </div>
-            </div>      
+                <div className={s.burger__menu}>
+                    <Burger active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}} />
+                </div>
+            </div>  
+            {activeMenu ? <BurgerMenu active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}}/> : null}    
         </header>
     )
 }

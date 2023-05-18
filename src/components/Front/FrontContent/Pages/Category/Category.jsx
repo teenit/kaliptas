@@ -93,7 +93,7 @@ function Category(props) {
                         )
                     }) : null
                 }
-                <span className={s.span__sign}>></span>
+                <span className={s.span__sign}></span>
                 <span>{category.title}</span>
             </div>
             <div className={s.main__container}>
