@@ -6,6 +6,9 @@ import { useState } from "react";
 import arrowImg from "./../../../../img/collapse-arrow-50.png"
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import { useTranslation } from "react-i18next";
+import {apiResponse} from "../../../functions/api";
+import {getRealLanguage} from "../../../functions/getLanguage";
+import {CategoryObject} from "../Pages/Category/CategoryObject";
 
 const FrontPage = () => {
     const relatedProductList = [50,50,50,50,50,50,50,50]; // Must be loadRelated()
