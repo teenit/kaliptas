@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import s from './Header.module.css';
 import logo from './../../../img/logo.png';
 import arrowImg from './../../../img/collapse-arrow-50.png'
-import City from "./Cities/City";
 import Phone from "./Phones/Phone"
 import {Link} from "react-router-dom";
 import Language from "./Language/Language";
 import { useTranslation } from "react-i18next";
 import {getLanguageForLink} from "../../functions/getLanguage";
+import Burger from "./Burger/Burger";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
 
 const FrontHeader  =()=>{
     const {t} = useTranslation()
     const[phone,setPhone] =  useState(false)
     const[city,setCity] = useState(false)
     const lang = getLanguageForLink();
+    const [activeMenu,setActiveMenu] = useState(false)
 
     return(
         <header className={s.wrap}>
@@ -21,14 +23,6 @@ const FrontHeader  =()=>{
                 <div className={s.inner__left}>
                     <div className={s.logo}>
                         <Link to={lang.length > 0 ? "/" + getLanguageForLink() + "/" : "/"}><img className={s.logo__image} src={logo} alt="Логотип"/></Link>
-                    </div>
-
-                    <div className={`${s.city__wrap} ${city ? s.city__wrap__change : null}`} tabIndex={0} onClick={()=>{
-                        setCity(!city)
-                    }}>
-                        <p className={s.city__title}>Тбилиси</p>
-                        <img className={`${s.arrow} ${city ? s.arrow__change : s.arrow__ok}`} src={arrowImg} alt="Стрелка" />
-                        {city ? <City close = {()=>setCity(!city)}/> : null}
                     </div>
 
                     <div className={`${s.phone__wrap} ${phone ? s.phone__wrap__change : null}`} tabIndex={0} onClick={()=>{
@@ -41,10 +35,14 @@ const FrontHeader  =()=>{
                     
                 </div>
                 <div className={s.inner__right}>
-                    <p className={s.delivery__link}><a href="#">{t('main')}</a></p>
+                    <p className={s.delivery__link}><a href="#">{t('deliveryAndPayment')}</a></p>
                     <Language />
                 </div>
-            </div>      
+                <div className={s.burger__menu}>
+                    <Burger active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}} />
+                </div>
+            </div>  
+            {activeMenu ? <BurgerMenu active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}}/> : null}    
         </header>
     )
 }

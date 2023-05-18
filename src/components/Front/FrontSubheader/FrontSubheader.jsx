@@ -34,7 +34,6 @@ const FrontSubheader = ()=>{
                     <div className={s.icon}>
                         <img className={s.icon__image} src={corzImg} alt="Корзина" onClick={()=>{
                             setShowCart(true)
-                            console.log(showCart)
                         }}/>
                     </div>
                 </div>

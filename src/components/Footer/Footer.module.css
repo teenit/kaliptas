@@ -49,3 +49,34 @@
     color: #ffffff;
     margin: 60px 0px 20px 0px;
 }
+
+@media (max-width: 600px){
+    .in{
+        width: 80%;
+    }
+    .wrap{
+        margin-top: 35px;
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    .logo > img{
+        width: 40%;
+    }
+    .card{
+        gap: 20px;
+        text-align: center;
+    }
+    .card__item{
+        gap: 15px;
+    }
+    .logo{
+        margin: 35px 0 40px 0;
+    }
+    .in > p{
+        margin: 30px 0 0 0;
+    }
+}

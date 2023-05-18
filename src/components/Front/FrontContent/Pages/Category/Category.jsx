@@ -88,12 +88,12 @@ function Category(props) {
                     category.parentCategories.slice(0, category.parentCategories.length - 1).map((cat, index) => {
                         return(
                             <span  key={index}>
-                                 <span className={s.span__sign}>></span><Link to={"/"+ language + "/catalog/" + cat.id}>{cat.title}</Link>
+                                 <span className={s.span__sign}></span><Link to={"/"+ language + "/catalog/" + cat.id}>{cat.title}</Link>
                             </span>
                         )
                     }) : null
                 }
-                <span className={s.span__sign}>></span>
+                <span className={s.span__sign}></span>
                 <span>{category.title}</span>
             </div>
             <div className={s.main__container}>

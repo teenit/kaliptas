@@ -1,6 +1,7 @@
 .wrap{
     width: 100%;
-    min-height: 300vh;
+    min-height: 100vh;
+    height: auto;
 }
 .in{
     width: 75%;
@@ -83,4 +84,29 @@
 }
 .text__full__desc{
     height: max-content;
+}
+
+@media (max-width: 600px){
+    .slider__wrap{
+        width: 80%;
+        margin-top: 35px;
+    }
+    .title{
+        margin-top: 35px;
+    }
+    .categories{
+        display: none;
+    }
+    .adword__slider{
+        margin-top: 35px;
+    }
+    .kaliptas__desc{
+        margin-top: 35px;
+    }
+    .in{
+        width: 80%;
+    }
+    .in__desc{
+        padding: 10px 0;
+    }
 }

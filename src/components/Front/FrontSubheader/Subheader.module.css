@@ -58,3 +58,20 @@
 .input:focus {
     outline: none;
 }
+
+@media (max-width: 600px){
+    .button{
+        display: none;
+    }
+    .options{
+        display: none;
+    }
+    .input__wrap{
+        margin: auto;
+        width: 95%;
+        max-width: 100%;
+    }
+    .inner{
+        width: 85%;
+    }
+}

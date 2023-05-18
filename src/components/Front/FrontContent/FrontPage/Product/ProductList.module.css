@@ -4,3 +4,9 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
 }
+
+@media (max-width: 600px){
+    .wrap__list{
+        grid-template-columns: 1fr;
+    }
+}

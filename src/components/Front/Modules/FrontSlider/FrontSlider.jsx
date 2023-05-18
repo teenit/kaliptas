@@ -15,6 +15,7 @@ const FrontSlider = ({ data }) => {
         go: true,
         data: data
     })
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (state.go) {
@@ -35,6 +36,7 @@ const FrontSlider = ({ data }) => {
         }, 3000);
         return () => clearInterval(interval);
     });
+    
     return (
         <div className={s.wrap}>
             <div className={s.inner}>
