@@ -53,7 +53,6 @@ function Category(props) {
 
                     setCategory(endCategory);
 
-                    console.log("Category", endCategory);
                     setDisplayedProducts(endCategory.products);
                     setReady(true);
                 })
@@ -63,7 +62,7 @@ function Category(props) {
             },"content/category/get-id-category.php");
     },[id, params.id]);
 
-    const relatedProductList = [37,38]; // Must be loadRelated()
+    const relatedProductList = [50]; // Must be loadRelated()
     const youWatchedList = relatedProductList;
 
     //Price filter
