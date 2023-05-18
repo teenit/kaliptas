@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import s from './Header.module.css';
 import logo from './../../../img/logo.png';
 import arrowImg from './../../../img/collapse-arrow-50.png'
-import Phone from "./Phones/Phone"
+import Phone from "./Phones/Phone";
 import {Link} from "react-router-dom";
 import Language from "./Language/Language";
 import { useTranslation } from "react-i18next";
-import {getLanguageForLink} from "../../functions/getLanguage";
 import Burger from "./Burger/Burger";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
-import {getLanguageForLink, getLanguageForRootLink} from "../../functions/getLanguage";
+import {getLanguageForRootLink} from "../../functions/getLanguage";
 
 const FrontHeader  =()=>{
     const {t} = useTranslation()
     const[phone,setPhone] =  useState(false)
+    const [activeMenu,setActiveMenu] = useState(false)
 
     return(
         <header className={s.wrap}>
@@ -38,7 +38,7 @@ const FrontHeader  =()=>{
                     <Burger active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}} />
                 </div>
             </div>  
-            {activeMenu ? <BurgerMenu active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}}/> : null}    
+            {activeMenu ? <BurgerMenu active = {activeMenu} setActive = {()=>{setActiveMenu(!activeMenu)}}/> : null}
         </header>
     )
 }

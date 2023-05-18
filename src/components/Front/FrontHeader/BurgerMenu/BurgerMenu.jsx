@@ -10,16 +10,15 @@ import catalogImg from "../../../../img/front/catalog.png"
 import closeImage from "../../../../img/front/chrest.png"
 import { Link } from "react-router-dom";
 import Language from "../Language/Language";
-import { getLanguageForLink } from "../../../functions/getLanguage";
+import {getLanguageForLink, getLanguageForRootLink} from "../../../functions/getLanguage";
+import Cart from "../../Modules/Cart/Cart";
 //import Cart from "../../Modules/Cart/Cart";
 
 const BurgerMenu = ({t, active, setActive}) =>{
-    //const [showCart, setShowCart] = useState(false)
+    const [showCart, setShowCart] = useState(false)
     const [showPhone, setShowPhone] = useState(false)
     const [changeArrow, setChangeArrow] = useState(false)
-
-    const language = getLanguageForLink()
-    const catalogLink = (language.length>0?"/" + language:"") + "/catalog";
+    const catalogLink = getLanguageForRootLink() + "/catalog";
     return(
         <div className={s.wrap}>
             <div className={s.in}>
@@ -35,14 +34,9 @@ const BurgerMenu = ({t, active, setActive}) =>{
                 <div className={s.line}></div>
                 <div className={s.option}>
                     <div className={s.option__in}>
-                        <img src={profileImage} alt="Мой кабинет" />
-                        <Link className={s.link} to={"/"} onClick={setActive}><p>Войти</p></Link>
-                    </div>
-                    <div className={s.option__in}>
                         <img src={corzImage} alt="Корзина" />
                         <div className={s.link} onClick={()=>{
-                            //setShowCart(true)    
-                            setActive()
+                            setShowCart(true)
                         }}><p>Корзина</p></div>
                     </div>
                     <div className={s.option__in}>
@@ -64,16 +58,15 @@ const BurgerMenu = ({t, active, setActive}) =>{
                 </div>
                 <div className={s.line}></div>
                 <div className={s.option}>
-                    <Link className={s.link} to={"/"} onClick={setActive}><p>Оплата и доставка</p></Link>
                     <div className={s.language}>
                         <Language />
                     </div>
                 </div>
             </div>
             {
-                //showCart ? 
-                //    <Cart close={()=>{{setShowCart(false)}}}/>
-                //: null
+                showCart ?
+                   <Cart close={()=>{{setShowCart(false)}}}/>
+                : null
             }
         </div>
     )
