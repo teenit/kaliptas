@@ -6,8 +6,10 @@ import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
 import {api, apiResponse} from "../../../functions/api"
 import {getCart} from "../../../functions/cartControll";
 import {getLanguageForLink, getRealLanguage} from "../../../functions/getLanguage";
+import { useTranslation } from "react-i18next";
 
 const Cart = ({close, }) =>{
+    const {t}  = useTranslation()
     const loadCart = ()=>{
         console.log("Entries",Object.entries(getCart()))
 
@@ -59,8 +61,8 @@ const Cart = ({close, }) =>{
         <div className={s.wrap}>
             <div className={s.in}>
                 <div className={s.title}>
-                    <h3>Корзина</h3>
-                    <img src={chrest} alt="Крестик" onClick={()=>{
+                    <h3>{t('frontCart-title')}</h3>
+                    <img src={chrest} alt={t('frontCart-crossAlt')} onClick={()=>{
                         close()
                     }} />
                 </div>
@@ -73,10 +75,10 @@ const Cart = ({close, }) =>{
                 </div>
                 <div className={s.res}>
                     <div className={s.sum}>
-                        <p>Общая сумма</p>
+                        <p>{t('frontCart-totalPrice')}</p>
                         <p></p>
                     </div>
-                <button className={s.btn}>Оформить заказ</button>
+                <button className={s.btn}>{t('frontCart-button')}</button>
             </div>
             </div>
         </div>

@@ -70,7 +70,7 @@
     "frontProduct-buyButton":"იყიდე",
     "frontProduct-guarantee":"გარანტია:",
     "frontProduct-guaranteeInfo":"საქონლის დაბრუნება შეძენიდან 14 დღის განმავლობაში",
-    "frontProduct-titleFeedbacks":" მიმოხილვები",
+    "frontProduct-titleFeedbacks":"მიმოხილვები",
     "frontProduct-vendorCode":"კოდი: ",
     "frontProduct-menuDescription":"აღწერა",
     "frontProduct-menuChar":"მახასიათებლები",
@@ -81,7 +81,26 @@
     "frontProduct-char":"მახასიათებლები ",
     "frontProduct-feedbacks":"მიმოხილვები შესახებ ",
     "frontProduct-questions":"კითხვების შესახებ ",
-    "frontProduct-images":"ფოტო "
+    "frontProduct-images":"ფოტო ",
+
+    "frontCart-title":"კალათა",
+    "frontCart-crossAlt":"ჯვარი",
+    "frontCart-totalPrice":"მთლიანი რაოდენობა",
+    "frontCart-button":"გადახდა",
+
+    "cartRow-minusAlt":"მინუს",
+    "cartRow-plusAlt":"პლუს",
+    "cartRow-deleteAlt":"წაშლა",
+
+    "registerStore-name":"მაღაზიის დასახელება",
+    "registerStore-desc":"მაღაზიის აღწერა",
+    "registerStore-productType":"პროდუქტის ტიპი",
+    "registerStore-conditions":"შეიყვანეთ მაღაზიის უნიკალური სახელი, შეგიძლიათ გამოიყენოთ მხოლოდ ლათინური სიმბოლოები და ტირეები",
+    "registerStore-examplePlaceholder":"მაგალითი: ",
+    "registerStore-button":"რეგისტრაცია",
+    "registerStore-ruPlaceholder":"რუსულად",
+    "registerStore-enPlaceholder":"ინგლისურად",
+    "registerStore-gePlaceholder":"ქართულად*"
 
 
 

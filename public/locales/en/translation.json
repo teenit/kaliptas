@@ -72,7 +72,7 @@
     "frontProduct-buyButton":"Buy",
     "frontProduct-guarantee":"Guarantee:",
     "frontProduct-guaranteeInfo":"Return of goods within 14 days after purchase",
-    "frontProduct-titleFedbacks":" feedbacks",
+    "frontProduct-titleFeedbacks":"feedbacks",
     "frontProduct-vendorCode":"Vendor code: ",
     "frontProduct-menuDescription":"Description",
     "frontProduct-menuChar":"Characteristics",
@@ -83,7 +83,26 @@
     "frontProduct-char":"Characteristics of ",
     "frontProduct-feedbacks":"Feedbacks about ",
     "frontProduct-questions":"Questions about ",
-    "frontProduct-images":"Images of "
+    "frontProduct-images":"Images of ",
+
+    "frontCart-title":"Cart",
+    "frontCart-crossAlt":"Cross",
+    "frontCart-totalPrice":"Total price",
+    "frontCart-button":"Checkout",
+
+    "cartRow-minusAlt":"Minus",
+    "cartRow-plusAlt":"Plus",
+    "cartRow-deleteAlt":"Delete",
+
+    "registerStore-name":"Shop name",
+    "registerStore-desc":"Shop description",
+    "registerStore-productType":"Product type",
+    "registerStore-conditions":"Enter a unique store name, only Latin characters and dashes can be used",
+    "registerStore-examplePlaceholder":"example: ",
+    "registerStore-button":"Registration",
+    "registerStore-ruPlaceholder":"In Russian ",
+    "registerStore-enPlaceholder":"In English",
+    "registerStore-gePlaceholder":"In Georgian*"
 
 
 }

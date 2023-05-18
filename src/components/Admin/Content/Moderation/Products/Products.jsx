@@ -24,7 +24,7 @@ const Products = () =>{
                 <thead className={s.products__thead}>
                     <tr className={s.products__tr}>
                         <td className={s.products__td}></td>
-                        <td className={`${s.products__td} ${s.products__td__bold}`}>{t('Photo')}</td>
+                        <td className={`${s.products__td} ${s.products__td__bold}`}>{t('photo')}</td>
                         <td className={`${s.products__td} ${s.products__td__bold}`}>
                             <span className={s.td__span} onClick={()=>{
                                 setChangePos({...changePos, 

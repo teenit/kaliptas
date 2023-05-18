@@ -36,7 +36,7 @@ const Comment = () =>{
                                     tovArr: !changePos.tovArr,
                                     dateArr: false
                                 })
-                            }}>{t('product')}</span>
+                            }}>{t('products')}</span>
                            <img className={`${s.static__arrow} ${changePos.tovArr ? s.td__arrow__change : null}`} src={ArrowImg} alt="Стрелка" />
                         </td>
                         <td className={`${s.comment__td} ${s.comment__td__bold}`}>

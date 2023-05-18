@@ -41,7 +41,7 @@
     "t4001":"Врема кода истекло, авторизуйтесь заново",
     "t4002":"Введённый код неверен",
     "t1004":"Пользователь успешно зарегистрирован",
-    "t4003":"Невозможно зарегистрирован пользователя. Проверьте правильность введенных данных",
+    "t4003":"Невозможно зарегистрировать пользователя. Проверьте правильность введенных данных",
     "t4004":"Ошибка соединения с базой данных",
 
     "logo":"Логотип",
@@ -66,7 +66,7 @@
     "frontProduct-buyButton":"Купить",
     "frontProduct-guarantee":"Гарантия:",
     "frontProduct-guaranteeInfo":"Возвращение товара в течении 14 дней после покупки",
-    "frontProduct-titleFeedbacks":" отзывов",
+    "frontProduct-titleFeedbacks":"отзывов",
     "frontProduct-vendorCode":"Код: ",
     "frontProduct-menuDescription":"Описание",
     "frontProduct-menuChar":"Характеристики",
@@ -77,7 +77,26 @@
     "frontProduct-char":"Характеристики ",
     "frontProduct-feedbacks":"Отзывы о ",
     "frontProduct-questions":"Вопросы о ",
-    "frontProduct-images":"Фото "
+    "frontProduct-images":"Фото ",
+
+    "frontCart-title":"Корзина",
+    "frontCart-crossAlt":"Крестик",
+    "frontCart-totalPrice":"Общая сумма",
+    "frontCart-button":"Оформить заказ",
+
+    "cartRow-minusAlt":"Минус",
+    "cartRow-plusAlt":"Плюс",
+    "cartRow-deleteAlt":"Удалить",
+
+    "registerStore-name":"Название магазина",
+    "registerStore-desc":"Описание магазина",
+    "registerStore-productType":"Тип продукции",
+    "registerStore-conditions":"Введите уникальное имя магазина, можно использовать только латинские символы и тире",
+    "registerStore-examplePlaceholder":"пример: ",
+    "registerStore-button":"Регистрация",
+    "registerStore-ruPlaceholder":"На русском",
+    "registerStore-enPlaceholder":"На английском",
+    "registerStore-gePlaceholder":"На грузинском*"
     
 
 
