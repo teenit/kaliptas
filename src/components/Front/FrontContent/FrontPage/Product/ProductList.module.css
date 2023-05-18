@@ -1,12 +1,12 @@
 .wrap__list{
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
     gap: 20px;
+    padding: 0 0 8px 0;
 }
-
-@media (max-width: 600px){
-    .wrap__list{
-        grid-template-columns: 1fr;
-    }
+.in{
+    display: block;
+    max-width: 100%;
 }

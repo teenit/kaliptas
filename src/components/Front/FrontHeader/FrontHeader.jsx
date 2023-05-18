@@ -22,7 +22,7 @@ const FrontHeader  =()=>{
                     <div className={s.logo}>
                         <Link to={getLanguageForRootLink()}><img className={s.logo__image} src={logo} alt="Логотип"/></Link>
                     </div>
-                    <div className={`${s.phone__wrap} ${phone ? s.phone__wrap__change : null}`} tabIndex={0} onClick={()=>{
+                    <div className={s.phone__wrap} tabIndex={0} onClick={()=>{
                         setPhone(!phone)
                     }}>
                         <a href="tel:+995 066 666 66 66">+995 066 666 66 66</a>
