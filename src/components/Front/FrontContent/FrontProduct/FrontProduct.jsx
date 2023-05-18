@@ -6,7 +6,6 @@ import dopStar from "./../../../../img/front/Многоугольник 1 коп
 import okey from "./../../../../img/front/icons8-эмодзи-жест-ок-48.png"
 import cart from "./../../../../img/front/icons8-корзина-64.png"
 import heart from "./../../../../img/front/icons8-heart-6422.png"
-import ves from "./../../../../img/front/весы.png"
 import ProductList from "../FrontPage/Product/ProductList";
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import {api} from "../../../functions/api";
@@ -14,135 +13,13 @@ import {ProductObject} from "./ProductObject";
 import {getRealLanguage} from "../../../functions/getLanguage";
 
 const FrontProduct = ()=>{
-    const getProductById= {
-        title: "Подушка Miniso Супер кот",
-        reviews: 6,
-        price: 599,
-        dopImgAmount : 10,
-        article: 10100112,
-        inStock: true,
-        imgMain: "https://images.prom.ua/3224110974_w640_h640_3224110974.jpg",
-        dopImages: [
-            {
-                dopImg: "https://images.prom.ua/3224110976_w640_h640_3224110976.jpg",
-                id: 1
-            },
-            {
-                dopImg: "https://images.prom.ua/3457413731_w640_h640_3457413731.jpg",
-                id: 2
-            },
-            {
-                dopImg: "https://images.prom.ua/3457413730_w640_h640_3457413730.jpg",
-                id: 3
-            },
-            {
-                dopImg: "https://images.prom.ua/3457447040_w640_h640_3457447040.jpg",
-                id: 4
-            },
-            {
-                dopImg: "https://images.prom.ua/3224110976_w640_h640_3224110976.jpg",
-                id: 5
-            },
-            {
-                dopImg: "https://images.prom.ua/3457413731_w640_h640_3457413731.jpg",
-                id: 6
-            },
-            {
-                dopImg: "https://images.prom.ua/3457413730_w640_h640_3457413730.jpg",
-                id: 7
-            },
-            {
-                dopImg: "https://images.prom.ua/3457447040_w640_h640_3457447040.jpg",
-                id: 8
-            },
-            {
-                dopImg: "https://images.prom.ua/3457413730_w640_h640_3457413730.jpg",
-                id: 7
-            },
-            {
-                dopImg: "https://images.prom.ua/3457447040_w640_h640_3457447040.jpg",
-                id: 8
-            },
-        ],
-        cities: [
-            {
-                name: "Тбилиси"
-            },
-            {
-                name: "Тбилиси"
-            },
-            {
-                name: "Тбилиси"
-            },
-            {
-                name: "Тбилиси"
-            },
-            {
-                name: "Тбилиси"
-            },
-        ],
-        itemChar: [
-            {
-                type: "Мяшкая игрушка",
-                typeName: "Тип"
-            },
-            {
-                type: "20-30 см",
-                typeName: "Размер"
-            },
-            {
-                type: "Плюш 100%",
-                typeName: "Материал верха"
-            },
-            {
-                type: "Синтепух",
-                typeName: "Наполнитель"
-            },
-            {
-                type: "Мягкая игрушка",
-                typeName: "Тематика"
-            }, 
-            {
-                type: "Унисекс",
-                typeName: "Пол"
-            },
-            {
-                type: "3+",
-                typeName: "Возраст"
-            },
-            {
-                type: "Рыжий с белым",
-                typeName: "Цвет"
-            },
-            {
-                type: "Китай",
-                typeName: "Страна производитель"
-            },
-            {
-                type: "Япония",
-                typeName: "Страна регистрации бренда"
-            },
-            {
-                type: "600 г",
-                typeName: "Вес"
-            },
-            {
-                type: "14 дней",
-                typeName: "Гарантия"
-            }
-
-        ],
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam hic neque omnis veniam fugit. Iste dolores magni voluptatem saepe culpa deserunt itaque quae? Neque consequuntur veniam culpa facilis officia quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum unde, nulla explicabo adipisci corporis, impedit ipsum deleniti maiores id animi sequi incidunt! Repellendus quidem corrupti ab suscipit nostrum labore ratione? Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perferendis sed consequatur reiciendis, possimus totam sint ab labore corporis."
-    };
     const [ready,setReady] = useState(false)
     const [productObject, setProduct] = useState({});
     const params = useParams();
     const [productId, setId] =  useState(ProductObject.getIdFromLink(params.id));
-    console.log(params)
     useEffect(()=>{
         setId(params.id)
         api((response)=>{
-            console.log("Response:", response)
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
             setImage(loadedProduct.mainPhoto)
@@ -163,7 +40,6 @@ const FrontProduct = ()=>{
         skidca: "50 %",
         backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
     }
-    const legacyProductObject = getProductById;
     const [state, setState] = useState({
         showDesc: true,
         showChar: false,

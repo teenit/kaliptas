@@ -30,6 +30,13 @@ const ProductCard = ({ id }) => {
         }, {
             productID: id
         }, "content/products/get-product-by-id.php")
+
+        setInterval(()=>{
+            setLiked({
+                like: localStorage.getItem("like" + id),
+            })
+            setCountInCart(getCountById(id));
+        }, 1000);
     },[id])
 
     return ready ? (
