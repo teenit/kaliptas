@@ -28,28 +28,39 @@
     align-items: center;
     justify-content: center;
 }
-.categories{
-    margin-top: 55px;
-}
+
 .adword__slider{
     margin-top: 55px;
     border-radius: 20px;
     overflow: hidden;
 }
+
+
 .categories__wrap{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    margin-top: 55px;
+    display: flex;
     gap: 15px;
+    height: 10vh;
+    overflow-x: scroll;
+    padding: 0 0 8px 0;
 }
-.category{
-    text-align: center;
+.categories__wrap__in{
     border-radius: 6px;
     background-color: #c368e6;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.category{
+    display: block;
+    max-height: 100%;
+    width: max-content;
+    padding: 0 15px;
+    text-align: center;
     color: #ffffff;
     font-size: 14px;
-    cursor: pointer;
     font-weight: 600;
-    padding: 12px 0;
 }
 
 .in__desc{

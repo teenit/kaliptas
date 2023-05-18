@@ -100,17 +100,17 @@ const FrontPage = () => {
                     <ProductList cards={relatedProductList} />
                 </div>
     
-                <div className={s.categories}>
-                    <div className={s.categories__wrap}>
-                        {
-                            categories.map((item, index)=>{
-                                return(
-                                    <div key={index} className={s.category}>{item.name}</div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+                <div className={s.categories__wrap}>
+                    {
+                        categories.map((item, index)=>{
+                            return(
+                                <div className={s.categories__wrap__in} key={index}>
+                                    <div className={s.category}>{item.name}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>            
 
                 <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
                 <div className={s.product__in}>

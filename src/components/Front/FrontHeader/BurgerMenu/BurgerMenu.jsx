@@ -45,9 +45,9 @@ const BurgerMenu = ({t, active, setActive}) =>{
                     </div>
                 </div>
                 <div className={s.line}></div>
-                <div className={s.option__in}>
+                <div className={s.option__in__phone}>
                     <img src={phoneImage} alt="Контакты" />
-                    <div className={`${s.phone__wrap} ${showPhone ? s.phone__wrap__change : null}`}>
+                    <div className={s.phone__wrap}>
                         <a href="tel:+9950666665">+ 995 066 66 65</a>
                         <img className={`${s.arrow} ${changeArrow ? s.arrow__change : null}`} src={arrowImage} alt="Стрелка" onClick={()=>{
                             setShowPhone(!showPhone)

@@ -42,6 +42,10 @@
     align-items: center;
     gap: 20px;
 }
+.option__in__phone{
+    display: flex;
+    align-items: center;
+}
 .option__in__catalog{
     display: flex;
     align-items: center;
@@ -67,8 +71,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-}
-.phone__wrap__change{
     padding: 0 20px;
 }
 .arrow{

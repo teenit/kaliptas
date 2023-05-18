@@ -25,13 +25,11 @@
 .logo__image{
     width: 150px;
 }
-.city__wrap, .phone__wrap{
+.phone__wrap{
     position: relative;
     display: flex;
     align-items: center;
     gap: 5px;
-}
-.city__wrap__change, .phone__wrap__change{
     padding: 0 20px;
 }
 .phone__wrap > a{
