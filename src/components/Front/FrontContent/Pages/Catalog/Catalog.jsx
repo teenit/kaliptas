@@ -6,8 +6,10 @@ import {Link} from "react-router-dom";
 import {CategoryObject} from "../Category/CategoryObject";
 import {api} from "../../../../functions/api";
 import {getRealLanguage} from "../../../../functions/getLanguage";
+import { useTranslation } from "react-i18next";
 
 const Catalog = ()=>{
+    const {t}  =useTranslation()
     //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
     const [loadedCategories, setLoadedCategories] = useState([]);
 
@@ -73,14 +75,14 @@ const Catalog = ()=>{
                 <div className={s.show__more}>
                     <button className={s.btn} onClick={()=>{
                         showCategories(loadedCategories)
-                        }}>Показать еще</button>
+                        }}>{t('catalog-button')}</button>
                 </div>
             </div>
-            <h3 className={s.title}>{}Похожие товары</h3>
+            <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
                 <ProductList cards={relatedProductList} />
             </div>
-            <h3 className={s.title}>Вы смотрели</h3>
+            <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
                 <ProductList cards={youWatchedList} />
             </div>

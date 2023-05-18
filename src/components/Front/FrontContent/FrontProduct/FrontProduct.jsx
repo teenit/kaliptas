@@ -12,6 +12,7 @@ import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import {api} from "../../../functions/api";
 import {ProductObject} from "./ProductObject";
 import {getRealLanguage} from "../../../functions/getLanguage";
+import { useTranslation } from "react-i18next";
 
 const FrontProduct = ()=>{
     const getProductById= {
@@ -134,6 +135,7 @@ const FrontProduct = ()=>{
         ],
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam hic neque omnis veniam fugit. Iste dolores magni voluptatem saepe culpa deserunt itaque quae? Neque consequuntur veniam culpa facilis officia quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum unde, nulla explicabo adipisci corporis, impedit ipsum deleniti maiores id animi sequi incidunt! Repellendus quidem corrupti ab suscipit nostrum labore ratione? Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perferendis sed consequatur reiciendis, possimus totam sint ab labore corporis."
     };
+    const {t}  = useTranslation()
     const [ready,setReady] = useState(false)
     const [productObject, setProduct] = useState({});
     const params = useParams();
@@ -189,11 +191,11 @@ const FrontProduct = ()=>{
                                         <img className={s.star} src={star} alt="Оценка" />
                                         <img className={s.star} src={dopStar} alt="Оценка" />
                                     </div>
-                                    <a href="#" className={s.reviews__text}>0 отзывов</a>
+                                    <a href="#" className={s.reviews__text}>0 {t('frontProduct-titleFeedbacks')}</a>
                                 </div>
                                 <div className={s.line}></div>
                                 <div className={s.code}>
-                                    <p className={s.cod}>Код: {productObject.article}</p>
+                                    <p className={s.cod}>{t('frontProduct-vendorCode')} {productObject.article}</p>
                                 </div>
                             </div>
                         </div>
@@ -223,12 +225,12 @@ const FrontProduct = ()=>{
                                     {productObject.inStock ? 
                                         <div className={s.inStock}>
                                             <img src={okey} alt="Значок" />
-                                            <p>В наличии</p>
+                                            <p>{t('frontProduct-isAvaible')}</p>
                                         </div>
                                     :
                                         <div className={s.notInStock}>
                                             <img src={okey} alt="Значок" />
-                                            <p>Нет в наличии</p>
+                                            <p>{t('frontProduct-isNotAvaible')}</p>
                                         </div>
                                     }
                                     <div className={s.price}>
@@ -237,7 +239,7 @@ const FrontProduct = ()=>{
                                     <div className={s.actions}>
                                         <div className={s.button}>
                                             <img src={cart} alt="" />
-                                            <a href="#">Купить</a>
+                                            <a href="#">{t('frontProduct-buyButton')}</a>
                                         </div>
                                         
                                         <div className={s.heart__wrap}>
@@ -246,8 +248,8 @@ const FrontProduct = ()=>{
                                     </div>
                                 </div>
                                 <div className={s.garanty}>
-                                    <h3>Гарантия:</h3>
-                                    <p>Возвращение товара в течении 14 дней после покупки</p>
+                                    <h3>{t('frontProduct-guarantee')}</h3>
+                                    <p>{t('frontProduct-guaranteeInfo')}</p>
                                 </div>
                             </div>
                         </div>
@@ -259,29 +261,29 @@ const FrontProduct = ()=>{
                             <div className={s.menu__items}>
                                 <p className={`${s.item} ${state.showDesc ? s.item__dop : null}`} onClick={()=>{
                                     setState({...state, showDesc: true, showChar: false, showRew: false, showQuest: false, showPhoto: false})
-                                }}>Описание</p>
+                                }}>{t('frontProduct-menuDescription')}</p>
                                 <div className={s.line__item}></div>
                                 <p className={`${s.item} ${state.showChar ? s.item__dop : null}`} onClick={()=>{
                                     setState({...state, showDesc: false, showChar: true, showRew: false, showQuest: false, showPhoto: false})
-                                }}>Характеристики</p>
+                                }}>{t('frontProduct-menuChar')}</p>
                                 <div className={s.line__item}></div>
                                 <p className={`${s.item} ${state.showRew ? s.item__dop : null}`} onClick={()=>{
                                     setState({...state, showDesc: false, showChar: false, showRew: true, showQuest: false, showPhoto: false})
-                                }}>Отзывы</p>
+                                }}>{t('frontProduct-menuFeedbacks')}</p>
                                 <div className={s.line__item}></div>
                                 <p className={`${s.item} ${state.showQuest ? s.item__dop : null}`} onClick={()=>{
                                     setState({...state, showDesc: false, showChar: false, showRew: false, showQuest: true, showPhoto: false})
-                                }}>Вопросы</p>
+                                }}>{t('frontProduct-menuQuestions')}</p>
                                 <div className={s.line__item}></div>
                                 <p className={`${s.item} ${state.showPhoto ? s.item__dop : null}`} onClick={()=>{
                                     setState({...state, showDesc: false, showChar: false, showRew: false, showQuest: false, showPhoto: true})
-                                }}>Фото</p>
+                                }}>{t('frontProduct-menuImages')}</p>
                             </div>
                             <div className={s.item__desc}>
                                 {state.showDesc ? 
                                     <div className={s.desc__full}>
                                         <div className={s.text}>
-                                            <h3>Описание</h3>
+                                            <h3>{t('frontProduct-description')}</h3>
                                             <p>{productObject.title}</p>
                                         </div>
                                         <div className={s.text__dop}>
@@ -293,7 +295,7 @@ const FrontProduct = ()=>{
                                 {state.showChar ? 
                                     <div className={s.desc__full}>
                                         <div className={s.text}>
-                                            <h3>Характеристики</h3>
+                                            <h3>{t('frontProduct-char')}</h3>
                                             <p>{productObject.title}</p>
                                         </div>
                                         <div className={s.text__dop}>
@@ -314,7 +316,7 @@ const FrontProduct = ()=>{
                                 {state.showQuest ? 
                                     <div className={s.desc__full}>
                                         <div className={s.text}>
-                                            <h3>Отзывы о</h3>
+                                            <h3>{t('frontProduct-questions')}</h3>
                                             <p>{productObject.title}</p>
                                         </div>
                                         <p>development in progress</p>
@@ -324,7 +326,7 @@ const FrontProduct = ()=>{
                                 {state.showPhoto ? 
                                     <div className={s.desc__full}>
                                         <div className={s.text}>
-                                            <h3>Фото</h3>
+                                            <h3>{t('frontProduct-images')}</h3>
                                             <p>{productObject.title}</p>
                                         </div>
                                         <div className={s.prod}>
@@ -361,12 +363,12 @@ const FrontProduct = ()=>{
                                 {productObject.inStock ? 
                                     <div className={s.inStock__dop}>
                                         <img src={okey} alt="Значок" />
-                                        <p>В наличии</p>
+                                        <p>{t('frontProduct-isAvaible')}</p>
                                     </div>
                                 :
                                     <div className={s.notInStock__dop}>
                                         <img src={okey} alt="Значок" />
-                                        <p>Нет в наличии</p>
+                                        <p>{t('frontProduct-isNotAvaible')}</p>
                                     </div>
                                 }
                                 <div className={s.price__dop}>
@@ -375,17 +377,17 @@ const FrontProduct = ()=>{
                                         <img src={heart} alt="" />
                                     </div>
                                 </div>
-                                <button className={s.btn}>Купить</button>
+                                <button className={s.btn}>{t('frontProduct-buyButton')}</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
-                <h3 className={s.title__item}>Похожие товары</h3>
+                <h3 className={s.title__item}>{t('frontPage-youVisited')}</h3>
                 <div className={s.product__in}>
                     <ProductList cards={relatedProductList} />
                 </div>
-                <h3 className={s.title__item}>Вы смотрели</h3>
+                <h3 className={s.title__item}>{t('frontPage-similarProducts')}</h3>
                 <div className={s.product__in}>
                     <ProductList cards={relatedProductListSecond} />
                 </div>
