@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import Language from "../Language/Language";
 import {getLanguageForLink, getLanguageForRootLink} from "../../../functions/getLanguage";
 import Cart from "../../Modules/Cart/Cart";
+import MobileDropdown from "../../Modules/MobileDropdown/MobileDropdown";
 //import Cart from "../../Modules/Cart/Cart";
 
 const BurgerMenu = ({t, active, setActive}) =>{
@@ -19,6 +20,7 @@ const BurgerMenu = ({t, active, setActive}) =>{
     const [showPhone, setShowPhone] = useState(false)
     const [changeArrow, setChangeArrow] = useState(false)
     const catalogLink = getLanguageForRootLink() + "/catalog";
+    const [open, setOpen] = useState(false)
     return(
         <div className={s.wrap}>
             <div className={s.in}>
@@ -26,11 +28,16 @@ const BurgerMenu = ({t, active, setActive}) =>{
                     <img src={closeImage} alt="Закрыть" onClick={setActive}/>
                 </div>
                 <div className={s.option__in}>
-                    <div className={s.option__in__catalog}>
-                        <img src={catalogImg} alt="Каталог" />
-                    </div> 
-                    <Link className={s.link} to={catalogLink} onClick={setActive}><p>Каталог</p></Link> 
+                    <Link className={s.link} to={catalogLink} onClick={setActive}>
+                        <div className={s.option__in__catalog}>
+                            <img src={catalogImg} alt="Каталог" />
+                        </div>
+                    </Link>
+                    <p onClick={()=>{setOpen(!open)}}>Каталог</p>
                 </div>
+                {
+                    open ? <MobileDropdown close={setActive}/> : null
+                }
                 <div className={s.line}></div>
                 <div className={s.option}>
                     <div className={s.option__in}>
