@@ -1,12 +1,25 @@
 .wrap__list{
     width: 100%;
     display: flex;
-    align-items: center;
     overflow-x: scroll;
-    gap: 20px;
     padding: 0 0 8px 0;
+}
+.wrap__list__in{
+    display: grid;
+    gap: 10px;
 }
 .in{
     display: block;
     max-width: 100%;
+}
+
+@media (max-width: 600px){
+    .wrap__list{
+        gap: 10px;
+    }
+    .wrap__list__in{
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+    }
 }

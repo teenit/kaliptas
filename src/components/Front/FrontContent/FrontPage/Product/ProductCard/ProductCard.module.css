@@ -43,7 +43,7 @@
 }
 .title__link > h4{
     color: #000000;
-    height: 28px;
+    max-height: 28px;
     overflow: hidden;
 }
 .section__img{
@@ -97,4 +97,94 @@
     position: absolute;
     top: 50%;
     left: 0;
+}
+.in__stock__yep{
+    color: #28ac81;
+    font-size: 12px;
+    margin: 2px 0;
+    text-align: center;
+}
+.in__stock__nop{
+    color: #939393;
+    font-size: 12px;
+    margin: 2px 0;
+    text-align: center;
+}
+
+.amount{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.minus, .plus, .amount__in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.minus > img, .plus > img{
+    width: 14px;
+}
+.amount__in > p{
+    margin: 0;
+    font-size: 16px;
+}
+
+
+@media (max-width: 600px){
+    .in{
+        min-width: 115px;
+    }
+    .img__link{
+        height: 70px;
+    }
+    .in__dop{
+        padding: 5px 0;
+        width: 90%;
+        gap: 5px;
+    }
+    .title{
+        font-size: 11px;
+    }
+    .stars > img{
+        width: 7px;
+        height: 7px;
+    }
+    .review__link{
+        font-size: 8px;
+        border-bottom: dotted 1px #28ac81;
+    }
+    .price{
+        font-size: 10px;
+    }
+    .price__dop{
+        font-size: 13px;
+    }
+    .title__link > h4{
+        max-height: 25px;
+    }
+    .buy{
+        padding: 3px 10px;
+        font-size: 10px;
+    }
+    .heart__img{
+        width: 16px;
+        height: 13px;
+    }
+    .in__stock__yep, .in__stock__nop{
+        font-size: 8px;
+    }
+
+
+    .amount{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .minus > img, .plus > img{
+        width: 10px;
+    }
+    .amount__in > p{
+        margin: 0;
+        font-size: 12px;
+    }
 }
