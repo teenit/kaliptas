@@ -1,0 +1,6 @@
+.wrap{
+    display: flex;
+}
+.wrap:focus-visible{
+    outline: none;
+}

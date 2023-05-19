@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     background-color: #9134b3;
+    position: relative;
 }
 .inner {
     width: 75%;
@@ -74,4 +75,11 @@
     .inner{
         width: 85%;
     }
+}
+.dropdown{
+    position: absolute;
+    top: 80px;
+    z-index: 999;
+    left: 0;
+    background: white;
 }
