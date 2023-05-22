@@ -15,7 +15,7 @@ const FrontPage = () => {
     const relatedViewedProducts = relatedProductList
     const relatedSecondProductList = relatedProductList;
     const relatedSecondViewedProducts = relatedProductList
-    
+
     const [categories, setCategories] = useState([])
     const {t} = useTranslation()
 
@@ -110,6 +110,7 @@ const FrontPage = () => {
                             )
                         })
                     }
+                    
                 </div>            
 
                 <h3 className={s.title}>{t('frontPage-youVisited')}</h3>

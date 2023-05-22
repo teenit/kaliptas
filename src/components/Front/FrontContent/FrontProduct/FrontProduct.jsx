@@ -30,18 +30,26 @@ const FrontProduct = ()=>{
             productID: productId
         }, "content/products/get-product-by-id.php")
     }, [params.id, productId])
-
+    
+    const [showProductSlide, setShowProductSlide] = useState(
+        productObject.photos == [] ? true : false
+    )
+    
     const [image, setImage] = useState(
         productObject.mainPhoto
     )
+    
     const relatedProductList = [22,23]
+    
     const relatedProductListSecond = [22,23]
+    
     const SliderContent = {
         title: "Время осеннего",
         titleDop: "шопинга!",
         skidca: "50 %",
         backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
     }
+
     const [state, setState] = useState({
         showDesc: true,
         showChar: false,
@@ -49,6 +57,7 @@ const FrontProduct = ()=>{
         showQuest: false,
         showPhoto: false
     })
+
     return ready ?(
         <div className={s.main}>
             <div className={s.wrap}>
@@ -82,19 +91,24 @@ const FrontProduct = ()=>{
                                         <img className={s.prod__dop__img} src={image} alt="Главное изображение" />
                                     </div>
                                 </div>
-                                <div className={s.prod__slider}>
-                                    {
-                                        productObject.photos.map((item,index)=>{
-                                            return(
-                                                <div key={index} className={s.slide} onClick={()=>{
-                                                    setImage(item)
-                                                }}> 
-                                                    <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
+                                {
+                                    showProductSlide ? 
+                                        <div className={s.prod__slider}>
+                                            {
+                                                productObject.photos.map((item,index)=>{
+                                                    return(
+                                                        <div key={index} className={s.slide} onClick={()=>{
+                                                            setImage(item)
+                                                        }}> 
+                                                            <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    : 
+                                        null
+                                }
                             </div>
                             <div className={s.description}>
                                 <div className={s.desc__part}>
@@ -134,6 +148,7 @@ const FrontProduct = ()=>{
                 <div className={s.wrap__in}>
                     <div className={s.dop__in}>
                         <div className={s.in__desc}>
+
                             <div className={s.menu__items}>
                                 <p className={`${s.item} ${state.showDesc ? s.item__dop : null}`} onClick={()=>{
                                     setState({...state, showDesc: true, showChar: false, showRew: false, showQuest: false, showPhoto: false})
@@ -155,6 +170,7 @@ const FrontProduct = ()=>{
                                     setState({...state, showDesc: false, showChar: false, showRew: false, showQuest: false, showPhoto: true})
                                 }}>{t('frontProduct-menuImages')}</p>
                             </div>
+                            
                             <div className={s.item__desc}>
                                 {state.showDesc ? 
                                     <div className={s.desc__full}>
@@ -230,7 +246,7 @@ const FrontProduct = ()=>{
                         </div>
                     </div>
                     <div className={s.dop__in}>
-                        <div className={s.in__desc}>
+                        <div className={s.in__desc__dop}>
                             <div className={s.img}>
                                 <img src={productObject.mainPhoto} alt={productObject.title} />
                             </div>
