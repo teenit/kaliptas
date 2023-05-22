@@ -14,12 +14,10 @@ function Category(props) {
     const {t}  = useTranslation()
     const params = useParams();
     const [ready,setReady] = useState(false)
-    const [id, setId] = useState(params.id);
     const [displayedProducts, setDisplayedProducts] = useState([])
     const [category, setCategory] = useState({});
 
     useEffect(()=>{
-        setId(params.id);
 
         api((categoryResponse)=> {
                 // let loadedCategory = new CategoryObject(response[0]);
@@ -31,11 +29,11 @@ function Category(props) {
 
                 let categoryId = CategoryObject.getIdFromResponse(categoryResponse);
                 let productsPromise = apiResponse({
-                    catID: id
+                    catID: params.id
                 }, "content/products/get-products-by-category-id.php");
 
                 let parentCatsPromise = apiResponse({
-                    catID: id
+                    catID: params.id
                 }, "content/category/get-tree-categories-by-id.php");
 
                 Promise.all([productsPromise, parentCatsPromise]).then((promiseResponses) => {
@@ -60,9 +58,9 @@ function Category(props) {
                 })
             }
             ,{
-                catID: id
+                catID: params.id
             },"content/category/get-id-category.php");
-    },[id, params.id]);
+    },[params.id]);
 
     const relatedProductList = [50]; // Must be loadRelated()
     const youWatchedList = relatedProductList;
@@ -93,7 +91,7 @@ function Category(props) {
                         )
                     }) : null
                 }
-                <span className={s.span__sign}></span>
+                <span className={s.span__sign}>></span>
                 <span>{category.title}</span>
             </div>
             <div className={s.main__container}>

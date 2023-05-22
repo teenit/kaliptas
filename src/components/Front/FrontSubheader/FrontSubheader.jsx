@@ -23,7 +23,9 @@ const FrontSubheader = ()=>{
                 onMouseEnter={()=>{
                     clearTimeout(closeTimeout);
                 }}
-                onMouseLeave={()=>{setOpen(false)}}>
+                onMouseLeave={()=>{setOpen(false)}}
+                onClick={()=>setOpen(false)}
+            >
                 <Dropdown/>
             </div>
     }
@@ -36,7 +38,6 @@ const FrontSubheader = ()=>{
                     to={catalogLink}
                     onMouseEnter={()=>{
                         setOpen(true);
-
                     }}
                     onMouseLeave={()=>{
                         setCloseTimeout(setTimeout(()=>{

@@ -20,7 +20,7 @@ const Dropdown = ()=>{
 
     return ready ? (<div className={s.wrap}>
         {
-            <ListLevel catList={categoryTree}/>
+            <ListLevel catList={categoryTree} level={0}/>
         }
     </div>) : null
 }

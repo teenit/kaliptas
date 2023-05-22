@@ -10,8 +10,6 @@ const ProductList = ({ cards }) => {
         amountInRow: window.innerWidth < 600 ? 2:1
     });
 
-    console.log(window)
-
     return (
         <div className={s.wrap__list}>
             <div className={s.wrap__list__in} style={{
