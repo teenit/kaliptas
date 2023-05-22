@@ -81,8 +81,15 @@
     "frontProduct-char":"მახასიათებლები ",
     "frontProduct-feedbacks":"მიმოხილვები შესახებ ",
     "frontProduct-questions":"კითხვების შესახებ ",
-    "frontProduct-images":"ფოტო "
+    "frontProduct-images":"ფოტო ",
+    "frontCart-title":"კალათა",
+    "frontCart-crossAlt":"ჯვარი",
+    "frontCart-totalPrice":"მთლიანი რაოდენობა",
+    "frontCart-button":"გადახდა",
 
+    "cartRow-minusAlt":"მინუს",
+    "cartRow-plusAlt":"პლუს",
+    "cartRow-deleteAlt":"წაშლა"
 
 
 }

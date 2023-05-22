@@ -5,8 +5,10 @@ import cartPlus from "./../../../../../img/front/cartPlus.png"
 import deletebtn from "./../../../../../img/front/deletebtn.png"
 import {decrementById, deleteById, incrementById} from "../../../../functions/cartControll";
 import {unmountComponentAtNode} from "react-dom";
+import { useTranslation } from "react-i18next";
 
 const CartRow = (props) =>{
+    const {t} = useTranslation()
     console.log(props)
     const [state, setState] = useState({
         amount: props.item.count
@@ -24,7 +26,7 @@ const CartRow = (props) =>{
                     </div>
                     <div className={s.amount}>
                         <div className={s.minus}>
-                            <img src={cartMinus} alt="Минус" onClick={()=>{
+                            <img src={cartMinus} alt={t('cartRow-minusAlt')} onClick={()=>{
                                 setState({...state, amount: state.amount - 1})
                                 decrementById(product.id)
                                 props.change();
@@ -34,7 +36,7 @@ const CartRow = (props) =>{
                             <p>{state.amount}</p>
                         </div>
                         <div className={s.plus}>
-                            <img src={cartPlus} alt="Плюс" onClick={()=>{
+                            <img src={cartPlus} alt={t('cartRow-plusAlt')} onClick={()=>{
                                 setState({...state, amount: state.amount + 1})
                                 incrementById(product.id)
                                 props.change();
@@ -49,7 +51,7 @@ const CartRow = (props) =>{
                         <p className={s.price__skid}>{state.amount * product.discount}$</p>
                     </div>
                     <div className={s.delete}>
-                        <img src={deletebtn} alt="Удалить" onClick={()=>{
+                        <img src={deletebtn} alt={t('cartRow-deleteAlt')} onClick={()=>{
                             deleteById(product.id)
                             props.change()
                         }}/>

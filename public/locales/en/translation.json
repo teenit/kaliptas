@@ -83,7 +83,15 @@
     "frontProduct-char":"Characteristics of ",
     "frontProduct-feedbacks":"Feedbacks about ",
     "frontProduct-questions":"Questions about ",
-    "frontProduct-images":"Images of "
+    "frontProduct-images":"Images of ",
+    "frontCart-title":"Cart",
+    "frontCart-crossAlt":"Cross",
+    "frontCart-totalPrice":"Total price",
+    "frontCart-button":"Checkout",
+
+    "cartRow-minusAlt":"Minus",
+    "cartRow-plusAlt":"Plus",
+    "cartRow-deleteAlt":"Delete"
 
 
 }
