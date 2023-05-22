@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {api} from "../../../functions/api";
-import s from "../Dropdown/Dropdown.module.css";
+import s from "../MobileDropdown/MobileDropdown.module.css"
 import MobileListCategory from "./MobileListCategory/MobileListCategory";
 
 const MobileDropdown = ({close})=>{
@@ -17,11 +17,13 @@ const MobileDropdown = ({close})=>{
 
 
     return ready ? (<div className={s.wrap}>
+        
         {
             categoryTree.map((cat, index)=>{
                 return <MobileListCategory category={cat} key={index} close={close}/>
             })
         }
+       
     </div>) : null
 }
 
