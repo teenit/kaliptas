@@ -38,6 +38,10 @@ export class ProductObject{
         return this.id + "-" + this.tag;
     }
 
+    getPrice() {
+        return this.discount !== undefined ? this.discount : this.price;
+    }
+
     static getIdFromLink(link) {
         return link.slice(0, link.indexOf("-"))
     }

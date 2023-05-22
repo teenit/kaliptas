@@ -5,10 +5,11 @@ import {Link, NavLink} from "react-router-dom";
 import profileImg from "./../../../img/front/profile.png";
 import likedImg from "./../../../img/front/heart.png";
 import cartImg from "./../../../img/front/corz.png"
-import Cart from "../Modules/Cart/Cart";
+import CartModule from "../Modules/Cart/CartModule";
 import {getLanguageForRootLink} from "../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../Modules/Dropdown/Dropdown";
+import CartModal from "../../Modals/CartModal/CartModal";
 
 const FrontSubheader = ()=>{
     const {t}  = useTranslation();
@@ -84,7 +85,7 @@ const FrontSubheader = ()=>{
             </div>
             {
                 showCart ? 
-                    <Cart close={()=>{setShowCart(false)}}/>
+                    <CartModal close={()=>{setShowCart(false)}}/>
                 : null
             }
         </div>

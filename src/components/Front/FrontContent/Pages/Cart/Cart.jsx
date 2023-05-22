@@ -1,9 +1,10 @@
 import React from "react";
+import CartModule from "../../../Modules/Cart/CartModule";
 
 const Cart = ()=>{
     return(
         <div>
-            Cart
+            <CartModule setTotalPrice={()=>{}}/>
         </div>
     )
 }

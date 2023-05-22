@@ -25,6 +25,7 @@ const FrontProduct = ()=>{
     useEffect(()=>{
         setId(ProductObject.getIdFromLink(params.id))
         api((response)=>{
+            console.log(response)
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
             setImage(loadedProduct.mainPhoto)

@@ -83,6 +83,14 @@ export function getCart() {
     return JSON.parse(cartMap);
 }
 
+export function getCartItemsCount() {
+    let total = 0;
+    Object.entries(getCart()).forEach((entry)=>{
+        total += entry[1]
+    });
+    return total;
+}
+
 export function setCart(cart) {
     localStorage.setItem(productListKey, JSON.stringify(cart));
 }
