@@ -20,14 +20,14 @@
 }
 .in{
     padding: 20px 0;
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 .line{
-    width: 95%;
+    width: 100%;
     margin: auto;
     height: 1px;
     background-color: #9134b3;
