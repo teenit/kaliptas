@@ -1,58 +1,48 @@
-import {a11yProps, TabPanel} from "../TabPanel/TabPanel";
-import {Tab, Tabs} from "@mui/material";
 import {getLanguageForRootLink, getRealLanguage} from "../../../../functions/getLanguage";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import s from "./ListLevel.module.css";
-import {fireEvent} from "@testing-library/react";
 import {Link} from "react-router-dom";
 
-const ListLevel = function ({catList}) {
+const ListLevel = function ({catList, level}) {
 
-    const [value, setValue] = useState(0);
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
-    let childrenList = [];
-    let catPanelList = [];
+    const [categoriesList, setCategoryList] = useState([]);
+    const [childLevel, setChildLevel] = useState(null);
     let index = 0;
+    
+    useEffect(()=>{
+        setChildLevel(null)
+        let localParentCatList = [];
+        for (const cat of catList) {
+            let childrenPresent = cat.children !== undefined;
 
-    for (const cat of catList) {
-        let childrenPresent = cat.children !== undefined;
-        let props = childrenPresent ? {...a11yProps(index)} : {};
-
-        let catTab =
-            <Tab
-                disableRipple={true}
-                key={cat.id}
-                label={<Link to={getLanguageForRootLink()+"/catalog/" + cat.id}>{cat.title[getRealLanguage()]}</Link>}
-                {...props}
-                onMouseEnter={(event)=>{
-                    fireEvent.click(event.target);
-                }
-                }
-            />
-
-        childrenList.push(catTab)
-
-        if (childrenPresent) {
-
-            let catPanel = <TabPanel key={index} index={index} value={value}>
-                {
-                    <ListLevel catList={cat.children}/>
-                }
-            </TabPanel>
+            let catTab =
+                <div key={index} onMouseEnter={(event)=>{
+                    if (childrenPresent) {
+                        let childLevel = <ListLevel catList={cat.children} level={level + 1}/>
+                        setChildLevel(childLevel);
+                    } else {
+                        setChildLevel(<ListLevel catList={[]} level={level + 1}/>)
+                    }
+                }}
+                >
+                    <Link to={getLanguageForRootLink()+"/catalog/" + cat.id}>{cat.title[getRealLanguage()]}</Link>
+                </div>
             index++;
-            catPanelList.push(catPanel);
-        }
 
-    }
+            localParentCatList.push(catTab)
+        }
+        setCategoryList(localParentCatList)
+    }, [catList, index, level]);
+
+    
 
     return (<div className={s.wrap}>
-            <Tabs orientation="vertical" value={value} onChange={handleChange}>
-                {childrenList}
-            </Tabs>
-            {catPanelList}
+            <div>
+                {categoriesList}
+            </div>
+            <div>
+                {childLevel}
+            </div>
         </div>
     );
 }
