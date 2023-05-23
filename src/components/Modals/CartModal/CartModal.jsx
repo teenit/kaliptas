@@ -1,10 +1,10 @@
 import {useTranslation} from "react-i18next";
 import React, {useState} from "react";
-import s from "../../Front/Modules/Cart/Cart.module.css";
 import chrest from "../../../img/front/chrest.png";
 import CartModule from "../../Front/Modules/Cart/CartModule";
 import {getCartItemsCount} from "../../functions/cartControll";
 import {getLanguageForRootLink} from "../../functions/getLanguage";
+import s from "./CartModal.module.css"
 import {Link} from "react-router-dom";
 
 const CartModal = ({close, }) =>{

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import s from "./Cart.module.css"
+import s from "./CartModule.module.css"
 import CartRow from "./CartRow/CartRow";
 import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
 import {apiResponse} from "../../../functions/api"
@@ -63,10 +63,7 @@ const CartModule = ({setTotalPrice}) =>{
         <div className={s.row}>
             {
                 productsAndCount.map((item, index)=>{
-                    return <CartRow item={item} key={index} change={()=>{
-                        setTimeout(()=>{loadProducts();}, 500)
-
-                    }}/>
+                    return <CartRow item={item} key={index} change={()=>{loadProducts();}}/>
                 })
             }
         </div>

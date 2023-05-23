@@ -61,9 +61,13 @@ export function deleteById(id) {
         throw Error("No product in localStorage with id: " + id)
     }
 
-    let cartMap = getCart();
-    delete cartMap[id];
-    setCart(cartMap);
+    let check = window.confirm("Delete product from cart?")
+
+    if (check) {
+        let cartMap = getCart();
+        delete cartMap[id];
+        setCart(cartMap);
+    }
 }
 
 export function getCountById(id) {
