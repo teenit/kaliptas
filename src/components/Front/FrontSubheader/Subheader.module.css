@@ -61,6 +61,9 @@
 }
 
 @media (max-width: 600px){
+    .catalog__title{
+        display: none;
+    }
     .button{
         display: none;
     }

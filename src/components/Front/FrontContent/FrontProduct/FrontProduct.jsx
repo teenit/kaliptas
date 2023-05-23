@@ -12,6 +12,9 @@ import {api} from "../../../functions/api";
 import {ProductObject} from "./ProductObject";
 import {getRealLanguage} from "../../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
+import {buy, decrementById, getCountById, incrementById} from "../../../functions/cartControll"
+import cartMinus from "../../../../img/front/cartMinus.png"
+import cartPlus from "../../../../img/front/cartPlus.png"
 
 const FrontProduct = ()=>{
     const {t}  = useTranslation()
@@ -25,6 +28,7 @@ const FrontProduct = ()=>{
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
             setImage(loadedProduct.mainPhoto)
+            setCountInCart(getCountById(productId))
             setReady(true);
         }, {
             productID: productId
@@ -57,6 +61,8 @@ const FrontProduct = ()=>{
         showQuest: false,
         showPhoto: false
     })
+
+    const [countInCart, setCountInCart] = useState(0);
 
     return ready ?(
         <div className={s.main}>
@@ -127,11 +133,34 @@ const FrontProduct = ()=>{
                                         <p>{productObject.price} $</p>
                                     </div>
                                     <div className={s.actions}>
-                                        <div className={s.button}>
-                                            <img src={cart} alt="" />
-                                            <a href="#">{t('frontProduct-buyButton')}</a>
-                                        </div>
-                                        
+                                    {
+                                        countInCart > 0
+                                            ? (<div className={s.amount}>
+                                                    <div className={s.minus}>
+                                                        <img src={cartMinus} alt="Минус" onClick={()=>{
+                                                            decrementById(productId);
+                                                            setCountInCart(getCountById(productId));
+                                                        }}/>
+                                                    </div>
+                                                    <div className={s.amount__in}>
+                                                        <p>{countInCart}</p>
+                                                    </div>
+                                                    <div className={s.plus}>
+                                                        <img src={cartPlus} alt="Плюс" onClick={()=>{
+                                                            incrementById(productId);
+                                                            setCountInCart(getCountById(productId));
+                                                        }}/>
+                                                    </div>
+                                                </div>)
+                                            : 
+                                                (<div className={s.button} onClick={(event)=>{
+                                                    buy(productId);
+                                                    setCountInCart(1);
+                                                }}>
+                                                    <img src={cart} alt="" />
+                                                    <p>Купить</p>
+                                                </div>)
+                                        }
                                         <div className={s.heart__wrap}>
                                             <img src={heart} alt="Лайкнуть" />
                                         </div>

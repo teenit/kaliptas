@@ -58,9 +58,11 @@
     width: max-content;
     padding: 0 15px;
     text-align: center;
-    color: #ffffff;
     font-size: 14px;
     font-weight: 600;
+}
+.category__link{
+    color: #ffffff;
 }
 
 .in__desc{
