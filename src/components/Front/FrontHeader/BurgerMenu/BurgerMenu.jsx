@@ -13,6 +13,7 @@ import Language from "../Language/Language";
 import {getLanguageForLink, getLanguageForRootLink} from "../../../functions/getLanguage";
 import Cart from "../../Modules/Cart/Cart";
 import MobileDropdown from "../../Modules/MobileDropdown/MobileDropdown";
+import logo from "../../../../img/logo.png"
 //import Cart from "../../Modules/Cart/Cart";
 
 const BurgerMenu = ({t, active, setActive}) =>{
@@ -25,7 +26,8 @@ const BurgerMenu = ({t, active, setActive}) =>{
         <div className={s.wrap}>
             <div className={s.in}>
                 <div className={s.close__option}>
-                    <img src={closeImage} alt="Закрыть" onClick={setActive}/>
+                    <img src={logo} className={s.logo} alt="Логотип" />
+                    <img src={closeImage} className={s.cloce} alt="Закрыть" onClick={setActive}/>
                 </div>
                 <div className={s.option__in}>
                     <Link className={s.link} to={catalogLink} onClick={setActive}>

@@ -1,91 +1,194 @@
 .wrap{
-    width: 75%;
+    width: 82%;
     min-height: 100vh;
 }
-
 .title{
     margin: 10vh 0 0;
     padding-left: 10px;
 }
-
 .product__in{
     margin-top: 15px;
 }
-
 .nav__container{
+    margin-top: 20px;
     flex-direction: row;
     display: flex;
-    /*width: 80%;*/
-    margin: auto;
-    padding: 1vh;
+    gap: 10px;
 }
-
-.nav__container>*{
+.nav__container > *{
     display: flex;
-    padding: 2px;
     align-self: center;
     color: black !important;
 }
 
-.span__sign{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
 .main__container{
-    /*width: 80%;*/
-    display: grid;
-    margin: auto;
-    grid-template-columns: 1fr 5fr;
-    min-height: 100vh;
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .filter__container{
-    padding: 20px;
-    box-sizing: border-box;
+    width: calc(26% - 15px);
+    height: max-content;
     background-color: #E7C3F5;
     border-radius: 10px;
-    width: 100%;
+}
+
+.filter__container__dop{
+    height: max-content;
+    background-color: #E7C3F5;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.filter__container__in{
+    width: 90%;
+    max-width: 90%;
+    margin: auto;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter__container__in > p{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
 }
 
 .input__line{
+    width: 100%;
     display: flex;
-    padding: 1vh 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.input__line__in{
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+.span__sign{
+    margin-right: 5px;
+}
+.filter__input{
+    padding: 3px;
+}
+.nav__container__in{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .connector{
-    width: 10%;
+    width: 50%;
     align-self: center;
     height: 2px;
     background: white;
 }
-
-.input__line>.filter__input{
-    width: 35%;
-}
-
 .apply{
-    width: 17%;
-    padding: 3px;
+    width: max-content;
     border-radius: 5px;
     color: white;
-    font-size: 15px;
+    font-size: 12px;
+    padding: 3px;
     box-sizing: border-box;
     background: #9134B3;
-    margin-left: 3%;
 }
-
 .filter__input{
     border: none;
     border-radius: 5px;
-    padding: 3px;
     overflow: hidden;
 }
-
 .cards__container{
-    padding: 20px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: minmax(min-content, max-content);
+    width: calc(74% - 5px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.mobile__filter{
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #E7C3F5;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px 0;
+    cursor: pointer;
+    position: relative;
+}
+.mobile__filter > p{
+    margin: 0;
+}
+.last__part__nav{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.last__part__nav > span{
+    margin: 0;
+    font-size: 16px;
+}
+
+@media (max-width: 600px){
+    .wrap{
+        width: 90%;
+    }    
+    .title{
+        margin-top: 35px;
+    }
+    .last__part__nav > span{
+        margin: 0;
+        font-size: 14px;
+    }
+    .mobile__filter{
+        display: block;
+    }
+    .filter__container{
+        display: none;
+    }
+    .cards__container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, calc(33% - 5px));
+        gap: 10px;
+    }
+    .main__container{
+        margin-top: 20px;
+    }
+    .nav__container{
+        margin-top: 15px;
+        gap: 5px;
+    }
+    .nav__container__in{
+        padding-top: .5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .span__link{
+        font-size: 14px;
+    } 
+    .nav__container > span{
+        font-size: 14px;
+    }
+    .filter__container__in{
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .filter__container__in > p{
+        font-size: 14px;
+    }
+    .nav__container > *{
+        display: flex;
+        align-self: flex-start;
+        color: black !important;
+    }
 }

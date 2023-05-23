@@ -13,10 +13,14 @@
 .close__option{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
-.close__option > img{
+.cloce{
     width: 14px;
+}
+.logo{
+    width: 50%;
+    max-width: 150px;
 }
 .in{
     padding: 20px 0;
