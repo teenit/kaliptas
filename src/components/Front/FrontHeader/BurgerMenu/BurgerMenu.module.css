@@ -42,9 +42,13 @@
     gap: 15px;
 }
 .option__in{
+    height: max-content;
     display: flex;
     align-items: center;
     gap: 20px;
+}
+.option__in p{
+    margin: 0;
 }
 .option__in__phone{
     display: flex;

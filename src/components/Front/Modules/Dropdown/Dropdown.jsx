@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {api} from "../../../functions/api";
 import ListLevel from "./ListLevel/ListLevel";
-import s from "./Dropdown.module.css"
 
 const Dropdown = ()=>{
 
@@ -18,7 +17,7 @@ const Dropdown = ()=>{
 
 
 
-    return ready ? (<div className={s.wrap}>
+    return ready ? (<div>
         {
             <ListLevel catList={categoryTree} level={0}/>
         }
