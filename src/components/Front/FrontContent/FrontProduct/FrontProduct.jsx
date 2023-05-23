@@ -23,7 +23,7 @@ const FrontProduct = ()=>{
     const params = useParams();
     const [productId, setId] =  useState(ProductObject.getIdFromLink(params.id));
     useEffect(()=>{
-        setId(params.id)
+        setId(ProductObject.getIdFromLink(params.id))
         api((response)=>{
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
@@ -33,10 +33,14 @@ const FrontProduct = ()=>{
         }, {
             productID: productId
         }, "content/products/get-product-by-id.php")
+
+        setInterval(()=>{
+            setCountInCart(getCountById(productId));
+        }, 1000);
     }, [params.id, productId])
     
     const [showProductSlide, setShowProductSlide] = useState(
-        productObject.photos == [] ? true : false
+        productObject.photos == []
     )
     
     const [image, setImage] = useState(
