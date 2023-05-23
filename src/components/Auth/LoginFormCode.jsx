@@ -27,6 +27,7 @@ const LoginFormCode = ({email})=>{
                 token:arg.token,
                 email:arg.email
             }))
+            window.location.reload();
         }, state, "user/enter-code.php")
     }
 

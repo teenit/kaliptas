@@ -1,0 +1,53 @@
+.fail__content{
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.min__height50{
+    min-height: 50vh;
+}
+.wr{
+    width: 80%;
+    margin: auto;
+    padding-top: 15px;
+}
+.add__shop{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: solid 2px var(--purple-color);
+    cursor: pointer;
+}
+.span{
+    position: absolute;
+    left: 50%;
+    height: 2px;
+    width: 80%;
+    background-color: var(--purple-color);
+    display: block;
+    transition: all .3s;
+}
+.span1{
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.span2{
+    width: 2px;
+    height: 80%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:30px;
+}
+.card{
+    min-height: 150px;
+    background-color: var(--light-purple-color);
+}
+.not__active__shop{
+    opacity: .5;
+}

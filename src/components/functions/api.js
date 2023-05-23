@@ -37,6 +37,14 @@ export function api(apiFunc, obj, url){
     })
 }
 
+// apiResponseWithRedirect(obj, url) {
+//     try {
+//         return apiResponse(obj, url);
+//     } catch (e) {
+//         redirect
+//     }
+// }
+
 
 export async function apiResponse(obj, url){
     // obj.id = localStorage.getItem('id');
@@ -58,13 +66,15 @@ export async function apiResponse(obj, url){
      })
      .then((data)=>{
          console.log("Received data: ", data);
-        
          document.getElementById('lineLoading').style.width = 0;
-         return data.data
+         return (data.data)
      })
      .catch((error)=>{
-         console.log(error)
-         
+         //console.log(error)
+         let obj = {
+            "code":error.code
+         }
+         throw error;
      })
  }
  

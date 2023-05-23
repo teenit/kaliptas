@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useState } from "react";
 import Users from "../Admin/Content/Users/Users";
+import Shop from "../Shop/Shop";
+import ShopLInks from "../Shop/ShopLinks";
 
 const MainRouter = ()=>{
     const {t,i18n} = useTranslation()
@@ -28,7 +30,11 @@ const MainRouter = ()=>{
                 <Route path={`${langto}/*`} element={<Front />}/>
                 <Route path={`${langto}/login`} element={<Auth />}/>
                 <Route path={`${langto}/admin/*`} element={<Admin />} ></Route>
+                <Route path={`${langto}/shop/:link/*`} element={<Shop />} ></Route>
+                <Route path={`${langto}/shop`} element={<ShopLInks />} ></Route>
                 <Route path={`${langto}/register`} element={<RegisterBuyer />}/>
+               
+            
             </Routes>
         </div>
     )

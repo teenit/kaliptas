@@ -9,9 +9,11 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
         event.preventDefault();
         checkAnswer();
         if(!checkAnswer()){
+            console.log("uuuu")
             return;
         }
         api((arg)=>{
+            
             if(arg) setEmailCode(true);
             else errorEmailOrPass();
         }, state, "user/login.php")

@@ -5,11 +5,12 @@ import FrontPage from "./FrontPage/FrontPage";
 import FrontProduct from "./FrontProduct/FrontProduct";
 import Cart from "./Pages/Cart/Cart";
 import Contacts from "./Pages/Contacts/Contacts";
-import Cabinet from "./Pages/Cabinet/Cabinet";
 import Catalog from "./Pages/Catalog/Catalog";
 import Order from "./Pages/Order/Order";
 import TextPage from "./Pages/TextPage/TextPage";
 import Category from "./Pages/Category/Category";
+import Default404 from "../../General/404/Default404";
+import Profile from "./Pages/Profile/Profile";
 const FrontContent = () => {
 
     return (
@@ -19,11 +20,13 @@ const FrontContent = () => {
                 <Route path={'/product/:id'} element = {<FrontProduct />}/>
                 <Route path={'/cart'} element = {<Cart />}/>
                 <Route path={'/contact'} element = {<Contacts />}/>
-                <Route path={'/cabinet'} element = {<Cabinet />}/>
+                <Route path={'/profile'} element = {<Profile />}/>
                 <Route path={'/catalog'} element = {<Catalog />}/>
                 <Route path={'/catalog/:id'} element={<Category />}/>
                 <Route path={'/order'} element = {<Order />}/>
                 <Route path={'/page/*'} element = {<TextPage />}/>
+                <Route path={'/*'} element = {<Default404 />}/>
+                
             </Routes>
         </div>
     )

@@ -9,13 +9,13 @@ function check(token,email){
     else return true;
 }
 
-export async function useAuth(arg){
+export async function useAuth(arg,url){
     const {token,email} = useSelector(state => state.user);
     const dispatch = useDispatch();
     const errorMes = false;
     if(check(token,email)){
      await axios({
-            url: serverAdress('user/check-auth-admin.php'),
+            url: serverAdress(url),
             method: "POST",
             header: {'Content-Type': 'application/json;charset=utf-8'},
             onUploadProgress: (event) => {
@@ -29,15 +29,17 @@ export async function useAuth(arg){
 
         })
         .then((data)=>{
+            console.log(data)
             if(data.data.token !== null){
                 arg(true)
             }else{
                 dispatch(removeUser())
                 arg(false)
+                console.log("kkkk")
             }   
         })
         .catch((error)=>{
-            //console.log(error)
+            console.log(error)
             let div = document.createElement('div');
             div.innerHTML = t(error.response.status);
             div.className = "error__message"
@@ -48,7 +50,7 @@ export async function useAuth(arg){
             arg(false)
         });
     }else{
-        return false;
+        return arg(false);
     }
     
 }

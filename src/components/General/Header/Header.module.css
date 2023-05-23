@@ -1,0 +1,133 @@
+.header{
+    width: 100%;
+}
+.big__header{
+    background-color: var(--purple-color);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.small__header{
+    padding: 20px 0;
+    background-color: var(--light-purple-color);
+}
+.small__header__in{
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.phone{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 0 20px;
+    white-space: nowrap;
+}
+.phone__full{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 150%;
+    box-sizing: border-box;
+    background-color: var(--light-purple-color);
+    border-top: none;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 18px;
+}
+.phone__full > a, .phone > a{
+    text-decoration: none;
+    color: #000000;
+}
+.static__arrow{
+    margin-left: 5px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.td__arrow__change{
+    transform: rotate(180deg);
+}
+.logo__phone, .lang__burg{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.logo__img{
+    width: 150px;
+}
+.select{
+    background-color: var(--light-purple-color);
+    border: none;
+    padding: 5px;
+    color: #000000;
+    font-size: 16px;
+}
+/**/
+.languages__wrap{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.line{
+    width: 1px;
+    height: 20px;
+    background-color: var(--purple-color);
+}
+.languages__item{
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+}
+/**/
+.burger{
+    position: relative;
+    height: 20px;
+    width: 30px;
+    cursor: pointer;
+}
+.span{
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--purple-color);
+    display: block;
+    transition: all .3s;
+}
+.b2, .b3{
+    top: 50%;
+    transform: translateY(-50%);
+}
+.b4{
+    bottom: 0;
+}
+/**/
+.header__menu{
+    padding: 5px 0;
+    width: 70%;
+    margin: auto;
+}
+.menu__wrap ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu__wrap li{
+    text-align: center;
+}
+.menu__wrap li a{
+    color: #ffffff;
+    border-radius: 20px;
+    /*padding: 5px 30px;*/
+    border: solid 2px var(--purple-color);
+    transition: all .1s;
+}
+/*.menu__wrap li a:hover{
+    border: solid 2px #6ec6c1;
+}*/

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import s from './Subheader.module.css'
 import catalogImg from "./../../../img/front/catalog.png"
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import profileImg from "./../../../img/front/profile.png";
 import likedImg from "./../../../img/front/heart.png";
 import cartImg from "./../../../img/front/corz.png"
 import Cart from "../Modules/Cart/Cart";
@@ -13,6 +14,7 @@ const FrontSubheader = ()=>{
     const {t}  = useTranslation();
     const [showCart, setShowCart] = useState(false)
     const catalogLink = getLanguageForRootLink() + "/catalog";
+    const profileLink = getLanguageForRootLink() + "/profile";
     const [open, setOpen] = useState(false);
     const [closeTimeout, setCloseTimeout] = useState(0);
 
@@ -59,6 +61,9 @@ const FrontSubheader = ()=>{
                     
                 </div>
                 <div className={s.options}>
+                    <div className={s.icon}>
+                        <NavLink to={profileLink}><img className={s.icon__image} src={profileImg} alt="profile" /></NavLink>
+                    </div>
                     <div className={s.icon}>
                         <img className={s.icon__image} src={likedImg} alt="Лайкнутые" />
                     </div>

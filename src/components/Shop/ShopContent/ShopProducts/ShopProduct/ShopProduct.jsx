@@ -45,9 +45,9 @@ const ShopProduct = ({productItem,index,shop}) =>{
                 <div className={s.status}>{t(product.status)}</div>
                 <div className={s.control}><img className={s.control__img} src={editImg} alt="" onClick={()=>{
                    
-                   if(product.status !== 'draft') return
+                   if(product.status == 'draft' || product.status == 'rejected') setCloseModal(true)
                    
-                    setCloseModal(true)
+                    
                 }} /></div>
             </div>
             {closeModal ? <ProductRegister 

@@ -1,20 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { Auth } from "../Auth/Auth";
-import { useAuth } from "../functions/useAuth";
 import s from "./Admin.module.css";
 import Content from "./Content/Content";
-import Header from "./Header/Header";
+import Header from './../General/Header/Header';
 import { Navigation } from "./Navigation/Navigation";
-import { Footer } from "../Footer/Footer";
+import Footer from "../Footer/Footer";
+import { apiResponse } from "../functions/api";
+import { t } from "i18next";
 
 const Admin = () =>{
+    
+    const menuItems =[{
+        link:'',
+        title:"main"
+    },{
+        link:'shops',
+        title:"shops"
+    },{
+        link:'moderation',
+        title:"moderation"
+    },{
+        link:'communication',
+        title:"communication"
+    },{
+        link:'advertising',
+        title:"advertising"
+    },]
+    const burgerItems = [
+        {
+            link:'users',
+            title:"users"
+        },{
+            link:'categories',
+            title:"categories"
+        },
+    ];
     const[show, setShow] = useState(false);
     const [auth, setAuth]= useState( false);
-    useAuth((arg)=>{setAuth(arg)})
+    const [errorStatus,setErrorStatus] = useState("loading")
+    useEffect(()=>{
+       
+        apiResponse({},"user/check-auth-admin.php").then((e)=>{
+           // return console.log(e)
+            setAuth(true)
+            
+        }).catch((err)=>setErrorStatus(err.response.status))
+    },[])
     return auth ? (
         <div className={s.wrap}>
             <div className={s.header}>
-                <Header />
+                <Header burgerItems = {burgerItems} menuItems = {menuItems}/>
+                
             </div>
             <div className={s.inner}>
                 <div className={s.navigation}>
@@ -29,9 +64,15 @@ const Admin = () =>{
             </div>
         </div>
     ): (
-       <div className={s.wrap__auth}>
-            <Auth />
+        <>
+        <Header burgerItems = {[]} menuItems = {[]}/>
+        <div className={s.wrap__auth}>
+            {t(errorStatus)}
+           
        </div>
+       <Footer />
+        </>
+       
     )
 }
 
