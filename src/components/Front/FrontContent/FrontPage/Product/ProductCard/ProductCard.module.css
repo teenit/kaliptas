@@ -43,7 +43,7 @@
 }
 .title__link > h4{
     color: #000000;
-    max-height: 28px;
+    max-height: 12px;
     overflow: hidden;
 }
 .section__img{
@@ -57,6 +57,7 @@
 .main__image{
     display: block;
     height: 100%;
+    width: 100%;
 }
 .price{
     font-size: 12px;
@@ -132,7 +133,8 @@
 
 @media (max-width: 600px){
     .in{
-        min-width: 115px;
+        min-width: 100px;
+        /*min-width: 115px;*/
     }
     .img__link{
         height: 70px;
@@ -160,7 +162,7 @@
         font-size: 13px;
     }
     .title__link > h4{
-        max-height: 25px;
+        max-height: 12px;
     }
     .buy{
         padding: 3px 10px;
@@ -185,6 +187,6 @@
     }
     .amount__in > p{
         margin: 0;
-        font-size: 12px;
+        font-size: 15px;
     }
 }

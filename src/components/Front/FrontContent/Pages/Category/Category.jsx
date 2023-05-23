@@ -76,69 +76,142 @@ function Category(props) {
 
         setDisplayedProducts(filteredProducts);
     }
+    
+    const [showFilter, setShowFilter] = useState(false)
 
     return ready ? (
         <div className={s.wrap}>
+
             <div className={s.nav__container}>
                 <Link to="../catalog"><HomeIcon/></Link>
-                {
-                    category.parentCategories.length !== 0 ?
-                    category.parentCategories.slice(0, category.parentCategories.length - 1).map((cat, index) => {
-                        return(
-                            <span  key={index}>
-                                 <span className={s.span__sign}>></span><Link to={getLanguageForRootLink() + "/catalog/" + cat.id}>{cat.title}</Link>
-                            </span>
-                        )
-                    }) : null
-                }
-                <span className={s.span__sign}>></span>
-                <span>{category.title}</span>
+                <div className={s.nav__container__in}>
+                    {
+                        category.parentCategories.length !== 0 ?
+                        category.parentCategories.slice(0, category.parentCategories.length - 1).map((cat, index) => {
+                            return(
+                                <span  key={index}>
+                                    <span className={s.span__sign}>{">"}</span><Link className={s.span__link} to={getLanguageForRootLink() + "/catalog/" + cat.id}>{cat.title}</Link>
+                                </span>
+                            )
+                        }) : null
+                    }
+                    <div className={s.last__part__nav}>
+                        <span className={s.span__sign}>{">"}</span>
+                        <span>{category.title}</span>
+                    </div>
+                </div>
             </div>
+
+            <div className={s.mobile__filter} onClick={()=>{
+                setShowFilter(!showFilter)
+            }}>
+                <p>Фильтры</p>
+            </div>
+
+            {
+                showFilter ? 
+                    <div className={s.filter__container__dop}>
+                        <div className={s.filter__container__in}>
+                            <p>{t('category-priceRange')}</p>
+                            <div className={s.input__line}>
+                                <div className={s.input__line__in}>
+                                    <input className={s.filter__input} type="text" value={value[0]} onChange={(event)=>{
+                                        let newValue = +event.target.value;
+                                        if (newValue < value[1]) {
+                                            setValue([newValue, value[1]])
+                                        }
+                                    }}/>
+                                    <div className={s.connector}></div>
+                                    <input className={s.filter__input} type="text" value={value[1]} onChange={(event)=>{
+                                        let newValue = +event.target.value;
+                                        if (newValue > value[0]) {
+                                            setValue([value[0], newValue])
+                                        }
+                                    }}/>
+                                </div>
+                                <div className={s.apply} onClick={(event)=> applyFilter()}>Ок</div>
+                            </div>
+
+
+                        
+                            <Slider style={{
+                                width: "95%",
+                                padding: "5px 0px",
+                                margin: "auto"
+                            }}
+                                getAriaLabel={() => 'Temperature range'}
+                                value={value}
+                                onChange={handleChange}
+                                valueLabelDisplay="auto"
+                                size="small"
+                                // getAriaValueText={valuetext}
+                                min={0}
+                                max={maxPrice}
+                            />
+                        </div>
+                    </div>
+                : null
+            }
+            
+
             <div className={s.main__container}>
+
                 <div className={s.filter__container}>
-                    <div>
-                        <b>{t('category-priceRange')}</b>
+                    <div className={s.filter__container__in}>
+                        <p>{t('category-priceRange')}</p>
                         <div className={s.input__line}>
-                            <input className={s.filter__input} type="text" value={value[0]} onChange={(event)=>{
-                                let newValue = +event.target.value;
-                                if (newValue < value[1]) {
-                                    setValue([newValue, value[1]])
-                                }
-                            }}/>
-                            <div className={s.connector}></div>
-                            <input className={s.filter__input} type="text" value={value[1]} onChange={(event)=>{
-                                let newValue = +event.target.value;
-                                if (newValue > value[0]) {
-                                    setValue([value[0], newValue])
-                                }
-                            }}/>
-                            <div className={s.apply} onClick={(event)=> applyFilter()}>Ok</div>
+                            <div className={s.input__line__in}>
+                                <input className={s.filter__input} type="text" value={value[0]} onChange={(event)=>{
+                                    let newValue = +event.target.value;
+                                    if (newValue < value[1]) {
+                                        setValue([newValue, value[1]])
+                                    }
+                                }}/>
+                                <div className={s.connector}></div>
+                                <input className={s.filter__input} type="text" value={value[1]} onChange={(event)=>{
+                                    let newValue = +event.target.value;
+                                    if (newValue > value[0]) {
+                                        setValue([value[0], newValue])
+                                    }
+                                }}/>
+                            </div>
+                            <div className={s.apply} onClick={(event)=> applyFilter()}>Ок</div>
                         </div>
 
 
+                    
+                        <Slider style={{
+                            width: "95%",
+                            padding: "5px 0px",
+                            margin: "auto"
+                        }}
+                            getAriaLabel={() => 'Temperature range'}
+                            value={value}
+                            onChange={handleChange}
+                            valueLabelDisplay="auto"
+                            size="small"
+                            // getAriaValueText={valuetext}
+                            min={0}
+                            max={maxPrice}
+                        />
                     </div>
-                    <Slider
-                        getAriaLabel={() => 'Temperature range'}
-                        value={value}
-                        onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        size="small"
-                        // getAriaValueText={valuetext}
-                        min={0}
-                        max={maxPrice}
-                    />
                 </div>
+
                 <div className={s.cards__container}>
                     {displayedProducts.length > 0
                         ? displayedProducts.map((item, index)=>{
                             return (
-                                <ProductCard id={item.id} key={index} />
+                                <div className={s.product__wr} key={index} >
+                                    <ProductCard id={item.id}/>
+                                </div>
                             );
                             })
                         : null
                     }
                 </div>
+
             </div>
+
             <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
                 <ProductList cards={relatedProductList} />
