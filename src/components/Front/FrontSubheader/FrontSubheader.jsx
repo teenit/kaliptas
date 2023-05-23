@@ -57,8 +57,7 @@ const FrontSubheader = ()=>{
                     </div>
                 </Link>
                 <div className={s.input__wrap}>
-                    <input type="text" placeholder={t('frontSubheader-search')} className={s.input}/>
-                    
+                    <input type="text" placeholder={t('frontSubheader-search')} className={s.input}/> 
                 </div>
                 <div className={s.options}>
                     <div className={s.icon}>

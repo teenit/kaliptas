@@ -133,7 +133,7 @@
 .actions{
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 .button{
     display: flex;
@@ -151,7 +151,8 @@
     width: 24px;
     cursor: pointer;
 }
-.button > a{
+.button > p{
+    margin: 0;
     color: #ffffff;
     font-weight: 600;
     font-size: 18px;
@@ -405,6 +406,28 @@
     display: block;
     width: 100%;
 }
+.heart__wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.amount{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.minus, .plus, .amount__in{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.minus > img, .plus > img{
+    width: 16px;
+}
+.amount__in > p{
+    margin: 0;
+    font-size: 18px;
+}
 
 
 @media (max-width: 600px){
@@ -530,4 +553,18 @@
     .item__desc{
         width: 90%;
     }
+
+
+    .amount{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .minus > img, .plus > img{
+        width: 16px;
+    }
+    .amount__in > p{
+        margin: 0;
+        font-size: 18px;
+    } 
 }
