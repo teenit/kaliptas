@@ -7,29 +7,78 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileOrders from "./ProfileOrders/ProfileOrders";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../../../../../Store/Slices/userSlice";
+import s from "./Profile.module.css"
+import profile from "../../../../../img/front/profile3.png"
+import order from "../../../../../img/front/order.png"
+import { NavLink } from "react-router-dom";
 
 const Profile = ()=>{
+    const [user,setUser] = useState({})
     const [auth, setAuth]= useState( false);
     const dispatch = useDispatch();
+
     useEffect(()=>{
         apiResponse({},"user/check-auth.php").then((data)=>{
-           // return console.log(data)
             if(data.email !== null && data.token !== null){
                 setAuth(true)
-            }
-            
+                apiResponse({},"user/get-user.php").then((data)=>setUser(data))
+            }  
         }).catch((err,dar)=>{
             console.log(err.propertyIsEnumerable())
         })
+        
     },[])
+
+    const createLink = (link)=>{
+        let lang = localStorage.getItem('lang');
+        if(lang === '') return `/${link}`;
+        else return `/${lang}/${link}`;
+    }
+
+    const [showContent, setShowContent] = useState({
+        showProfileInfo: true,
+        showProfileOrders: false
+    })
     return auth ?(
-        <div>
-            <div onClick={()=>{
-                dispatch(removeUser())
-                window.location.reload()
-            }}>Logout</div>
-            <ProfileInfo />
-            <ProfileOrders />
+        <div className={s.wrap}>
+            <div className={s.in}>
+                <div className={s.left__wrap}>
+                    <div className={`${s.item__wrap} ${showContent.showProfileInfo ? s.item__wrap__dop : null}`}>
+                        <img src={profile} alt="Профиль" />
+                        <p className={s.title} onClick={()=>{
+                            setShowContent({...showContent, showProfileInfo: true, showProfileOrders: false})
+                        }}>Личные данные</p>
+                    </div>
+                    <div className={`${s.item__wrap} ${showContent.showProfileOrders ? s.item__wrap__dop : null}`}>
+                        <img src={order} alt="Заказы" />
+                        <p className={s.title} onClick={()=>{
+                            setShowContent({...showContent, showProfileInfo: false, showProfileOrders: true})
+                        }}>Мои заказы</p>
+                    </div>
+                    <p className={`${s.title} ${s.title__col}`} onClick={()=>{
+                        dispatch(removeUser())
+                        window.location.reload()
+                    }}>Выйти</p>
+                    {
+                        user.type === 'saxon' || user.type === 'manager' ? <NavLink to={createLink('admin')}><p className={s.link__title}>Перейти в админпанель</p></NavLink> : null
+                    }
+                    {
+                        user.type === 'seller' ? <NavLink to={createLink('shop')}><p className={s.link__title}>Перейти в админпанель магазина</p></NavLink> : null
+                    }
+                </div>
+                <div className={s.rigth__part}>
+                    {
+                        showContent.showProfileInfo ?
+                            <div><ProfileInfo item={user}/></div>
+                        : null
+                    }
+                    {
+                        showContent.showProfileOrders ?
+                            <div><ProfileOrders /></div>
+                        : null
+                    }
+                </div>
+            </div>
         </div>
     ):(
         <Auth />

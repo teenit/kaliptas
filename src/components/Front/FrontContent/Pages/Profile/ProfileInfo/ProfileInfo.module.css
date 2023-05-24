@@ -1,0 +1,75 @@
+.wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.wrap > h2{
+    margin: 0;
+    padding: 0 15px;
+}
+.item__wrap{
+    margin-top: 20px;
+    padding: 15px 0 40px 0;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 5px .5px #00000022;
+}
+.item__title{
+    margin: auto;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left, .right{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.left > p{
+    font-size: 20px;
+    margin: 0;
+}
+.profile{
+    width: 25px;
+}
+.pencil{
+    width: 20px;
+}
+.arrow{
+    width: 18px;
+    transition: all .3s;
+}
+.arrow__dop{
+    transform: rotate(180deg);
+}
+
+
+.item__in{
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+}
+.item__info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 30px;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: max-content;
+}
+.item > label{
+    margin: 0;
+    font-size: 14px;
+}
+.item > input{
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 14px;
+}
