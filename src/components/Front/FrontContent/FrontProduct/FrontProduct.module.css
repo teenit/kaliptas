@@ -111,11 +111,22 @@
     flex-direction: column;
     gap: 20px;
 }
+.price{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 .price > p{
     margin: 0;
     font-size: 26px;
     color: var(--purple-color);
     font-weight: 600;
+}
+.previous__price{
+    color: gray;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: line-through;
 }
 .inStock, .notInStock{
     display: flex;

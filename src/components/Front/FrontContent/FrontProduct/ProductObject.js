@@ -38,6 +38,14 @@ export class ProductObject{
         return this.id + "-" + this.tag;
     }
 
+    isDiscountPresent(){
+        return this.discount !== "";
+    }
+
+    getPriceWithDiscount() {
+        return this.price - this.discount;
+    }
+
     static getIdFromLink(link) {
         return link.slice(0, link.indexOf("-"))
     }
