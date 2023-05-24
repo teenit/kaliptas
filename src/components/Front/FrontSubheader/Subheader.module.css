@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: center;
     background-color: #9134b3;
-    position: relative;
+    position: absolute;
+    z-index: 998;
 }
 .inner {
     width: 80%;
@@ -25,6 +26,8 @@
     border-radius: 20px;
     padding: 5px 20px;
     cursor: pointer;
+    position: relative;
+    z-index: 1000;
 }
 .button > img{
     width: 22px;
@@ -79,10 +82,27 @@
         width: 90%;
     }
 }
-.dropdown{
+.dropdown__wrap{
+    width: 100%;
+    height: 100vh;
     position: absolute;
+    top: 0%;
+    left: 0;
+    z-index: 1;
+    background-color: #00000077;
+    display: flex;
+    justify-content: center;
+}
+.dropdown__wrap__content{
+    width: 80%;
+}
+.dropdown{
+    width: max-content;
+    height: max-content;
+    position: relative;
     top: 80px;
-    z-index: 999;
     left: 0;
     background: white;
+    border-radius: 10px;
+    padding: 15px 25px;
 }

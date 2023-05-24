@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     padding: 20px 0px;
+    position: relative;
+    z-index: 999;
 }
 .inner{
     width: 80%;
@@ -44,6 +46,7 @@
     left: 0;
     width: 100%;
     top: 155%;
+    z-index: 999;
     box-sizing: border-box;
     background-color: var(--light-purple-color);
     border-top: none;
