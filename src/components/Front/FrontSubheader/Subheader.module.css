@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     background-color: #9134b3;
-    position: absolute;
+    position: relative;
     z-index: 998;
 }
 .inner {
