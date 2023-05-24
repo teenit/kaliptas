@@ -43,12 +43,15 @@ const CartRow = (props) =>{
                         </div>
                     </div>
                     <div className={s.prices}>
+                        {product.isDiscountPresent()?
                         <div className={s.plice__in}>
-                            <p className={s.price__aver}>{product.price}$</p>
-                            <div className={s.line}></div>
-                        </div>
-                        <p className={s.price__skid}>{state.amount * product.discount}$</p>
+                        <p className={s.price__aver}>{state.amount*product.price}$</p>
+                        <div className={s.line}></div>
                     </div>
+                        :null}
+                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount()}$</p>
+                    </div>
+                   
                     <div className={s.delete}>
                         <img src={deletebtn} alt={t('cartRow-deleteAlt')} onClick={()=>{
                             deleteById(product.id)

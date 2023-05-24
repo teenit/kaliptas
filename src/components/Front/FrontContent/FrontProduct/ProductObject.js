@@ -38,8 +38,12 @@ export class ProductObject{
         return this.id + "-" + this.tag;
     }
 
-    getPrice() {
-        return this.discount !== undefined ? this.discount : this.price;
+    isDiscountPresent(){
+        return this.discount !== "";
+    }
+
+    getPriceWithDiscount() {
+        return this.price - this.discount;
     }
 
     static getIdFromLink(link) {
