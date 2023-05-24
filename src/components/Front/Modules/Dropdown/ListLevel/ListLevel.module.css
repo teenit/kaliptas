@@ -41,7 +41,6 @@
 }
 .option{
     display: flex;
-    gap: 5px;
 }
 .parent__wrap,.child__wrap{
     display: flex;
