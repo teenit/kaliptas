@@ -11,8 +11,9 @@ import closeImage from "../../../../img/front/chrest.png"
 import { Link } from "react-router-dom";
 import Language from "../Language/Language";
 import {getLanguageForLink, getLanguageForRootLink} from "../../../functions/getLanguage";
-import Cart from "../../Modules/Cart/Cart";
+import CartModule from "../../Modules/Cart/CartModule";
 import MobileDropdown from "../../Modules/MobileDropdown/MobileDropdown";
+import CartModal from "../../../Modals/CartModal/CartModal";
 import logo from "../../../../img/logo.png"
 //import Cart from "../../Modules/Cart/Cart";
 
@@ -74,7 +75,7 @@ const BurgerMenu = ({t, active, setActive}) =>{
             </div>
             {
                 showCart ?
-                   <Cart close={()=>{{setShowCart(false)}}}/>
+                   <CartModal close={()=>{{setShowCart(false)}}}/>
                 : null
             }
         </div>

@@ -78,6 +78,14 @@
     "frontProduct-feedbacks":"Отзывы о ",
     "frontProduct-questions":"Вопросы о ",
     "frontProduct-images":"Фото ",
+    "frontCart-title":"Корзина",
+    "frontCart-crossAlt":"Крестик",
+    "frontCart-totalPrice":"Общая сумма",
+    "frontCart-button":"Оформить заказ",
+
+    "cartRow-minusAlt":"Минус",
+    "cartRow-plusAlt":"Плюс",
+    "cartRow-deleteAlt":"Удалить"
     
     "profile-personalData":"Личные данные",
     "profile-myOrders":"Мои заказы",

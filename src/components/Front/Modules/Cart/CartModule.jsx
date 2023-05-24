@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
-import s from "./Cart.module.css"
+import s from "./CartModule.module.css"
 import CartRow from "./CartRow/CartRow";
-import chrest from "./../../../../img/front/chrest.png"
 import { ProductObject } from "../../FrontContent/FrontProduct/ProductObject";
-import {api, apiResponse} from "../../../functions/api"
+import {apiResponse} from "../../../functions/api"
 import {getCart} from "../../../functions/cartControll";
-import {getLanguageForLink, getRealLanguage} from "../../../functions/getLanguage";
+import {getRealLanguage} from "../../../functions/getLanguage";
 
-const Cart = ({close, }) =>{
+const CartModule = ({setTotalPrice}) =>{
     const loadCart = ()=>{
-        console.log("Entries",Object.entries(getCart()))
-
         return Object.entries(getCart())
         .map((entry)=>{
         return {
@@ -26,8 +23,9 @@ const Cart = ({close, }) =>{
     const loadProducts = function () {
         let promiseList = [];
         let cartList = loadCart();
+        let totalPrice = 0;
+
         setProductIdList(cartList)
-        console.log("Load products:", productIdList)
 
         for (let i = 0; i < cartList.length; i++) {
             let prod = cartList[i]
@@ -37,7 +35,6 @@ const Cart = ({close, }) =>{
         }
 
         Promise.all(promiseList).then((values)=>{
-            console.log("Promise result: ", values)
             let tempProductsAndCount = [];
             for (let i = 0; i < values.length; i++) {
                 tempProductsAndCount.push({
@@ -45,7 +42,10 @@ const Cart = ({close, }) =>{
                     count: productIdList[i].count
                 });
             }
-            console.log("Prod:",tempProductsAndCount)
+            tempProductsAndCount.forEach((prod)=>{
+                totalPrice += prod.product.getPrice() * prod.count;
+            });
+            setTotalPrice(totalPrice);
             setProductsAndCount(tempProductsAndCount)
             setReady(true)
         })
@@ -56,30 +56,13 @@ const Cart = ({close, }) =>{
     }, [])
 
     return ready ? (
-        <div className={s.wrap}>
-            <div className={s.in}>
-                <div className={s.title}>
-                    <h3>Корзина</h3>
-                    <img src={chrest} alt="Крестик" onClick={()=>{
-                        close()
-                    }} />
-                </div>
-                <div className={s.row}>
-                    {
-                        productsAndCount.map((item, index)=>{
-                            return <CartRow item={item} key={index} change={()=>{loadProducts()}}/>
-                        })
-                    }
-                </div>
-                <div className={s.res}>
-                    <div className={s.sum}>
-                        <p>Общая сумма</p>
-                        <p></p>
-                    </div>
-                <button className={s.btn}>Оформить заказ</button>
-            </div>
-            </div>
+        <div className={s.row}>
+            {
+                productsAndCount.map((item, index)=>{
+                    return <CartRow item={item} key={index} change={()=>{loadProducts();}}/>
+                })
+            }
         </div>
     ) : null;
 }
-export default Cart
+export default CartModule

@@ -82,6 +82,10 @@
     "frontProduct-feedbacks":"მიმოხილვები შესახებ ",
     "frontProduct-questions":"კითხვების შესახებ ",
     "frontProduct-images":"ფოტო ",
+    "frontCart-title":"კალათა",
+    "frontCart-crossAlt":"ჯვარი",
+    "frontCart-totalPrice":"მთლიანი რაოდენობა",
+    "frontCart-button":"გადახდა",
     
     "profile-personalData":"პერსონალური მონაცემები",
     "profile-myOrders":"ბრძანებებს",
@@ -90,6 +94,9 @@
     "profile-shopAdminPanel":"გადადით მაღაზიის ადმინისტრაციულ პანელზე",
 
     "profile-ordersHistory":"შეკვეთების ისტორია",
+    "cartRow-minusAlt":"მინუს",
+    "cartRow-plusAlt":"პლუს",
+    "cartRow-deleteAlt":"წაშლა"
 
     "profile-userName":"მომხმარებლის სახელი",
     "profile-birthday":"დაბადების დღე",

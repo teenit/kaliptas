@@ -90,8 +90,15 @@
     "profile-exit":"Exit",
     "profile-adminPanel":"Go to admin panel",
     "profile-shopAdminPanel":"Go to shop admin panel",
+    "frontCart-title":"Cart",
+    "frontCart-crossAlt":"Cross",
+    "frontCart-totalPrice":"Total price",
+    "frontCart-button":"Checkout",
 
     "profile-ordersHistory":"History of orders",
+    "cartRow-minusAlt":"Minus",
+    "cartRow-plusAlt":"Plus",
+    "cartRow-deleteAlt":"Delete"
 
     "profile-userName":"Username",
     "profile-birthday":"Birthday",

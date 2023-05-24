@@ -61,9 +61,13 @@ export function deleteById(id) {
         throw Error("No product in localStorage with id: " + id)
     }
 
-    let cartMap = getCart();
-    delete cartMap[id];
-    setCart(cartMap);
+    let check = window.confirm("Delete product from cart?")
+
+    if (check) {
+        let cartMap = getCart();
+        delete cartMap[id];
+        setCart(cartMap);
+    }
 }
 
 export function getCountById(id) {
@@ -83,6 +87,24 @@ export function getCart() {
     return JSON.parse(cartMap);
 }
 
+export function getCartItemsCount() {
+    let total = 0;
+    Object.entries(getCart()).forEach((entry)=>{
+        total += entry[1]
+    });
+    return total;
+}
+
 export function setCart(cart) {
     localStorage.setItem(productListKey, JSON.stringify(cart));
+}
+
+export function getItemsList() {
+    return Object.entries(getCart())
+        .map((entry)=>{
+            return {
+                id: entry[0],
+                count: entry[1]
+            }
+    });
 }
