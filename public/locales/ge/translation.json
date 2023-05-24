@@ -81,7 +81,36 @@
     "frontProduct-char":"მახასიათებლები ",
     "frontProduct-feedbacks":"მიმოხილვები შესახებ ",
     "frontProduct-questions":"კითხვების შესახებ ",
-    "frontProduct-images":"ფოტო "
+    "frontProduct-images":"ფოტო ",
+    
+    "profile-personalData":"პერსონალური მონაცემები",
+    "profile-myOrders":"ბრძანებებს",
+    "profile-exit":"გარეთ გასვლა",
+    "profile-adminPanel":"გადადით ადმინისტრაციულ პანელზე",
+    "profile-shopAdminPanel":"გადადით მაღაზიის ადმინისტრაციულ პანელზე",
+
+    "profile-ordersHistory":"შეკვეთების ისტორია",
+
+    "profile-userName":"მომხმარებლის სახელი",
+    "profile-birthday":"დაბადების დღე",
+    "profile-sex":"სექსი",
+
+    "profile-login":"შესვლა",
+    "profile-loginEmail":"შესვლა (ელფოსტა)",
+    "profile-loginPhone":"შესვლა (ტელეფონი)",
+    "profile-userType":"მომხმარებლის ტიპი",
+
+    "profile-contacts":"კონტაქტები",
+    "profile-email":"ელფოსტა",
+    "profile-phone":"ტელეფონი",
+    "profile-secondPhone":"დამატებითი ტელეფონი",
+
+    "profile-deliveryAdress":"მისაღები მისამართი",
+    "profile-city":"ქალაქი",
+    "profile-street":"ქუჩა",
+    "profile-house":"სახლი",
+    "profile-flat":"ბინა"
+
 
 
 

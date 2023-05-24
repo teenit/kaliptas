@@ -83,7 +83,36 @@
     "frontProduct-char":"Characteristics of ",
     "frontProduct-feedbacks":"Feedbacks about ",
     "frontProduct-questions":"Questions about ",
-    "frontProduct-images":"Images of "
+    "frontProduct-images":"Images of ",
+    
+    "profile-personalData":"Personal data",
+    "profile-myOrders":"My orders",
+    "profile-exit":"Exit",
+    "profile-adminPanel":"Go to admin panel",
+    "profile-shopAdminPanel":"Go to shop admin panel",
+
+    "profile-ordersHistory":"History of orders",
+
+    "profile-userName":"Username",
+    "profile-birthday":"Birthday",
+    "profile-sex":"Sex",
+
+    "profile-login":"Login",
+    "profile-loginEmail":"Login(email)",
+    "profile-loginPhone":"Login(phone)",
+    "profile-userType":"User type",
+
+    "profile-contacts":"Contacts",
+    "profile-email":"Email",
+    "profile-phone":"Phone",
+    "profile-secondPhone":"Additional Phone",
+
+    "profile-deliveryAdress":"Delivery address",
+    "profile-city":"City",
+    "profile-street":"Street",
+    "profile-house":"House",
+    "profile-flat":"Flat"
+
 
 
 }

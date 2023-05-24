@@ -77,8 +77,34 @@
     "frontProduct-char":"Характеристики ",
     "frontProduct-feedbacks":"Отзывы о ",
     "frontProduct-questions":"Вопросы о ",
-    "frontProduct-images":"Фото "
+    "frontProduct-images":"Фото ",
     
+    "profile-personalData":"Личные данные",
+    "profile-myOrders":"Мои заказы",
+    "profile-exit":"Выйти",
+    "profile-adminPanel":"Перейти в админпанель",
+    "profile-shopAdminPanel":"Перейти в админпанель магазина",
 
+    "profile-ordersHistory":"История заказов",
+
+    "profile-userName":"Имя пользователя",
+    "profile-birthday":"Дата рождения",
+    "profile-sex":"Пол",
+
+    "profile-login":"Логин",
+    "profile-loginEmail":"Логин(почта)",
+    "profile-loginPhone":"Логин(телефон)",
+    "profile-userType":"Тип пользователя",
+
+    "profile-contacts":"Контакты",
+    "profile-email":"Почта",
+    "profile-phone":"Телефон",
+    "profile-secondPhone":"Дополнительный телефон",
+
+    "profile-deliveryAdress":"Адрес доставки",
+    "profile-city":"Город",
+    "profile-street":"Улица",
+    "profile-house":"Дом",
+    "profile-flat":"Кваритра"
 
 }

@@ -7,8 +7,10 @@ import deliveryImage from "../../../../../../img/front/delivery.png"
 import profileImage from "../../../../../../img/front/profile3.png"
 import arrow from "../../../../../../img/collapse-arrow-50.png"
 import login from "../../../../../../img/front/login.png"
+import { useTranslation } from "react-i18next";
 
 const ProfileInfo = ({item})=>{
+    const {t} = useTranslation()
     const [showInfo, setShowInfo] = useState({
         firstInfo: true,
         secondInfo: false,
@@ -19,12 +21,12 @@ const ProfileInfo = ({item})=>{
     
     return(
         <div className={s.wrap}>
-            <h2>Личные данные</h2>
+            <h2>{t('profile-personalData')}</h2>
             <div className={s.item__wrap}>
                 <div className={s.item__title}>
                     <div className={s.left}>
                         <img className={s.profile} src={profileImage} alt="Профиль" />
-                        <p>Личные данные</p>
+                        <p>{t('profile-personalData')}</p>
                     </div>
                     <div className={s.right}>
                         <img className={`${s.arrow} ${showInfo.firstInfo ? s.arrow__dop : null}`} src={arrow} alt="" onClick={()=>{
@@ -37,15 +39,15 @@ const ProfileInfo = ({item})=>{
                         <div className={s.item__in}>
                             <div className={s.item__info}>
                                 <div className={s.item}>
-                                    <label htmlFor="">Имя пользователя</label>
+                                    <label htmlFor="">{t('profile-userName')}</label>
                                     <input disabled type="text" value={item.userName}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Дата рождения</label>
+                                    <label htmlFor="">{t('profile-birthday')}</label>
                                     <input disabled type="text" value={"13.06.1996"}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Пол</label>
+                                    <label htmlFor="">{t('profile-sex')}</label>
                                     <input disabled type="text" value={"Мужской"}/> 
                                 </div>
                             </div>
@@ -59,7 +61,7 @@ const ProfileInfo = ({item})=>{
                 <div className={s.item__title}>
                     <div className={s.left}>
                         <img className={s.profile} src={login} alt="Профиль" />
-                        <p>Логин</p>
+                        <p>{t('profile-login')}</p>
                     </div>
                     <div className={s.right}>
                         <img className={`${s.arrow} ${showInfo.secondInfo ? s.arrow__dop : null}`} src={arrow} alt="" onClick={()=>{
@@ -72,15 +74,15 @@ const ProfileInfo = ({item})=>{
                         <div className={s.item__in}>
                             <div className={s.item__info}>
                                 <div className={s.item}>
-                                    <label htmlFor="">Логин(почта)</label>
+                                    <label htmlFor="">{t('profile-loginEmail')}</label>
                                     <input disabled type="text" value={item.email}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Логие(телефон)</label>
+                                    <label htmlFor="">{t('profile-loginPhone')}</label>
                                     <input disabled type="text" value={item.phone}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Тип пользователя</label>
+                                    <label htmlFor="">{t('profile-userType')}</label>
                                     <input disabled type="text" value={item.type}/> 
                                 </div>
                             </div>
@@ -93,7 +95,7 @@ const ProfileInfo = ({item})=>{
                 <div className={s.item__title}>
                     <div className={s.left}>
                         <img className={s.profile} src={contactsImage} alt="Профиль" />
-                        <p>Контакты</p>
+                        <p>{t('profile-contacts')}</p>
                     </div>
                     <div className={s.right}>
                         <img className={`${s.arrow} ${showInfo.thirdInfo ? s.arrow__dop : null}`} src={arrow} alt="" onClick={()=>{
@@ -106,15 +108,15 @@ const ProfileInfo = ({item})=>{
                         <div className={s.item__in}>
                             <div className={s.item__info}>
                                 <div className={s.item}>
-                                    <label htmlFor="">Почта</label>
+                                    <label htmlFor="">{t('profile-email')}</label>
                                     <input disabled type="text" value={item.email}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Телефон</label>
+                                    <label htmlFor="">{t('profile-phone')}</label>
                                     <input disabled type="text" value={item.phone}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Дополнительный телефон</label>
+                                    <label htmlFor="">{t('profile-secondPhone')}</label>
                                     <input disabled type="text" value={"0688562345"}/> 
                                 </div>
                             </div>
@@ -127,7 +129,7 @@ const ProfileInfo = ({item})=>{
                 <div className={s.item__title}>
                     <div className={s.left}>
                         <img className={s.profile} src={deliveryImage} alt="Профиль" />
-                        <p>Адрес доставки</p>
+                        <p>{t('profile-deliveryAdress')}</p>
                     </div>
                     <div className={s.right}>
                         <img className={`${s.arrow} ${showInfo.foursInfo ? s.arrow__dop : null}`} src={arrow} alt="" onClick={()=>{
@@ -140,19 +142,19 @@ const ProfileInfo = ({item})=>{
                         <div className={s.item__in}>
                             <div className={s.item__info}>
                                 <div className={s.item}>
-                                    <label htmlFor="">Город</label>
+                                    <label htmlFor="">{t('profile-city')}</label>
                                     <input disabled type="text" value={"Тбилиси"}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Улица</label>
+                                    <label htmlFor="">{t('profile-street')}</label>
                                     <input disabled type="text" value={"Львови"}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Дом</label>
+                                    <label htmlFor="">{t('profile-house')}</label>
                                     <input disabled type="text" value={"25"}/> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">Квартира</label>
+                                    <label htmlFor="">{t('profile-flat')}</label>
                                     <input disabled type="text" value={"13"}/> 
                                 </div>
                             </div>

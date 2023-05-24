@@ -11,8 +11,10 @@ import s from "./Profile.module.css"
 import profile from "../../../../../img/front/profile3.png"
 import order from "../../../../../img/front/order.png"
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Profile = ()=>{
+    const {t} = useTranslation()
     const [user,setUser] = useState({})
     const [auth, setAuth]= useState( false);
     const dispatch = useDispatch();
@@ -47,20 +49,20 @@ const Profile = ()=>{
                         <img src={profile} alt="Профиль" />
                         <p className={s.title} onClick={()=>{
                             setShowContent({...showContent, showProfileInfo: true, showProfileOrders: false})
-                        }}>Личные данные</p>
+                        }}>{t('profile-personalData')}</p>
                     </div>
                     <div className={`${s.item__wrap} ${showContent.showProfileOrders ? s.item__wrap__dop : null}`}>
                         <img src={order} alt="Заказы" />
                         <p className={s.title} onClick={()=>{
                             setShowContent({...showContent, showProfileInfo: false, showProfileOrders: true})
-                        }}>Мои заказы</p>
+                        }}>{t('profile-myOrders')}</p>
                     </div>
                     <p className={`${s.title} ${s.title__col}`} onClick={()=>{
                         dispatch(removeUser())
                         window.location.reload()
-                    }}>Выйти</p>
+                    }}>{t('profile-exit')}</p>
                     {
-                        user.type === 'saxon' || user.type === 'manager' ? <NavLink to={createLink('admin')}><p className={s.link__title}>Перейти в админпанель</p></NavLink> : null
+                        user.type === 'saxon' || user.type === 'manager' ? <NavLink to={createLink('admin')}><p className={s.link__title}>{t('profile-adminPanel')}</p></NavLink> : null
                     }
                     {
                         user.type === 'seller' ? <NavLink to={createLink('shop')}><p className={s.link__title}>Перейти в админпанель магазина</p></NavLink> : null
