@@ -25,7 +25,7 @@ const CartModal = ({close, }) =>{
                 }}/>
                 <div className={s.res}>
                     <div className={s.sum}>
-                        <p>{t('frontCart-totalPrice')}: {totalPrice}$</p>
+                        {/*<p>{t('frontCart-totalPrice')}: {totalPrice}$</p>*/}
                         <p></p>
                     </div>
                     {

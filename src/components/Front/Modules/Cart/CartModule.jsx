@@ -43,7 +43,11 @@ const CartModule = ({setTotalPrice}) =>{
                 });
             }
             tempProductsAndCount.forEach((prod)=>{
-                totalPrice += prod.product.getPrice() * prod.count;
+                if (prod.product.isDiscountPresent()) {
+                    totalPrice += prod.product.getPriceWithDiscount() * prod.count;
+                } else {
+                    totalPrice += prod.product.price * prod.count;
+                }
             });
             setTotalPrice(totalPrice);
             setProductsAndCount(tempProductsAndCount)
