@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 
 const CartRow = (props) =>{
     const {t} = useTranslation()
-    console.log(props)
     const [state, setState] = useState({
         amount: props.item.count
     })

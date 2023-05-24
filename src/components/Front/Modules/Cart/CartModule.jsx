@@ -26,7 +26,6 @@ const CartModule = ({setTotalPrice}) =>{
         let totalPrice = 0;
 
         setProductIdList(cartList)
-        console.log("Load products:", productIdList)
 
         for (let i = 0; i < cartList.length; i++) {
             let prod = cartList[i]
@@ -36,7 +35,6 @@ const CartModule = ({setTotalPrice}) =>{
         }
 
         Promise.all(promiseList).then((values)=>{
-            console.log("Promise result: ", values)
             let tempProductsAndCount = [];
             for (let i = 0; i < values.length; i++) {
                 tempProductsAndCount.push({
@@ -47,8 +45,6 @@ const CartModule = ({setTotalPrice}) =>{
             tempProductsAndCount.forEach((prod)=>{
                 totalPrice += prod.product.getPrice() * prod.count;
             });
-            console.log(totalPrice)
-            console.log(tempProductsAndCount)
             setTotalPrice(totalPrice);
             setProductsAndCount(tempProductsAndCount)
             setReady(true)

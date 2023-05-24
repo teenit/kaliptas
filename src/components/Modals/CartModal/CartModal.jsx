@@ -28,9 +28,14 @@ const CartModal = ({close, }) =>{
                         <p>{t('frontCart-totalPrice')}: {totalPrice}$</p>
                         <p></p>
                     </div>
-                    <Link to={getLanguageForRootLink() + "/cart"} onClick={()=>{
-                        close()
-                    }}><button className={s.btn}>{t('frontCart-button')}</button></Link>
+                    {
+                        getCartItemsCount() > 0
+                            ? <Link to={getLanguageForRootLink() + "/cart"} onClick={()=>{
+                            close()
+                        }}><button className={s.btn}>{t('frontCart-button')}</button></Link>
+                            : <button className={`${s.btn} ${s.inactive}`}>{t('frontCart-button')}</button>
+                    }
+
                 </div>
             </div>
         </div>);

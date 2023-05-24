@@ -98,3 +98,13 @@ export function getCartItemsCount() {
 export function setCart(cart) {
     localStorage.setItem(productListKey, JSON.stringify(cart));
 }
+
+export function getItemsList() {
+    return Object.entries(getCart())
+        .map((entry)=>{
+            return {
+                id: entry[0],
+                count: entry[1]
+            }
+    });
+}
