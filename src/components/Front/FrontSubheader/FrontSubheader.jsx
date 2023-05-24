@@ -20,7 +20,9 @@ const FrontSubheader = ()=>{
 
     const showDropdown = function () {
 
-        return  <div
+        return  <div className={s.dropdown__wrap}>
+                    <div className={s.dropdown__wrap__content}>
+                        <div
                 className={s.dropdown}
                 onMouseEnter={()=>{
                     clearTimeout(closeTimeout);
@@ -29,7 +31,9 @@ const FrontSubheader = ()=>{
                 onClick={()=>setOpen(false)}
             >
                 <Dropdown/>
-            </div>
+                        </div>
+                    </div>
+                </div>
     }
 
     return(
