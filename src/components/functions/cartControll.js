@@ -99,6 +99,10 @@ export function setCart(cart) {
     localStorage.setItem(productListKey, JSON.stringify(cart));
 }
 
+export function clearCart() {
+    setCart({})
+}
+
 export function getItemsList() {
     return Object.entries(getCart())
         .map((entry)=>{
