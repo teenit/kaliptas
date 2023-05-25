@@ -69,6 +69,37 @@ const FrontProduct = () => {
     })
 
     const [countInCart, setCountInCart] = useState(0);
+    const renderBuyButton= function () {
+        return productObject.inStock ? countInCart > 0
+            ? (<div className={s.amount}>
+                <div className={s.minus}>
+                    <img src={cartMinus} alt="Минус" onClick={() => {
+                        decrementById(productId);
+                        setCountInCart(getCountById(productId));
+                    }} />
+                </div>
+                <div className={s.amount__in}>
+                    <p>{countInCart}</p>
+                </div>
+                <div className={s.plus}>
+                    <img src={cartPlus} alt="Плюс" onClick={() => {
+                        incrementById(productId);
+                        setCountInCart(getCountById(productId));
+                    }} />
+                </div>
+            </div>)
+            :
+            (<div className={s.button} onClick={(event) => {
+                buy(productId);
+                setCountInCart(1);
+            }}>
+                <img src={cart} alt="" />
+                <p>Купить</p>
+            </div>) : (<div className={`${s.button} ${s.inactive}`}>
+            <img src={cart} alt="" />
+            <p>Купить</p>
+        </div>)
+    }
 
     return ready ? (
         <div className={s.main}>
@@ -144,32 +175,7 @@ const FrontProduct = () => {
                                         </div>}
                                     <div className={s.actions}>
                                         {
-                                            countInCart > 0
-                                                ? (<div className={s.amount}>
-                                                    <div className={s.minus}>
-                                                        <img src={cartMinus} alt="Минус" onClick={() => {
-                                                            decrementById(productId);
-                                                            setCountInCart(getCountById(productId));
-                                                        }} />
-                                                    </div>
-                                                    <div className={s.amount__in}>
-                                                        <p>{countInCart}</p>
-                                                    </div>
-                                                    <div className={s.plus}>
-                                                        <img src={cartPlus} alt="Плюс" onClick={() => {
-                                                            incrementById(productId);
-                                                            setCountInCart(getCountById(productId));
-                                                        }} />
-                                                    </div>
-                                                </div>)
-                                                :
-                                                (<div className={s.button} onClick={(event) => {
-                                                    buy(productId);
-                                                    setCountInCart(1);
-                                                }}>
-                                                    <img src={cart} alt="" />
-                                                    <p>Купить</p>
-                                                </div>)
+                                            renderBuyButton()
                                         }
                                         <div className={s.heart__wrap}>
                                             {liked == true ?
@@ -324,7 +330,9 @@ const FrontProduct = () => {
                                         <img src={heartImg} alt="" />
                                     </div>
                                 </div>
-                                <button className={s.btn}>{t('frontProduct-buyButton')}</button>
+                                {
+                                    renderBuyButton()
+                                }
                             </div>
                         </div>
                     </div>
