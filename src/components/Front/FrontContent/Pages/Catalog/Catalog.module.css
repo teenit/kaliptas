@@ -12,12 +12,14 @@
 }
 
 .category{
+    height: 100%;
     padding: 15px 5px;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
+    text-align: center;
     background-color: #ffffff;
     gap: 15px;
 }

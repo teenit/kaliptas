@@ -28,6 +28,7 @@ function Category(props) {
                 }
 
                 let categoryId = CategoryObject.getIdFromResponse(categoryResponse);
+                
                 let productsPromise = apiResponse({
                     catID: params.id
                 }, "content/products/get-products-by-category-id.php");
