@@ -27,7 +27,7 @@
     padding: 5px 20px;
     cursor: pointer;
     position: relative;
-    z-index: 1000;
+    z-index: 999;
 }
 .button > img{
     width: 22px;
