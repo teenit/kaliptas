@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import s from './Subheader.module.css'
 import catalogImg from "./../../../img/front/catalog.png"
 import {Link, NavLink} from "react-router-dom";
@@ -10,6 +10,8 @@ import {getLanguageForRootLink} from "../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../Modules/Dropdown/Dropdown";
 import CartModal from "../../Modals/CartModal/CartModal";
+import {Badge} from "@mui/material";
+import {getCartItemsCount} from "../../functions/cartControll";
 
 const FrontSubheader = ()=>{
     const {t}  = useTranslation();
@@ -18,6 +20,13 @@ const FrontSubheader = ()=>{
     const profileLink = getLanguageForRootLink() + "/profile";
     const [open, setOpen] = useState(false);
     const [closeTimeout, setCloseTimeout] = useState(0);
+    const [countInCart, setCountInCart] = useState(getCartItemsCount());
+
+    useEffect(()=>{
+        setInterval(()=>{
+            setCountInCart(getCartItemsCount())
+        }, 1000)
+    },[])
 
     const showDropdown = function () {
 
@@ -71,11 +80,13 @@ const FrontSubheader = ()=>{
                     <div className={s.icon}>
                         <img className={s.icon__image} src={likedImg} alt="Лайкнутые" />
                     </div>
-                    <div className={s.icon}>
-                        <img className={s.icon__image} src={cartImg} alt="Корзина" onClick={()=>{
-                            setShowCart(true)
-                        }}/>
-                    </div>
+                    <Badge badgeContent={countInCart > 0 ? countInCart : null} color="primary">
+                        <div className={s.icon}>
+                            <img className={s.icon__image} src={cartImg} alt="Корзина" onClick={()=>{
+                                setShowCart(true)
+                            }}/>
+                        </div>
+                    </Badge>
                 </div>
                 {open
                     ?

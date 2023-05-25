@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 const CartModal = ({close, }) =>{
     const {t}  = useTranslation();
     const [totalPrice, setTotalPrice] = useState(0);
+    const [itemsCount, setItemsCount] = useState(getCartItemsCount())
 
     return (
         <div className={s.wrap}>
@@ -22,14 +23,18 @@ const CartModal = ({close, }) =>{
                 </div>
                 <CartModule setTotalPrice={(price)=>{
                     setTotalPrice(price);
-                }}/>
+                }}
+                change={()=>{
+                    setItemsCount(getCartItemsCount())
+                }}
+                />
                 <div className={s.res}>
                     <div className={s.sum}>
                         {/*<p>{t('frontCart-totalPrice')}: {totalPrice}$</p>*/}
                         <p></p>
                     </div>
                     {
-                        getCartItemsCount() > 0
+                        itemsCount > 0
                             ? <Link to={getLanguageForRootLink() + "/cart"} onClick={()=>{
                             close()
                         }}><button className={s.btn}>{t('frontCart-button')}</button></Link>
