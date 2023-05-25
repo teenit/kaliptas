@@ -14,6 +14,7 @@ import cartPlus from "../../../../../../img/front/cartPlus.png";
 import {getLanguageForRootLink, getRealLanguage} from "../../../../../functions/getLanguage";
 
 const ProductCard = ({ id }) => {
+    
     const [liked, setLiked] = useState({
         like: localStorage.getItem("like" + id),
     });
