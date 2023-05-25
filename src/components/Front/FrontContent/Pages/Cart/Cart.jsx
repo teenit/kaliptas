@@ -2,7 +2,10 @@ import React, {useState} from "react";
 import CartModule from "../../../Modules/Cart/CartModule";
 import s from "./Cart.module.css"
 import {MenuItem, TextField} from "@mui/material";
-import {getItemsList} from "../../../../functions/cartControll";
+import {getCartItemsCount, getItemsList} from "../../../../functions/cartControll";
+import {Link} from "react-router-dom";
+import {getLanguageForRootLink} from "../../../../functions/getLanguage";
+import {api} from "../../../../functions/api";
 const Cart = ()=>{
 
     const paymentTypes = { //todo: do translate
@@ -133,8 +136,6 @@ const Cart = ()=>{
         let localDeliveryData = {...deliveryData}[deliveryType.key]
 
         for (let field of Object.values(localDeliveryData)) {
-            console.log(localDeliveryData)
-            console.log(Object.values(localDeliveryData))
             if (field == ""
                 || !validateName()
                 || !validatePhone()
@@ -146,10 +147,12 @@ const Cart = ()=>{
         }
 
         return  {
-            name:name,
-            surname: surname,
-            email:email,
-            phone:phone,
+            user:{
+                name:name,
+                surname: surname,
+                email:email,
+                phone:phone
+            },
             products:getItemsList(),
             methodPay: paymentType.key,
             deliveryForm: {...localDeliveryData},
@@ -187,12 +190,27 @@ const Cart = ()=>{
     }
     const [comment, setComment] = useState("");
 
-    const [obj, setObj] = useState({})
+    const [obj, setObj] = useState({});
+    const [cartItemCount, setCartItemCount] = useState(getCartItemsCount());
 
-    return(
+    const sendForm = function () {
+        let data = formData();
+
+
+        if (data!== {}) {
+            api((response)=>{
+                console.log("Response:", response)
+            }, data, "orders/create-order.php")
+        }
+    }
+
+    return cartItemCount > 0 ? (
+
         <div className={s.wrap}>
             <div>Ваши товар</div>
-            <CartModule setTotalPrice={()=>{}}/>
+            <CartModule change={()=>{
+                setCartItemCount(getCartItemsCount());
+            }}/>
             <TextField label={"Name"} value={name} onChange={(event)=>{
                 setName(event.target.value)
             }}
@@ -254,10 +272,17 @@ const Cart = ()=>{
 
             <button onClick={()=>{
                 setObj(formData())
+                sendForm()
             }}>Get obj</button>
-            <div>{JSON.stringify(obj)}</div>
+            <div>{JSON.stringify(obj, null, 2)}</div>
         </div>
 
-    )
+    ) : <div className={s.wrap}>
+        <div className={s.empty}>
+            No items in cart
+        </div>
+        <Link to={getLanguageForRootLink()}>To main</Link>
+
+    </div>
 }
 export default Cart;

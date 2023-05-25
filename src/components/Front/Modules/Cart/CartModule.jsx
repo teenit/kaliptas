@@ -6,7 +6,7 @@ import {apiResponse} from "../../../functions/api"
 import {getCart} from "../../../functions/cartControll";
 import {getRealLanguage} from "../../../functions/getLanguage";
 
-const CartModule = ({setTotalPrice}) =>{
+const CartModule = ({setTotalPrice, change}) =>{
     const loadCart = ()=>{
         return Object.entries(getCart())
         .map((entry)=>{
@@ -49,7 +49,9 @@ const CartModule = ({setTotalPrice}) =>{
                     totalPrice += prod.product.price * prod.count;
                 }
             });
-            setTotalPrice(totalPrice);
+            if (setTotalPrice !== undefined) {
+                setTotalPrice(totalPrice);
+            }
             setProductsAndCount(tempProductsAndCount)
             setReady(true)
         })
@@ -63,7 +65,13 @@ const CartModule = ({setTotalPrice}) =>{
         <div className={s.row}>
             {
                 productsAndCount.map((item, index)=>{
-                    return <CartRow item={item} key={index} change={()=>{loadProducts();}}/>
+                    return <CartRow item={item} key={index} change={()=>{
+                        loadProducts();
+
+                        if (change !== undefined){
+                            change();
+                        }
+                    }}/>
                 })
             }
         </div>

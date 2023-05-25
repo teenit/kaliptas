@@ -78,6 +78,9 @@
     font-weight: bold;
     font-size: 12px;
 }
+.inactive{
+    background-color: grey;
+}
 .add__to{
     display: flex;
     align-items: center;

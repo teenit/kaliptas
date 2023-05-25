@@ -19,7 +19,7 @@ export class ProductObject{
         })
         this.photos = product.product.images
         this.mainPhoto = product.product.image
-        this.inStock = product.product.inStock
+        this.inStock = product.product.inStock.amount > 0;
     }
 
     id
@@ -43,7 +43,7 @@ export class ProductObject{
     }
 
     getPriceWithDiscount() {
-        return this.price - this.discount;
+        return this.discount;
     }
 
     static getIdFromLink(link) {

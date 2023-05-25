@@ -78,7 +78,7 @@ const ProductCard = ({ id }) => {
                 
                 <div className={`${s.section} ${s.section__dop}`}>
                     {
-                        countInCart > 0
+                        product.inStock ? (countInCart > 0
                             ? (<div className={s.amount}>
                                     <div className={s.minus}>
                                         <img src={cartMinus} alt="Минус" onClick={()=>{
@@ -96,13 +96,12 @@ const ProductCard = ({ id }) => {
                                         }}/>
                                     </div>
                                 </div>)
-                            : 
+                            :
                                 (<div className={s.buy} onClick={(event)=>{
                                     buy(id);
                                     setCountInCart(1);
-                                }}>
-                            Купить
-                        </div>)
+                                }}>Купить</div>))
+                            : <div className={`${s.buy} ${s.inactive}`}>Купить</div>
                     }
 
                     <div className={s.add__to}>
