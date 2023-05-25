@@ -1,7 +1,7 @@
 
 const productListKey = "cart-content"
 
-export function buy(id) {
+export function buy(id, variableId) {
     if (isPresent(id)) {
         throw Error("Product must not be in cart. Id: " + id)
     }
@@ -13,7 +13,7 @@ export function buy(id) {
     setCart(cartMap);
 }
 
-export function isPresent(id) {
+export function isPresent(id, variableId) {
     return (localStorage.getItem(productListKey) !== null)
         ? (JSON.parse(localStorage.getItem(productListKey))[id] !== undefined)
         : false;
@@ -81,10 +81,12 @@ export function getCountById(id) {
 export function getCart() {
     let cartMap = localStorage.getItem(productListKey);
     if (cartMap == null) {
-        localStorage.setItem(productListKey, JSON.stringify({}));
-        return {};
+        localStorage.setItem(productListKey, JSON.stringify([]));
+        return [];
     }
-    return JSON.parse(cartMap);
+    return JSON.parse(cartMap).map((item)=>{
+        return new CartItem(item.id, item.title, item.)
+    });
 }
 
 export function getCartItemsCount() {
@@ -100,15 +102,28 @@ export function setCart(cart) {
 }
 
 export function clearCart() {
-    setCart({})
+    setCart([])
 }
 
 export function getItemsList() {
-    return Object.entries(getCart())
+    return getCart()
         .map((entry)=>{
             return {
-                id: entry[0],
-                count: entry[1]
+                id: entry.id,
+                count: entry.count
             }
     });
+}
+
+class CartItem {
+    constructor(id, count, variableId) {
+        if (variableId !== undefined) {
+            this.variableId = variableId;
+        }
+        this.id = id;
+        this.count = count;
+    }
+    id
+    count
+    variableId
 }
