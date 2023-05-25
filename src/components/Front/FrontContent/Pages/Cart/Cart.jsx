@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import CartModule from "../../../Modules/Cart/CartModule";
 import s from "./Cart.module.css"
-import {MenuItem, TextField} from "@mui/material";
-import {getCartItemsCount, getItemsList} from "../../../../functions/cartControll";
+import {CircularProgress, MenuItem, TextField} from "@mui/material";
+import {clearCart, getCartItemsCount, getItemsList} from "../../../../functions/cartControll";
 import {Link} from "react-router-dom";
 import {getLanguageForRootLink} from "../../../../functions/getLanguage";
-import {api} from "../../../../functions/api";
+import {api, apiResponse} from "../../../../functions/api";
 const Cart = ()=>{
+
+    const emptyForm = {};
 
     const paymentTypes = { //todo: do translate
         cash : {
@@ -65,7 +67,7 @@ const Cart = ()=>{
         switch(deliveryType.key) {
             case deliveryTypes.address.key:
                 return <div>
-                    <TextField
+                    <TextField disabled={pending}
                         label="City"
                         error={resultRequested ? (deliveryData.address.city !== null ?  deliveryData.address.city == "" : true) : false}
                         value={deliveryData.address.city}
@@ -74,7 +76,7 @@ const Cart = ()=>{
                             setDeliveryData({...deliveryData, address: newAddress})
                         }}
                     ></TextField>
-                    <TextField
+                    <TextField disabled={pending}
                         label="Street"
                         value={deliveryData.address.street}
                         error={resultRequested ? (deliveryData.address.street !== undefined ?  deliveryData.address.street == "" : true) : false}
@@ -83,7 +85,7 @@ const Cart = ()=>{
                             setDeliveryData({...deliveryData, address: newAddress})
                         }}
                     ></TextField>
-                    <TextField
+                    <TextField disabled={pending}
                         label="Residential"
                         value={deliveryData.address.residential}
                         error={resultRequested ? (deliveryData.address.residential !== undefined ?  deliveryData.address.residential == "" : true) : false}
@@ -95,7 +97,7 @@ const Cart = ()=>{
                 </div>
             case deliveryTypes.mail.key:
                 return <div>
-                    <TextField
+                    <TextField disabled={pending}
                         label="City"
                         value={deliveryData.mail.city}
                         error={resultRequested ? (deliveryData.mail.city !== undefined ?  deliveryData.mail.city == "" : true) : false}
@@ -104,7 +106,7 @@ const Cart = ()=>{
                             setDeliveryData({...deliveryData, mail: newAddress})
                         }}
                     ></TextField>
-                    <TextField
+                    <TextField disabled={pending}
                         label="Post address"
                         value={deliveryData.mail.post}
                         error={resultRequested ? (deliveryData.mail.post !== undefined ?  deliveryData.mail.post == "" : true) : false}
@@ -113,7 +115,7 @@ const Cart = ()=>{
                             setDeliveryData({...deliveryData, mail: newAddress})
                         }}
                     ></TextField>
-                    <TextField
+                    <TextField disabled={pending}
                         label="Postal code"
                         value={deliveryData.mail.postalCode}
                         error={resultRequested ? (deliveryData.mail.postalCode !== undefined ?  deliveryData.mail.postalCode == "" : true) : false}
@@ -130,6 +132,7 @@ const Cart = ()=>{
 
     const [deliveryType, setDeliveryType] = useState(deliveryTypes.address);
     const [resultRequested, setResultRequested] = useState(false);
+    const [formSent, setFormSent] = useState(false);
 
     const formData = function () {
         setResultRequested(true)
@@ -142,7 +145,7 @@ const Cart = ()=>{
                 || !validateSurname()
                 || !validateEmail()
             ) {
-                return {};
+                return emptyForm;
             }
         }
 
@@ -192,56 +195,78 @@ const Cart = ()=>{
 
     const [obj, setObj] = useState({});
     const [cartItemCount, setCartItemCount] = useState(getCartItemsCount());
+    const [pending, setPending] = useState(false);
+    const [response, setResponse] = useState({
+        totalPrice: "",
+        id: ""
+    })
+
+    const renderResponse = function () {
+        return <div className={s.wrap}>
+            <div className={s.empty}>
+                Заказ на сумму {response.totalPrice}$ успешно получен. ID заказа {response.id}
+            </div>
+            <Link to={getLanguageForRootLink()}>To main</Link>
+
+        </div>
+    }
 
     const sendForm = function () {
         let data = formData();
 
+        if (data !== emptyForm) {
+            setPending(true);
 
-        if (data!== {}) {
-            api((response)=>{
-                console.log("Response:", response)
-            }, data, "orders/create-order.php")
+            apiResponse( data, "orders/create-order.php").then((res)=>{
+                setFormSent(true);
+                setResponse(res)
+                clearCart()
+            }).catch((e)=> {
+                alert(e)
+                setFormSent(false);
+                setPending(false);
+            });
+
         }
     }
 
-    return cartItemCount > 0 ? (
-
-        <div className={s.wrap}>
+    const renderForm = function () {
+        return <div className={s.wrap__form}>
             <div>Ваши товар</div>
             <CartModule change={()=>{
                 setCartItemCount(getCartItemsCount());
             }}/>
-            <TextField label={"Name"} value={name} onChange={(event)=>{
+            <TextField label={"Name"} disabled={pending} value={name} onChange={(event)=>{
                 setName(event.target.value)
             }}
-            error={!validateName() && resultRequested}
+                       error={!validateName() && resultRequested}
             ></TextField>
-            <TextField label={"Surname"} value={surname} onChange={(event)=>{
+            <TextField label={"Surname"} disabled={pending}  value={surname} onChange={(event)=>{
                 setSurname(event.target.value)
             }}
-            error={!validateSurname() && resultRequested}
+                       error={!validateSurname() && resultRequested}
             ></TextField>
 
-            <TextField label={"Email"} value={email} type="email" onChange={(event)=>{
+            <TextField label={"Email"} disabled={pending}  value={email} type="email" onChange={(event)=>{
                 setEmail(event.target.value)
             }}
-            error={!validateEmail() && resultRequested}
+                       error={!validateEmail() && resultRequested}
             ></TextField>
 
-            <TextField label={"Phone"} value={phone} onChange={(event)=>{
+            <TextField label={"Phone"} disabled={pending}  value={phone} onChange={(event)=>{
                 setPhone(phoneMask(event.target.value))
             }}
-            error={!validatePhone() && resultRequested}
+                       error={!validatePhone() && resultRequested}
             ></TextField>
 
             <div>Delivery:</div>
-            <TextField
-            select
-            onChange={(event)=>{
-                setDeliveryType(deliveryTypes[event.target.value])
-            }}
-            defaultValue={deliveryTypes.address.key}
-            label="Delivery Type"
+            <TextField disabled={pending}
+                       select
+                       onChange={(event)=>{
+                           setDeliveryType(deliveryTypes[event.target.value])
+                       }}
+                       defaultValue={deliveryTypes.address.key}
+                       label="Delivery Type"
             >
                 <MenuItem value={deliveryTypes.address.key}>Address</MenuItem>
                 <MenuItem value={deliveryTypes.self.key}>By yourself</MenuItem>
@@ -252,13 +277,13 @@ const Cart = ()=>{
             }
 
             <div>Payment:</div>
-            <TextField
-                select
-                onChange={(event)=>{
-                    setPaymentType(paymentTypes[event.target.value])
-                }}
-                defaultValue={"card"}
-                label="Payment Type"
+            <TextField disabled={pending}
+                       select
+                       onChange={(event)=>{
+                           setPaymentType(paymentTypes[event.target.value])
+                       }}
+                       defaultValue={"card"}
+                       label="Payment Type"
             >
                 {
                     deliveryType.paymentTypes.map((payment, index)=>{
@@ -266,16 +291,26 @@ const Cart = ()=>{
                     })
                 }
             </TextField>
-            <TextField label="Comment" value={comment} onChange={(event)=>{
+            <TextField disabled={pending}  label="Comment" value={comment} onChange={(event)=>{
                 setComment(event.target.value)
             }}></TextField>
 
-            <button onClick={()=>{
-                setObj(formData())
-                sendForm()
-            }}>Get obj</button>
-            <div>{JSON.stringify(obj, null, 2)}</div>
+            {
+                pending ? <div><CircularProgress /></div>
+                    : (<button onClick={()=>{
+                        setObj(formData())
+                        sendForm()
+                    }}>Buy</button>)
+            }
         </div>
+    }
+
+    const [temp, setTemp] = useState({})
+
+    return <div className={s.wrap}> {cartItemCount > 0 ? (
+        formSent
+            ? renderResponse()
+            : renderForm()
 
     ) : <div className={s.wrap}>
         <div className={s.empty}>
@@ -283,6 +318,18 @@ const Cart = ()=>{
         </div>
         <Link to={getLanguageForRootLink()}>To main</Link>
 
+    </div>}
+        {/*<button onClick={()=>{*/}
+        {/*    apiResponse({*/}
+        {/*        email: "wasdimas1@gmail.com"*/}
+        {/*    }, "orders/get-all-orders.php").then((res)=>{//-by-user-email*/}
+        {/*        console.log(res)*/}
+        {/*        setTemp(res)*/}
+        {/*    })*/}
+        {/*}}></button>*/}
+        {/*{*/}
+        {/*    JSON.stringify(temp)*/}
+        {/*}*/}
     </div>
 }
 export default Cart;
