@@ -54,7 +54,8 @@ const ShopProducts = ({shop})=>{
 
             },
             price:'',
-            discountPrice:''
+            discountPrice:'',
+            id:0
         }],
         link:'',
         image:'',

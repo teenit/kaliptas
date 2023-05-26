@@ -21,6 +21,30 @@ const Profile = ()=>{
         }).catch((err,dar)=>{
             console.log(err.propertyIsEnumerable())
         })
+
+        apiResponse({
+            products:[{
+                id:47,
+                count: 1
+            },{
+                id:55,
+                count: 1
+            },{
+                id:49,
+                count: 2
+            },{
+                id:56,
+                variabled:1,
+                count: 3
+            }]
+        },"orders/create-order.php").then((data)=>{
+          console.log(data)
+             
+         }).catch((err,dar)=>{
+             console.log(err.propertyIsEnumerable())
+         })
+
+
     },[])
     return auth ?(
         <div>
