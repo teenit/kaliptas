@@ -1,0 +1,49 @@
+.orders{
+    display: grid;
+
+}
+.order{
+    display: grid;
+    grid-template-columns: 30px 2fr 2fr 100px 100px 100px 30px;
+    border-bottom: solid 1px #222;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.created{
+    color: red;
+}
+.order:hover{
+    background-color: #f6efef;
+}
+.card__wrap{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000044;
+}
+.card__inner{
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+}
+.close__btn{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.select{
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    gap: 5px;
+}
+.bold{
+    font-weight: 700;
+}
+.eye__img{
+    width: 20px;
+}

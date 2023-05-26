@@ -23,10 +23,12 @@ const Auth = ()=>{
         login: false,
         register:false,
         restore:true})
+
     return(
         <div className={s.wrap}>
             <div className={s.inner}>
                 {
+
                     state.login ? <LoginAuth />: null
                 }
                 {

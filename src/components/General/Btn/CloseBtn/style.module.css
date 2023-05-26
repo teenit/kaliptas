@@ -1,0 +1,24 @@
+.btn{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: all .3s;
+    cursor: pointer;
+}
+.btn_1,.btn_2{
+    position: absolute;
+    top: 50%;
+    height: 3px;
+    display: block;
+    width: 100%;
+    background-color: #000;
+}
+.btn_1{
+    transform: translateY(-50%) rotate(45deg);
+}
+.btn_2{
+    transform: translateY(-50%) rotate(-45deg);
+}
+.btn:hover{
+    transform: rotate(90deg);
+}

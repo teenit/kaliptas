@@ -35,7 +35,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
 
    console.log(stateProduct)
      const [state, setState] = useState({...stateProduct})
-    const [loadedImg, setLoadedImg] = useState({
+     const [loadedImg, setLoadedImg] = useState({
         image:false,
         images:false
     })

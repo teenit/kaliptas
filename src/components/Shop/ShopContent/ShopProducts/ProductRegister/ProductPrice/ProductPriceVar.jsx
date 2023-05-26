@@ -90,7 +90,8 @@ const ProductPriceVar = ({addState,prices,lang})=>{
                             ru:""
                         },
                         price:'',
-                        discountPrice:''
+                        discountPrice:'',
+                        id:state[state.length - 1].id + 1
                     }])
                 }}>
                     <span className={s.var__plus__one}></span>

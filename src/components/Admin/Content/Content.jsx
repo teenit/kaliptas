@@ -7,6 +7,7 @@ import { Shops } from "./Shops/Shops";
 import Moderation from "./Moderation/Moderation";
 import Store from "../Store/Store";
 import Categories from "./Categories/Categories";
+import Orders from "./Orders/Orders";
 
 const Content = () =>{
     return(
@@ -17,6 +18,7 @@ const Content = () =>{
                 <Route path={'shops'} element = {<Shops />}/>
                 <Route path={'moderation'} element = {<Moderation />}/>
                 <Route path={'categories'} element = {<Categories />}/>
+                <Route path={'orders'} element = {<Orders />}/>
                 <Route path={'shops/shop/:link/*'} element = {<Store />}></Route>
             </Routes>
         </div>

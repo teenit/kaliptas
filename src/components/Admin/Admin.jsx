@@ -13,6 +13,9 @@ const Admin = () =>{
         link:'',
         title:"main"
     },{
+        link:'orders',
+        title:"Orders"
+    },{
         link:'shops',
         title:"shops"
     },{
