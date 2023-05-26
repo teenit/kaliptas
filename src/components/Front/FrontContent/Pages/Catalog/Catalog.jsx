@@ -4,12 +4,14 @@ import ProductList from "../../FrontPage/Product/ProductList";
 import FrontSlide from "../../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import {Link} from "react-router-dom";
 import {CategoryObject} from "../Category/CategoryObject";
-import {api} from "../../../../functions/api";
+import {api, apiResponse} from "../../../../functions/api";
 import {getRealLanguage} from "../../../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
+import { ProductObject } from "../../FrontProduct/ProductObject";
 
 const Catalog = ()=>{
     const {t}  =useTranslation()
+    const [productList, setProductList] = useState([])
     //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
     const [loadedCategories, setLoadedCategories] = useState([]);
 
@@ -35,6 +37,31 @@ const Catalog = ()=>{
     }
 
     useEffect(()=>{
+        let productsForFirstList = apiResponse({
+            catID: 33
+        }, "content/products/get-products-by-category-id.php");
+        let productsForSecondList = apiResponse({
+            catID: 22
+        }, "content/products/get-products-by-category-id.php");
+
+        Promise.all([productsForFirstList, productsForSecondList]).then((responses)=>{
+            let tempList = productList;
+            
+            for(let response of responses) {
+                let localLoadedProduct = response.map((item)=>{
+                    return new ProductObject(item, undefined, undefined, getRealLanguage())
+                })
+                
+                tempList.push(localLoadedProduct.map((product)=>{
+                    return product.id
+                }))
+                
+            }
+
+            setProductList(tempList)
+        })
+            
+
         api((response)=>{
             let localLoadedCategories = response.map((item)=>{
                 return new CategoryObject(item, undefined, undefined,  getRealLanguage());
@@ -80,11 +107,15 @@ const Catalog = ()=>{
             </div>
             <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
-                <ProductList cards={relatedProductList} />
+                {productList.length > 0 ? 
+                    productList[0].length > 0 ? <ProductList cards={productList[0]} />  : null
+                : null}
             </div>
             <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
-                <ProductList cards={youWatchedList} />
+                {productList.length > 1 ? 
+                    productList[1].length > 0 ? <ProductList cards={productList[1]} />  : null
+                : null}
             </div>
 
             <div className={s.slide__wrap}>

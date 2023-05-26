@@ -12,6 +12,7 @@ import profile from "../../../../../img/front/profile3.png"
 import order from "../../../../../img/front/order.png"
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import arrow from "../../../../../img/collapse-arrow-50.png"
 
 const Profile = ()=>{
     const {t} = useTranslation()
@@ -39,33 +40,49 @@ const Profile = ()=>{
 
     const [showContent, setShowContent] = useState({
         showProfileInfo: true,
-        showProfileOrders: false
+        showProfileOrders: false,
     })
+
+    const [showMobileItems, setShowMobileItems] = useState({
+        visibility: window.innerWidth < 600 ? false : true,
+        changeArrow: false 
+    })//need function for onloading page
     return auth ?(
         <div className={s.wrap}>
             <div className={s.in}>
                 <div className={s.left__wrap}>
-                    <div className={`${s.item__wrap} ${showContent.showProfileInfo ? s.item__wrap__dop : null}`}>
-                        <img src={profile} alt="Профиль" />
-                        <p className={s.title} onClick={()=>{
-                            setShowContent({...showContent, showProfileInfo: true, showProfileOrders: false})
-                        }}>{t('profile-personalData')}</p>
+                    <div className={`${s.item__wrap} ${s.item__wrap__in}`}>
+                        <div className={`${s.item__in} ${showContent.showProfileInfo ? s.item__wrap__dop : null}`}>
+                            <img src={profile} alt="Профиль" />
+                            <p className={s.title} onClick={()=>{
+                                setShowContent({...showContent, showProfileInfo: true, showProfileOrders: false})
+                            }}>{t('profile-personalData')}</p>
+                        </div>
+                        <img className={`${s.arrow__item} ${showMobileItems.changeArrow ? s.arrow__item__dop : null}`} src={arrow} alt="Стрелка" onClick={()=>{
+                            setShowMobileItems({...showMobileItems, changeArrow: !showMobileItems.changeArrow, visibility: !showMobileItems.visibility})
+                        }}/>
                     </div>
-                    <div className={`${s.item__wrap} ${showContent.showProfileOrders ? s.item__wrap__dop : null}`}>
-                        <img src={order} alt="Заказы" />
-                        <p className={s.title} onClick={()=>{
-                            setShowContent({...showContent, showProfileInfo: false, showProfileOrders: true})
-                        }}>{t('profile-myOrders')}</p>
-                    </div>
-                    <p className={`${s.title} ${s.title__col}`} onClick={()=>{
-                        dispatch(removeUser())
-                        window.location.reload()
-                    }}>{t('profile-exit')}</p>
                     {
-                        user.type === 'saxon' || user.type === 'manager' ? <NavLink to={createLink('admin')}><p className={s.link__title}>{t('profile-adminPanel')}</p></NavLink> : null
-                    }
-                    {
-                        user.type === 'seller' ? <NavLink to={createLink('shop')}><p className={s.link__title}>Перейти в админпанель магазина</p></NavLink> : null
+                        showMobileItems.visibility ? 
+                            <div className={s.show__div}>
+                                <div className={`${s.item__in} ${showContent.showProfileOrders ? s.item__wrap__dop : null}`}>
+                                    <img src={order} alt="Заказы" />
+                                    <p className={s.title} onClick={()=>{
+                                        setShowContent({...showContent, showProfileInfo: false, showProfileOrders: true})
+                                    }}>{t('profile-myOrders')}</p>
+                                </div>
+                                <p className={`${s.title} ${s.title__col}`} onClick={()=>{
+                                    dispatch(removeUser())
+                                    window.location.reload()
+                                }}>{t('profile-exit')}</p>
+                                {
+                                    user.type === 'saxon' || user.type === 'manager' ? <NavLink to={createLink('admin')}><p className={s.link__title}>{t('profile-adminPanel')}</p></NavLink> : null
+                                }
+                                {
+                                    user.type === 'seller' ? <NavLink to={createLink('shop')}><p className={s.link__title}>Перейти в админпанель магазина</p></NavLink> : null
+                                }
+                            </div>
+                        : null
                     }
                 </div>
                 <div className={s.rigth__part}>

@@ -73,3 +73,34 @@
     color: #000000;
     font-size: 14px;
 }
+
+@media (max-width: 600px){
+    .wrap > h2{
+        display: none;
+        padding: 0;
+        font-size: 22px;
+    }
+    .wrap{
+        gap: 15px;
+    }
+    .item__wrap{
+        margin: 0;
+        padding: 15px 0;
+    }
+    .item__in{
+        width: 95%;
+        margin-top: 15px;
+    }
+    .item__info{
+        gap: 15px;
+    }
+    .item{
+        gap: 10px;
+    }
+    .left > p{
+        font-size: 16px;
+    }
+    .item > input{
+        padding: 0;
+    }
+}
