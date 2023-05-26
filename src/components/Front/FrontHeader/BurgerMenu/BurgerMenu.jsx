@@ -22,6 +22,7 @@ const BurgerMenu = ({t, active, setActive}) =>{
     const [showPhone, setShowPhone] = useState(false)
     const [changeArrow, setChangeArrow] = useState(false)
     const catalogLink = getLanguageForRootLink() + "/catalog";
+    const profile = getLanguageForRootLink() + "/profile";
     const [open, setOpen] = useState(false)
     return(
         <div className={s.wrap}>
@@ -43,6 +44,10 @@ const BurgerMenu = ({t, active, setActive}) =>{
                 }
                 <div className={s.line}></div>
                 <div className={s.option}>
+                    <div className={s.option__in}>
+                        <img src={profileImage} alt="Профиль" />
+                        <Link className={s.link} to={profile} onClick={setActive}><p>Профиль</p></Link>
+                    </div>
                     <div className={s.option__in}>
                         <img src={corzImage} alt="Корзина" />
                         <div className={s.link} onClick={()=>{

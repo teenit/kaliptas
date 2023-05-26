@@ -7,3 +7,10 @@
     margin: 0;
     padding: 0 15px;
 }
+
+
+@media (max-width: 600px){
+    .wrap > h2{
+        display: none;
+    }
+}
