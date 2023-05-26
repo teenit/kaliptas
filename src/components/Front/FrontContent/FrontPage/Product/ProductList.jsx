@@ -14,6 +14,7 @@ const ProductList = ({ cards }) => {
         <div className={s.wrap__list}>
             <div className={s.wrap__list__in} style={{
                 gridTemplateColumns: `repeat(${state.cards.length / state.amountInRow}, 1fr)`
+                
             }}>
                 {
                     state.cards.map((id, index) => 

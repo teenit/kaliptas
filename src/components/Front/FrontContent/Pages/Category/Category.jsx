@@ -9,16 +9,18 @@ import {api, apiResponse} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
 import {getLanguageForLink, getLanguageForRootLink, getRealLanguage} from "../../../../functions/getLanguage";
 import {useTranslation} from 'react-i18next'
+import { ProductObject } from '../../FrontProduct/ProductObject';
+
 
 function Category(props) {
     const {t}  = useTranslation()
+    const [productList, setProductList] = useState([])
     const params = useParams();
     const [ready,setReady] = useState(false)
     const [displayedProducts, setDisplayedProducts] = useState([])
     const [category, setCategory] = useState({});
 
     useEffect(()=>{
-
         api((categoryResponse)=> {
                 // let loadedCategory = new CategoryObject(response[0]);
                 // setCategory(loadedCategory)
@@ -37,7 +39,15 @@ function Category(props) {
                     catID: params.id
                 }, "content/category/get-tree-categories-by-id.php");
 
-                Promise.all([productsPromise, parentCatsPromise]).then((promiseResponses) => {
+
+                let productsForFirstList = apiResponse({
+                    catID: 33
+                }, "content/products/get-products-by-category-id.php");
+                let productsForSecondList = apiResponse({
+                    catID: 22
+                }, "content/products/get-products-by-category-id.php");
+
+                Promise.all([productsPromise, parentCatsPromise, productsForFirstList, productsForSecondList]).then((promiseResponses) => {
                     if (promiseResponses[0] === undefined) {
                         throw new Error("Product response is null");
                     }
@@ -56,6 +66,21 @@ function Category(props) {
 
                     setDisplayedProducts(endCategory.products);
                     setReady(true);
+
+                    let tempList = productList;
+                    
+                    for(let response of promiseResponses.slice(2)) {
+                        let localLoadedProduct = response.map((item)=>{
+                            return new ProductObject(item, undefined, undefined, getRealLanguage())
+                        })
+                        
+                        tempList.push(localLoadedProduct.map((product)=>{
+                            return product.id
+                        }))
+                        
+                    }
+        
+                    setProductList(tempList)
                 })
             }
             ,{
@@ -215,11 +240,15 @@ function Category(props) {
 
             <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
-                <ProductList cards={relatedProductList} />
+                {productList.length > 0 ? 
+                    productList[0].length > 0 ? <ProductList cards={productList[0]} />  : null
+                : null}
             </div>
             <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
-                <ProductList cards={youWatchedList} />
+                {productList.length > 1 ? 
+                    productList[1].length > 0 ? <ProductList cards={productList[1]} />  : null
+                : null}
             </div>
         </div>
     ):null

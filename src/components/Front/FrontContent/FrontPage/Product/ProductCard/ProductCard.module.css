@@ -1,6 +1,4 @@
 .in{
-    min-width: 175px;
-    max-width: 175px;
     height: 100%;
     border-radius: 10px;
     box-shadow: 0 0 10px .5px #00000011;
@@ -137,10 +135,6 @@
 
 
 @media (max-width: 600px){
-    .in{
-        min-width: 100px;
-        /*min-width: 115px;*/
-    }
     .img__link{
         height: 70px;
     }

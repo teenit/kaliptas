@@ -9,7 +9,7 @@ import okey from "./../../../../img/front/icons8-эмодзи-жест-ок-48.p
 import cart from "./../../../../img/front/icons8-корзина-64.png"
 import ProductList from "../FrontPage/Product/ProductList";
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
-import { api } from "../../../functions/api";
+import { api, apiResponse } from "../../../functions/api";
 import { ProductObject } from "./ProductObject";
 import { getRealLanguage } from "../../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
@@ -19,13 +19,40 @@ import cartPlus from "../../../../img/front/cartPlus.png"
 
 const FrontProduct = () => {
     const { t } = useTranslation()
+    const [productList, setProductList] = useState([])
     const [liked, setLiked] = useState(false)
     const [ready, setReady] = useState(false)
     const [productObject, setProduct] = useState({});
     const params = useParams();
     const [productId, setId] = useState(ProductObject.getIdFromLink(params.id));
     useEffect(() => {
+
+        let productsForFirstList = apiResponse({
+            catID: 33
+        }, "content/products/get-products-by-category-id.php");
+        let productsForSecondList = apiResponse({
+            catID: 22
+        }, "content/products/get-products-by-category-id.php");
+
+        Promise.all([productsForFirstList, productsForSecondList]).then((responses)=>{
+            let tempList = productList;
+            
+            for(let response of responses) {
+                let localLoadedProduct = response.map((item)=>{
+                    return new ProductObject(item, undefined, undefined, getRealLanguage())
+                })
+                
+                tempList.push(localLoadedProduct.map((product)=>{
+                    return product.id
+                }))
+                
+            }
+
+            setProductList(tempList)
+        })
+
         setId(ProductObject.getIdFromLink(params.id))
+        
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
@@ -340,11 +367,15 @@ const FrontProduct = () => {
             </div>
             <h3 className={s.title__item}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
-                <ProductList cards={relatedProductList} />
+                {productList.length > 0 ? 
+                    productList[0].length > 0 ? <ProductList cards={productList[0]} />  : null
+                : null}
             </div>
             <h3 className={s.title__item}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
-                <ProductList cards={relatedProductListSecond} />
+                {productList.length > 1 ? 
+                    productList[1].length > 0 ? <ProductList cards={productList[1]} />  : null
+                : null}
             </div>
             <div className={s.adword__slider}>
                 <FrontSlide item={SliderContent} />

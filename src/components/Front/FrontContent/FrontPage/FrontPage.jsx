@@ -37,7 +37,7 @@ const FrontPage = () => {
             catID: 22
         }, "content/products/get-products-by-category-id.php");
         let productsForFourthList = apiResponse({
-            catID: 23
+            catID: 43
         }, "content/products/get-products-by-category-id.php");
 
         Promise.all([loadedCategoryPromise, productsForFirstList, productsForSecondList, productsForThirdList, productsForFourthList]).then((responses)=>{
