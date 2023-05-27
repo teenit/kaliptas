@@ -3,19 +3,22 @@ import { useState } from "react";
 import s from "./ProductList.module.css";
 import ProductCard from "./ProductCard/ProductCard";
 
+
 const ProductList = ({ cards }) => {
     
     const [state, setState] = useState({
         cards: cards,
-        amountInRow: window.innerWidth < 600 ? 2:1
+        //amountInRow: window.innerWidth < 600 ? 2:1
     });
 
     return (
         <div className={s.wrap__list}>
             <div className={s.wrap__list__in} style={{
-                gridTemplateColumns: `repeat(${state.cards.length / state.amountInRow}, 1fr)`
-                
-            }}>
+                gridTemplateColumns: `repeat(${state.cards.length}, 1fr)`
+            }}
+            /*style={{
+                //gridTemplateColumns: `repeat(${state.cards.length / state.amountInRow}, 1fr)`
+            }}*/>
                 {
                     state.cards.map((id, index) => 
                         <div className={s.in} key={index}>
