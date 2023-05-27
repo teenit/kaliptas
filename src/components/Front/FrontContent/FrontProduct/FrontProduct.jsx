@@ -25,7 +25,16 @@ const FrontProduct = () => {
     const [productObject, setProduct] = useState({});
     const params = useParams();
     const [productId, setId] = useState(ProductObject.getIdFromLink(params.id));
+
+    //const [showProductSlide, setShowProductSlide] = useState({
+        //doNotShowProductSlide: productObject.photos !== [] ? true : false
+    //})
+    //console.log(showProductSlide.doNotShowProductSlide);
+    
+    
     useEffect(() => {
+
+        //setShowProductSlide({...showProductSlide, doNotShowProductSlide: productObject.photos !== [] ? true : false})
 
         let productsForFirstList = apiResponse({
             catID: 33
@@ -67,10 +76,9 @@ const FrontProduct = () => {
             setCountInCart(getCountById(productId));
         }, 1000);
     }, [params.id, productId])
+ 
 
-    const [showProductSlide, setShowProductSlide] = useState(
-        productObject.photos == []
-    )
+    //console.log(showProductSlide.doNotShowProductSlide);
 
     const [image, setImage] = useState(
         productObject.mainPhoto
@@ -162,7 +170,7 @@ const FrontProduct = () => {
                                     </div>
                                 </div>
                                 {
-                                    showProductSlide ?
+                                    //showProductSlide.doNotShowProductSlide ?
                                         <div className={s.prod__slider}>
                                             {
                                                 productObject.photos.map((item, index) => {
@@ -176,8 +184,8 @@ const FrontProduct = () => {
                                                 })
                                             }
                                         </div>
-                                        :
-                                        null
+                                    //    :
+                                    //    null
                                 }
                             </div>
                             <div className={s.description}>
