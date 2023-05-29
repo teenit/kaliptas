@@ -9,7 +9,6 @@ import { store } from './Store';
 import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <React.Suspense fallback='loading'>
       <BrowserRouter>
           <Provider store = {store}>
@@ -17,7 +16,6 @@ root.render(
           </Provider>
       </BrowserRouter>
     </React.Suspense>
-  </React.StrictMode>
 );
 
 reportWebVitals();

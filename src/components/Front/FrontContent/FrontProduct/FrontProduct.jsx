@@ -25,16 +25,15 @@ const FrontProduct = () => {
     const [productObject, setProduct] = useState({});
     const params = useParams();
     const [productId, setId] = useState(ProductObject.getIdFromLink(params.id));
+    const [prevInterval, setPrevInterval] = useState(-1);
 
-    //const [showProductSlide, setShowProductSlide] = useState({
-        //doNotShowProductSlide: productObject.photos !== [] ? true : false
-    //})
-    //console.log(showProductSlide.doNotShowProductSlide);
-    
-    
     useEffect(() => {
+        let localProductId = ProductObject.getIdFromLink(params.id);
+        setId(localProductId)
 
-        //setShowProductSlide({...showProductSlide, doNotShowProductSlide: productObject.photos !== [] ? true : false})
+        if (prevInterval !== -1) {
+            clearInterval(prevInterval)
+        }
 
         let productsForFirstList = apiResponse({
             catID: 33
@@ -45,48 +44,40 @@ const FrontProduct = () => {
 
         Promise.all([productsForFirstList, productsForSecondList]).then((responses)=>{
             let tempList = productList;
-            
+
             for(let response of responses) {
                 let localLoadedProduct = response.map((item)=>{
                     return new ProductObject(item, undefined, undefined, getRealLanguage())
                 })
-                
+
                 tempList.push(localLoadedProduct.map((product)=>{
                     return product.id
                 }))
-                
+
             }
 
             setProductList(tempList)
         })
 
-        setId(ProductObject.getIdFromLink(params.id))
-        
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
             setImage(loadedProduct.mainPhoto)
-            setCountInCart(getCountById(productId))
+            setCountInCart(getCountById(localProductId))
             setReady(true);
         }, {
-            productID: productId
+            productID: localProductId
         }, "content/products/get-product-by-id.php")
 
-        setInterval(() => {
-            setCountInCart(getCountById(productId));
-        }, 1000);
+        let countUpdateInterval = setInterval(() => {
+            setCountInCart(getCountById(localProductId));
+        }, 700);
+        setPrevInterval(countUpdateInterval);
     }, [params.id, productId])
- 
-
-    //console.log(showProductSlide.doNotShowProductSlide);
 
     const [image, setImage] = useState(
         productObject.mainPhoto
     )
-
-    const relatedProductList = [22, 23]
-
-    const relatedProductListSecond = [22, 23]
 
     const SliderContent = {
         title: "Время осеннего",
@@ -174,7 +165,6 @@ const FrontProduct = () => {
                                         <div className={s.prod__slider}>
                                             {
                                                 productObject.photos.map((item, index) => {
-                                                    console.log(item)
                                                     return (
                                                         <div key={index} className={s.slide} onClick={() => {
                                                             setImage(item)
