@@ -29,7 +29,6 @@ const ProductPriceVar = ({addState,prices,lang})=>{
                 return {...item}
             }
         });
-        console.log(newItems)
         setState(newItems)
     }
     return(

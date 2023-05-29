@@ -15,25 +15,21 @@ export function api(apiFunc, obj, url){
     }else{
         obj.email = localStorage.getItem('email');
     }
-   // console.log(obj)
     axios({
         url: serverAdress(url),
         method: "POST",
         header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
         data: JSON.stringify(obj),
         onUploadProgress: (event) => {
-            // console.log(event)
             document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
         } 
     })
     .then((data)=>{
-        // console.log("Received data: ", data);
         apiFunc(data.data)
         document.getElementById('lineLoading').style.width = 0;
     })
     .catch((error)=>{
         console.log(error)
-        
     })
 }
 
@@ -61,17 +57,16 @@ export async function apiResponse(obj, url){
          header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
          data: JSON.stringify(obj),
          onUploadProgress: (event) => {
-             console.log(event)
+             
              document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
          } 
      })
      .then((data)=>{
-         console.log("Received data: ", data.data);
+         
          document.getElementById('lineLoading').style.width = 0;
          return (data.data)
      })
      .catch((error)=>{
-         //console.log(error)
          let obj = {
             "code":error.code
          }

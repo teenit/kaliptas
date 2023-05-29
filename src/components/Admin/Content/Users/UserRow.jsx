@@ -82,7 +82,6 @@ const UserRow = ({user,index})=>{
                     }}></div> 
                     : 
                     <div className={s.change__ch} onClick={()=>{
-                        console.log(state);
                         setState({...state,edit:!state.edit})
                         updateUser()
                     }}></div>} 

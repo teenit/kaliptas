@@ -174,7 +174,6 @@ const FrontProduct = () => {
                                         <div className={s.prod__slider}>
                                             {
                                                 productObject.photos.map((item, index) => {
-                                                    console.log(item)
                                                     return (
                                                         <div key={index} className={s.slide} onClick={() => {
                                                             setImage(item)

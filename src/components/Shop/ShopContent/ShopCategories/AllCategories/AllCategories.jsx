@@ -20,7 +20,6 @@ const AllCategories = ({shop})=>{
             setDefaultCats(arg);
             setCats(createTreeData(arg,'id','parent_id'));
             api((arg1)=>{
-                console.log(arg1)
                 setFavorite(arg1);
             },{shopID:shop.id},"manage/categories/get-favorite.php");
         },{},"manage/categories/get-categories.php");
@@ -28,7 +27,6 @@ const AllCategories = ({shop})=>{
        
     },[])
     function addCategory(data){
-        console.log(shop.id)
         api((arg)=>{
             alert(arg)
             window.location.reload();

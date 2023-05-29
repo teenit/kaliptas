@@ -24,7 +24,6 @@ const RegisterBuyer = () =>{
 
     function sendForm(event){
         event.preventDefault();
-        console.log(state);
         
         api((arg)=>{
             alert(t(arg.message))

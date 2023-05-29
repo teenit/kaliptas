@@ -49,21 +49,17 @@ const Categories = ()=>{
             header: { "Content-Type": "multipart/form-data" },
             data: formData,
             onUploadProgress: (event) => {
-                console.log(event)
                 document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
             } 
         })
         .then((data)=>{
-            console.log(data);
             setLoading(false)
             api((arg)=>{
                 setCats(createTreeData(arg,'id','parent_id'));
             },{},"manage/categories/get-categories.php")
         })
         .catch((error)=>{
-           
             console.log(error)
-    
         })
     }
 

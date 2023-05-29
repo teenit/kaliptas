@@ -23,7 +23,6 @@ const ProductsRow = ({moderation,index}) =>{
     function saveProduct(obj, masCategories, status){
        // return console.log(moderation)
         api((arg)=>{
-            console.log(arg)
             close(false)
         },{...obj,
             categories:masCategories,

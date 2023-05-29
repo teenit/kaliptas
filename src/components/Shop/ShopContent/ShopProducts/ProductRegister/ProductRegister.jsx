@@ -33,7 +33,6 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     })
     const lng = localStorage.getItem('LNG').toLowerCase()
 
-   console.log(stateProduct)
      const [state, setState] = useState({...stateProduct})
      const [loadedImg, setLoadedImg] = useState({
         image:false,
@@ -80,10 +79,10 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     }
     
     useEffect(()=>{
-        console.log(stateProduct)
+        
         api((arg)=>{
             api((arg1)=>{
-                console.log(arg,arg1)
+                
                 onClickHendlerPso(arg,arg1);
             },{shopID:shop.id},"manage/categories/get-favorite.php");
         },{},"manage/categories/get-categories.php");
@@ -91,7 +90,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
        
     },[])
     const sendForm = (event) =>{
-        console.log(state)
+       
         
     }
 
@@ -224,7 +223,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         addState={(arg)=>{}}/>
                         <ProductImages images={state.images} setState = {(arg)=>setState({...state,images:arg})} addState={(arg)=>{
                             uploadImages(arg);
-                            console.log(arg.files)
+                            
                             }} />
                     </div>
                     

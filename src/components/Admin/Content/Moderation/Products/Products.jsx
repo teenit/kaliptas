@@ -14,7 +14,6 @@ const Products = () =>{
     const [moderation,setModeration] = useState([])
     useEffect(()=>{
         api((arg)=>{
-            console.log(arg)
             setModeration(arg)
         },{},"manage/shops/get-moderation.php")
     },[])

@@ -59,16 +59,12 @@ const FrontPage = () => {
                 let localLoadedProduct = response.map((item)=>{
                     return new ProductObject(item, undefined, undefined, getRealLanguage())
                 })
-                console.log(localLoadedProduct)
                 tempList.push(localLoadedProduct.map((product)=>{
                     return product.id
                 }))
-                console.log(productList)
             }
 
             setProductList(tempList)
-
-            console.log(responses)
 
 
         })

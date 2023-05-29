@@ -7,7 +7,6 @@ const RegisterStore = ({close,newStore,setNewStore,regStore}) =>{
   
     function SendForm(event){
         event.preventDefault();
-        console.log(newStore);
     }
 
     return(
