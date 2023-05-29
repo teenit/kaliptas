@@ -189,83 +189,113 @@ const Cart = ()=>{
 
     const renderForm = function () {
         return <div className={s.wrap__form}>
-            <div>{t('cart-yourItems')}</div>
-            <CartModule change={()=>{
-                setCartItemCount(getCartItemsCount());
-            }}/>
-            <TextField label={t('cart-name')} disabled={pending} value={name} onChange={(event)=>{
-                setName(event.target.value)
-            }}
-                       error={!validateName() && resultRequested}
-            ></TextField>
-            <TextField label={t('cart-surname')} disabled={pending}  value={surname} onChange={(event)=>{
-                setSurname(event.target.value)
-            }}
-                       error={!validateSurname() && resultRequested}
-            ></TextField>
+            <div className={s.form__title}><h2>{t('cart-yourItems')}</h2></div>
+            <div className={s.form__item}>
+                <div className={s.form__item__in}>
+                    <CartModule change={()=>{
+                        setCartItemCount(getCartItemsCount());
+                    }}/>
+                </div>
+            </div>
+            
+            <div className={s.form__item__dop}>
+                <div className={s.form__item__in}>
+                    <div className={s.form__title__dop}><h3>{t('cart-contact')}:</h3></div>
+                    <TextField label={t('cart-name')} disabled={pending} value={name} onChange={(event)=>{
+                        setName(event.target.value)
+                    }}
+                            error={!validateName() && resultRequested}
+                    ></TextField>
+                    <TextField label={t('cart-surname')} disabled={pending}  value={surname} onChange={(event)=>{
+                        setSurname(event.target.value)
+                    }}
+                            error={!validateSurname() && resultRequested}
+                    ></TextField>
 
-            <TextField label={"Email"} disabled={pending} value={email} type="email" onChange={(event)=>{
-                setEmail(event.target.value)
-            }}
-                       error={!validateEmail() && resultRequested}
-            ></TextField>
+                    <TextField label={"Email"} disabled={pending} value={email} type="email" onChange={(event)=>{
+                        setEmail(event.target.value)
+                    }}
+                            error={!validateEmail() && resultRequested}
+                    ></TextField>
 
-            <TextField label={t('cart-phone')} disabled={pending}  value={phone} onChange={(event)=>{
-                setPhone(phoneMask(event.target.value))
-            }}
-                       error={!validatePhone() && resultRequested}
-            ></TextField>
+                    <TextField label={t('cart-phone')} disabled={pending}  value={phone} onChange={(event)=>{
+                        setPhone(phoneMask(event.target.value))
+                    }}
+                            error={!validatePhone() && resultRequested}
+                    ></TextField>
+                </div>
+            </div>
 
-            <div>{t('cart-delivery')}:</div>
-            <TextField disabled={pending}
-                       select
-                       onChange={(event)=>{
-                           setDeliveryType(deliveryTypes[event.target.value])
-                       }}
-                       defaultValue={deliveryTypes.address.key}
-                       label={t('cart-deliveryType')}
-            >
-                <MenuItem value={deliveryTypes.address.key}>{t('cart-adress')}</MenuItem>
-                <MenuItem value={deliveryTypes.self.key}>{t('cart-byYourself')}</MenuItem>
-                {/*<MenuItem value={deliveryTypes.mail.key}>By mail</MenuItem>*/}
-            </TextField>
-            {
-                renderDelivery()
-            }
+            <div className={s.form__delpay}>
+                <div className={s.form__delpay__in}>
+                    <div className={s.form__title__dop}><h3>{t('cart-delivery')}:</h3></div>
+                    <TextField disabled={pending}
+                            select
+                            onChange={(event)=>{
+                                setDeliveryType(deliveryTypes[event.target.value])
+                            }}
+                            defaultValue={deliveryTypes.address.key}
+                            label={t('cart-deliveryType')}
+                    >
+                        <MenuItem value={deliveryTypes.address.key}>{t('cart-adress')}</MenuItem>
+                        <MenuItem value={deliveryTypes.self.key}>{t('cart-byYourself')}</MenuItem>
+                        {/*<MenuItem value={deliveryTypes.mail.key}>By mail</MenuItem>*/}
+                    </TextField>
+                    <div className={s.form__delpay__in__options}>
+                        {
+                            renderDelivery()
+                        }
+                    </div>
+                </div>
+            </div>
 
-            <div>{t('cart-payment')}</div>
-            <TextField disabled={pending}
+
+            <div className={s.form__delpay}>
+                <div className={s.form__delpay__in}>
+                    <div className={s.form__title__dop}><h3>{t('cart-payment')}:</h3></div>
+                    <TextField disabled={pending}
                        select
                        onChange={(event)=>{
                            setPaymentType(paymentTypes[event.target.value])
                        }}
                        defaultValue={"card"}
                        label={t('cart-typePayment')}
-            >
-                {
-                    deliveryType.paymentTypes.map((payment, index)=>{
-                        return <MenuItem key={index} value={payment.key}>{t(payment.title)}</MenuItem>
-                    })
-                }
-            </TextField>
-            <TextField disabled={pending}  label={t('cart-comment')} value={comment} onChange={(event)=>{
-                setComment(event.target.value)
-            }}></TextField>
+                    >
+                    {
+                        deliveryType.paymentTypes.map((payment, index)=>{
+                            return <MenuItem key={index} value={payment.key}>{t(payment.title)}</MenuItem>
+                        })
+                    }
+                    </TextField>
+                </div>
+            </div>
 
-            {
-                pending ? <div><CircularProgress /></div>
-                    : (<Button variant="contained" onClick={()=>{
-                        setObj(formData())
-                        sendForm()
-                    }}>{t('cart-buy')}</Button>)
-            }
+
+            <div className={s.form__delpay}>
+                <div className={s.form__delpay__in}>
+                    <div className={s.form__title__dop}><h3>{t('cart-comment')}:</h3></div>
+                    <TextField disabled={pending}  label={t('cart-comment')} value={comment} onChange={(event)=>{
+                        setComment(event.target.value)
+                    }}></TextField>
+                </div>
+            </div>
+
+            <div className={s.form__btn__wrap}>
+                {
+                    pending ? <div><CircularProgress /></div>
+                        : (<Button className={s.form__btn} variant="contained" onClick={()=>{
+                            setObj(formData())
+                            sendForm()
+                        }}>{t('cart-buy')}</Button>)
+                }
+            </div>
         </div>
     }
 
     const renderDelivery = function (){
         switch(deliveryType.key) {
             case deliveryTypes.address.key:
-                return <div>
+                return <div className={s.render__options}>
                     <TextField disabled={pending}
                                label={t('cart-city')}
                                error={resultRequested ? (deliveryData.address.city !== null ?  deliveryData.address.city == "" : true) : false}

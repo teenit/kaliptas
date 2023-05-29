@@ -162,5 +162,6 @@
     "cart-inCash":"Cash",
     "cart-C.O.D.":"C.O.D.",
     "cart-toCard":"Card",
-    "cart-toBankAccount":"To bank account"
+    "cart-toBankAccount":"To bank account",
+    "cart-contact":"Contact details"
 }
