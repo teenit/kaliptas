@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import CartModule from "../../../Modules/Cart/CartModule";
 import s from "./Cart.module.css"
-import {CircularProgress, MenuItem, TextField} from "@mui/material";
+import {Button, CircularProgress, MenuItem, TextField} from "@mui/material";
 import {clearCart, getCartItemsCount, getItemsList} from "../../../../functions/cartControll";
 import {Link} from "react-router-dom";
 import {getLanguageForRootLink} from "../../../../functions/getLanguage";
@@ -297,10 +297,10 @@ const Cart = ()=>{
 
             {
                 pending ? <div><CircularProgress /></div>
-                    : (<button onClick={()=>{
+                    : (<Button variant="contained" onClick={()=>{
                         setObj(formData())
                         sendForm()
-                    }}>Buy</button>)
+                    }}>Buy</Button>)
             }
         </div>
     }
