@@ -132,6 +132,35 @@
     "profile-city":"Город",
     "profile-street":"Улица",
     "profile-house":"Дом",
-    "profile-flat":"Кваритра"
+    "profile-flat":"Кваритра",
+
+    "cart-yourItems":"Ваши товары",
+    "cart-name":"Имя",
+    "cart-surname":"Фамилия",
+    "cart-phone":"Телефон",
+    "cart-delivery":"Доставка",
+    "cart-deliveryType":"Тип доставки",
+    "cart-adress":"Доставка домой",
+    "cart-byYourself":"Самовывоз",
+    "cart-payment":"Оплата",
+    "cart-typePayment":"Тип оплаты",
+    "cart-city":"Город",
+    "cart-street":"Улица",
+    "cart-residential":"Кваритра",
+    "cart-comment":"Комментарий",
+    "cart-buy":"Купить",
+    "cart-willBeInOurShop":"Будет в нашем магазине",
+    "cart-unauthorized":"Вы не авторизованы",
+    "cart-toProfilePage":"Перейти на страницу профиля",
+    "cart-noItemsInCart":"У вас пока нет товаров в корзине",
+    "cart-toMain":"Перейти на главную страницу",
+    "cart-purchaseOnPrice":"Заказ на сумму",
+    "cart-getSuccessfully":"успешно получен",
+    "cart-purchase":"заказа",
+    "cart-inCash":"Наличкой",
+    "cart-C.O.D.":"C.O.D.",
+    "cart-toCard":"Картой",
+    "cart-toBankAccount":"На банковский аккаунт"
+
 
 }

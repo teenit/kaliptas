@@ -6,8 +6,9 @@ import {clearCart, getCartItemsCount, getItemsList} from "../../../../functions/
 import {Link} from "react-router-dom";
 import {getLanguageForRootLink} from "../../../../functions/getLanguage";
 import {api, apiResponse} from "../../../../functions/api";
+import { useTranslation } from "react-i18next";
 const Cart = ()=>{
-
+    const {t} = useTranslation()
     const [auth, setAuth] = useState(false);
     const [user, setUser] = useState({})
 
@@ -35,19 +36,19 @@ const Cart = ()=>{
     const paymentTypes = { //todo: do translate
         cash : {
             key: "cash",
-            title: "In cash"
+            title: "cart-inCash"
         },
         cod : {
             key: "cod",
-            title: "C.O.D."
+            title: "cart-C.O.D."
         },
         card:{
             key: "card",
-            title: "To card"
+            title: "cart-toCard"
         },
         bank :{
             key: "bank",
-            title: "To bank account"
+            title: "cart-toBankAccount"
         }
     };
 
@@ -179,25 +180,25 @@ const Cart = ()=>{
     const renderResponse = function () {
         return <div className={s.wrap}>
             <div className={s.empty}>
-                Заказ на сумму {response.totalPrice}$ успешно получен. ID заказа {response.id}
+                {t('cart-purchaseOnPrice')} {response.totalPrice}$ {t('cart-getSuccessfully')}. ID {t('cart-purchase')} {response.id}
             </div>
-            <Link to={getLanguageForRootLink()}>To main</Link>
+            <Link to={getLanguageForRootLink()}>{t('cart-toMain')}</Link>
 
         </div>
     }
 
     const renderForm = function () {
         return <div className={s.wrap__form}>
-            <div>Ваши товар</div>
+            <div>{t('cart-yourItems')}</div>
             <CartModule change={()=>{
                 setCartItemCount(getCartItemsCount());
             }}/>
-            <TextField label={"Name"} disabled={pending} value={name} onChange={(event)=>{
+            <TextField label={t('cart-name')} disabled={pending} value={name} onChange={(event)=>{
                 setName(event.target.value)
             }}
                        error={!validateName() && resultRequested}
             ></TextField>
-            <TextField label={"Surname"} disabled={pending}  value={surname} onChange={(event)=>{
+            <TextField label={t('cart-surname')} disabled={pending}  value={surname} onChange={(event)=>{
                 setSurname(event.target.value)
             }}
                        error={!validateSurname() && resultRequested}
@@ -209,45 +210,45 @@ const Cart = ()=>{
                        error={!validateEmail() && resultRequested}
             ></TextField>
 
-            <TextField label={"Phone"} disabled={pending}  value={phone} onChange={(event)=>{
+            <TextField label={t('cart-phone')} disabled={pending}  value={phone} onChange={(event)=>{
                 setPhone(phoneMask(event.target.value))
             }}
                        error={!validatePhone() && resultRequested}
             ></TextField>
 
-            <div>Delivery:</div>
+            <div>{t('cart-delivery')}:</div>
             <TextField disabled={pending}
                        select
                        onChange={(event)=>{
                            setDeliveryType(deliveryTypes[event.target.value])
                        }}
                        defaultValue={deliveryTypes.address.key}
-                       label="Delivery Type"
+                       label={t('cart-deliveryType')}
             >
-                <MenuItem value={deliveryTypes.address.key}>Address</MenuItem>
-                <MenuItem value={deliveryTypes.self.key}>By yourself</MenuItem>
+                <MenuItem value={deliveryTypes.address.key}>{t('cart-adress')}</MenuItem>
+                <MenuItem value={deliveryTypes.self.key}>{t('cart-byYourself')}</MenuItem>
                 {/*<MenuItem value={deliveryTypes.mail.key}>By mail</MenuItem>*/}
             </TextField>
             {
                 renderDelivery()
             }
 
-            <div>Payment:</div>
+            <div>{t('cart-payment')}</div>
             <TextField disabled={pending}
                        select
                        onChange={(event)=>{
                            setPaymentType(paymentTypes[event.target.value])
                        }}
                        defaultValue={"card"}
-                       label="Payment Type"
+                       label={t('cart-typePayment')}
             >
                 {
                     deliveryType.paymentTypes.map((payment, index)=>{
-                        return <MenuItem key={index} value={payment.key}>{payment.title}</MenuItem>
+                        return <MenuItem key={index} value={payment.key}>{t(payment.title)}</MenuItem>
                     })
                 }
             </TextField>
-            <TextField disabled={pending}  label="Comment" value={comment} onChange={(event)=>{
+            <TextField disabled={pending}  label={t('cart-comment')} value={comment} onChange={(event)=>{
                 setComment(event.target.value)
             }}></TextField>
 
@@ -256,7 +257,7 @@ const Cart = ()=>{
                     : (<Button variant="contained" onClick={()=>{
                         setObj(formData())
                         sendForm()
-                    }}>Buy</Button>)
+                    }}>{t('cart-buy')}</Button>)
             }
         </div>
     }
@@ -266,7 +267,7 @@ const Cart = ()=>{
             case deliveryTypes.address.key:
                 return <div>
                     <TextField disabled={pending}
-                               label="City"
+                               label={t('cart-city')}
                                error={resultRequested ? (deliveryData.address.city !== null ?  deliveryData.address.city == "" : true) : false}
                                value={deliveryData.address.city}
                                onChange={(event)=>{
@@ -275,7 +276,7 @@ const Cart = ()=>{
                                }}
                     ></TextField>
                     <TextField disabled={pending}
-                               label="Street"
+                               label={t('cart-street')}
                                value={deliveryData.address.street}
                                error={resultRequested ? (deliveryData.address.street !== undefined ?  deliveryData.address.street == "" : true) : false}
                                onChange={(event)=>{
@@ -284,7 +285,7 @@ const Cart = ()=>{
                                }}
                     ></TextField>
                     <TextField disabled={pending}
-                               label="Residential"
+                               label={t('cart-residential')}
                                value={deliveryData.address.residential}
                                error={resultRequested ? (deliveryData.address.residential !== undefined ?  deliveryData.address.residential == "" : true) : false}
                                onChange={(event)=>{
@@ -324,15 +325,15 @@ const Cart = ()=>{
             //         ></TextField>
             //     </div>
             case deliveryTypes.self.key:
-                return <div>Will be in our shop</div>
+                return <div>{t('cart-willBeInOurShop')}</div>
         }
     };
 
 
     const renderUnauthorised = function () {
         return <div>
-            Unauthorized
-            <Link to={getLanguageForRootLink() + "/profile"}>To profile page</Link>
+            {t('cart-unauthorized')}
+            <Link to={getLanguageForRootLink() + "/profile"}>{t('cart-toProfilePage')}</Link>
         </div>
     }
 
@@ -348,9 +349,9 @@ const Cart = ()=>{
 
         ) : <div>
             <div className={s.empty}>
-                No items in cart
+                {t('cart-noItemsInCart')}
             </div>
-            <Link to={getLanguageForRootLink()}>To main</Link>
+            <Link to={getLanguageForRootLink()}>{t('cart-toMain')}</Link>
 
         </div>
     }

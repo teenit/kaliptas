@@ -7,7 +7,6 @@ const CreateTreeList = ({data,setState,lng}) => {
     return (
         <ul className={s.ul__list}>
             {data.map((n)=>{
-                console.log(n)
                 return(
                     <li data-id={['cat'+n.id]} className={``} key={n.id} >
                         <label htmlFor={['cat'+n.id]}>

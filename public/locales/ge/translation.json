@@ -133,9 +133,36 @@
     "profile-city":"ქალაქი",
     "profile-street":"ქუჩა",
     "profile-house":"სახლი",
-    "profile-flat":"ბინა"
+    "profile-flat":"ბინა",
 
 
+    "cart-yourItems":"შენი ნივთები",
+    "cart-name":"სახელი",
+    "cart-surname":"გვარი",
+    "cart-phone":"ტელეფონი",
+    "cart-delivery":"მიწოდება",
+    "cart-deliveryType":"მიწოდების ტიპი",
+    "cart-adress":"Სახლში მიტანა",
+    "cart-byYourself":"Აღება",
+    "cart-payment":"გადახდა",
+    "cart-typePayment":"Გადახდის ტიპი",
+    "cart-city":"ქალაქი",
+    "cart-street":"ქუჩა",
+    "cart-residential":"ბინა",
+    "cart-comment":"კომენტარი",
+    "cart-buy":"იყიდე",
+    "cart-willBeInOurShop":"ჩვენს მაღაზიაში იქნება",
+    "cart-unauthorized":"თქვენ არ ხართ უფლებამოსილი",
+    "cart-toProfilePage":"გადადით პროფილის გვერდზე",
+    "cart-noItemsInCart":"კალათაში ჯერ არ გაქვთ რაიმე ნივთი",
+    "cart-toMain":"Გადადი მთავარ გვერდზე",
+    "cart-purchaseOnPrice":"შეუკვეთეთ თანხა",
+    "cart-getSuccessfully":"წარმატებით მიიღო",
+    "cart-purchase":"შეკვეთა",
+    "cart-inCash":"ნაღდი ფული",
+    "cart-C.O.D.":"C.O.D.",
+    "cart-toCard":"ბარათი",
+    "cart-toBankAccount":"საბანკო ანგარიშზე"
 
 
 }

@@ -134,8 +134,33 @@
     "profile-city":"City",
     "profile-street":"Street",
     "profile-house":"House",
-    "profile-flat":"Flat"
+    "profile-flat":"Flat",
 
-
-
+    "cart-yourItems":"Your items",
+    "cart-name":"Name",
+    "cart-surname":"Surname",
+    "cart-phone":"Phone",
+    "cart-delivery":"Delivery",
+    "cart-deliveryType":"Delivery type",
+    "cart-adress":"Home delivery",
+    "cart-byYourself":"Pickup",
+    "cart-payment":"Payment",
+    "cart-typePayment":"Payment type",
+    "cart-city":"City",
+    "cart-street":"Street",
+    "cart-residential":"Apartment",
+    "cart-comment":"Comment",
+    "cart-buy":"Buy",
+    "cart-willBeInOurShop":"Will be in our store",
+    "cart-unauthorized":"You are not authorized",
+    "cart-toProfilePage":"Go to profile page",
+    "cart-noItemsInCart":"You don't have any items in your cart yet",
+    "cart-toMain":"Go to home page",
+    "cart-purchaseOnPrice":"Order for the amount",
+    "cart-getSuccessfully":"successfully received",
+    "cart-purchase":"order",
+    "cart-inCash":"Cash",
+    "cart-C.O.D.":"C.O.D.",
+    "cart-toCard":"Card",
+    "cart-toBankAccount":"To bank account"
 }
