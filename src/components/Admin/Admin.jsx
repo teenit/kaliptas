@@ -14,7 +14,7 @@ const Admin = () =>{
         title:"main"
     },{
         link:'orders',
-        title:"Orders"
+        title:"orders"
     },{
         link:'shops',
         title:"shops"

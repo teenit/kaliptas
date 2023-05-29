@@ -19,7 +19,7 @@ const BurgerMenu = ({ close,burgerItems }) => {
                     <div className={s.item} onClick={()=>{
                         dispatch(removeUser());
                         window.location.href = '/';
-                    }}><span className={s.item__link}>{t('Logout')}</span></div>
+                    }}><span className={s.item__link}>{t('logout')}</span></div>
                 </div>
             </div>
         </div>
