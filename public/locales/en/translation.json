@@ -5,6 +5,13 @@
     "moderation":"Moderation",
     "communication":"Communication",
     "advertising":"Commercial",
+    "orders":"Orders",
+    "suggestedCategories":"Suggested categories",
+    "categories":"Categories",
+    "logout":"Log out",
+    "method pay":"Payment method",
+    "price":"Price",
+    "date start":"Checkout time",
 
     "products":"Products",
     "category":"Category",
@@ -15,8 +22,17 @@
     "comment":"Comment",
     "date":"Date",
 
-
-
+    "companyInformation":"Company information",
+    "aboutUs":"About us",
+    "websiteTermsOfUse":"Website terms of use",
+    "vacancy":"Vacancy",
+    "assistance":"Assistance",
+    "deliveryAndPayment":"Delivery and payment",
+    "guarantee":"Guarantee",
+    "returnOfTheProduct":"Return of the product",
+    "forPartners":"For partners",
+    "sellThroughUs":"Sell through us",
+    "cooperation":"Cooperation",
 
     "Super Admin":"Super Admin",
     "Customer":"Customer",

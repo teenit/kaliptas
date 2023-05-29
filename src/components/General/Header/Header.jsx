@@ -45,7 +45,7 @@ const Header = ({menuItems,burgerItems}) =>{
                     <Menu menuItems = {menuItems} />
                 </div>
             </div>
-            {burgMenu?<BurgerMenu burgerItems = {burgerItems} close={()=>setBurgMenu(false)}/>:null}
+            {burgMenu? <BurgerMenu burgerItems = {burgerItems} close={()=>setBurgMenu(false)}/>:null}
         </div>
     )
 }

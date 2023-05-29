@@ -18,7 +18,7 @@ const Orders = ()=>{
             <div className={s.orders}>
                 <div className={s.order}>
                     <div>#</div>
-                    <div>{t('email')}</div>
+                    <div>{t('Email')}</div>
                     <div>{t('phone')}</div>
                     <div>{t('method pay')}</div>
                     <div>{t('price')}</div>

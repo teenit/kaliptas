@@ -5,6 +5,13 @@
     "moderation":"ზომიერება",
     "communication":"კომუნიკაცია",
     "advertising":"კომერციული",
+    "orders":"ბრძანებებს",
+    "suggestedCategories":"შემოთავაზებული კატეგორიები",
+    "categories":"კატეგორიები",
+    "logout":"გამოსვლა",
+    "method pay":"Გადახდის საშუალება",
+    "price":"ფასი",
+    "date start":"შეკვეთის დრო",
 
     "products":"საქონელი",
     "category":"კატეგორია",
@@ -15,7 +22,17 @@
     "comment":"კომენტარები",
     "date":"თარიღი",
 
-
+    "companyInformation":"კომპანიის ინფორმაცია",
+    "aboutUs":"Ჩვენს შესახებ",
+    "websiteTermsOfUse":"საიტის გამოყენების პირობები",
+    "vacancy":"Ვაკანსია",
+    "assistance":"დახმარება",
+    "deliveryAndPayment":"მიწოდება და გადახდა",
+    "guarantee":"გარანტია",
+    "returnOfTheProduct":"პროდუქტის დაბრუნება",
+    "forPartners":"პარტნიორებისთვის",
+    "sellThroughUs":"გაყიდეთ ჩვენი საშუალებით",
+    "cooperation":"თანამშრომლობა",
 
 
     "Super Admin":"სუპერ ადმინი",
