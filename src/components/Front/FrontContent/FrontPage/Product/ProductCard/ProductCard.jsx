@@ -12,12 +12,11 @@ import {buy, decrementById, getCountById, incrementById} from "../../../../../fu
 import cartMinus from "../../../../../../img/front/cartMinus.png";
 import cartPlus from "../../../../../../img/front/cartPlus.png";
 import {getLanguageForRootLink, getRealLanguage} from "../../../../../functions/getLanguage";
+import {isLikedById, likeById, unlikeById} from "../../../../../functions/likeControll";
 
 const ProductCard = ({ id }) => {
     
-    const [liked, setLiked] = useState({
-        like: localStorage.getItem("like" + id),
-    });
+    const [liked, setLiked] = useState(isLikedById(id));
     const [ready, setReady] = useState(false);
     const [product, setProduct] = useState({});
     const [countInCart, setCountInCart] = useState(0);
@@ -33,9 +32,7 @@ const ProductCard = ({ id }) => {
         }, "content/products/get-product-by-id.php")
 
         setInterval(()=>{
-            setLiked({
-                like: localStorage.getItem("like" + id),
-            })
+            setLiked(isLikedById(id))
             setCountInCart(getCountById(id));
         }, 1000);
     },[id])
@@ -106,14 +103,14 @@ const ProductCard = ({ id }) => {
                     }
 
                     <div className={s.add__to}>
-                        {liked.like == "true" ? (
+                        {liked ? (
                             <img
                                 className={s.heart__img}
                                 src={heartImgSec}
                                 alt="Зарисованое"
                                 onClick={() => {
-                                    localStorage.setItem(`like${id}`, false);
-                                    setLiked({ like: false });
+                                    unlikeById(id);
+                                    setLiked(false);
                                 }}
                             />
                         ) : (
@@ -122,8 +119,8 @@ const ProductCard = ({ id }) => {
                                 src={heartImg}
                                 alt="Не зарисованое"
                                 onClick={() => {
-                                    localStorage.setItem(`like${id}`, true);
-                                    setLiked({ like: "true" });
+                                    likeById(id);
+                                    setLiked(true);
                                 }}
                             />
                         )}
