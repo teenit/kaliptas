@@ -8,6 +8,8 @@ import Moderation from "./Moderation/Moderation";
 import Store from "../Store/Store";
 import Categories from "./Categories/Categories";
 import Orders from "./Orders/Orders";
+import Communication from "./Communication/Communication";
+import Advertising from "./Advertising/Advertising";
 
 const Content = () =>{
     return(
@@ -19,6 +21,8 @@ const Content = () =>{
                 <Route path={'moderation'} element = {<Moderation />}/>
                 <Route path={'categories'} element = {<Categories />}/>
                 <Route path={'orders'} element = {<Orders />}/>
+                <Route path={'communication'} element = {<Communication />}/>
+                <Route path={'advertising'} element = {<Advertising />}/>
                 <Route path={'shops/shop/:link/*'} element = {<Store />}></Route>
             </Routes>
         </div>

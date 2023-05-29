@@ -8,9 +8,8 @@
     border-bottom: solid 1px #222;
     padding-bottom: 5px;
     padding-top: 5px;
-}
-.created{
-    color: red;
+    align-items: center;
+    font-size: 12px;
 }
 .order:hover{
     background-color: #f6efef;
@@ -24,10 +23,12 @@
 }
 .card__inner{
     background-color: #fff;
-    padding: 15px;
+    padding: 15px 50px;
     border-radius: 10px;
     position: relative;
     font-size: 14px;
+    overflow-y: scroll;
+    max-height: 500px;
 }
 .close__btn{
     width: 20px;
@@ -46,4 +47,13 @@
 }
 .eye__img{
     width: 20px;
+}
+.created{
+    background-color: #f6efef;
+}
+.in_working{
+    background-color: #f0f2d5;
+}
+.id{
+    text-align: center;
 }

@@ -5,18 +5,11 @@ import s from './style.module.css'
 import CloseBtn from "../../../General/Btn/CloseBtn/CloseBtn";
 import Select from 'react-select'
 import { apiResponse } from "../../../functions/api";
+import { Button } from "@mui/material";
 
 const OrderOpen = ({order, close})=>{
-    console.log(order.status)
-    const status = {
-        value: order
-    }
-    const [selectedOption, setSelectedOption] = useState(null);
-    useEffect(()=>{
-        
-        console.log("kergjerjig")
-       // setSelectedOption({...order.status})
-    },[])
+ 
+    const [selectedOption, setSelectedOption] = useState({...order.status});
     const options = [
         { value: 'created', label: 'Created' },
         { value: 'in_working', label: 'In working' },
@@ -30,17 +23,17 @@ const OrderOpen = ({order, close})=>{
       ]
      
       const updateStatus = ()=>{
-        apiResponse({status:selectedOption,orderID:order.id},"orders/update-order-status-by-id.php").then((e)=>console.log(e))
+       // return console.log(order)
+       if(window.confirm("Вы уверены что хотите изменить статус заказа")){apiResponse({status:selectedOption,orderID:order.id},"orders/update-order-status-by-id.php").then((e)=>console.log(e))}
     }
     return(
         <Modal>
             <div className={s.card__wrap}>
-                <div className={s.card__inner}>
+                <div className={`${s.card__inner} ${s[order.status.value]}`}>
                     <div className={s.close__btn}>
                         <CloseBtn close = {close}/>
                     </div>
-                    
-                    <div onClick={()=>console.log(selectedOption)} className={s.card}>
+                    <div className={s.card}>
                         <div className={s.card__info}>
                         <div className={s.card__line}>
                                 <h3>{t('Edit status')}</h3>
@@ -48,20 +41,22 @@ const OrderOpen = ({order, close})=>{
                             <div className={s.card__line}>
                                 <div className={s.select}>
                                     <Select 
-                                        defaultValue={selectedOption}
-                                        onChange={setSelectedOption}
-                                        options={options}/>
-                                <button onClick={updateStatus}>OK</button>
+                                    
+                                    defaultValue={selectedOption}
+                                    onChange={setSelectedOption}
+                                    options={options}/>
+                                    <Button onClick={updateStatus}>Save</Button>
+
                                 </div>
                             </div>
                             <div className={s.card__line}>
-                                <h3>{t('details order ')}</h3>
+                                <h3>{t('details order')}</h3>
                             </div>
                             <div className={s.card__line}>
                                 <p>№  ↪ <span className={s.bold}>{order.id}</span> | {t('total price')} ↪ <span className={s.bold}>{order.total_price}</span></p>
                                 <p>{t('Payment method')} ↪ <span className={s.bold}>{order.methodPay}</span></p>
-                                <p>{t('delivery method')} ↪ ?</p>
-                                <p>{t('status order')} ↪ <span className={s.bold}>{order.status}</span> | {t('Date order')} ↪ <span className={s.bold}>{order.date_start}</span></p>
+                                <p>{t('delivery method')} ↪ <span className={s.bold}>{order.delivery.deliveryMethod}</span></p>
+                                <p>{t('Date order')} ↪ <span className={s.bold}>{order.date_start}</span></p>
                             </div>
                             
                             <div className={s.card__line}>
@@ -73,9 +68,16 @@ const OrderOpen = ({order, close})=>{
                                 <p>{t("Name")}: {order.user_data.name}</p>
                                 <p>{t("Surname")}: {order.user_data.surname}</p>
                                 <p>{t("Comment")}: {order.user_data.comment}</p>
+                            </div>   
+                            <div className={s.card__line}>
+                                <h3>{t('Delivery')}</h3>
                             </div>
-                           
-                            
+                            <div className={s.card__line}>
+                                <p>{t("city")}: <span>{order.delivery.city}</span></p>
+                                <p>{t("residential")}: {order.delivery.residential}</p>
+                                <p>{t("street")}: {order.delivery.street}</p>
+                               
+                            </div> 
                         </div>
                     </div>
                 </div>
