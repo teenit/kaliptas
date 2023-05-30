@@ -1,12 +1,67 @@
 .wrap{
     width: 80%;
     margin: auto;
-    min-height: 60vh;
+    min-height: 100vh;
 }
 .wrap__form{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
+    margin-top: 30px;
+}
+.form__title > h2{
+    margin: 0;
+}
+.form__item{
+    border-radius: 15px;
+    padding: 15px 0;
+    box-shadow: 0 0 5px .5px #00000022;
+}
+.form__item__in{
+    width: 95%;
+    max-width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form__item__dop{
+    border-radius: 15px;
+    padding: 25px 0;
+    box-shadow: 0 0 5px .5px #00000022;
+}
+.form__delpay{
+    border-radius: 15px;
+    padding: 25px 0;
+    box-shadow: 0 0 5px .5px #00000022;
+}
+.form__delpay__in{
+    width: 95%;
+    max-width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.render__options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form__btn__wrap{
+    display: flex;
+    justify-content: center;
+}
+.form__btn__wrap > button{
+    width: 25%;
+    max-width: 30%;
+    background-color: #9134b3;
+    padding: 10px 0;
+    border-radius: 15px;
+}
+.form__title__dop > h3{
+    margin: 0;
+    padding-left: 15px;
 }
 .empty{
     margin: 10vh 0;
