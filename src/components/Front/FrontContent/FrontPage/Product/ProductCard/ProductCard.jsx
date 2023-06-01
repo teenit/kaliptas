@@ -103,8 +103,8 @@ const ProductCard = ({ id }) => {
                                 (<div className={s.buy} onClick={(event)=>{
                                     buy(id);
                                     setCountInCart(1);
-                                }}>Купить</div>))
-                            : <div className={`${s.buy} ${s.inactive}`}>Купить</div>
+                                }}>{t('frontProduct-buyButton')}</div>))
+                            : <div className={`${s.buy} ${s.inactive}`}>{t('frontProduct-buyButton')}</div>
                     }
 
                     <div className={s.add__to}>

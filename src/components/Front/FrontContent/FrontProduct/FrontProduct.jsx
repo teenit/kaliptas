@@ -96,10 +96,10 @@ const FrontProduct = () => {
                 setCountInCart(1);
             }}>
                 <img src={cart} alt="" />
-                <p>Купить</p>
+                <p>{t('frontProduct-buyButton')}</p>
             </div>) : (<div className={`${s.button} ${s.inactive}`}>
             <img src={cart} alt="" />
-            <p>Купить</p>
+            <p>{t('frontProduct-buyButton')}</p>
         </div>)
     }
 

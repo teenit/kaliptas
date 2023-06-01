@@ -164,5 +164,8 @@
     "cart-toCard":"Card",
     "cart-toBankAccount":"To bank account",
     "cart-contact":"Contact details",
-    "frontProduct-reviews":"Reviews about"
+    "frontProduct-reviews":"Reviews about",
+
+    "burger-profile":"Profile",
+    "burger-list":"Wishlist"
 }

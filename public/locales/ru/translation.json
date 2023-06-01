@@ -162,7 +162,8 @@
     "cart-toCard":"Картой",
     "cart-toBankAccount":"На банковский аккаунт",
     "cart-contact":"Контактные данные",
-    "frontProduct-reviews":"Отзывы про"
-
-
+    "frontProduct-reviews":"Отзывы про",
+    
+    "burger-profile":"Профиль",
+    "burger-list":"Список желаний"
 }
