@@ -28,9 +28,6 @@ const FrontSlide = ({ item }) => {
                     </div>
                 </div>
             </div>
-            <div className={s.slide__btn}>
-                <a href="#" className={s.btn}>Подробнее</a>
-            </div>
         </div>
     )
 }
