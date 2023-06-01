@@ -86,3 +86,10 @@
 .td__check__false{
     background-color: rgb(255, 243, 225);
 }
+.td__edit__img{
+    width: 20px;
+}
+.td__control{
+    display: flex;
+    gap: 5px;
+}

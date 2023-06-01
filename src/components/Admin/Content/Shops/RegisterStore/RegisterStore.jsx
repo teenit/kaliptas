@@ -3,7 +3,7 @@ import s from "./RegisterStore.module.css"
 import { useState } from "react";
 import Modal from "../../../../Modals/Modal";
 
-const RegisterStore = ({close,newStore,setNewStore,regStore}) =>{
+const RegisterStore = ({close,newStore,setNewStore,regStore, btn}) =>{
   
     function SendForm(event){
         event.preventDefault();
@@ -45,7 +45,7 @@ const RegisterStore = ({close,newStore,setNewStore,regStore}) =>{
                     </div>
                 </div>
                 <div className={s.input__div}>
-                    <button onClick={regStore} className={s.btn}>Регистрация</button>
+                    <button onClick={regStore} className={s.btn}>{btn}</button>
                 </div>
             </form>
         </div>
