@@ -58,7 +58,7 @@ const Shops = () =>{
                 <span className={`${s.span} ${s.span2}`}></span>
             </div>
 
-            {state ? <RegisterStore regStore = {regStore} newStore = {newStore} setNewStore = {setNewStore} close = {()=>setState(!state)}/> : null}
+            {state ? <RegisterStore regStore = {regStore} newStore = {newStore} setNewStore = {setNewStore} btn={t('register')} close = {()=>setState(!state)}/> : null}
             
             <div className={s.main__wrap}>
                 <table className={s.table}>
