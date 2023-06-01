@@ -26,11 +26,11 @@ const FrontProduct = () => {
     const params = useParams();
     const [productId, setId] = useState(ProductObject.getIdFromLink(params.id));
     const [prevInterval, setPrevInterval] = useState(-1);
+    const [allPhotosMas, setAllPhotosMas] = useState([])
 
     useEffect(() => {
         let localProductId = ProductObject.getIdFromLink(params.id);
         setId(localProductId)
-
         if (prevInterval !== -1) {
             clearInterval(prevInterval)
         }
@@ -41,16 +41,22 @@ const FrontProduct = () => {
             setImage(loadedProduct.mainPhoto)
             setCountInCart(getCountById(localProductId))
             setReady(true);
+
+            
+            console.log(...loadedProduct.photos.map((product)=>{return product.photos}));
+            console.log(loadedProduct);
+            setAllPhotosMas([loadedProduct.mainPhoto, ...loadedProduct.photos])
+        
         }, {
             productID: localProductId
         }, "content/products/get-product-by-id.php")
-
+        
         let countUpdateInterval = setInterval(() => {
             setCountInCart(getCountById(localProductId));
         }, 700);
         setPrevInterval(countUpdateInterval);
     }, [params.id, productId])
-
+    
     const [image, setImage] = useState(
         productObject.mainPhoto
     )
@@ -137,10 +143,10 @@ const FrontProduct = () => {
                                     </div>
                                 </div>
                                 {
-                                    //showProductSlide.doNotShowProductSlide ?
+                                    allPhotosMas.length > 0 ? 
                                         <div className={s.prod__slider}>
                                             {
-                                                productObject.photos.map((item, index) => {
+                                                allPhotosMas.map((item, index) => {
                                                     return (
                                                         <div key={index} className={s.slide} onClick={() => {
                                                             setImage(item)
@@ -151,8 +157,7 @@ const FrontProduct = () => {
                                                 })
                                             }
                                         </div>
-                                    //    :
-                                    //    null
+                                    : null
                                 }
                             </div>
                             <div className={s.description}>
