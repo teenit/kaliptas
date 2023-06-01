@@ -20,7 +20,6 @@ import {getCurrencyTag} from "../../../functions/utils";
 
 const FrontProduct = () => {
     const { t } = useTranslation()
-    const [productList, setProductList] = useState([])
     const [liked, setLiked] = useState(false)
     const [ready, setReady] = useState(false)
     const [productObject, setProduct] = useState({});
@@ -35,30 +34,6 @@ const FrontProduct = () => {
         if (prevInterval !== -1) {
             clearInterval(prevInterval)
         }
-
-        let productsForFirstList = apiResponse({
-            catID: 33
-        }, "content/products/get-products-by-category-id.php");
-        let productsForSecondList = apiResponse({
-            catID: 22
-        }, "content/products/get-products-by-category-id.php");
-
-        Promise.all([productsForFirstList, productsForSecondList]).then((responses)=>{
-            let tempList = productList;
-
-            for(let response of responses) {
-                let localLoadedProduct = response.map((item)=>{
-                    return new ProductObject(item, undefined, undefined, getRealLanguage())
-                })
-
-                tempList.push(localLoadedProduct.map((product)=>{
-                    return product.id
-                }))
-
-            }
-
-            setProductList(tempList)
-        })
 
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
@@ -365,17 +340,13 @@ const FrontProduct = () => {
                     </div>
                 </div>
             </div>
-            <h3 className={s.title__item}>{t('frontPage-youVisited')}</h3>
+            
             <div className={s.product__in}>
-                {productList.length > 0 ? 
-                    productList[0].length > 0 ? <ProductList cards={productList[0]} />  : null
-                : null}
+                <ProductList categoryForId={22} />
             </div>
-            <h3 className={s.title__item}>{t('frontPage-similarProducts')}</h3>
+            
             <div className={s.product__in}>
-                {productList.length > 1 ? 
-                    productList[1].length > 0 ? <ProductList cards={productList[1]} />  : null
-                : null}
+                <ProductList categoryForId={19} />
             </div>
             <div className={s.adword__slider}>
                 <FrontSlide item={SliderContent} />
