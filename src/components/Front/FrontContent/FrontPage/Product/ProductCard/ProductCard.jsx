@@ -12,6 +12,7 @@ import {buy, decrementById, getCountById, incrementById} from "../../../../../fu
 import cartMinus from "../../../../../../img/front/cartMinus.png";
 import cartPlus from "../../../../../../img/front/cartPlus.png";
 import {getLanguageForRootLink, getRealLanguage} from "../../../../../functions/getLanguage";
+import {getCurrencyTag} from "../../../../../functions/utils";
 
 const ProductCard = ({ id }) => {
     
@@ -71,9 +72,9 @@ const ProductCard = ({ id }) => {
                     <div className={s.price__wrap}>
                         {product.isDiscountPresent() ?  <div className={s.not__price}>
                             <div className={s.line}></div>
-                            <p className={s.price}>{product.price}$</p>
+                            <p className={s.price}>{product.price}{getCurrencyTag()}</p>
                         </div> : null}
-                        <p className={s.price__dop}>{product.getPriceWithDiscount()}$</p>
+                        <p className={s.price__dop}>{product.getPriceWithDiscount()}{getCurrencyTag()}</p>
                     </div>
                 </div>
                 

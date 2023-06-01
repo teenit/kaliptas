@@ -6,6 +6,7 @@ import deletebtn from "./../../../../../img/front/deletebtn.png"
 import {decrementById, deleteById, incrementById} from "../../../../functions/cartControll";
 import {unmountComponentAtNode} from "react-dom";
 import { useTranslation } from "react-i18next";
+import {getCurrencyTag} from "../../../../functions/utils";
 
 const CartRow = (props) =>{
     const {t} = useTranslation()
@@ -45,11 +46,11 @@ const CartRow = (props) =>{
                     <div className={s.prices}>
                         {product.isDiscountPresent()?
                         <div className={s.plice__in}>
-                        <p className={s.price__aver}>{state.amount*product.price}$</p>
+                        <p className={s.price__aver}>{state.amount*product.price}{getCurrencyTag()}</p>
                         <div className={s.line}></div>
                     </div>
                         :null}
-                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount()}$</p>
+                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount()}{getCurrencyTag()}</p>
                     </div>
                    
                     <div className={s.delete}>

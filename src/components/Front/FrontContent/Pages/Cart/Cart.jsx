@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {getLanguageForRootLink} from "../../../../functions/getLanguage";
 import {api, apiResponse} from "../../../../functions/api";
 import { useTranslation } from "react-i18next";
+import {getCurrencyTag} from "../../../../functions/utils";
 const Cart = ()=>{
     const {t} = useTranslation()
     const [auth, setAuth] = useState(false);
@@ -180,7 +181,7 @@ const Cart = ()=>{
     const renderResponse = function () {
         return <div className={s.wrap}>
             <div className={s.empty}>
-                {t('cart-purchaseOnPrice')} {response.totalPrice}$ {t('cart-getSuccessfully')}. ID {t('cart-purchase')} {response.id}
+                {t('cart-purchaseOnPrice')} {response.totalPrice}{getCurrencyTag()} {t('cart-getSuccessfully')}. ID {t('cart-purchase')} {response.id}
             </div>
             <Link to={getLanguageForRootLink()}>{t('cart-toMain')}</Link>
 

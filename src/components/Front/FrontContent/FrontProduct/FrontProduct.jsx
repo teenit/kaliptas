@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import { buy, decrementById, getCountById, incrementById } from "../../../functions/cartControll"
 import cartMinus from "../../../../img/front/cartMinus.png"
 import cartPlus from "../../../../img/front/cartPlus.png"
+import {getCurrencyTag} from "../../../functions/utils";
 
 const FrontProduct = () => {
     const { t } = useTranslation()
@@ -196,8 +197,8 @@ const FrontProduct = () => {
                                     {!productObject.isDiscountPresent()
                                         ? <p>{productObject.price}</p>
                                         : <div className={s.price}>
-                                            <span className={s.previous__price}>{productObject.price}$</span>
-                                            <p>{productObject.getPriceWithDiscount()}$</p>
+                                            <span className={s.previous__price}>{productObject.price}{getCurrencyTag()}</span>
+                                            <p>{productObject.getPriceWithDiscount()}{getCurrencyTag()}</p>
                                         </div>}
                                     <div className={s.actions}>
                                         {
@@ -351,7 +352,7 @@ const FrontProduct = () => {
                                     </div>
                                 }
                                 <div className={s.price__dop}>
-                                    <p>{productObject.price}$</p>
+                                    <p>{productObject.price}{getCurrencyTag()}</p>
                                     <div className={s.buttons}>
                                         <img src={heartImg} alt="" />
                                     </div>
