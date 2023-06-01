@@ -10,9 +10,7 @@ import { useTranslation } from "react-i18next";
 import { ProductObject } from "../../FrontProduct/ProductObject";
 
 const Catalog = ()=>{
-    const {t}  =useTranslation()
-    const [productList, setProductList] = useState([])
-    //{"id":"19","parent_id":"0","category":{"title":{"en":"Sports, recreation, tourism","ru":"Спорт, отдых, туризм","ge":"სპორტი, დასვენება, ტურიზმი"},"description":{"en":"","ru":"","ge":""},"image":"https://kaliptas.people-ua.org/manage/categories/uploads/1683424040sport.png"}}
+    const {t}  = useTranslation()
     const [loadedCategories, setLoadedCategories] = useState([]);
 
     let showPerClick = 11;
@@ -37,40 +35,14 @@ const Catalog = ()=>{
     }
 
     useEffect(()=>{
-        let productsForFirstList = apiResponse({
-            catID: 33
-        }, "content/products/get-products-by-category-id.php");
-        let productsForSecondList = apiResponse({
-            catID: 22
-        }, "content/products/get-products-by-category-id.php");
-
-        Promise.all([productsForFirstList, productsForSecondList]).then((responses)=>{
-            let tempList = productList;
-            
-            for(let response of responses) {
-                let localLoadedProduct = response.map((item)=>{
-                    return new ProductObject(item, undefined, undefined, getRealLanguage())
-                })
-                
-                tempList.push(localLoadedProduct.map((product)=>{
-                    return product.id
-                }))
-                
-            }
-
-            setProductList(tempList)
-        })
-            
-
         api((response)=>{
             let localLoadedCategories = response.map((item)=>{
                 return new CategoryObject(item, undefined, undefined,  getRealLanguage());
             })
-
             setLoadedCategories(localLoadedCategories);
-
             showCategories(localLoadedCategories)
         }, {}, "content/category/get-all-categories.php")
+        
     }, [])
 
     const relatedProductList = []; // Must be loadRelated()
@@ -105,17 +77,11 @@ const Catalog = ()=>{
                         }}>{t('catalog-button')}</button>
                 </div>
             </div>
-            <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
-                {productList.length > 0 ? 
-                    productList[0].length > 0 ? <ProductList cards={productList[0]} />  : null
-                : null}
+                <ProductList categoryForId = {19}/>
             </div>
-            <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
-                {productList.length > 1 ? 
-                    productList[1].length > 0 ? <ProductList cards={productList[1]} />  : null
-                : null}
+                <ProductList categoryForId = {21}/>
             </div>
 
             <div className={s.slide__wrap}>

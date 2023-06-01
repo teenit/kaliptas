@@ -14,7 +14,6 @@ import { ProductObject } from '../../FrontProduct/ProductObject';
 
 function Category(props) {
     const {t}  = useTranslation()
-    const [productList, setProductList] = useState([])
     const params = useParams();
     const [ready,setReady] = useState(false)
     const [displayedProducts, setDisplayedProducts] = useState([])
@@ -24,63 +23,33 @@ function Category(props) {
         api((categoryResponse)=> {
                 // let loadedCategory = new CategoryObject(response[0]);
                 // setCategory(loadedCategory)
-
                 if (categoryResponse === undefined) {
                     throw new Error("Category response is null");
                 }
-
                 let categoryId = CategoryObject.getIdFromResponse(categoryResponse);
-                
                 let productsPromise = apiResponse({
                     catID: params.id
                 }, "content/products/get-products-by-category-id.php");
-
                 let parentCatsPromise = apiResponse({
                     catID: params.id
                 }, "content/category/get-tree-categories-by-id.php");
 
-
-                let productsForFirstList = apiResponse({
-                    catID: 33
-                }, "content/products/get-products-by-category-id.php");
-                let productsForSecondList = apiResponse({
-                    catID: 22
-                }, "content/products/get-products-by-category-id.php");
-
-                Promise.all([productsPromise, parentCatsPromise, productsForFirstList, productsForSecondList]).then((promiseResponses) => {
+                Promise.all([productsPromise, parentCatsPromise]).then((promiseResponses) => {
                     if (promiseResponses[0] === undefined) {
                         throw new Error("Product response is null");
                     }
-
                     if (promiseResponses[1] === undefined) {
                         throw new Error("Parents response is null");
                     }
-
                     let endCategory = new CategoryObject(
                         categoryResponse[0],
                         promiseResponses[0],
                         promiseResponses[1],
                         getRealLanguage())
-
                     setCategory(endCategory);
-
                     setDisplayedProducts(endCategory.products);
                     setReady(true);
 
-                    let tempList = productList;
-                    
-                    for(let response of promiseResponses.slice(2)) {
-                        let localLoadedProduct = response.map((item)=>{
-                            return new ProductObject(item, undefined, undefined, getRealLanguage())
-                        })
-                        
-                        tempList.push(localLoadedProduct.map((product)=>{
-                            return product.id
-                        }))
-                        
-                    }
-        
-                    setProductList(tempList)
                 })
             }
             ,{
@@ -99,15 +68,11 @@ function Category(props) {
     };
     const applyFilter = function () {
         const filteredProducts = category.products.filter((item)=> item.price >= value[0] && item.price <= value[1])
-
         setDisplayedProducts(filteredProducts);
     }
-    
     const [showFilter, setShowFilter] = useState(false)
-
     return ready ? (
         <div className={s.wrap}>
-
             <div className={s.nav__container}>
                 <Link to="../catalog"><HomeIcon/></Link>
                 <div className={s.nav__container__in}>
@@ -127,13 +92,11 @@ function Category(props) {
                     </div>
                 </div>
             </div>
-
             <div className={s.mobile__filter} onClick={()=>{
                 setShowFilter(!showFilter)
             }}>
                 <p>Фильтры</p>
             </div>
-
             {
                 showFilter ? 
                     <div className={s.filter__container__dop}>
@@ -158,8 +121,6 @@ function Category(props) {
                                 <div className={s.apply} onClick={(event)=> applyFilter()}>Ок</div>
                             </div>
 
-
-                        
                             <Slider style={{
                                 width: "95%",
                                 padding: "5px 0px",
@@ -178,7 +139,6 @@ function Category(props) {
                     </div>
                 : null
             }
-            
 
             <div className={s.main__container}>
 
@@ -203,9 +163,7 @@ function Category(props) {
                             </div>
                             <div className={s.apply} onClick={(event)=> applyFilter()}>Ок</div>
                         </div>
-
-
-                    
+                        
                         <Slider style={{
                             width: "95%",
                             padding: "5px 0px",
@@ -237,18 +195,11 @@ function Category(props) {
                 </div>
 
             </div>
-
-            <h3 className={s.title}>{t('frontPage-similarProducts')}</h3>
             <div className={s.product__in}>
-                {productList.length > 0 ? 
-                    productList[0].length > 0 ? <ProductList cards={productList[0]} />  : null
-                : null}
+                <ProductList categoryForId = {19}/>
             </div>
-            <h3 className={s.title}>{t('frontPage-youVisited')}</h3>
             <div className={s.product__in}>
-                {productList.length > 1 ? 
-                    productList[1].length > 0 ? <ProductList cards={productList[1]} />  : null
-                : null}
+                <ProductList categoryForId = {22}/>
             </div>
         </div>
     ):null
