@@ -434,6 +434,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .minus > img, .plus > img{
     width: 16px;

@@ -13,9 +13,10 @@ import cartMinus from "../../../../../../img/front/cartMinus.png";
 import cartPlus from "../../../../../../img/front/cartPlus.png";
 import {getLanguageForRootLink, getRealLanguage} from "../../../../../functions/getLanguage";
 import {getCurrencyTag} from "../../../../../functions/utils";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ id }) => {
-    
+    const {t} = useTranslation()
     const [liked, setLiked] = useState({
         like: localStorage.getItem("like" + id),
     });
@@ -64,7 +65,7 @@ const ProductCard = ({ id }) => {
                     </div>
                     <div className={s.reviews}>
                         <a className={s.review__link} href="#">
-                            0 отзывов
+                            0 {t('reviews')}
                         </a>
                     </div>
                 </div>
@@ -102,8 +103,8 @@ const ProductCard = ({ id }) => {
                                 (<div className={s.buy} onClick={(event)=>{
                                     buy(id);
                                     setCountInCart(1);
-                                }}>Купить</div>))
-                            : <div className={`${s.buy} ${s.inactive}`}>Купить</div>
+                                }}>{t('frontProduct-buyButton')}</div>))
+                            : <div className={`${s.buy} ${s.inactive}`}>{t('frontProduct-buyButton')}</div>
                     }
 
                     <div className={s.add__to}>
@@ -132,7 +133,7 @@ const ProductCard = ({ id }) => {
                 </div>
                 <div className={s.in__stock}>
                     {
-                        product.inStock ? <p className={s.in__stock__yep}>Есть в наличии</p> : <p className={s.in__stock__nop}>Нет в наличии</p>
+                        product.inStock ? <p className={s.in__stock__yep}>{t('frontProduct-isAvaible')}</p> : <p className={s.in__stock__nop}>{t('frontProduct-isNotAvaible')}</p>
                     }
                 </div>
             </div>

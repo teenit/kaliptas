@@ -163,7 +163,11 @@
     "cart-C.O.D.":"C.O.D.",
     "cart-toCard":"ბარათი",
     "cart-toBankAccount":"საბანკო ანგარიშზე",
-    "cart-contact":"Საკონტაქტო ინფორმაცია"
+    "cart-contact":"Საკონტაქტო ინფორმაცია",
+    "frontProduct-reviews":"მიმოხილვები შესახებ",
+
+    "burger-profile":"პროფილი",
+    "burger-list":"სურვილების სია"
 
 
 }

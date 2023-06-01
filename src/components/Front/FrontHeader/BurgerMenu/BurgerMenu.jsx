@@ -15,15 +15,17 @@ import CartModule from "../../Modules/Cart/CartModule";
 import MobileDropdown from "../../Modules/MobileDropdown/MobileDropdown";
 import CartModal from "../../../Modals/CartModal/CartModal";
 import logo from "../../../../img/logo.png"
+import { useTranslation } from "react-i18next";
 //import Cart from "../../Modules/Cart/Cart";
 
-const BurgerMenu = ({t, active, setActive}) =>{
+const BurgerMenu = ({active, setActive}) =>{
     const [showCart, setShowCart] = useState(false)
     const [showPhone, setShowPhone] = useState(false)
     const [changeArrow, setChangeArrow] = useState(false)
     const catalogLink = getLanguageForRootLink() + "/catalog";
     const profile = getLanguageForRootLink() + "/profile";
     const [open, setOpen] = useState(false)
+    const {t} = useTranslation()
     return(
         <div className={s.wrap}>
             <div className={s.in}>
@@ -37,7 +39,7 @@ const BurgerMenu = ({t, active, setActive}) =>{
                             <img src={catalogImg} alt="Каталог" />
                         </div>
                     </Link>
-                    <p onClick={()=>{setOpen(!open)}}>Каталог</p>
+                    <p onClick={()=>{setOpen(!open)}}>{t('frontSubheader-catalog')}</p>
                 </div>
                 {
                     open ? <MobileDropdown close={setActive}/> : null
@@ -46,17 +48,17 @@ const BurgerMenu = ({t, active, setActive}) =>{
                 <div className={s.option}>
                     <div className={s.option__in}>
                         <img src={profileImage} alt="Профиль" />
-                        <Link className={s.link} to={profile} onClick={setActive}><p>Профиль</p></Link>
+                        <Link className={s.link} to={profile} onClick={setActive}><p>{t('burger-profile')}</p></Link>
                     </div>
                     <div className={s.option__in}>
                         <img src={corzImage} alt="Корзина" />
                         <div className={s.link} onClick={()=>{
                             setShowCart(true)
-                        }}><p>Корзина</p></div>
+                        }}><p>{t('frontCart-title')}</p></div>
                     </div>
                     <div className={s.option__in}>
                         <img src={listImage} alt="Список желаний" />
-                        <Link className={s.link} to={"/"} onClick={setActive}><p>Список желаний</p></Link>
+                        <Link className={s.link} to={"/"} onClick={setActive}><p>{t('burger-list')}</p></Link>
                     </div>
                 </div>
                 <div className={s.line}></div>

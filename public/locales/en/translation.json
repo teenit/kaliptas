@@ -163,5 +163,9 @@
     "cart-C.O.D.":"C.O.D.",
     "cart-toCard":"Card",
     "cart-toBankAccount":"To bank account",
-    "cart-contact":"Contact details"
+    "cart-contact":"Contact details",
+    "frontProduct-reviews":"Reviews about",
+
+    "burger-profile":"Profile",
+    "burger-list":"Wishlist"
 }
