@@ -11,7 +11,8 @@ import {getCurrencyTag} from "../../../../functions/utils";
 const CartRow = (props) =>{
     const {t} = useTranslation()
     const [state, setState] = useState({
-        amount: props.item.count
+        amount: props.item.count,
+        varId: props.item.variableId
     })
     const product = props.item.product;
     return(
@@ -43,14 +44,22 @@ const CartRow = (props) =>{
                             }}/>
                         </div>
                     </div>
+                    <div>
+                        {
+                        product.isVariable
+                            ? product.variables.find(item=> item.id === state.varId).title
+                            : null
+                    }</div>
                     <div className={s.prices}>
-                        {product.isDiscountPresent()?
+                        {product.isDiscountPresent(state.varId)?
                         <div className={s.plice__in}>
-                        <p className={s.price__aver}>{state.amount*product.price}{getCurrencyTag()}</p>
+                        <p className={s.price__aver}>{state.amount *
+                            product.getPrice(state.varId)
+                        }{getCurrencyTag()}</p>
                         <div className={s.line}></div>
                     </div>
                         :null}
-                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount()}{getCurrencyTag()}</p>
+                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount(state.varId)}{getCurrencyTag()}</p>
                     </div>
                    
                     <div className={s.delete}>

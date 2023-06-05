@@ -1,3 +1,5 @@
+import {EMPTY_VARIABLE_ID} from "../../../functions/cartControll";
+
 export class ProductObject{
     constructor(product, language) {
         if (product === undefined) {
@@ -46,12 +48,28 @@ export class ProductObject{
         return this.id + "-" + this.tag;
     }
 
-    isDiscountPresent(){
-        return this.discount !== "";
+    isDiscountPresent(variableId){
+        if (variableId !== undefined && variableId !== EMPTY_VARIABLE_ID) {
+            return this.variables.find(item=>item.id === variableId).discount !== ""
+        }
+
+        return this.isVariable ? this.variables[0].discount !== "" : this.discount !== "";
     }
 
-    getPriceWithDiscount() {
-        return this.discount;
+    getPriceWithDiscount(variableId) {
+        if (variableId !== undefined && variableId !== EMPTY_VARIABLE_ID) {
+            return this.variables.find(item=>item.id === variableId).discount
+        }
+
+        return this.isVariable ? this.variables[0].discount : this.discount;
+    }
+
+    getPrice(variableId) {
+        if (variableId !== undefined && variableId !== EMPTY_VARIABLE_ID) {
+            return this.variables.find(item=>item.id === variableId).price
+        }
+
+        return this.isVariable ? this.variables[0].price : this.price;
     }
 
     getPriceForCard() {
@@ -87,12 +105,13 @@ export class ProductObject{
     }
 }
 
-class Variable {
+export class Variable {
     constructor(obj, language) {
         this.price = obj.price;
         this.discount = obj.discountPrice;
         this.title = obj.variable[language];
         this.id = obj.id;
+        console.log(this)
     }
 
     price;

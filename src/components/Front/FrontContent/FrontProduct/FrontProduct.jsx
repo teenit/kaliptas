@@ -17,6 +17,7 @@ import { buy, decrementById, getCountById, incrementById } from "../../../functi
 import cartMinus from "../../../../img/front/cartMinus.png"
 import cartPlus from "../../../../img/front/cartPlus.png"
 import {getCurrencyTag} from "../../../functions/utils";
+import {MenuItem, TextField} from "@mui/material";
 
 const FrontProduct = () => {
     const { t } = useTranslation()
@@ -26,7 +27,10 @@ const FrontProduct = () => {
     const params = useParams();
     const [productId, setId] = useState(ProductObject.getIdFromLink(params.id));
     const [prevInterval, setPrevInterval] = useState(-1);
-    const [allPhotosMas, setAllPhotosMas] = useState([])
+    const [allPhotosMas, setAllPhotosMas] = useState([]);
+    const [variableId, setVariableId] = useState(undefined);
+    const [displayedPrice, setDisplayedPrice] = useState(0);
+    const [displayedDiscountPrice, setDisplayedDiscountPrice] = useState(0)
 
     useEffect(() => {
         let localProductId = ProductObject.getIdFromLink(params.id);
@@ -38,14 +42,18 @@ const FrontProduct = () => {
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
+            setDisplayedPrice(loadedProduct.price)
+            setDisplayedDiscountPrice(loadedProduct.discount)
             setImage(loadedProduct.mainPhoto)
             setCountInCart(getCountById(localProductId))
             setReady(true);
-
-            
-            console.log(...loadedProduct.photos.map((product)=>{return product.photos}));
-            console.log(loadedProduct);
             setAllPhotosMas([loadedProduct.mainPhoto, ...loadedProduct.photos])
+
+            if (loadedProduct.isVariable) {
+                setVariableId(loadedProduct.getFirstVariableId());
+                setDisplayedPrice(loadedProduct.variables[0].price);
+                setDisplayedDiscountPrice(loadedProduct.variables[0].discount)
+            }
         
         }, {
             productID: localProductId
@@ -107,6 +115,30 @@ const FrontProduct = () => {
             <img src={cart} alt="" />
             <p>{t('frontProduct-buyButton')}</p>
         </div>)
+    }
+
+    const renderVariable = function () {
+
+
+        return productObject.isVariable ? <TextField
+                                                     select
+                                                     sx={{ border: 0, background: "none" }}
+                                                     variant={"standard"}
+                                                     onChange={(event)=>{
+                                                         setVariableId(event.target.value)
+                                                         let variable = productObject.variables.find(item => item.id === event.target.value)
+                                                         setDisplayedPrice(variable.price);
+                                                         setDisplayedDiscountPrice(variable.discount)
+                                                     }}
+                                                     defaultValue={productObject.variables[0].id}
+                                                     label={t('front-product-variation')}
+        >
+            {
+                productObject.variables.map((item, index)=>{
+                    return <MenuItem key={index} value={item.id}>{item.title} ({productObject.isDiscountPresent(variableId) ? item.discount : item.price} {getCurrencyTag()})</MenuItem>
+                })
+            }
+        </TextField> : null
     }
 
     return ready ? (
@@ -174,15 +206,19 @@ const FrontProduct = () => {
                                         </div>
                                     }
 
-                                    {!productObject.isDiscountPresent()
-                                        ? <p>{productObject.price}</p>
+                                    {!productObject.isDiscountPresent(variableId)
+                                        ? <p>{displayedPrice}</p>
                                         : <div className={s.price}>
-                                            <span className={s.previous__price}>{productObject.price}{getCurrencyTag()}</span>
-                                            <p>{productObject.getPriceWithDiscount()}{getCurrencyTag()}</p>
+                                            <span className={s.previous__price}>{displayedPrice}{getCurrencyTag()}</span>
+                                            <p>{displayedDiscountPrice}{getCurrencyTag()}</p>
                                         </div>}
                                     <div className={s.actions}>
                                         {
                                             renderBuyButton()
+                                        }
+
+                                        {
+                                            renderVariable()
                                         }
                                         <div className={s.heart__wrap}>
                                             {liked == true ?

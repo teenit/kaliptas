@@ -8,11 +8,12 @@ import {getRealLanguage} from "../../../functions/getLanguage";
 
 const CartModule = ({setTotalPrice, change}) =>{
     const loadCart = ()=>{
-        return Object.entries(getCart())
+        return getCart()
         .map((entry)=>{
         return {
-            id: entry[0],
-            count: entry[1]
+            id: entry.id,
+            count: entry.count,
+            variableId : entry.variableId
         }
     })}
 
@@ -39,7 +40,8 @@ const CartModule = ({setTotalPrice, change}) =>{
             for (let i = 0; i < values.length; i++) {
                 tempProductsAndCount.push({
                     product: new ProductObject(values[i], getRealLanguage()),
-                    count: productIdList[i].count
+                    count: cartList[i].count,
+                    variableId: cartList[i].variableId
                 });
             }
             tempProductsAndCount.forEach((prod)=>{
