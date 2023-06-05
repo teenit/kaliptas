@@ -39,16 +39,16 @@ const ProfileInfo = ({item})=>{
                         <div className={s.item__in}>
                             <div className={s.item__info}>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-userName')}</label>
-                                    <input disabled type="text" value={item.userName}/> 
+                                    <p>{t('profile-userName')}</p>
+                                    <span>{item.userName}</span>
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-birthday')}</label>
-                                    <input disabled type="text" value={"13.06.1996"}/> 
+                                    <p>{t('profile-birthday')}</p>
+                                    <span>{"13.06.1996"}</span> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-sex')}</label>
-                                    <input disabled type="text" value={"Мужской"}/> 
+                                    <p>{t('profile-sex')}</p>
+                                    <span>{t('profile-sexIn')}</span>
                                 </div>
                             </div>
                         </div>
@@ -73,17 +73,17 @@ const ProfileInfo = ({item})=>{
                     showInfo.secondInfo ? 
                         <div className={s.item__in}>
                             <div className={s.item__info}>
-                                <div className={s.item}>
-                                    <label htmlFor="">{t('profile-loginEmail')}</label>
-                                    <input disabled type="text" value={item.email}/> 
+                                <div className={s.item}> 
+                                    <p>{t('profile-loginEmail')}</p>
+                                    <span>{item.email}</span>
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-loginPhone')}</label>
-                                    <input disabled type="text" value={item.phone}/> 
+                                    <p>{t('profile-loginPhone')}</p>
+                                    <span>{item.phone}</span> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-userType')}</label>
-                                    <input disabled type="text" value={item.type}/> 
+                                    <p>{t('profile-userType')}</p>
+                                    <span>{item.type}</span>
                                 </div>
                             </div>
                         </div>
@@ -107,17 +107,17 @@ const ProfileInfo = ({item})=>{
                     showInfo.thirdInfo ? 
                         <div className={s.item__in}>
                             <div className={s.item__info}>
-                                <div className={s.item}>
-                                    <label htmlFor="">{t('profile-email')}</label>
-                                    <input disabled type="text" value={item.email}/> 
+                                <div className={s.item}> 
+                                    <p>{t('profile-email')}</p>
+                                    <span>{item.email}</span>
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-phone')}</label>
-                                    <input disabled type="text" value={item.phone}/> 
+                                    <p>{t('profile-phone')}</p>
+                                    <span>{item.phone}</span> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-secondPhone')}</label>
-                                    <input disabled type="text" value={"0688562345"}/> 
+                                    <p>{t('profile-secondPhone')}</p>
+                                    <span>{"0688562345"}</span>
                                 </div>
                             </div>
                         </div>
@@ -141,21 +141,17 @@ const ProfileInfo = ({item})=>{
                     showInfo.foursInfo ? 
                         <div className={s.item__in}>
                             <div className={s.item__info}>
-                                <div className={s.item}>
-                                    <label htmlFor="">{t('profile-city')}</label>
-                                    <input disabled type="text" value={"Тбилиси"}/> 
+                                <div className={s.item}> 
+                                    <p>{t('profile-city')}</p>
+                                    <span>{"Тбилиси"}</span>
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-street')}</label>
-                                    <input disabled type="text" value={"Львови"}/> 
+                                    <p>{t('profile-street')}</p>
+                                    <span>{"Львови"}</span> 
                                 </div>
                                 <div className={s.item}>
-                                    <label htmlFor="">{t('profile-house')}</label>
-                                    <input disabled type="text" value={"25"}/> 
-                                </div>
-                                <div className={s.item}>
-                                    <label htmlFor="">{t('profile-flat')}</label>
-                                    <input disabled type="text" value={"13"}/> 
+                                    <p>{t('profile-house')}</p>
+                                    <span>{"25"}</span>
                                 </div>
                             </div>
                         </div>

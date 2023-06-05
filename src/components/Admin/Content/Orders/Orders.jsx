@@ -12,23 +12,25 @@ const Orders = ()=>{
             setOrders(e)
         }).catch(err=>console.log(err))
     },[])
+
     return(
-        <div>
-            <h1>{t('orders')}</h1>
-            <div className={s.orders}>
-                <div className={s.order}>
-                    <div>#</div>
-                    <div>{t('Email')}</div>
-                    <div>{t('phone')}</div>
-                    <div>{t('method pay')}</div>
-                    <div>{t('price')}</div>
-                    <div>{t('date start')}</div>
-                    <div></div>
+        <div className={s.wrap}>
+            <h1 className={s.title}>{t('orders')}</h1>
+            <div className={s.orders__wrap}>
+                <div className={`${s.order} ${s.order__dop}`}>
+                    <div className={s.order__in}></div>
+                    <div className={s.order__in}>{t('Email')}</div>
+                    <div className={s.order__in}>{t('phone')}</div>
+                    <div className={s.order__in}>{t('method pay')}</div>
+                    <div className={s.order__in}>{t('price')}</div>
+                    <div className={s.order__in}>{t('date start')}</div>
+                    <div className={s.order__in}></div>
                 </div>
-                
-                {
-                    orders.map((item)=>{return <OrderMap key={item.id} order={item}/>})
-                }
+                <div className={s.order__in__wrap} >
+                    {
+                        orders.map((item)=>{return <OrderMap key={item.id} order={item}/>})
+                    }
+                </div>
             </div>
 
         </div>

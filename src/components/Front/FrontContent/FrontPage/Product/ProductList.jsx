@@ -39,7 +39,7 @@ const ProductList = ({categoryForId}) => {
 
     return (
         <div className={s.wrap}>
-            <h3>{categoriesName}</h3>
+            <h3 className={s.title}>{categoriesName}</h3>
             <div className={s.wrap__list}>
                 <div className={s.wrap__list__in} style={{
                     gridTemplateColumns: `repeat(${productList.length}, 1fr)`

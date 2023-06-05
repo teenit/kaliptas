@@ -127,7 +127,7 @@ const FrontProduct = () => {
                                         <img className={s.star} src={star} alt="Оценка" />
                                         <img className={s.star} src={dopStar} alt="Оценка" />
                                     </div>
-                                    <a href="#" className={s.reviews__text}>0 {t('frontProduct-titleFeedbacks')}</a>
+                                    <a href="#" className={s.reviews__text}>0 {t('reviews')}</a>
                                 </div>
                                 <div className={s.line}></div>
                                 <div className={s.code}>
