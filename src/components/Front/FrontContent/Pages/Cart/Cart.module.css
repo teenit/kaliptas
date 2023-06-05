@@ -68,6 +68,40 @@
     margin: 0;
     padding-left: 15px;
 }
+.empty__wrap{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 75px;
+}
+.empty__inner{
+    width: 100%;
+    height: max-content;
+    padding: 50px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    text-align: center;
+}
+
 .empty{
-    margin: 10vh 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.success::before{
+    content: '\2714';
+    color: green;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.main__link{
+    color: #1d1c1c;
+    text-decoration: none;
+    text-align: center;
+}
+.main__link:visited{
+    color: #1d1c1c;
 }

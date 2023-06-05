@@ -179,13 +179,15 @@ const Cart = ()=>{
     }
 
     const renderResponse = function () {
-        return <div className={s.wrap}>
+        return <div>
             <div className={s.empty}>
-                {t('cart-purchaseOnPrice')} {response.totalPrice}{getCurrencyTag()} {t('cart-getSuccessfully')}. ID {t('cart-purchase')} {response.id}
+                <span className={s.success}>{t('cart-purchaseOnPrice')} {response.totalPrice}{getCurrencyTag()} {t('cart-getSuccessfully')}. ID {t('cart-purchase')} <b>{response.id}</b></span>
             </div>
+            <div className={s.main__link}>
             <Link to={getLanguageForRootLink()}>{t('cart-toMain')}</Link>
 
-        </div>
+            </div>
+            </div>
     }
 
     const renderForm = function () {
@@ -382,15 +384,22 @@ const Cart = ()=>{
             <div className={s.empty}>
                 {t('cart-noItemsInCart')}
             </div>
+            <div className={s.main__link}>
             <Link to={getLanguageForRootLink()}>{t('cart-toMain')}</Link>
+            </div>
 
         </div>
     }
 
     return <div className={s.wrap}>
-        {
+        <div className={s.empty__wrap}>
+            <div className={s.empty__inner}>
+            {
             render()
         }
+            </div>
+        </div>
+
     </div>
 }
 export default Cart;
