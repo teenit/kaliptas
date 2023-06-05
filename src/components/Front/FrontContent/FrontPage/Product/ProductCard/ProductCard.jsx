@@ -71,11 +71,11 @@ const ProductCard = ({ id }) => {
                 </div>
                 <div className={`${s.section} ${s.section__dop}`}>
                     <div className={s.price__wrap}>
-                        {product.isDiscountPresent() ?  <div className={s.not__price}>
+                        {product.isDiscountPresentForCard() ?  <div className={s.not__price}>
                             <div className={s.line}></div>
-                            <p className={s.price}>{product.price}{getCurrencyTag()}</p>
+                            <p className={s.price}>{product.getDiscountForCard()}{getCurrencyTag()}</p>
                         </div> : null}
-                        <p className={s.price__dop}>{product.getPriceWithDiscount()}{getCurrencyTag()}</p>
+                        <p className={s.price__dop}>{product.isDiscountPresentForCard() ? product.getDiscountForCard() : product.getPriceForCard()}getCurrencyTag()</p>
                     </div>
                 </div>
                 
