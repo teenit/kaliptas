@@ -54,7 +54,7 @@ export async function apiResponse(obj, url){
      }else{
          obj.email = localStorage.getItem('email');
      }
-
+     console.log(obj);
    return await axios({
          url: serverAdress(url),
          method: "POST",
