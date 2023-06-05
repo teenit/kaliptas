@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Burger from "./Burger/Burger";
 import s from "./Header.module.css"
 import Languages from "./Languages/Languages";
@@ -8,11 +8,17 @@ import { NavLink } from "react-router-dom";
 import BurgerMenu from "./Burger/BurgerMenu";
 import ArrowImg from "../../../img/admin/Фигура 504 копия 2.png"
 import PhoneNumber from "./PhoneNumbers/PhoneNumber";
+import { apiResponse } from "../../functions/api";
 
 const Header = ({menuItems,burgerItems}) =>{
       const [state, setState] = useState(false)
       const [burgMenu, setBurgMenu] = useState(false)
-    const language = localStorage.getItem("LNG").toLowerCase()
+    const language = localStorage.getItem("LNG").toLowerCase();
+    useEffect(()=>{
+        apiResponse({search:1},'search-product.php').then((e)=>{
+            console.log(e)
+        }).catch((e)=>console.log(e))
+    },[])
     return(
         <div className={s.header}>
           

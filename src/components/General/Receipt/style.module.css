@@ -1,0 +1,14 @@
+.product{
+    display: grid;
+    text-align: center;
+    grid-template-columns: 40px 2fr 1fr 1fr;
+    gap: 5px;
+}
+.img{
+    width: 100%;
+}
+.products{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}

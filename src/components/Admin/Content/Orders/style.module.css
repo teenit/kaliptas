@@ -29,6 +29,7 @@
     font-size: 14px;
     overflow-y: scroll;
     max-height: 500px;
+    min-width: 50%;
 }
 .close__btn{
     width: 20px;

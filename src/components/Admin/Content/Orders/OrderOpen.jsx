@@ -6,6 +6,7 @@ import CloseBtn from "../../../General/Btn/CloseBtn/CloseBtn";
 import Select from 'react-select'
 import { apiResponse } from "../../../functions/api";
 import { Button } from "@mui/material";
+import Receipt from "../../../General/Receipt/Receipt";
 
 const OrderOpen = ({order, close})=>{
  
@@ -75,9 +76,15 @@ const OrderOpen = ({order, close})=>{
                             <div className={s.card__line}>
                                 <p>{t("city")}: <span>{order.delivery.city}</span></p>
                                 <p>{t("residential")}: {order.delivery.residential}</p>
-                                <p>{t("street")}: {order.delivery.street}</p>
-                               
+                                <p>{t("street")}: {order.delivery.street}</p> 
                             </div> 
+                            <div className={s.card__line}>
+                                <h3>{t("products")}</h3> 
+                            </div>
+                            <div className={s.card__line}>
+                                <Receipt products={order.products} />
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
