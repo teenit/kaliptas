@@ -1,19 +1,36 @@
+.wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 35px;
+}
 .orders{
     display: grid;
-
+}
+.title{
+    margin: 0;
 }
 .order{
     display: grid;
-    grid-template-columns: 30px 2fr 2fr 100px 100px 100px 30px;
-    border-bottom: solid 1px #222;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    grid-template-columns: 30px 1fr 1fr 150px 100px 175px 30px;
     align-items: center;
     font-size: 12px;
+    padding: 10px 0; 
+    margin: 10px 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px .2px #00000022;
+    cursor: pointer;
 }
-.order:hover{
-    background-color: #f6efef;
+.order__dop{
+    box-shadow: none;
+    cursor: default;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
 }
+
 .card__wrap{
     min-height: 100vh;
     display: flex;
@@ -22,8 +39,10 @@
     background-color: #00000044;
 }
 .card__inner{
-    background-color: #fff;
-    padding: 15px 50px;
+    min-width: 50%;
+    max-width: 50%;
+    background-color: #ffffff;
+    padding: 25px 20px;
     border-radius: 10px;
     position: relative;
     font-size: 14px;
@@ -43,18 +62,74 @@
     grid-template-columns: 1fr 50px;
     gap: 5px;
 }
-.bold{
-    font-weight: 700;
-}
 .eye__img{
     width: 20px;
-}
-.created{
-    background-color: #f6efef;
-}
-.in_working{
-    background-color: #f0f2d5;
+    cursor: pointer;
 }
 .id{
     text-align: center;
+}
+.card__line > h3{
+    margin: 0;
+}
+.card__info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.card__line{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.card__line__in{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    column-gap: 40px;
+}
+.card__line__in > p{
+    margin: 0;
+    display: block;
+    width: max-content;
+}
+/*
+.bold{
+    font-weight: 700;
+}
+*/
+.created{
+    border-radius: 10px;
+}
+.in_working{
+    border-radius: 10px;
+    background-color: #60ebc2;
+}
+.on_hold{
+    border-radius: 10px;
+    background-color: #c368e7;
+}
+.done{
+    border-radius: 10px;
+    background-color: #1b9e72;
+}
+.waiting_payment{
+    border-radius: 10px;
+    background-color: #e2bdf0;
+}
+.cancelled{
+    border-radius: 10px;
+    background-color: #fc5c5c;
+}
+.goods_returned{
+    border-radius: 10px;
+    background-color: #e7c3f5;
+}
+.failure{
+    border-radius: 10px;
+    background-color: #fec470;
+}
+.draft{
+    border-radius: 10px;
+    background-color: #c368e7;
 }

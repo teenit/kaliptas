@@ -36,7 +36,7 @@ const OrderOpen = ({order, close})=>{
                     </div>
                     <div className={s.card}>
                         <div className={s.card__info}>
-                        <div className={s.card__line}>
+                            <div className={s.card__line}>
                                 <h3>{t('Edit status')}</h3>
                             </div>
                             <div className={s.card__line}>
@@ -50,33 +50,35 @@ const OrderOpen = ({order, close})=>{
 
                                 </div>
                             </div>
+                        
                             <div className={s.card__line}>
                                 <h3>{t('details order')}</h3>
-                            </div>
-                            <div className={s.card__line}>
-                                <p>№  ↪ <span className={s.bold}>{order.id}</span> | {t('total price')} ↪ <span className={s.bold}>{order.total_price}</span></p>
-                                <p>{t('Payment method')} ↪ <span className={s.bold}>{order.methodPay}</span></p>
-                                <p>{t('delivery method')} ↪ <span className={s.bold}>{order.delivery.deliveryMethod}</span></p>
-                                <p>{t('Date order')} ↪ <span className={s.bold}>{order.date_start}</span></p>
+                                <div className={s.card__line__in}>
+                                    <p>№  ↪ <span className={s.bold}>{order.id}</span> | {t('total price')} ↪ <span className={s.bold}>{order.total_price}</span></p>
+                                    <p>{t('Payment method')} ↪ <span className={s.bold}>{order.methodPay}</span></p>
+                                    <p>{t('delivery method')} ↪ <span className={s.bold}>{order.delivery.deliveryMethod}</span></p>
+                                    <p>{t('Date order')} ↪ <span className={s.bold}>{order.date_start}</span></p>
+                                </div>
                             </div>
                             
                             <div className={s.card__line}>
                                 <h3>{t('user info')}</h3>
-                            </div>
-                            <div className={s.card__line}>
-                                <p>{t("Email")}: <span>{order.email}</span></p>
-                                <p>{t("Phone")}: {order.phone}</p>
-                                <p>{t("Name")}: {order.user_data.name}</p>
-                                <p>{t("Surname")}: {order.user_data.surname}</p>
-                                <p>{t("Comment")}: {order.user_data.comment}</p>
+                                <div className={s.card__line__in}>
+                                    <p>{t("Email")}: <span>{order.email}</span></p>
+                                    <p>{t("Phone")}: {order.phone}</p>
+                                    <p>{t("Name")}: {order.user_data.name}</p>
+                                    <p>{t("Surname")}: {order.user_data.surname}</p>
+                                    <p>{t("Comment")}: {order.user_data.comment}</p>
+                                </div>
                             </div>   
+                            
                             <div className={s.card__line}>
                                 <h3>{t('Delivery')}</h3>
-                            </div>
-                            <div className={s.card__line}>
-                                <p>{t("city")}: <span>{order.delivery.city}</span></p>
-                                <p>{t("residential")}: {order.delivery.residential}</p>
-                                <p>{t("street")}: {order.delivery.street}</p> 
+                                <div className={s.card__line__in}>
+                                    <p>{t("city")}: <span>{order.delivery.city}</span></p>
+                                    <p>{t("residential")}: {order.delivery.residential}</p>
+                                    <p>{t("street")}: {order.delivery.street}</p> 
+                                </div>
                             </div> 
                             <div className={s.card__line}>
                                 <h3>{t("products")}</h3> 
