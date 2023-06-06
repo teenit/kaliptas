@@ -162,6 +162,7 @@ const Cart = ()=>{
     const sendForm = function () {
         let data = formData();
 
+        console.log(data)
         if (data !== emptyForm) {
             setPending(true);
 
@@ -359,7 +360,6 @@ const Cart = ()=>{
                 return <div>{t('cart-willBeInOurShop')}</div>
         }
     };
-
 
     const renderUnauthorised = function () {
         return <div>

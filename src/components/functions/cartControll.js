@@ -3,7 +3,9 @@ export const EMPTY_VARIABLE_ID = "empty-var-id"
 
 export function buy(id, variableId) {
 
-    if (isPresent(id) || isPresent(id, variableId)) {
+    if (isVariablePresent(id, variableId)) {
+        throw Error("Product must not be in cart. Id: " + id)
+    } else if (variableId === undefined && isPresent(id)) {
         throw Error("Product must not be in cart. Id: " + id)
     }
 
@@ -14,19 +16,18 @@ export function buy(id, variableId) {
     setCart(cartMap);
 }
 
-export function isPresent(id, variableId) {
+export function isVariablePresent(id, variableId) {
     let variable = findVariable(id,variableId);
 
-    if ((variable !== undefined) && variableId !== EMPTY_VARIABLE_ID) {
-        return true
-    } else {
-        let simple = findSimple(id);
-        return simple !== undefined
-    }
+    return (variable !== undefined) && variableId !== EMPTY_VARIABLE_ID;
+}
+
+export function isPresent(id) {
+    return findSimple(id) !== undefined;
 }
 
 export function incrementById(id, variableId) {
-    if ( ! (isPresent(id) || isPresent(id, variableId))) {
+    if ( ! (isPresent(id) || isVariablePresent(id, variableId))) {
         throw Error("No product in localStorage with id: " + id)
     }
 
@@ -50,7 +51,7 @@ export function incrementById(id, variableId) {
 }
 
 export function decrementById(id, variableId) {
-    if ( ! (isPresent(id) || isPresent(id, variableId))) {
+    if ( ! (isPresent(id) || isVariablePresent(id, variableId))) {
         throw Error("No product in localStorage with id: " + id)
     }
 
@@ -84,7 +85,7 @@ export function decrementById(id, variableId) {
 }
 
 export function deleteById(id, variableId) {
-    if ( ! (isPresent(id) || isPresent(id, variableId))) {
+    if ( ! (isPresent(id) || isVariablePresent(id, variableId))) {
         throw Error("No product in localStorage with id: " + id)
     }
 
@@ -99,11 +100,11 @@ export function deleteById(id, variableId) {
 }
 
 export function getCountById(id, variableId) {
-    if (isPresent(id,variableId) && variableId !== undefined) {
+    if (isVariablePresent(id,variableId) && variableId !== undefined) {
         return findVariable(id, variableId).count;
     }
 
-    if (isPresent(id)) {
+    if (isPresent(id) && variableId === undefined) {
         return findSimple(id).count;
     }
 
@@ -129,7 +130,9 @@ function findVariable(id, variableId) {
     if (variableId === undefined) {
         return undefined;
     }
-    return getCart().filter(item => (item.id === id) && (item.variableId = variableId))[0]
+    return getCart().find(item => {
+        return ((item.id === id) && (item.variableId === variableId))
+    })
 }
 
 export function getCartItemsCount() {

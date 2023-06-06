@@ -32,6 +32,8 @@ const FrontProduct = () => {
     const [displayedPrice, setDisplayedPrice] = useState(0);
     const [displayedDiscountPrice, setDisplayedDiscountPrice] = useState(0)
     const location = useLocation();
+    const [countInCart, setCountInCart] = useState(0);
+
 
     useEffect(() => {
         let localProductId = ProductObject.getIdFromLink(params.id);
@@ -51,9 +53,14 @@ const FrontProduct = () => {
             setAllPhotosMas([loadedProduct.mainPhoto, ...loadedProduct.photos])
 
             if (loadedProduct.isVariable) {
-                setVariableId(loadedProduct.getFirstVariableId());
-                setDisplayedPrice(loadedProduct.variables[0].price);
-                setDisplayedDiscountPrice(loadedProduct.variables[0].discount)
+                let varId = variableId;
+                if (varId === undefined) {
+                    varId = loadedProduct.getFirstVariableId();
+                    setVariableId(varId);
+                }
+
+                setDisplayedPrice(loadedProduct.getVariableById(varId).price);
+                setDisplayedDiscountPrice(loadedProduct.getVariableById(varId).discount)
             } else {
                 setVariableId(undefined)
             }
@@ -63,10 +70,10 @@ const FrontProduct = () => {
         }, "content/products/get-product-by-id.php")
         
         let countUpdateInterval = setInterval(() => {
-            setCountInCart(getCountById(localProductId));
-        }, 700);
+            setCountInCart(getCountById(localProductId, variableId));
+        }, 100);
         setPrevInterval(countUpdateInterval);
-    }, [params.id, productId, location])
+    }, [params.id, productId, location, variableId])
     
     const [image, setImage] = useState(
         productObject.mainPhoto
@@ -87,14 +94,13 @@ const FrontProduct = () => {
         showPhoto: false
     })
 
-    const [countInCart, setCountInCart] = useState(0);
     const renderBuyButton= function () {
         return productObject.inStock ? countInCart > 0
             ? (<div className={s.amount}>
                 <div className={s.minus}>
                     <img src={cartMinus} alt="Минус" onClick={() => {
                         decrementById(productId, variableId);
-                        setCountInCart(getCountById(productId));
+                        setCountInCart(getCountById(productId, variableId));
                     }} />
                 </div>
                 <div className={s.amount__in}>
@@ -103,7 +109,7 @@ const FrontProduct = () => {
                 <div className={s.plus}>
                     <img src={cartPlus} alt="Плюс" onClick={() => {
                         incrementById(productId, variableId);
-                        setCountInCart(getCountById(productId));
+                        setCountInCart(getCountById(productId, variableId));
                     }} />
                 </div>
             </div>)
@@ -128,9 +134,9 @@ const FrontProduct = () => {
                                                      sx={{ border: 0, background: "none" }}
                                                      variant={"standard"}
                                                      onChange={(event)=>{
-                                                         setVariableId(event.target.value)
                                                          let variable = productObject.variables.find(item => item.id === event.target.value)
                                                          setDisplayedPrice(variable.price);
+                                                         setVariableId(event.target.value)
                                                          setDisplayedDiscountPrice(variable.discount)
                                                      }}
                                                      defaultValue={productObject.variables[0].id}
@@ -210,7 +216,7 @@ const FrontProduct = () => {
                                     }
 
                                     {!productObject.isDiscountPresent(variableId)
-                                        ? <p>{displayedPrice}</p>
+                                        ? <div className={s.price}><p>{displayedPrice}{getCurrencyTag()}</p></div>
                                         : <div className={s.price}>
                                             <span className={s.previous__price}>{displayedPrice}{getCurrencyTag()}</span>
                                             <p>{displayedDiscountPrice}{getCurrencyTag()}</p>

@@ -108,6 +108,10 @@ export class ProductObject{
     getProductPageLink() {
         return getLanguageForRootLink() + "/product/" + this.getLink();
     }
+
+    getVariableById(id) {
+        return this.variables.find(item => item.id === id);
+    }
 }
 
 export class Variable {

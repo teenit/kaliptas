@@ -54,14 +54,15 @@ const CartRow = (props) =>{
                             : null
                     }</div>
                     <div className={s.prices}>
-                        {product.isDiscountPresent(state.varId)?
-                        <div className={s.plice__in}>
-                        <p className={s.price__aver}>{state.amount *
-                            product.getPrice(state.varId)
-                        }{getCurrencyTag()}</p>
-                    </div>
-                        :null}
-                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount(state.varId)}{getCurrencyTag()}</p>
+                        {product.isDiscountPresent(state.varId)
+                            ?
+                                <div className={s.plice__in}>
+                                    <p className={s.price__aver}>
+                                        {state.amount * product.getPrice(state.varId)}{getCurrencyTag()}
+                                    </p>
+                                </div>
+                            :null}
+                        <p className={s.price__skid}>{state.amount * (product.isDiscountPresent(state.varId) ? product.getPriceWithDiscount(state.varId) : product.getPrice(state.varId))}{getCurrencyTag()}</p>
                     </div>
                    
                     <div className={s.delete}>
