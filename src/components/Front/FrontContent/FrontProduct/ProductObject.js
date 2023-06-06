@@ -1,4 +1,5 @@
 import {EMPTY_VARIABLE_ID} from "../../../functions/cartControll";
+import {getLanguageForRootLink} from "../../../functions/getLanguage";
 
 export class ProductObject{
     constructor(product, language) {
@@ -103,6 +104,10 @@ export class ProductObject{
     static getIdFromLink(link) {
         return link.slice(0, link.indexOf("-"))
     }
+
+    getProductPageLink() {
+        return getLanguageForRootLink() + "/product/" + this.getLink();
+    }
 }
 
 export class Variable {
@@ -111,7 +116,6 @@ export class Variable {
         this.discount = obj.discountPrice;
         this.title = obj.variable[language];
         this.id = obj.id;
-        console.log(this)
     }
 
     price;

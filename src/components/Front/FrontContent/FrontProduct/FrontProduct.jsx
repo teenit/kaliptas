@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import s from './FrontProduct.module.css'
-import { useParams } from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import heartImg from "../../../../img/front/icons8-heart-64.png";
 import heartImgSec from "../../../../img/front/icons8-heart-642.png";
 import star from "./../../../../img/front/Многоугольник 1 копия 3.png"
@@ -31,6 +31,7 @@ const FrontProduct = () => {
     const [variableId, setVariableId] = useState(undefined);
     const [displayedPrice, setDisplayedPrice] = useState(0);
     const [displayedDiscountPrice, setDisplayedDiscountPrice] = useState(0)
+    const location = useLocation();
 
     useEffect(() => {
         let localProductId = ProductObject.getIdFromLink(params.id);
@@ -53,6 +54,8 @@ const FrontProduct = () => {
                 setVariableId(loadedProduct.getFirstVariableId());
                 setDisplayedPrice(loadedProduct.variables[0].price);
                 setDisplayedDiscountPrice(loadedProduct.variables[0].discount)
+            } else {
+                setVariableId(undefined)
             }
         
         }, {
@@ -63,7 +66,7 @@ const FrontProduct = () => {
             setCountInCart(getCountById(localProductId));
         }, 700);
         setPrevInterval(countUpdateInterval);
-    }, [params.id, productId])
+    }, [params.id, productId, location])
     
     const [image, setImage] = useState(
         productObject.mainPhoto
@@ -90,7 +93,7 @@ const FrontProduct = () => {
             ? (<div className={s.amount}>
                 <div className={s.minus}>
                     <img src={cartMinus} alt="Минус" onClick={() => {
-                        decrementById(productId);
+                        decrementById(productId, variableId);
                         setCountInCart(getCountById(productId));
                     }} />
                 </div>
@@ -99,14 +102,14 @@ const FrontProduct = () => {
                 </div>
                 <div className={s.plus}>
                     <img src={cartPlus} alt="Плюс" onClick={() => {
-                        incrementById(productId);
+                        incrementById(productId, variableId);
                         setCountInCart(getCountById(productId));
                     }} />
                 </div>
             </div>)
             :
             (<div className={s.button} onClick={(event) => {
-                buy(productId);
+                buy(productId, variableId);
                 setCountInCart(1);
             }}>
                 <img src={cart} alt="" />
@@ -361,36 +364,36 @@ const FrontProduct = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={s.dop__in}>
-                        <div className={s.in__desc__dop}>
-                            <div className={s.img}>
-                                <img src={productObject.mainPhoto} alt={productObject.title} />
-                            </div>
-                            <div className={s.dop__desc}>
-                                <p>{productObject.title}</p>
-                                {productObject.inStock ?
-                                    <div className={s.inStock__dop}>
-                                        <img src={okey} alt="Значок" />
-                                        <p>{t('frontProduct-isAvaible')}</p>
-                                    </div>
-                                    :
-                                    <div className={s.notInStock__dop}>
-                                        <img src={okey} alt="Значок" />
-                                        <p>{t('frontProduct-isNotAvaible')}</p>
-                                    </div>
-                                }
-                                <div className={s.price__dop}>
-                                    <p>{productObject.price}{getCurrencyTag()}</p>
-                                    <div className={s.buttons}>
-                                        <img src={heartImg} alt="" />
-                                    </div>
-                                </div>
-                                {
-                                    renderBuyButton()
-                                }
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className={s.dop__in}>*/}
+                    {/*    <div className={s.in__desc__dop}>*/}
+                    {/*        <div className={s.img}>*/}
+                    {/*            <img src={productObject.mainPhoto} alt={productObject.title} />*/}
+                    {/*        </div>*/}
+                    {/*        <div className={s.dop__desc}>*/}
+                    {/*            <p>{productObject.title}</p>*/}
+                    {/*            {productObject.inStock ?*/}
+                    {/*                <div className={s.inStock__dop}>*/}
+                    {/*                    <img src={okey} alt="Значок" />*/}
+                    {/*                    <p>{t('frontProduct-isAvaible')}</p>*/}
+                    {/*                </div>*/}
+                    {/*                :*/}
+                    {/*                <div className={s.notInStock__dop}>*/}
+                    {/*                    <img src={okey} alt="Значок" />*/}
+                    {/*                    <p>{t('frontProduct-isNotAvaible')}</p>*/}
+                    {/*                </div>*/}
+                    {/*            }*/}
+                    {/*            <div className={s.price__dop}>*/}
+                    {/*                <p>{productObject.price}{getCurrencyTag()}</p>*/}
+                    {/*                <div className={s.buttons}>*/}
+                    {/*                    <img src={heartImg} alt="" />*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
+                    {/*            {*/}
+                    {/*                renderBuyButton()*/}
+                    {/*            }*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             

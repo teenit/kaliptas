@@ -1,16 +1,25 @@
 import {useTranslation} from "react-i18next";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import chrest from "../../../img/front/chrest.png";
 import CartModule from "../../Front/Modules/Cart/CartModule";
 import {getCartItemsCount} from "../../functions/cartControll";
 import {getLanguageForRootLink} from "../../functions/getLanguage";
 import s from "./CartModal.module.css"
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const CartModal = ({close, }) =>{
     const {t}  = useTranslation();
     const [totalPrice, setTotalPrice] = useState(0);
     const [itemsCount, setItemsCount] = useState(getCartItemsCount())
+    const location = useLocation();
+    const [start, setStart] = useState(false);
+
+    useEffect(()=>{
+        if(start) {
+            close()
+        }
+        setStart(true)
+    }, [location])
 
     return (
         <div className={s.wrap}>

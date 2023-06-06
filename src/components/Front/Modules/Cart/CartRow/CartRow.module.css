@@ -5,9 +5,14 @@
 }
 .row{
     display: grid;
-    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr auto 0.5fr;
+    grid-template-columns: 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
     align-items: center;
     justify-content: space-between;
+}
+.row > div {
+    align-self: center;
+    display: flex;
+    margin: auto;
 }
 .image{
     display: flex;
@@ -62,6 +67,7 @@
 }
 .plice__in > p{
     margin: 0;
+    text-decoration: line-through;
     color: #00000033;
 }
 .price__skid{
