@@ -42,6 +42,35 @@ const ProductCard = ({ id }) => {
         }, 1000);
     },[id])
 
+    const buyButtonLogic = function () {
+        let variableId = product.isVariable ? product.getFirstVariableId() : undefined;
+
+        return product.inStock ? (countInCart > 0
+                ? (<div className={s.amount}>
+                    <div className={s.minus}>
+                        <img src={cartMinus} alt="Минус" onClick={()=>{
+                            decrementById(id, variableId);
+                            setCountInCart(getCountById(id));
+                        }}/>
+                    </div>
+                    <div className={s.amount__in}>
+                        <p>{countInCart}</p>
+                    </div>
+                    <div className={s.plus}>
+                        <img src={cartPlus} alt="Плюс" onClick={()=>{
+                            incrementById(id, variableId);
+                            setCountInCart(getCountById(id));
+                        }}/>
+                    </div>
+                </div>)
+                :
+                (<div className={s.buy} onClick={(event)=>{
+                    buy(id, variableId);
+                    setCountInCart(1);
+                }}>{t('frontProduct-buyButton')}</div>))
+            : <div className={`${s.buy} ${s.inactive}`}>{t('frontProduct-buyButton')}</div>
+    }
+
     return ready ? (
         <div className={s.in}>
             <div className={s.in__dop}>
@@ -71,40 +100,17 @@ const ProductCard = ({ id }) => {
                 </div>
                 <div className={`${s.section} ${s.section__dop}`}>
                     <div className={s.price__wrap}>
-                        {product.isDiscountPresent() ?  <div className={s.not__price}>
+                        {product.isDiscountPresentForCard() ?  <div className={s.not__price}>
                             <div className={s.line}></div>
-                            <p className={s.price}>{product.price}{getCurrencyTag()}</p>
+                            <p className={s.price}>{product.getDiscountForCard()}{getCurrencyTag()}</p>
                         </div> : null}
-                        <p className={s.price__dop}>{product.getPriceWithDiscount()}{getCurrencyTag()}</p>
+                        <p className={s.price__dop}>{product.isDiscountPresentForCard() ? product.getDiscountForCard() : product.getPriceForCard()}{getCurrencyTag()}</p>
                     </div>
                 </div>
                 
                 <div className={`${s.section} ${s.section__dop}`}>
                     {
-                        product.inStock ? (countInCart > 0
-                            ? (<div className={s.amount}>
-                                    <div className={s.minus}>
-                                        <img src={cartMinus} alt="Минус" onClick={()=>{
-                                            decrementById(id);
-                                            setCountInCart(getCountById(id));
-                                        }}/>
-                                    </div>
-                                    <div className={s.amount__in}>
-                                        <p>{countInCart}</p>
-                                    </div>
-                                    <div className={s.plus}>
-                                        <img src={cartPlus} alt="Плюс" onClick={()=>{
-                                            incrementById(id);
-                                            setCountInCart(getCountById(id));
-                                        }}/>
-                                    </div>
-                                </div>)
-                            :
-                                (<div className={s.buy} onClick={(event)=>{
-                                    buy(id);
-                                    setCountInCart(1);
-                                }}>{t('frontProduct-buyButton')}</div>))
-                            : <div className={`${s.buy} ${s.inactive}`}>{t('frontProduct-buyButton')}</div>
+                        buyButtonLogic()
                     }
 
                     <div className={s.add__to}>

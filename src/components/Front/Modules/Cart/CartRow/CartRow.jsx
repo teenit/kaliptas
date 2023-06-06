@@ -7,11 +7,13 @@ import {decrementById, deleteById, incrementById} from "../../../../functions/ca
 import {unmountComponentAtNode} from "react-dom";
 import { useTranslation } from "react-i18next";
 import {getCurrencyTag} from "../../../../functions/utils";
+import {Link} from "react-router-dom";
 
 const CartRow = (props) =>{
     const {t} = useTranslation()
     const [state, setState] = useState({
-        amount: props.item.count
+        amount: props.item.count,
+        varId: props.item.variableId
     })
     const product = props.item.product;
     return(
@@ -21,9 +23,11 @@ const CartRow = (props) =>{
                     <div className={s.image}>
                         <img src={product.mainPhoto} alt={product.title} />
                     </div>
-                    <div className={s.title}>
-                        <p>{product.title}</p>
-                    </div>
+                    <Link to={product.getProductPageLink()}>
+                        <div className={s.title}>
+                            <p>{product.title}</p>
+                        </div>
+                    </Link>
                     <div className={s.amount}>
                         <div className={s.minus}>
                             <img src={cartMinus} alt={t('cartRow-minusAlt')} onClick={()=>{
@@ -43,14 +47,21 @@ const CartRow = (props) =>{
                             }}/>
                         </div>
                     </div>
+                    <div>
+                        {
+                        product.isVariable
+                            ? product.variables.find(item=> item.id === state.varId).title
+                            : null
+                    }</div>
                     <div className={s.prices}>
-                        {product.isDiscountPresent()?
+                        {product.isDiscountPresent(state.varId)?
                         <div className={s.plice__in}>
-                        <p className={s.price__aver}>{state.amount*product.price}{getCurrencyTag()}</p>
-                        <div className={s.line}></div>
+                        <p className={s.price__aver}>{state.amount *
+                            product.getPrice(state.varId)
+                        }{getCurrencyTag()}</p>
                     </div>
                         :null}
-                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount()}{getCurrencyTag()}</p>
+                        <p className={s.price__skid}>{state.amount * product.getPriceWithDiscount(state.varId)}{getCurrencyTag()}</p>
                     </div>
                    
                     <div className={s.delete}>

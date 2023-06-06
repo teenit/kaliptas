@@ -88,7 +88,7 @@ const Cart = ()=>{
     });
 
 
-    const [deliveryType, setDeliveryType] = useState(deliveryTypes.address);
+    const [deliveryType, setDeliveryType] = useState(deliveryTypes.self);
     const [resultRequested, setResultRequested] = useState(false);
     const [formSent, setFormSent] = useState(false);
 
