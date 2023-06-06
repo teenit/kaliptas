@@ -7,32 +7,35 @@
 }
 .wrap a{
     text-decoration: none;
+    font-weight: 600;
     color: #000;
 }
 .line{
-    width: 3px;
+    width: 1.5px;
     height: 100%;
     background-color: var(--light-purple-color);
     margin: 0px 15px;
 }
 .line__invisible{
     width: 3px;
-    height: 100%;
-    margin: 0px 15px;
+    height: 110%;
+    margin: 0px 10px;
 }
 .option__wrap{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width:250px;
 }
 .option__wrap__active{
     padding: 5px 10px;
+    hyphens:auto;
 }
 .option__wrap__active:hover{
     width: max-content;
     height: max-content;
     background-color: var(--light-purple-color);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 .logo{
     width: 20px;
