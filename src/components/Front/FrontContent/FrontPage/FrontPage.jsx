@@ -87,7 +87,7 @@ const FrontPage = () => {
             <div className={s.in}>
                 <div className={s.product__in}>
                     
-                    <ProductList categoryForId = {19}/>
+                    <ProductList categoryForId = {(categories[0]||{}).id}/>
                     
                 </div>
                 <div className={s.categories__wrap}>
@@ -102,16 +102,16 @@ const FrontPage = () => {
                     }  
                 </div>            
                 <div className={s.product__in}>
-                    <ProductList categoryForId = {21}/>
+                    <ProductList categoryForId = {(categories[1]||{}).id}/>
                 </div>
                 <div className={s.adword__slider}>
                     <FrontSlide item={SecondSliderContent}/>
                 </div>
                 <div className={s.product__in}>
-                    <ProductList categoryForId = {19}/>
+                    <ProductList categoryForId = {(categories[2]||{}).id}/>
                 </div>
                 <div className={s.product__in}>
-                    <ProductList categoryForId = {21}/>
+                    <ProductList categoryForId = {(categories[3]||{}).id}/>
                 </div>
                 <div className={s.kaliptas__desc}>
                     <div className={s.in__desc}>
