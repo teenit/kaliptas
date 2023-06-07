@@ -23,6 +23,7 @@ const Receipt = ({products}) => {
                         state.map((item)=>{
 
                             return(
+                                <div>
                                 <div key={item.id} className={s.product}>
                                     <div className={s.img__wrap}>
                                         <img className={s.img} src={item.image} alt={item.title[getRealLanguage()]} />
@@ -31,11 +32,21 @@ const Receipt = ({products}) => {
                                     <div className={s.wrap__count}><p className={s.count}>{item.count}</p></div>
                                     <div className={s.wrap__price}><p className={s.price}>{item.price}</p></div>
                                 </div>
+                                <div>
+                                {
+                        item.type === 'variable' ? <div>
+                            --- {item.variable.variable[getRealLanguage()]}
+                        </div>:null
+                    }
+                                </div>
+                                </div>
                             )
                         })
                     }
                 </div>
-                <div className={s.price__total}></div>
+                <div className={s.price__total}>
+                    
+                </div>
             </div>
         </div>
     )
