@@ -12,32 +12,33 @@ const ProductList = ({categoryForId}) => {
     const [categoriesName, setCategoriesName] = useState([])
 
     useEffect(()=>{
-        let productsForFirstList = apiResponse({
-            catID: categoryForId
-        }, "content/products/get-products-by-category-id.php");
-        let loadCategoryById = apiResponse({
-            catID: categoryForId
-        }, "content/category/get-id-category.php")
-        
-        Promise.all([loadCategoryById, productsForFirstList]).then((responses)=>{
-            let localLoadedCategoriesName = responses[0].map((item)=>{
-                return new CategoryObject(item, undefined, undefined,  getRealLanguage());
-            })
-            setCategoriesName(localLoadedCategoriesName.map((category)=>{
-                return category.title
-            })) 
-            
-            let localLoadedProduct = responses[1].map((item)=>{
-                return new ProductObject(item, undefined, undefined, getRealLanguage())
-            })
-            setProductList(localLoadedProduct.map((product)=>{
-                return product.id    
-            }))
-        })
+        if (categoryForId !== undefined) {
+            let productsForFirstList = apiResponse({
+                catID: categoryForId
+            }, "content/products/get-products-by-category-id.php");
+            let loadCategoryById = apiResponse({
+                catID: categoryForId
+            }, "content/category/get-id-category.php")
 
-    }, [])
+            Promise.all([loadCategoryById, productsForFirstList]).then((responses)=>{
+                let localLoadedCategoriesName = responses[0].map((item)=>{
+                    return new CategoryObject(item, undefined, undefined,  getRealLanguage());
+                })
+                setCategoriesName(localLoadedCategoriesName.map((category)=>{
+                    return category.title
+                }))
 
-    return (
+                let localLoadedProduct = responses[1].map((item)=>{
+                    return new ProductObject(item, undefined, undefined, getRealLanguage())
+                })
+                setProductList(localLoadedProduct.map((product)=>{
+                    return product.id
+                }))
+            })
+        }
+    }, [categoryForId])
+
+    return categoryForId !== undefined && productList.length > 0 ?(
         <div className={s.wrap}>
             <h3 className={s.title}>{categoriesName}</h3>
             <div className={s.wrap__list}>
@@ -57,6 +58,6 @@ const ProductList = ({categoryForId}) => {
                 </div>
             </div>
         </div>
-    );
+    ) : null;
 };
 export default ProductList;

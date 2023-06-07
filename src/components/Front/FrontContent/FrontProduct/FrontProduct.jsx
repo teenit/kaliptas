@@ -18,6 +18,7 @@ import cartMinus from "../../../../img/front/cartMinus.png"
 import cartPlus from "../../../../img/front/cartPlus.png"
 import {getCurrencyTag} from "../../../functions/utils";
 import {MenuItem, TextField} from "@mui/material";
+import {CategoryObject} from "../Pages/Category/CategoryObject";
 
 const FrontProduct = () => {
     const { t } = useTranslation()
@@ -33,6 +34,7 @@ const FrontProduct = () => {
     const [displayedDiscountPrice, setDisplayedDiscountPrice] = useState(0)
     const location = useLocation();
     const [countInCart, setCountInCart] = useState(0);
+    const [categoryList, setCategoryList] = useState([]);
 
 
     useEffect(() => {
@@ -67,7 +69,19 @@ const FrontProduct = () => {
         
         }, {
             productID: localProductId
-        }, "content/products/get-product-by-id.php")
+        }, "content/products/get-product-by-id.php");
+
+        api((response)=>{
+            setCategoryList(response
+                .map((item)=>{
+                return new CategoryObject(item, undefined, undefined,  getRealLanguage());
+                })
+                .filter(cat=>cat.parenId==="0")
+                .map((cat)=>{
+                    return cat.id
+                })
+            )
+        }, {}, "content/category/get-all-categories.php");
         
         let countUpdateInterval = setInterval(() => {
             setCountInCart(getCountById(localProductId, variableId));
@@ -404,11 +418,11 @@ const FrontProduct = () => {
             </div>
             
             <div className={s.product__in}>
-                <ProductList categoryForId={22} />
+                <ProductList categoryForId={categoryList[0]} />
             </div>
             
             <div className={s.product__in}>
-                <ProductList categoryForId={19} />
+                <ProductList categoryForId={categoryList[1]} />
             </div>
             <div className={s.adword__slider}>
                 <FrontSlide item={SliderContent} />

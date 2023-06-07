@@ -17,6 +17,7 @@ const Catalog = ()=>{
     const [dopLoadedCategories, setDopLoadedCategories] = useState([])
     const [amountOfCategories, setAmountOfCategories] = useState(0);
     const [lastDisplayedCategoryIndex, setLastDisplayedCategoryIndex] = useState(0);
+    const [parentCats, setParentCats] = useState([]) ;
 
     const showCategories = (allCategories) =>{
         let newAmount = amountOfCategories + showPerClick;
@@ -41,12 +42,15 @@ const Catalog = ()=>{
             })
             setLoadedCategories(localLoadedCategories);
             showCategories(localLoadedCategories)
+            setParentCats(localLoadedCategories.filter(cat=>cat.parenId==="0").map((cat)=>{
+                console.log(cat)
+                return cat.id
+            }))
         }, {}, "content/category/get-all-categories.php")
-        
+
+
     }, [])
 
-    const relatedProductList = []; // Must be loadRelated()
-    const youWatchedList = relatedProductList;
     const slideData = {
         title: "Время осеннего",
         titleDop: "шопинга!",
@@ -78,10 +82,10 @@ const Catalog = ()=>{
                 </div>
             </div>
             <div className={s.product__in}>
-                <ProductList categoryForId = {19}/>
+                <ProductList categoryForId = {parentCats[0]}/>
             </div>
             <div className={s.product__in}>
-                <ProductList categoryForId = {21}/>
+                <ProductList categoryForId = {parentCats[1]}/>
             </div>
 
             <div className={s.slide__wrap}>
