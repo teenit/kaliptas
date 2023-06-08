@@ -117,9 +117,14 @@ export function getCart() {
         localStorage.setItem(productListKey, JSON.stringify([]));
         return [];
     }
-    return [...JSON.parse(cartMap)].map((item)=>{
-        return new CartItem(item.id, item.count, item.variableId)
-    });
+    try {
+        return [...JSON.parse(cartMap)].map((item) => {
+            return new CartItem(item.id, item.count, item.variableId)
+        });
+    } catch (e) {
+        localStorage.setItem(productListKey, JSON.stringify([]));
+        return [];
+    }
 }
 
 function findSimple(id) {
