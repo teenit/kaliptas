@@ -37,8 +37,14 @@ const FrontSubheader = ()=>{
                 return(
                     <div key={index} className={s.product__input}>
                         <div className={s.product__input__in}>
-                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{setShowLookFor([])}}><img src={product.product.image} alt=""></img></NavLink>
-                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{setShowLookFor([])}}><p>{product.product.title[getRealLanguage()]}</p></NavLink>
+                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{
+                                setShowLookFor([])
+                                setLookFor("")
+                            }}><img src={product.product.image} alt=""></img></NavLink>
+                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{
+                                setShowLookFor([])
+                                setLookFor("")
+                            }}><p>{product.product.title[getRealLanguage()]}</p></NavLink>
                         </div>
                         <p>{product.product.price.price}{getCurrencyTag()}</p>
                     </div>
