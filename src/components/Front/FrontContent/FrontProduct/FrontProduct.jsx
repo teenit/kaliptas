@@ -20,6 +20,9 @@ import {getCurrencyTag} from "../../../functions/utils";
 import {MenuItem, TextField} from "@mui/material";
 import {CategoryObject} from "../Pages/Category/CategoryObject";
 
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+
 const FrontProduct = () => {
     const { t } = useTranslation()
     const [liked, setLiked] = useState(false)
@@ -35,6 +38,8 @@ const FrontProduct = () => {
     const location = useLocation();
     const [countInCart, setCountInCart] = useState(0);
     const [categoryList, setCategoryList] = useState([]);
+
+    
 
 
     useEffect(() => {
@@ -143,19 +148,20 @@ const FrontProduct = () => {
     const renderVariable = function () {
 
 
-        return productObject.isVariable ? <TextField
-                                                     select
-                                                     sx={{ border: 0, background: "none" }}
-                                                     variant={"standard"}
-                                                     onChange={(event)=>{
-                                                         let variable = productObject.variables.find(item => item.id === event.target.value)
-                                                         setDisplayedPrice(variable.price);
-                                                         setVariableId(event.target.value)
-                                                         setDisplayedDiscountPrice(variable.discount)
-                                                     }}
-                                                     defaultValue={productObject.variables[0].id}
-                                                     label={t('front-product-variation')}
-        >
+        return productObject.isVariable ?
+            <TextField
+                select
+                sx={{ border: 0, background: "none" }}
+                variant={"standard"}
+                onChange={(event)=>{
+                    let variable = productObject.variables.find(item => item.id === event.target.value)
+                    setDisplayedPrice(variable.price);
+                    setVariableId(event.target.value)
+                    setDisplayedDiscountPrice(variable.discount)
+                }}
+                defaultValue={productObject.variables[0].id}
+                label={t('front-product-variation')}
+            >
             {
                 productObject.variables.map((item, index)=>{
                     return <MenuItem key={index} value={item.id}>{item.title} ({productObject.isDiscountPresent(variableId) ? item.discount : item.price} {getCurrencyTag()})</MenuItem>
@@ -362,18 +368,20 @@ const FrontProduct = () => {
                                         </div>
                                         <div className={s.prod}>
                                             <div className={s.prod__img__dop}>
-                                                <div className={s.prod__img__in}>
-                                                    <img className={s.prod__dop__img__sec} src={productObject.mainPhoto} alt="Главное изображение" />
-                                                </div>
                                                 <div className={s.dop__photos__wrap}>
                                                     {
-                                                        productObject.photos.map((item, index) => {
-                                                            return (
-                                                                <div key={index} className={s.photos__wrap}>
-                                                                    <img src={item} alt="" />
-                                                                </div>
-                                                            )
-                                                        })
+                                                        <ImageList sx={{ width: "100%", height: 400, margin: "auto", marginTop: "20px"}} cols={2} rowHeight={300} gap={15}>
+                                                            {allPhotosMas.map((item, index) => (
+                                                                <ImageListItem key={index} sx={{height: 300}}>
+                                                                    <img className={s.dop__photo}
+                                                                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                                                                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                                                        alt="Дополнительное изображение"
+                                                                        loading="lazy"
+                                                                    />
+                                                                </ImageListItem>
+                                                            ))}
+                                                        </ImageList>
                                                     }
                                                 </div>
                                             </div>

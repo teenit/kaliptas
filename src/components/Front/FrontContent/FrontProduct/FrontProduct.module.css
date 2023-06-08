@@ -443,7 +443,11 @@
     margin: 0;
     font-size: 18px;
 }
-
+.dop__photo{
+    height: 100%!important;
+    width: 100%!important;
+    border-radius: 10px;
+}
 
 @media (max-width: 600px){
     .main{
