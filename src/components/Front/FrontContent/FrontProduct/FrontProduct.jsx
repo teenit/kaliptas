@@ -39,7 +39,7 @@ const FrontProduct = () => {
     const location = useLocation();
     const [countInCart, setCountInCart] = useState(0);
     const [categoryList, setCategoryList] = useState([]);
-
+    const [amountInRow, setAmountInRow] = useState(0)
     const [open, setOpen] = useState(false);
     const [imageIndex, setImageIndex] = useState()
     const handleClose = () => {
@@ -56,7 +56,11 @@ const FrontProduct = () => {
         if (prevInterval !== -1) {
             clearInterval(prevInterval)
         }
-
+        if(window.innerWidth < 600){
+            setAmountInRow(1)
+        }else{
+            setAmountInRow(2)
+        }
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
             setProduct(loadedProduct)
@@ -378,7 +382,7 @@ const FrontProduct = () => {
                                             <div className={s.prod__img__dop}>
                                                 <div className={s.dop__photos__wrap}>
                                                     {
-                                                        <ImageList sx={{ width: "100%", height: 400, margin: "auto", marginTop: "20px"}} cols={2} rowHeight={300} gap={15}>
+                                                        <ImageList sx={{ width: "100%", height: 400, margin: "auto", marginTop: "20px"}} cols={amountInRow} rowHeight={300} gap={15}>
                                                             {allPhotosMas.map((item, index) => (
                                                                 <ImageListItem key={index} sx={{height: 300}} onClick={()=>{
                                                                     handleOpen()
