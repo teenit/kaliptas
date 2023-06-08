@@ -30,7 +30,7 @@
     border-radius: 20px;
     border: none;
 }
-.inp__div button{
+/*.inp__div button{
     width: 50%;
     margin: auto;
     padding: 10px;
@@ -39,7 +39,7 @@
     border-radius: 20px;
     color: #ffffff;
     text-transform: uppercase;
-}
+}*/
 .number{
     border-radius: 20px;
     padding: 10px;
@@ -71,4 +71,19 @@
 .too:hover{
     cursor: pointer;
     color: var(--purple-color);
+}
+.form__wrap__restore{
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 7px 0px var(--purple-color);
+    color: #000;
+    min-width: 100%;
+}
+.title__restore{
+    color: var(--purple-color);
+    text-align: center;
+}
+.fail{
+    color: #ff0000;
 }

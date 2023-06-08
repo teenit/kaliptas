@@ -83,3 +83,10 @@ li{
 	background-color: #1c9e73;
 	width: max-content;
 }
+.inpText label{
+	color: #fff;
+}
+.inpText > div{
+	border: solid 1px #fff;
+	border-radius: 30px;
+}
