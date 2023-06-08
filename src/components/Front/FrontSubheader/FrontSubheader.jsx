@@ -24,10 +24,29 @@ const FrontSubheader = ()=>{
     const [closeTimeout, setCloseTimeout] = useState(0);
     const [countInCart, setCountInCart] = useState(getCartItemsCount());
     
-    const [lookFor, setLookFor] = useState()
+    const [lookFor, setLookFor] = useState("")
     const [showLookFor, setShowLookFor] = useState([])
-    const [showDropProd, setShowDropProd] = useState(false)
-    
+    const [amountOfVisinleProducts, setAmountOfVisinleProducts] = useState(5)
+    function uploadItems(){
+        let items = []
+        for(let i = 0; i < amountOfVisinleProducts && i < showLookFor.length; i++){
+            items.push(showLookFor[i])
+        }
+        return(
+            items.map((product, index)=>{
+                return(
+                    <div key={index} className={s.product__input}>
+                        <div className={s.product__input__in}>
+                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{setShowLookFor([])}}><img src={product.product.image} alt=""></img></NavLink>
+                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{setShowLookFor([])}}><p>{product.product.title[getRealLanguage()]}</p></NavLink>
+                        </div>
+                        <p>{product.product.price.price}{getCurrencyTag()}</p>
+                    </div>
+                )
+            })
+        )
+    }
+
     useEffect(()=>{
         setInterval(()=>{
             setCountInCart(getCartItemsCount())
@@ -53,7 +72,6 @@ const FrontSubheader = ()=>{
     return(
         <div className={s.wrap}>
             <div className={s.inner}>
-                
                 <Link
                     className={s.catalog__title}
                     to={catalogLink}
@@ -77,42 +95,32 @@ const FrontSubheader = ()=>{
                 </Link>
 
                 <div className={s.input__wrap}>
-                    
-                    <input type="text" value={lookFor} placeholder={t('frontSubheader-search')} className={s.input} onChange={(event)=>{
-                        setLookFor(event.target.value.trim())     
-                        apiResponse({
-                            search: event.target.value
-                        },"search-product.php").then((product)=>{
-                            setShowLookFor(product)
-                            console.log(product);
-                        })
-                    }} onClick={()=>{
-                        setShowDropProd(!showDropProd)
+                    <input type="text" placeholder={t('frontSubheader-search')} className={s.input} value={lookFor} onChange={(event)=>{
+                        let valueInput = event.target.value.replace("  ", " ") 
+                        setLookFor(valueInput)
+                        if(valueInput.trim().length > 2){
+                            apiResponse({
+                                search: valueInput.trim()
+                            },"search-product.php").then((product)=>{
+                                setShowLookFor(product)
+                            })
+                        }else{
+                            setShowLookFor([])
+                        }
                     }}/> 
 
                     {
-                        showDropProd > 0 ? 
-                            <div className={s.input__look__for} onClick={()=>{
-                                setShowDropProd(!showDropProd)
-                            }}>
+                        showLookFor.length > 0 ? 
+                            <div className={s.input__look__for}>
                                 <div className={s.input__look__for__in}>
-                                    {
-                                        showLookFor.map((product, index)=>{
-                                            return(
-                                                <div key={index} className={s.product__input}>
-                                                    <div className={s.product__input__in}>
-                                                        <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{
-                                                            setShowDropProd(!showDropProd)
-                                                        }}><img src={product.product.image} alt=""></img></NavLink>
-                                                        <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{
-                                                        setShowDropProd(!showDropProd)
-                                                        }}><p>{product.product.title.ru}</p></NavLink>
-                                                    </div>
-                                                    <p>{product.product.price.price}{getCurrencyTag()}</p>
-                                                </div>
-                                            )
-                                        })
-                                    }
+                                    {uploadItems()}
+                                </div>
+                                <div className={s.input__btn}>
+                                    <button className={s.btn} onClick={()=>{
+                                        uploadItems() 
+                                        let newAmount = amountOfVisinleProducts + 5
+                                        setAmountOfVisinleProducts(newAmount)  
+                                    }}>{t('catalog-button')}</button>
                                 </div>
                             </div>
                         : null

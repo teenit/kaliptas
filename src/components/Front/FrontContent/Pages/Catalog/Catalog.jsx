@@ -21,7 +21,6 @@ const Catalog = ()=>{
     const showCategories = (allCategories) =>{
         let newAmount = amountOfCategories + showPerClick;
         setAmountOfCategories(newAmount);
-        console.log(newAmount)
         let ms = [];
 
         let i = lastDisplayedCategoryIndex
