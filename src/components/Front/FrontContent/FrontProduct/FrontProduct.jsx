@@ -22,6 +22,7 @@ import {CategoryObject} from "../Pages/Category/CategoryObject";
 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import Backdrop from '@mui/material/Backdrop';
 
 const FrontProduct = () => {
     const { t } = useTranslation()
@@ -39,7 +40,14 @@ const FrontProduct = () => {
     const [countInCart, setCountInCart] = useState(0);
     const [categoryList, setCategoryList] = useState([]);
 
-    
+    const [open, setOpen] = useState(false);
+    const [imageIndex, setImageIndex] = useState()
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleOpen = () => {
+        setOpen(true);
+    };    
 
 
     useEffect(() => {
@@ -372,8 +380,11 @@ const FrontProduct = () => {
                                                     {
                                                         <ImageList sx={{ width: "100%", height: 400, margin: "auto", marginTop: "20px"}} cols={2} rowHeight={300} gap={15}>
                                                             {allPhotosMas.map((item, index) => (
-                                                                <ImageListItem key={index} sx={{height: 300}}>
-                                                                    <img className={s.dop__photo}
+                                                                <ImageListItem key={index} sx={{height: 300}} onClick={()=>{
+                                                                    handleOpen()
+                                                                    setImageIndex(index)
+                                                                }}>
+                                                                    <img key={index} className={s.dop__photo}  
                                                                         src={`${item}?w=164&h=164&fit=crop&auto=format`}
                                                                         srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                                                                         alt="Дополнительное изображение"
@@ -381,6 +392,15 @@ const FrontProduct = () => {
                                                                     />
                                                                 </ImageListItem>
                                                             ))}
+                                                            <Backdrop
+                                                                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                                                                open={open}
+                                                                onClick={handleClose}
+                                                              >
+                                                                <div className={s.open__img__wrap}>
+                                                                    <img src={allPhotosMas[imageIndex]} alt="" />
+                                                                </div>
+                                                            </Backdrop>
                                                         </ImageList>
                                                     }
                                                 </div>
