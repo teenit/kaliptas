@@ -224,9 +224,9 @@
 }
 
 .wrap__in{
-    display: grid;
+    /*display: grid;
     grid-template-columns: calc(75% - 15px) calc(25% - 15px);
-    gap: 30px;
+    gap: 30px;*/
     margin-top: 55px;
 }
 .in__desc, .in__desc__dop{
