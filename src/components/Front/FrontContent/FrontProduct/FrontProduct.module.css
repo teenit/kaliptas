@@ -443,8 +443,22 @@
     margin: 0;
     font-size: 18px;
 }
-
-
+.dop__photo{
+    height: 100%!important;
+    width: 100%!important;
+    border-radius: 10px;
+}
+.open__img__wrap{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.open__img__wrap > img{
+    width: auto;
+    max-height: 70vh;
+}
 @media (max-width: 600px){
     .main{
         width: 90%;
