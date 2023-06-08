@@ -1,6 +1,7 @@
 import axios from "axios";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import { getRealLanguage } from "./getLanguage";
 
 export function serverAdress(arg){
    // return "http://kaliptas/" + arg;
@@ -15,6 +16,7 @@ export function api(apiFunc, obj, url){
     }else{
         obj.email = localStorage.getItem('email');
     }
+    obj.lang = getRealLanguage();
    // console.log(obj)
     axios({
         url: serverAdress(url),
@@ -54,7 +56,7 @@ export async function apiResponse(obj, url){
      }else{
          obj.email = localStorage.getItem('email');
      }
-
+     obj.lang = getRealLanguage();
    return await axios({
          url: serverAdress(url),
          method: "POST",
