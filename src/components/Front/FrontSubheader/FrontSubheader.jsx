@@ -6,12 +6,14 @@ import profileImg from "./../../../img/front/profile.png";
 import likedImg from "./../../../img/front/heart.png";
 import cartImg from "./../../../img/front/corz.png"
 import CartModule from "../Modules/Cart/CartModule";
-import {getLanguageForRootLink} from "../../functions/getLanguage";
+import {getLanguageForRootLink, getRealLanguage} from "../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../Modules/Dropdown/Dropdown";
 import CartModal from "../../Modals/CartModal/CartModal";
 import {Badge} from "@mui/material";
 import {getCartItemsCount} from "../../functions/cartControll";
+import { apiResponse } from "../../functions/api";
+import { getCurrencyTag } from "../../functions/utils";
 
 const FrontSubheader = ()=>{
     const {t}  = useTranslation();
@@ -21,6 +23,29 @@ const FrontSubheader = ()=>{
     const [open, setOpen] = useState(false);
     const [closeTimeout, setCloseTimeout] = useState(0);
     const [countInCart, setCountInCart] = useState(getCartItemsCount());
+    
+    const [lookFor, setLookFor] = useState("")
+    const [showLookFor, setShowLookFor] = useState([])
+    const [amountOfVisinleProducts, setAmountOfVisinleProducts] = useState(5)
+    function uploadItems(){
+        let items = []
+        for(let i = 0; i < amountOfVisinleProducts && i < showLookFor.length; i++){
+            items.push(showLookFor[i])
+        }
+        return(
+            items.map((product, index)=>{
+                return(
+                    <div key={index} className={s.product__input}>
+                        <div className={s.product__input__in}>
+                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{setShowLookFor([])}}><img src={product.product.image} alt=""></img></NavLink>
+                            <NavLink className={s.link} to={getLanguageForRootLink() +  "/product/" + product.productID + "-" + product.link} onClick={()=>{setShowLookFor([])}}><p>{product.product.title[getRealLanguage()]}</p></NavLink>
+                        </div>
+                        <p>{product.product.price.price}{getCurrencyTag()}</p>
+                    </div>
+                )
+            })
+        )
+    }
 
     useEffect(()=>{
         setInterval(()=>{
@@ -29,7 +54,6 @@ const FrontSubheader = ()=>{
     },[])
 
     const showDropdown = function () {
-
         return  <div className={s.dropdown__wrap}>
                     <div className={s.dropdown__wrap__content}>
                         <div
@@ -45,7 +69,6 @@ const FrontSubheader = ()=>{
                     </div>
                 </div>
     }
-
     return(
         <div className={s.wrap}>
             <div className={s.inner}>
@@ -70,9 +93,40 @@ const FrontSubheader = ()=>{
 
                     </div>
                 </Link>
+
                 <div className={s.input__wrap}>
-                    <input type="text" placeholder={t('frontSubheader-search')} className={s.input}/> 
+                    <input type="text" placeholder={t('frontSubheader-search')} className={s.input} value={lookFor} onChange={(event)=>{
+                        let valueInput = event.target.value.replace("  ", " ") 
+                        setLookFor(valueInput)
+                        if(valueInput.trim().length > 2){
+                            apiResponse({
+                                search: valueInput.trim()
+                            },"search-product.php").then((product)=>{
+                                setShowLookFor(product)
+                            })
+                        }else{
+                            setShowLookFor([])
+                        }
+                    }}/> 
+
+                    {
+                        showLookFor.length > 0 ? 
+                            <div className={s.input__look__for}>
+                                <div className={s.input__look__for__in}>
+                                    {uploadItems()}
+                                </div>
+                                <div className={s.input__btn}>
+                                    <button className={s.btn} onClick={()=>{
+                                        uploadItems() 
+                                        let newAmount = amountOfVisinleProducts + 5
+                                        setAmountOfVisinleProducts(newAmount)  
+                                    }}>{t('catalog-button')}</button>
+                                </div>
+                            </div>
+                        : null
+                    }
                 </div>
+                    
                 <div className={s.options}>
                     <div className={s.icon}>
                         <NavLink to={profileLink}><img className={s.icon__image} src={profileImg} alt="profile" /></NavLink>

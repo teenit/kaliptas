@@ -40,6 +40,70 @@
 .input__wrap{
     width: 65%;
     max-width: 65%;
+    position: relative;
+}
+.input__look__for{
+    position: absolute;
+    top: 140%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 0 5px .5px #00000011;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow-y: scroll;
+    max-height: 300px;
+    padding: 25px 0px 15px 0;
+}
+.input__look__for__in{
+    box-sizing: border-box;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 95%;
+    margin: auto;
+}
+.input__btn{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn{
+    max-width: 50%;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    max-width: 60%;
+    margin-top: 15px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #6ec6c1;
+}
+.product__input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.product__input__in{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.link > img{
+    width: 30px;
+}
+.link > p{
+    cursor: pointer;
+    color: #000000;
+    margin: 0;
+}
+.product__input > p{
+    margin: 0;
 }
 .input{
     width: 100%;
