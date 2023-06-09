@@ -20,7 +20,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 .title{
     display: flex;
@@ -34,10 +34,13 @@
     width: 12px;
     cursor: pointer;
 }
+.cart__mod{
+    overflow-y: scroll;
+    max-height: 70vh;
+}
 .res{
     min-width: 60%;
-    margin: auto;
-    margin-top: 20px;
+    margin: auto auto 0;
     border-radius: 25px;
     background-color: #e3bff1;
     display: flex;

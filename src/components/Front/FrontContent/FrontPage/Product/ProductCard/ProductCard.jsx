@@ -100,11 +100,21 @@ const ProductCard = ({ id }) => {
                 </div>
                 <div className={`${s.section} ${s.section__dop}`}>
                     <div className={s.price__wrap}>
-                        {product.isDiscountPresentForCard() ?  <div className={s.not__price}>
-                            <div className={s.line}></div>
-                            <p className={s.price}>{product.getDiscountForCard()}{getCurrencyTag()}</p>
-                        </div> : null}
-                        <p className={s.price__dop}>{product.isDiscountPresentForCard() ? product.getDiscountForCard() : product.getPriceForCard()}{getCurrencyTag()}</p>
+                        {
+                            !product.isDiscountPresentForCard()
+                                ? <div className={s.price}><p>{product.getPriceForCard()}{getCurrencyTag()}</p></div>
+                                : <div className={s.price}>
+                                    <span className={s.not__price}>{product.getPriceForCard()}{getCurrencyTag()}</span>
+                                    <p>{product.getDiscountForCard()}{getCurrencyTag()}</p>
+                                </div>
+                        }
+                        {/*{product.isDiscountPresentForCard() */}
+                        {/*    ?  <div className={s.not__price}>*/}
+                        {/*            <div className={s.line}></div>*/}
+                        {/*            <p className={s.price}>{product.getDiscountForCard()}{getCurrencyTag()}</p>*/}
+                        {/*        </div> */}
+                        {/*    : null}*/}
+                        {/*<p className={s.price__dop}>{product.isDiscountPresentForCard() ? product.getDiscountForCard() : product.getPriceForCard()}{getCurrencyTag()}</p>*/}
                     </div>
                 </div>
                 

@@ -74,27 +74,21 @@ export class ProductObject{
     }
 
     getPriceForCard() {
-        if (this.isVariable) {
-            return this.variables[0].price;
-        }
+        let varId = this.isVariable ? this.variables[0].id : undefined;
 
-        return this.price;
+        return this.getPrice(varId);
     }
 
     getDiscountForCard() {
-        if (this.isVariable) {
-            return this.variables[0].discount;
-        }
+        let varId = this.isVariable ? this.variables[0].id : undefined;
 
-        return this.discount;
+        return this.getPriceWithDiscount(varId);
     }
 
     isDiscountPresentForCard() {
-        if (this.isVariable) {
-            return this.variables[0].discount;
-        }
+        let varId = this.isVariable ? this.variables[0].id : undefined;
 
-        return this.isDiscountPresent();
+        return this.isDiscountPresent(varId);
     }
 
     getFirstVariableId() {

@@ -363,7 +363,7 @@ const Cart = ()=>{
 
     const renderUnauthorised = function () {
         return <div>
-            {t('cart-unauthorized')}
+            <p>{t('cart-unauthorized')}</p>
             <Link to={getLanguageForRootLink() + "/profile"}>{t('cart-toProfilePage')}</Link>
         </div>
     }

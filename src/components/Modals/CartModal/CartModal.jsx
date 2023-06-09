@@ -30,16 +30,19 @@ const CartModal = ({close, }) =>{
                         close()
                     }} />
                 </div>
-                <CartModule setTotalPrice={(price)=>{
-                    setTotalPrice(price);
-                }}
-                change={()=>{
-                    setItemsCount(getCartItemsCount())
-                }}
-                />
+                <div className={s.cart__mod}>
+                    <CartModule setTotalPrice={(price)=>{
+                        setTotalPrice(price);
+                    }}
+                                change={()=>{
+                                    setItemsCount(getCartItemsCount())
+                                }}
+                    />
+                </div>
+
                 <div className={s.res}>
                     <div className={s.sum}>
-                        {/*<p>{t('frontCart-totalPrice')}: {totalPrice}$</p>*/}
+                        <p>{t('frontCart-totalPrice')}: {totalPrice}$</p>
                         <p></p>
                     </div>
                     {

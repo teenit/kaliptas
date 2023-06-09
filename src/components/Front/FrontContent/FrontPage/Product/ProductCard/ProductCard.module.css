@@ -93,7 +93,16 @@
     cursor: pointer;
 }
 .not__price{
-    position: relative;
+    color: gray;
+    font-size: 12px;
+    /*font-weight: 600;*/
+    text-decoration: line-through;
+}
+.price > p{
+    margin: 0;
+    font-size: 14px;
+    color: var(--purple-color);
+    font-weight: 600;
 }
 .line{
     width: 80%;

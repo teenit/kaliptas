@@ -17,7 +17,7 @@ const CartModule = ({setTotalPrice, change}) =>{
         }
     })}
 
-    const [productIdList, setProductIdList] = useState(loadCart());
+    // const [productIdList, setProductIdList] = useState(loadCart());
     const [ready, setReady] = useState(true);
     const [productsAndCount, setProductsAndCount] = useState([]);
 
@@ -26,7 +26,7 @@ const CartModule = ({setTotalPrice, change}) =>{
         let cartList = loadCart();
         let totalPrice = 0;
 
-        setProductIdList(cartList)
+        // setProductIdList(cartList)
 
         for (let i = 0; i < cartList.length; i++) {
             let prod = cartList[i]
@@ -68,6 +68,7 @@ const CartModule = ({setTotalPrice, change}) =>{
             {
                 productsAndCount.map((item, index)=>{
                     return <CartRow item={item} key={index} change={()=>{
+                        setProductsAndCount([]);
                         loadProducts();
 
                         if (change !== undefined){
