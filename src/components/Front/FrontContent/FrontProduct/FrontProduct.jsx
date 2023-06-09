@@ -382,7 +382,7 @@ const FrontProduct = () => {
                                             <div className={s.prod__img__dop}>
                                                 <div className={s.dop__photos__wrap}>
                                                     {
-                                                        <ImageList sx={{ width: "100%", height: 400, margin: "auto", marginTop: "20px"}} cols={amountInRow} rowHeight={300} gap={15}>
+                                                        <ImageList sx={{ width: "100%", margin: "auto", marginTop: "20px"}} cols={amountInRow} rowHeight={300} gap={15}>
                                                             {allPhotosMas.map((item, index) => (
                                                                 <ImageListItem key={index} sx={{height: 300}} onClick={()=>{
                                                                     handleOpen()

@@ -82,6 +82,7 @@ const FrontSubheader = ()=>{
                     className={s.catalog__title}
                     to={catalogLink}
                     onMouseEnter={()=>{
+                        clearTimeout(closeTimeout);
                         setOpen(true);
                     }}
                     onMouseLeave={()=>{
