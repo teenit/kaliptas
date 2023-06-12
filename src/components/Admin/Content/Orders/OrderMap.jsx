@@ -5,10 +5,9 @@ import OrderOpen from "./OrderOpen";
 const OrderMap = ({order})=>{
     const [state, setState] = useState({...order})
     const [modal, setModal] = useState(false)
-    console.log(order)
     return(
         <div className={`${s.order} ${s[state.status?.value]}`}>
-            <div className={s.id}>{state.id}</div>
+            <div className={s.id}>№{state.id}</div>
             <div>{state.email}</div>
             <div>{state.phone}</div>
             <div>{state.methodPay}</div>

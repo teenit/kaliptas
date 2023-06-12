@@ -12,3 +12,8 @@
     grid-template-columns: 1fr;
     gap: 5px;
 }
+.var__product{
+    display: flex;
+    align-items: center;
+    background-color: #e0f5fb;
+}

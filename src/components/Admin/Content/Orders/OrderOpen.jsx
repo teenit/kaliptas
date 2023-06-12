@@ -7,6 +7,7 @@ import Select from 'react-select'
 import { apiResponse } from "../../../functions/api";
 import { Button } from "@mui/material";
 import Receipt from "../../../General/Receipt/Receipt";
+import { Send } from "@mui/icons-material";
 
 const OrderOpen = ({order, close})=>{
  
@@ -46,7 +47,7 @@ const OrderOpen = ({order, close})=>{
                                     defaultValue={selectedOption}
                                     onChange={setSelectedOption}
                                     options={options}/>
-                                    <Button onClick={updateStatus}>Save</Button>
+                                    <Button onClick={updateStatus} className="btn" variant="contained" endIcon={<Send/>}>Save</Button>
 
                                 </div>
                             </div>

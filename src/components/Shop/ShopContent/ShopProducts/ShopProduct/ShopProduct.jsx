@@ -5,8 +5,9 @@ import { t } from "i18next";
 import ProductRegister from "../ProductRegister/ProductRegister";
 import { api } from "../../../../functions/api";
 
-const ShopProduct = ({productItem,index,shop}) =>{
+const ShopProduct = ({productItem,userType,index,shop}) =>{
     const [product, setProduct] = useState({...productItem.product});
+    
     const [closeModal,setCloseModal] = useState(false)
     const number = index + 1
     const [productDef, setProductDef] = useState({productID:productItem.productID,article:productItem.article,active:productItem.active});
@@ -44,8 +45,8 @@ const ShopProduct = ({productItem,index,shop}) =>{
                 </div>
                 <div className={s.status}>{t(product.status)}</div>
                 <div className={s.control}><img className={s.control__img} src={editImg} alt="" onClick={()=>{
-                   
-                   if(product.status == 'draft' || product.status == 'rejected') setCloseModal(true)
+                  
+                   if(product.status == 'draft' || product.status == 'rejected' || userType == 'saxon') setCloseModal(true)
                    
                     
                 }} /></div>

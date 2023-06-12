@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import s from './style.module.css';
 import { getRealLanguage } from "../../functions/getLanguage";
 import { t } from "i18next";
+import { ChecklistOutlined } from "@mui/icons-material";
 
 const Receipt = ({products}) => {
     const [state,setState] = useState(products)
@@ -20,11 +21,11 @@ const Receipt = ({products}) => {
                         <div className={s.wrap__price}><p className={s.price}>{t('price')}</p></div>
                     </div>
                     {
-                        state.map((item)=>{
+                        state.map((item,index)=>{
 
                             return(
                                 <div>
-                                <div key={item.id} className={s.product}>
+                                <div key={index} className={s.product}>
                                     <div className={s.img__wrap}>
                                         <img className={s.img} src={item.image} alt={item.title[getRealLanguage()]} />
                                     </div>
@@ -34,8 +35,8 @@ const Receipt = ({products}) => {
                                 </div>
                                 <div>
                                 {
-                        item.type === 'variable' ? <div>
-                            --- {item.variable.variable[getRealLanguage()]}
+                        item.type === 'variable' ? <div className={s.var__product}>
+                            <ChecklistOutlined /> {item.variable.variable[getRealLanguage()]}
                         </div>:null
                     }
                                 </div>

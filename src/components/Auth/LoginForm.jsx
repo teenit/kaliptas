@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import { api } from "../functions/api";
 import s from "./style.module.css";
+import { Button } from "@mui/material";
+import { t } from "i18next";
+import { Send } from "@mui/icons-material";
 
 const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode})=>{ 
 
@@ -44,7 +47,7 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
                 </div>
             </div>
             <div className={s.inp__div}>
-                <button>Войти</button>
+                <Button onClick={sendForm} className="btn" variant="contained" endIcon={<Send />}>{t('Enter')}</Button>
             </div>
         </form>
     )

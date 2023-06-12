@@ -5,6 +5,8 @@ import { setUser } from "../../Store/Slices/userSlice";
 import { api } from "../functions/api";
 import s from "./style.module.css"
 import { useTranslation } from "react-i18next";
+import { Button } from "@mui/material";
+import { Send } from "@mui/icons-material";
 
 const LoginFormCode = ({email})=>{
     const {t} = useTranslation()
@@ -38,7 +40,7 @@ const LoginFormCode = ({email})=>{
                 <input className={s.inp__div__inp} required value={state.secretCode} type="text" onChange={(event)=>{setState({...state, secretCode: event.target.value})}}/>
             </div>
             <div className={s.inp__div}>
-                <button>Войти</button>
+                <Button onClick={sendForm} className="btn" variant="contained" endIcon={<Send/>}>{t('Enter')}</Button>
             </div>
         </form>
     )

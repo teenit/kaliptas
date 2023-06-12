@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { api } from "../functions/api";
 import s from "./RegisterBuyer.module.css"
 import { useTranslation } from "react-i18next";
+import { Button } from "@mui/material";
+import { Send } from "@mui/icons-material";
 
 
 const RegisterBuyer = () =>{
@@ -78,7 +80,8 @@ const RegisterBuyer = () =>{
                     <input required value={state.checkPass} type="password" onChange={(event)=>{setState({...state, checkPass: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <button>Регистрация</button>
+                    <Button className="btn" variant="contained" endIcon={<Send/>}>{t('Register')}</Button>
+                    
                 </div>
             </form>
         </div>

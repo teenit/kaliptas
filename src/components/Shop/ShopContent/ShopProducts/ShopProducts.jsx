@@ -4,11 +4,11 @@ import ss from './ShopProduct/style.module.css';
 import ProductRegister from "./ProductRegister/ProductRegister";
 import { api, apiResponse } from "../../../functions/api";
 import ShopProduct from "./ShopProduct/ShopProduct";
+import { t } from "i18next";
 
 const ShopProducts = ({shop})=>{
     const [closeModal, setCloseModal] = useState(false);
     const [products,setProducts] = useState([])
-    console.log(shop)
     const [stateProduct, setStateProduct] = useState({
         shopID:shop.id,
         shopTitle:shop.shop.title,
@@ -68,10 +68,12 @@ const ShopProducts = ({shop})=>{
             setCloseModal(!closeModal)
         },{...objState,categories:newMas,status:status},"manage/shop/add-product.php")
     }
-
+    const [userType,setUserType] = useState(null);
 
     useEffect(()=>{
         apiResponse({shopID:shop.id},"manage/shop/get-products-id.php").then((data)=>setProducts(data))
+        apiResponse({},"user/get-user-type.php").then((data)=>setUserType(data))
+
     },[])
    
     return(
@@ -79,7 +81,7 @@ const ShopProducts = ({shop})=>{
             <div className={s.add__wrap}>
                 <div className={s.add__in}>
                     <div className={s.title}>
-                        <h2>Добавить товар</h2>
+                        <h2>{t('Add product')}</h2>
                     </div>
                     <div className={s.add__shop} onClick={()=>setCloseModal(!closeModal)}>
                         <span className={`${s.span} ${s.span1}`}></span>
@@ -111,6 +113,7 @@ const ShopProducts = ({shop})=>{
                 setStateProduct = {(arg)=>setStateProduct({...arg})}
                 index={index} 
                 shop = {shop}
+                userType = {userType}
                 productItem={item} 
                 key={item.productID}/>)
             }

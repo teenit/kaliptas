@@ -127,7 +127,7 @@ const RestoreForm = ()=>{
                         }
                      
                         <div className={s.inp__div}>
-                            <Button onClick={sendForm} variant="contained" endIcon={<Send />}>{t(status.btn)}</Button>
+                            <Button className="btn" onClick={sendForm} variant="contained" endIcon={<Send />}>{t(status.btn)}</Button>
                             
                         </div>
                     </form>

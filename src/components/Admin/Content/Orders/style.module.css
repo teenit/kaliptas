@@ -13,7 +13,7 @@
 }
 .order{
     display: grid;
-    grid-template-columns: 30px 1fr 1fr 150px 100px 175px 30px;
+    grid-template-columns: 50px 1fr 1fr 150px 100px 175px 30px;
     align-items: center;
     font-size: 12px;
     padding: 10px 0; 
@@ -59,7 +59,7 @@
 }
 .select{
     display: grid;
-    grid-template-columns: 1fr 50px;
+    grid-template-columns: 1fr 100px;
     gap: 5px;
 }
 .eye__img{
@@ -132,4 +132,15 @@
 .draft{
     border-radius: 10px;
     background-color: #c368e7;
+}
+@media screen and (max-width:800px) {
+    .order{
+        grid-template-columns: 1fr 1fr;
+        padding-left: 10px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    .id{
+        text-align: left;
+    }
 }
