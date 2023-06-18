@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import s from "./style.module.css";
 import { Button, TextField } from "@mui/material";
 import { t } from "i18next";
-import { api, apiResponse } from "../functions/api";
-import { Send, SendAndArchiveOutlined } from "@mui/icons-material";
+import { apiResponse } from "../functions/api";
+import { Send } from "@mui/icons-material";
 
 const RestoreForm = ()=>{
     const [state,setState] = useState({
@@ -44,16 +44,17 @@ const RestoreForm = ()=>{
                 email:{...state.email,disabled:true},
             }) 
          
-        }).catch((e)=>window.alert("Fail"))
+        }).catch((e)=>window.alert("Ошибка"))
     }
 
     const insertCode = ()=>{
+      //  return console.log(state.email)
         apiResponse({
             email:state.email.text,
             code:state.code.text,
             
         },'user/restore-insert-code.php').then((e)=>{
-           
+            if(!e) return alert('Ошибка')
             setStatus({
                 text:'pass',
                 btn:'Restore pass'
@@ -64,9 +65,10 @@ const RestoreForm = ()=>{
                 pass:{...state.pass,show:true},
                 passTo:{...state.passTo,show:true},
             }) 
-        }).catch((e)=>window.alert("Fail"))
+        }).catch((e)=>window.alert("Ошибка"))
     }
     const restoreAccess = ()=>{
+        if(state.pass.text !== state.passTo.text) return;
         apiResponse({
             email:state.email.text,
             code:state.code.text,
@@ -74,10 +76,11 @@ const RestoreForm = ()=>{
             passTo:state.passTo.text
         },'user/restore-access.php').then((e)=>{
 
+          // return console.log(e)
             window.alert(t('Recovery password changed'));
             window.location.reload()
 
-        }).catch((e)=>window.alert("Fail"))
+        }).catch((e)=>window.alert("Ошибка"))
     }
 
     function sendForm(event){
@@ -107,7 +110,7 @@ const RestoreForm = ()=>{
                         {
                             state.code.show ? 
                             <div className={s.inp__div}>
-                                <TextField onChange={(e)=>setState({...state,code:{...state.code,text:e.target.value}})} value={state.code.text} type="text" required label="Secret code"/>
+                                <TextField disabled={state.code.disabled} onChange={(e)=>setState({...state,code:{...state.code,text:e.target.value}})} value={state.code.text} type="text" required label="Secret code"/>
                             </div>:null
                         }
                         
