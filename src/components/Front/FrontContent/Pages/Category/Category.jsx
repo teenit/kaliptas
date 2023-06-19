@@ -9,8 +9,6 @@ import {api, apiResponse} from "../../../../functions/api";
 import HomeIcon from '@mui/icons-material/Home';
 import {getLanguageForLink, getLanguageForRootLink, getRealLanguage} from "../../../../functions/getLanguage";
 import {useTranslation} from 'react-i18next'
-import { ProductObject } from '../../FrontProduct/ProductObject';
-
 
 function Category(props) {
     const {t}  = useTranslation()

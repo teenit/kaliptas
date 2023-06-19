@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import s from './FrontProduct.module.css'
-import {useLocation, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import heartImg from "../../../../img/front/icons8-heart-64.png";
 import heartImgSec from "../../../../img/front/icons8-heart-642.png";
 import star from "./../../../../img/front/Многоугольник 1 копия 3.png"
@@ -11,7 +11,7 @@ import ProductList from "../FrontPage/Product/ProductList";
 import FrontSlide from "../../Modules/FrontSlider/FrontSlide/FrontSlide";
 import { api, apiResponse } from "../../../functions/api";
 import { ProductObject } from "./ProductObject";
-import { getRealLanguage } from "../../../functions/getLanguage";
+import {getLanguageForRootLink, getRealLanguage} from "../../../functions/getLanguage";
 import { useTranslation } from "react-i18next";
 import { buy, decrementById, getCountById, incrementById } from "../../../functions/cartControll"
 import cartMinus from "../../../../img/front/cartMinus.png"
@@ -125,7 +125,24 @@ const FrontProduct = () => {
         showPhoto: false
     })
 
-    const renderBuyButton= function () {
+    const renderCategory = function () {
+        if (productObject === {}) {
+            return null;
+        }
+
+        let first = true;
+
+        return  productObject.categories.map((cat, index)=>{
+            let delimiter = first ? null : <span className={s.delimiter}>|</span>;
+            first = false;
+
+            return (<span  key={index}>
+                                    {delimiter}<Link className={s.span__link} to={getLanguageForRootLink() + "/catalog/" + cat.id}>{cat.category.title[getRealLanguage()]}</Link>
+                                </span>)
+        })
+    }
+
+    const renderBuyButton = function () {
         return productObject.inStock ? countInCart > 0
             ? (<div className={s.amount}>
                 <div className={s.minus}>
@@ -184,6 +201,7 @@ const FrontProduct = () => {
 
     return ready ? (
         <div className={s.main}>
+            <div className={s.categories}>{renderCategory()}</div>
             <div className={s.wrap}>
                 <div className={s.in}>
                     <div className={s.product__wrap}>

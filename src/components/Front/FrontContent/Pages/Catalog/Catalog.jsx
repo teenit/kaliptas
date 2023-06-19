@@ -42,7 +42,6 @@ const Catalog = ()=>{
             setLoadedCategories(localLoadedCategories);
             showCategories(localLoadedCategories)
             setParentCats(localLoadedCategories.filter(cat=>cat.parenId==="0").map((cat)=>{
-                console.log(cat)
                 return cat.id
             }))
         }, {}, "content/category/get-all-categories.php")

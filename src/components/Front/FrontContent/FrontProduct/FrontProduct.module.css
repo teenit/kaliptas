@@ -2,6 +2,16 @@
     width: 80%;
     margin: auto;
 }
+.categories{
+    margin: 15px;
+    font-weight: bold;
+}
+.categories *{
+    color: black;
+}
+.delimiter{
+    margin: 10px;
+}
 .title__item{
     margin: 0;
     margin-top: 55px;
@@ -16,7 +26,6 @@
     overflow: hidden;
 }
 .in{
-    margin-top: 55px;
     border-radius: 20px;
     box-shadow: 0 0 5px .5px #00000011;
     background-color: #ffffff;

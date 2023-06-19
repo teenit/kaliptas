@@ -7,12 +7,12 @@ export class ProductObject{
             return;
         }
 
-        this.isVariable = product.product.type.variable
-        this.id = product.productID
-        this.tag = product.link
-        this.description = product.product.description[language]
-        this.title = product.product.title[language]
-        this.article = product.article
+        this.isVariable = product.product.type.variable;
+        this.id = product.productID;
+        this.tag = product.link;
+        this.description = product.product.description[language];
+        this.title = product.product.title[language];
+        this.article = product.article;
         this.price = product.product.price.price;
         this.discount = product.product.price.discount;
         this.properties = product.product.characteristic.map((ch)=>{
@@ -26,9 +26,10 @@ export class ProductObject{
                 return new Variable(obj, language);
             })
         }
-        this.photos = product.product.images
-        this.mainPhoto = product.product.image
+        this.photos = product.product.images;
+        this.mainPhoto = product.product.image;
         this.inStock = product.product.inStock.amount > 0;
+        this.categories = product.product.categories;
     }
 
     id
@@ -44,6 +45,7 @@ export class ProductObject{
     properties
     mainPhoto
     inStock = false;
+    categories
 
     getLink() {
         return this.id + "-" + this.tag;
