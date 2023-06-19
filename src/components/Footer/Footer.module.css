@@ -43,11 +43,20 @@
 .card__item > a{
     color: #ffffff;
 }
-.in > p{
-    text-align: center;
+.copyright{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     font-size: 12px;
     color: #ffffff;
-    margin: 60px 0px 20px 0px;
+    width: max-content;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.copyright__link{
+    font-size: 12px;
+    color: #ffffff;
 }
 
 @media (max-width: 600px){

@@ -114,7 +114,7 @@ const FrontProduct = () => {
         title: "Время осеннего",
         titleDop: "шопинга!",
         skidca: "50 %",
-        backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+        backUrl: "https://img.freepik.com/free-photo/girl-holds-fashion-shopping-bag-beauty_1150-13673.jpg?w=996&t=st=1687191427~exp=1687192027~hmac=5a0ae6cc0d8e55dd4000bb3018363b0686815fce666eb937e4ed5adefdb215cb"
     }
 
     const [state, setState] = useState({
