@@ -37,52 +37,51 @@ const FrontPage = () => {
             title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://wallpapers.com/images/hd/e-commerce-1920-x-1080-wallpaper-vpwocptk7aur4fms.jpg"
+            backUrl: "https://img.freepik.com/free-photo/woman-holding-various-shopping-bags-copy-space_23-2148674122.jpg?w=1060&t=st=1687190897~exp=1687191497~hmac=76c855ef883ec849e67401f270d5329933388f16b41b0f4c546ba4cd2b0bd3b6"
         },
         {
             title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://images.hdqwalls.com/download/cyber-guy-retrowave-5k-28-1920x1080.jpg"
+            backUrl: "https://img.freepik.com/free-photo/person-holding-various-sizes-black-shopping-bags_23-2148665669.jpg?w=1060&t=st=1687190962~exp=1687191562~hmac=ad061a6e44eca431f0b735a887235002c4c5f01859317c017f7c82b5296bafd9"
         },
         {
             title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://hatch.group/wp-content/uploads/2023/03/hatch_colimpactonfoodanddrinkbrands_march23_socialasset_blogpost_notext_landscape_1920x1080.jpg"
+            backUrl: "https://img.freepik.com/free-photo/shopping-concept-close-up-portrait-young-beautiful-attractive-redhair-girl-smiling-looking-camera_1258-119090.jpg?w=1060&t=st=1687190999~exp=1687191599~hmac=4d19c70603a8e8471d54f8ee30e6f407345739d99476236905b880bc99844c59"
         },
         {
             title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://wallpapers.com/images/hd/e-commerce-1920-x-1080-wallpaper-vpwocptk7aur4fms.jpg"
+            backUrl: "https://img.freepik.com/free-photo/excited-girl-scream-joy-making-fist-pump-holding-shopping-bag-rejoicing-standing-dress-ove_1258-120529.jpg?w=1060&t=st=1687191263~exp=1687191863~hmac=11ed33d705df5a56b67dc83bd1828e9fd73cc1122f9e940ed619ee361ed67acf"
         },
         {
             title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://images.hdqwalls.com/download/cyber-guy-retrowave-5k-28-1920x1080.jpg"
+            backUrl: "https://img.freepik.com/free-photo/girl-holds-fashion-shopping-bag-beauty_1150-13673.jpg?w=996&t=st=1687191427~exp=1687192027~hmac=5a0ae6cc0d8e55dd4000bb3018363b0686815fce666eb937e4ed5adefdb215cb"
         },
         {
             title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://hatch.group/wp-content/uploads/2023/03/hatch_colimpactonfoodanddrinkbrands_march23_socialasset_blogpost_notext_landscape_1920x1080.jpg"
+            backUrl: "https://img.freepik.com/free-photo/glamour-girl-holding-shopping-bags-pucker-lips-looking-coy-standing-against-pink-background_1258-123331.jpg?w=1380&t=st=1687191478~exp=1687192078~hmac=ee44f10d92937c5b30fc39e825cd5d1b233e3e3fef7f77fa25e4c3260ce075dc"
         },
     ];
     const SecondSliderContent = {
         title: "Время",
         titleDop: "шопинга!",
         skidca: "50 %",
-        backUrl: "https://hatch.group/wp-content/uploads/2023/03/hatch_colimpactonfoodanddrinkbrands_march23_socialasset_blogpost_notext_landscape_1920x1080.jpg"
+        backUrl: "https://img.freepik.com/free-photo/shopping-concept-close-up-portrait-young-beautiful-attractive-redhair-girl-smiling-looking-camera_1258-119090.jpg?w=1060&t=st=1687190999~exp=1687191599~hmac=4d19c70603a8e8471d54f8ee30e6f407345739d99476236905b880bc99844c59"
     }
     const SecondSliderContentDop = {
         title: "Время",
         titleDop: "шопинга!",
         skidca: "50 %",
-        backUrl: "https://images.hdqwalls.com/download/cyber-guy-retrowave-5k-28-1920x1080.jpg"
+        backUrl: "https://img.freepik.com/free-photo/person-holding-various-sizes-black-shopping-bags_23-2148665669.jpg?w=1060&t=st=1687190962~exp=1687191562~hmac=ad061a6e44eca431f0b735a887235002c4c5f01859317c017f7c82b5296bafd9"
     }
-    const ThirdSliderContent = SecondSliderContent;
     const [showDesc, setShowDesc] = useState(false)
 
     return (
