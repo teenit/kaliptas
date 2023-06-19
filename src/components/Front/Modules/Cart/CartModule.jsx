@@ -45,10 +45,10 @@ const CartModule = ({setTotalPrice, change}) =>{
                 });
             }
             tempProductsAndCount.forEach((prod)=>{
-                if (prod.product.isDiscountPresent()) {
-                    totalPrice += prod.product.getPriceWithDiscount() * prod.count;
+                if (prod.product.isDiscountPresent(prod.variableId)) {
+                    totalPrice += prod.product.getPriceWithDiscount(prod.variableId) * prod.count;
                 } else {
-                    totalPrice += prod.product.price * prod.count;
+                    totalPrice += prod.product.getPrice(prod.variableId) * prod.count;
                 }
             });
             if (setTotalPrice !== undefined) {
