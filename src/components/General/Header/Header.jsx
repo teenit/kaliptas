@@ -21,7 +21,7 @@ const Header = ({menuItems,burgerItems}) =>{
     },[])
     return(
         <div className={s.header}>
-          
+         
             <div className={s.big__header}>
                 <div className={s.small__header}>
                     <div className={s.small__header__in}>
@@ -52,6 +52,7 @@ const Header = ({menuItems,burgerItems}) =>{
                 </div>
             </div>
             {burgMenu? <BurgerMenu burgerItems = {burgerItems} close={()=>setBurgMenu(false)}/>:null}
+            
         </div>
     )
 }

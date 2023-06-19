@@ -3,12 +3,13 @@ import { api } from "../functions/api";
 import LoginForm from "./LoginForm";
 import { LoginFormCode } from "./LoginFormCode";
 import s from "./style.module.css";
+import { t } from "i18next";
 
 const LoginAuth = ()=>{ 
     const [emailCode, setEmailCode] = useState(false)
     const [state, setState] = useState({
-        email:"kivenkoandriywork@gmail.com",
-        pass:"123456",
+        email:"",
+        pass:"",
         capcha:"",
         secretCode:"",
         generateCapcha:"",
@@ -30,6 +31,7 @@ const LoginAuth = ()=>{
     }
 
     function errorEmailOrPass(){
+        window.alert(t('error'))
         setState({
             ...state,
             num1: Math.floor(Math.random() * 30),

@@ -10,6 +10,7 @@ const UserRow = ({user,index})=>{
 
     const {t} = useTranslation();
     const updateUser = () =>{
+       
         api((arg)=>{
             window.alert(t(arg.message));
         },{
@@ -17,7 +18,7 @@ const UserRow = ({user,index})=>{
             userEmail:state.email,
             userName:state.userName,
             userType:state.type,
-            userActive:state.active,
+            userActive:state.active + "",
             userPhone:state.phone
         },"manage/users/update-user.php")
     }

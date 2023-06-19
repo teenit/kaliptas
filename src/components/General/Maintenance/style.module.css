@@ -1,0 +1,13 @@
+.modal{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(125, 20, 20, 0.646);
+}
+.title{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
