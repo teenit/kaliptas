@@ -32,7 +32,7 @@ const CartRow = (props) =>{
                         <div className={s.minus}>
                             <img src={cartMinus} alt={t('cartRow-minusAlt')} onClick={()=>{
                                 setState({...state, amount: state.amount - 1})
-                                decrementById(product.id)
+                                decrementById(product.id, state.varId)
                                 props.change();
                             }}/>
                         </div>
@@ -42,7 +42,7 @@ const CartRow = (props) =>{
                         <div className={s.plus}>
                             <img src={cartPlus} alt={t('cartRow-plusAlt')} onClick={()=>{
                                 setState({...state, amount: state.amount + 1})
-                                incrementById(product.id)
+                                incrementById(product.id, state.varId)
                                 props.change();
                             }}/>
                         </div>
@@ -67,7 +67,7 @@ const CartRow = (props) =>{
                    
                     <div className={s.delete}>
                         <img src={deletebtn} alt={t('cartRow-deleteAlt')} onClick={()=>{
-                            deleteById(product.id)
+                            deleteById(product.id, state.varId)
                             props.change()
                         }}/>
                     </div>

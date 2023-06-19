@@ -6,6 +6,7 @@ import {getCartItemsCount} from "../../functions/cartControll";
 import {getLanguageForRootLink} from "../../functions/getLanguage";
 import s from "./CartModal.module.css"
 import {Link, useLocation} from "react-router-dom";
+import {getCurrencyTag} from "../../functions/utils";
 
 const CartModal = ({close, }) =>{
     const {t}  = useTranslation();
@@ -42,7 +43,7 @@ const CartModal = ({close, }) =>{
 
                 <div className={s.res}>
                     <div className={s.sum}>
-                        <p>{t('frontCart-totalPrice')}: {totalPrice}$</p>
+                        <p>{t('frontCart-totalPrice')}: {totalPrice}{getCurrencyTag()}</p>
                         <p></p>
                     </div>
                     {
