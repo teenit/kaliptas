@@ -34,47 +34,53 @@ const FrontPage = () => {
 
     const firstSliderContent = [
         {
-            title: "Время осеннего",
+            title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+            backUrl: "https://wallpapers.com/images/hd/e-commerce-1920-x-1080-wallpaper-vpwocptk7aur4fms.jpg"
         },
         {
-            title: "Время осеннего",
+            title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+            backUrl: "https://images.hdqwalls.com/download/cyber-guy-retrowave-5k-28-1920x1080.jpg"
         },
         {
-            title: "Время осеннего",
+            title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+            backUrl: "https://hatch.group/wp-content/uploads/2023/03/hatch_colimpactonfoodanddrinkbrands_march23_socialasset_blogpost_notext_landscape_1920x1080.jpg"
         },
         {
-            title: "Время осеннего",
+            title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+            backUrl: "https://wallpapers.com/images/hd/e-commerce-1920-x-1080-wallpaper-vpwocptk7aur4fms.jpg"
         },
         {
-            title: "Время осеннего",
+            title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+            backUrl: "https://images.hdqwalls.com/download/cyber-guy-retrowave-5k-28-1920x1080.jpg"
         },
         {
-            title: "Время осеннего",
+            title: "Время",
             titleDop: "шопинга!",
             skidca: "50 %",
-            backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+            backUrl: "https://hatch.group/wp-content/uploads/2023/03/hatch_colimpactonfoodanddrinkbrands_march23_socialasset_blogpost_notext_landscape_1920x1080.jpg"
         },
     ];
     const SecondSliderContent = {
-        title: "Время осеннего",
+        title: "Время",
         titleDop: "шопинга!",
         skidca: "50 %",
-        backUrl: "https://sebweo.com/wp-content/uploads/2019/06/landshaft-bernskikh-alp-v-yasniy-den_thumb.jpg"
+        backUrl: "https://hatch.group/wp-content/uploads/2023/03/hatch_colimpactonfoodanddrinkbrands_march23_socialasset_blogpost_notext_landscape_1920x1080.jpg"
+    }
+    const SecondSliderContentDop = {
+        title: "Время",
+        titleDop: "шопинга!",
+        skidca: "50 %",
+        backUrl: "https://images.hdqwalls.com/download/cyber-guy-retrowave-5k-28-1920x1080.jpg"
     }
     const ThirdSliderContent = SecondSliderContent;
     const [showDesc, setShowDesc] = useState(false)
@@ -118,7 +124,7 @@ const FrontPage = () => {
                         <div className={s.title__wrap__desc} onClick={()=>{
                             setShowDesc(!showDesc) 
                         }}>
-                            <h3 className={s.title__desc}>Kaliptas</h3>
+                            <h3 className={s.title__desc}>Kaliptas - {t('front-page-we-have-all')}</h3>
                             <img className={`${s.arrow__desc} ${showDesc ? s.arrow__dop__desc : null}`} src={arrowImg} alt="Стрелка" />
                         </div>
                         <div className={s.text__wrap__desc}>
@@ -129,7 +135,7 @@ const FrontPage = () => {
                     </div>
                 </div>
                 <div className={s.adword__slider}>
-                    <FrontSlide item={ThirdSliderContent}/>
+                    <FrontSlide item={SecondSliderContentDop}/>
                 </div>
             </div>
         </div>

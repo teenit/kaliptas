@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Footer.module.css"
 import footerLogo from "./../../img/admin/footerLogo.png"
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 
 const Footer = () =>{
     const {t} = useTranslation()
@@ -17,7 +18,7 @@ const Footer = () =>{
                         <div className={s.card__item}>
                             <a href="tel:+995 (093) 208 0706">+995 (093) 208 0706</a>
                             <a href="tel:+995 (093) 208 0706">+995 (093) 208 0706</a>
-                            <a href="mailto:info@gmail.com">info@gmail.com</a>
+                            <a href="mailto:info@kaliptas.com">info@kaliptas.com</a>
                         </div>
                     </div>
                     <div className={s.card}>
@@ -44,7 +45,10 @@ const Footer = () =>{
                         </div>
                     </div>
                 </div>
-                <p>@ 2023 KALIPTAS | Powered by IT Club Studio</p>
+                <div className={s.copyright}>
+                    <p>@ 2023 KALIPTAS | Powered by </p>
+                    <NavLink className={s.copyright__link} to={"https://studio.itclub.in.ua/"} target="_blank">IT Club Studio</NavLink>
+                </div>
             </div>
         </div>
     )

@@ -50,9 +50,10 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-}
-.img__link{
+    width: 120px;
     height: 100px;
+    overflow: hidden;
+    margin: auto;
 }
 .main__image{
     display: block;
@@ -146,13 +147,14 @@
 
 
 @media (max-width: 600px){
-    .img__link{
-        height: 70px;
-    }
     .in__dop{
         padding: 5px 0;
         width: 90%;
         gap: 5px;
+    }
+    .section__img{
+        width: 100px;
+        height: 75px;
     }
     .title{
         font-size: 11px;
