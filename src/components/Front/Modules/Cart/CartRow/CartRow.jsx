@@ -49,10 +49,11 @@ const CartRow = (props) =>{
                     </div>
                     <div>
                         {
-                        product.isVariable
-                            ? product.variables.find(item=> item.id === state.varId).title
-                            : null
-                    }</div>
+                            product.isVariable
+                                ? product.variables.find(item=> item.id === state.varId).title
+                                : null
+                        }
+                    </div>
                     <div className={s.prices}>
                         {product.isDiscountPresent(state.varId)
                             ?

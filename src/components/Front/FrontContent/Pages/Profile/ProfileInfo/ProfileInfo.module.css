@@ -40,9 +40,10 @@
     width: 18px;
     cursor: pointer;
     transition: all .3s;
+    transform: rotate(180deg);
 }
 .arrow__dop{
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 }
 
 

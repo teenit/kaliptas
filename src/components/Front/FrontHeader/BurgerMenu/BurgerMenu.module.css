@@ -84,9 +84,10 @@
 .arrow{
     width: 16px;
     transition: all .3s;
+    transform: rotate(180deg);
 }
 .arrow__change{
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 }
 .phone__wrap > p{
     margin: 0;

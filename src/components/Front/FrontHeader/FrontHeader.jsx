@@ -26,7 +26,7 @@ const FrontHeader  =()=>{
                         setPhone(!phone)
                     }}>
                         <a href="tel:+995 066 666 66 66">+995 066 666 66 66</a>
-                        <img className={`${s.arrow} ${phone ? s.arrow__change : s.arrow__ok}`} src={arrowImg} alt="Стрелка" />
+                        <img className={`${s.arrow} ${phone ? s.arrow__ok : s.arrow__change}`} src={arrowImg} alt="Стрелка" />
                         {phone ? <Phone close = {()=>setPhone(!phone)}/> : null}
                     </div>
                     

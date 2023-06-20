@@ -80,6 +80,7 @@
     align-items: center;
 }
 .delete > img{
+    width: 14px;
     cursor: pointer;
     align-self: center;
     display: flex;
@@ -90,4 +91,34 @@
     height: .5px;
     background-color: #e3bff1;
     margin: auto;
+}
+
+@media (max-width: 600px){
+    .row{
+        grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
+        gap: 10px;
+    }
+    .image{
+        justify-content: flex-start;
+        width: 50px;
+    }
+    .title > p{
+        font-size: 12px;
+    }
+    .amount__in{
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    .amount{
+        gap: 5px;
+    }
+    .minus > img, .plus > img{
+        width: 14px;
+    }
+    .plice__in > p{
+        font-size: 12px;
+    }
+    .price__skid{
+        font-size: 14px;
+    }
 }
