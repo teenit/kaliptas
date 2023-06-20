@@ -71,3 +71,9 @@
 .empty{
     margin: 10vh 0;
 }
+
+@media (max-width: 600px){
+    .wrap{
+        width: 90%;
+    }
+}

@@ -180,7 +180,7 @@ const FrontProduct = () => {
         return productObject.isVariable ?
             <TextField
                 select
-                sx={{ border: 0, background: "none" }}
+                sx={{ border: 0, background: "none", width: "90vw", fontSize: "14px" }}
                 variant={"standard"}
                 onChange={(event)=>{
                     let variable = productObject.variables.find(item => item.id === event.target.value)
@@ -265,20 +265,13 @@ const FrontProduct = () => {
                                         </div>
                                     }
 
-                                    {!productObject.isDiscountPresent(variableId)
-                                        ? <div className={s.price}><p>{displayedPrice}{getCurrencyTag()}</p></div>
-                                        : <div className={s.price}>
-                                            <span className={s.previous__price}>{displayedPrice}{getCurrencyTag()}</span>
-                                            <p>{displayedDiscountPrice}{getCurrencyTag()}</p>
+                                    <div className={s.like__price}>
+                                        {!productObject.isDiscountPresent(variableId)
+                                            ? <div className={s.price}><p>{displayedPrice}{getCurrencyTag()}</p></div>
+                                            : <div className={s.price}>
+                                                <span className={s.previous__price}>{displayedPrice}{getCurrencyTag()}</span>
+                                                <p>{displayedDiscountPrice}{getCurrencyTag()}</p>
                                         </div>}
-                                    <div className={s.actions}>
-                                        {
-                                            renderBuyButton()
-                                        }
-
-                                        {
-                                            renderVariable()
-                                        }
                                         <div className={s.heart__wrap}>
                                             {liked == true ?
                                                 <img
@@ -298,6 +291,18 @@ const FrontProduct = () => {
                                                     }}
                                                 />}
                                         </div>
+                                    </div>
+                                    <div className={s.actions}>
+                                        {
+                                            renderBuyButton()
+                                        }
+
+                                        
+                                        {
+                                            renderVariable()
+                                        }
+                                        
+                                        
                                     </div>
                                 </div>
                                 <div className={s.garanty}>

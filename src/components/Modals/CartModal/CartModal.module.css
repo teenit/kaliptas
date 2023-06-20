@@ -64,3 +64,25 @@
 .inactive {
     background-color: grey;
 }
+
+@media (max-width: 600px){
+    .in{
+        width: 90%;
+        border-radius: 20px;
+        padding: 10px 8px;
+    }
+    .res{
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        width: 90%;
+    }
+    .btn{
+        width: 100%;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    .sum > p{
+        font-size: 14px;
+    }
+}

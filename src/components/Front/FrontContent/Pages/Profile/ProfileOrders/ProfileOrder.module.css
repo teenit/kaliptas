@@ -31,4 +31,7 @@
     .wrap > h2{
         display: none;
     }
+    .history__orders{
+        grid-template-columns: 1fr;
+    }
 }

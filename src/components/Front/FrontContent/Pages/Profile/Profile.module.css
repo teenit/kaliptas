@@ -44,9 +44,10 @@
     transition: all .3s;
     width: 18px!important;
     display: none;
+    transform: rotate(180deg);
 }
 .arrow__item__dop{
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 }
 .item__in{
     display: flex;
