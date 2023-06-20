@@ -236,7 +236,7 @@ const Cart = ()=>{
                             onChange={(event)=>{
                                 setDeliveryType(deliveryTypes[event.target.value])
                             }}
-                            defaultValue={deliveryTypes.address.key}
+                            defaultValue={deliveryTypes.self.key}
                             label={t('cart-deliveryType')}
                     >
                         <MenuItem value={deliveryTypes.address.key}>{t('cart-adress')}</MenuItem>

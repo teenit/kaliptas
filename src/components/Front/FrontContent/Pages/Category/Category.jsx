@@ -65,7 +65,13 @@ function Category(props) {
         setValue(newValue)
     };
     const applyFilter = function () {
-        const filteredProducts = category.products.filter((item)=> item.price >= value[0] && item.price <= value[1])
+        const filteredProducts = category.products.filter((item)=> {
+            if (item.isDiscountPresentForCard()) {
+                return item.getDiscountForCard() >= value[0] && item.getDiscountForCard() <= value[1]
+            }
+
+            return item.getPriceForCard() >= value[0] && item.getPriceForCard() <= value[1]
+        })
         setDisplayedProducts(filteredProducts);
     }
     const [showFilter, setShowFilter] = useState(false)
