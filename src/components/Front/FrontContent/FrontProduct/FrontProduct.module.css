@@ -153,7 +153,11 @@
 .actions{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 40px;
+}
+.variable__wrap{
+    width: 100%;
 }
 .button{
     display: flex;
@@ -468,6 +472,11 @@
     width: auto;
     max-height: 70vh;
 }
+.like__price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 @media (max-width: 600px){
     .main{
         width: 90%;
@@ -536,7 +545,9 @@
         gap: 0;
     }
     .actions{
-        justify-content: space-between;
+       flex-direction: column-reverse;
+       align-items: flex-start;
+       gap: 15px;
     }
     .description{
         gap: 25px;
@@ -587,6 +598,11 @@
     }
     .button{
         padding: 6px 30px;
+        width: 60%;
+        max-width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .item__desc{
         width: 90%;

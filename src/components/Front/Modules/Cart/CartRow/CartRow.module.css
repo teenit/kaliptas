@@ -5,9 +5,17 @@
 }
 .row{
     display: grid;
-    grid-template-columns: 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
+}
+.top__row{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
 }
 .row > div {
     align-self: center;
@@ -70,6 +78,9 @@
     text-decoration: line-through;
     color: #00000033;
 }
+.dop__desc > p{
+    font-size: 14px;
+}
 .price__skid{
     margin: 0;
     color: var(--purple-color);
@@ -91,11 +102,13 @@
     height: .5px;
     background-color: #e3bff1;
     margin: auto;
+    margin-top: 10px;
 }
 
 @media (max-width: 600px){
     .row{
-        grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
     }
     .image{
@@ -109,8 +122,18 @@
         padding: 5px 8px;
         font-size: 12px;
     }
+    .dop__desc > p{
+        font-size: 12px;
+        margin: 0;
+    }
     .amount{
         gap: 5px;
+    }
+    .top__row{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .minus > img, .plus > img{
         width: 14px;
