@@ -11,6 +11,8 @@ import ProductImages from "./ProguctImage/ProductImages";
 import loadImg from './../../../../../img/admin/loading.gif';
 import ProductCharacteristic from "./ProductCharacteristic/ProductCharacteristic";
 import { replaceStrTextarea } from "../../../../functions/replaceStr";
+import {Alert} from "@mui/material";
+import {useTranslation} from "react-i18next";
 const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     const [lookCat,setLookCat] = useState(stateProduct.categories)
     const [control, setControl] = useState({
@@ -32,8 +34,8 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
         lang: 'ge'
     })
     const lng = localStorage.getItem('LNG').toLowerCase()
+    const {t} = useTranslation()
 
-   console.log(stateProduct)
      const [state, setState] = useState({...stateProduct})
      const [loadedImg, setLoadedImg] = useState({
         image:false,
@@ -226,6 +228,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                             uploadImages(arg);
                             console.log(arg.files)
                             }} />
+                        <Alert severity="warning">{t("admin-product-register-photo-alert")}</Alert>
                     </div>
                     
                 </form>

@@ -73,7 +73,7 @@
     "frontSubheader-search":"Search",
     "frontSubheader-catalog":"Catalog",
 
-
+    "admin-product-register-photo-alert": "Please upload a photo with a width to height ratio of 4/3, otherwise the product will not be able to pass moderation.",
 
     "frontPage-youVisited":"You visited",
     "frontPage-similarProducts":"Similar products",
