@@ -99,7 +99,7 @@
     font-size: 14px;
 }
 .lang__line{
-    width: 1.5px;
+    width: .1vw;
     height: 20px;
     background-color: #9134b3;
     display: flex;
@@ -125,19 +125,19 @@
     width: 25px;
 }
 .span{
-    position: absolute;
-    left: 0;
-    height: 2.1px;
-    width: 100%;
+    width: 25px;
+    height: 0.5vh;
     background-color: #9134b3;
     display: block;
     transition: all .3s;
 }
 .b2, .b3{
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 .b4{
+    position: absolute;
     bottom: 0;
 }
 .burger.active .b1,.burger.active .b4{

@@ -56,7 +56,7 @@ const BurgerMenu = ({active, setActive}) =>{
                             setShowCart(true)
                         }}><p>{t('frontCart-title')}</p></div>
                     </div>
-                    <div className={s.option__in}>
+                    <div className={`${s.option__in} ${s.option__hidden}`}>
                         <img src={listImage} alt="Список желаний" />
                         <Link className={s.link} to={"/"} onClick={setActive}><p>{t('burger-list')}</p></Link>
                     </div>

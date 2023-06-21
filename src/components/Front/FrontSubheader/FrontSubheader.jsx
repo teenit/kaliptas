@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import s from './Subheader.module.css'
 import catalogImg from "./../../../img/front/catalog.png"
 import {Link, NavLink} from "react-router-dom";
-import profileImg from "./../../../img/front/profile.png";
+import profileImg from "./../../../img/icons/icons8-пользователь-мужчина-в-кружке-100.png";
 import likedImg from "./../../../img/front/heart.png";
 import cartImg from "./../../../img/front/corz.png"
 import CartModule from "../Modules/Cart/CartModule";
