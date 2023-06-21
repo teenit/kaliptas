@@ -5,7 +5,6 @@ export function getLanguageForLink() {
 
 export function getLanguageForRootLink() {
     let lang= localStorage.getItem('LNG').toLowerCase();
-    console.log(lang);
     return lang !== "ge" ? "/" + lang : "";
 }
 
