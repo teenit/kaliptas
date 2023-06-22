@@ -1,10 +1,13 @@
 import React from "react";
 import s from './../ProductRegister.module.css'
 import { useState } from "react";
+import {useTranslation} from "react-i18next";
 const ProductImage = ({addState,uploadImage,image})=>{
 
     const [previewImg, setPreviewImg] = useState('');
-    const [showImg, setShowImg] = useState(true)
+    const [showImg, setShowImg] = useState(true);
+    const {t} = useTranslation()
+
     function handleFileSelect(evt,setImg) {
         var file = evt.target.files; // FileList object
         var f = file[0];
@@ -23,7 +26,7 @@ const ProductImage = ({addState,uploadImage,image})=>{
     return (
             <div className={`${s.input__div} ${s.input__div__dop}`}>
                 <label className={s.input__label}>
-                    <p>Главное изображение</p>
+                    <p>{t("admin-product-image-main")}</p>
                 </label>
                 <input style={{display:"none"}} type="file" name="mainImg" id="mainImg" onChange={(e)=>{
                     //return console.log(e)
@@ -34,7 +37,7 @@ const ProductImage = ({addState,uploadImage,image})=>{
                 }} />
                 <div className={s.inp__img__wrap}>
                     <label htmlFor="mainImg" className={s.img__main__wrap} onClick={()=>{}}></label>
-                    <div onClick={()=>console.log(image)} className={showImg ? s.image__wrap__dop : s.image__wrap}>
+                    <div className={showImg ? s.image__wrap__dop : s.image__wrap}>
                         {   previewImg || image ?
                             <img className={s.input__image} src={previewImg ? previewImg : image } alt="" /> : null
                         }

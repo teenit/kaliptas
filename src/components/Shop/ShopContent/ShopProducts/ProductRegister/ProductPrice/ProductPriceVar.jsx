@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { replaceStr } from "../../../../../functions/replaceStr";
 import s from './ProductPrice.module.css'
+import {useTranslation} from "react-i18next";
 const ProductPriceVar = ({addState,prices,lang})=>{
     let kil = 0;
     const [state,setState] = useState(prices)
+    const {t} = useTranslation();
     const onClickHendler = (index,keyObj,e)=>{
         const newItems = state.map((item,i)=>{
             if(i === index){
@@ -21,7 +23,7 @@ const ProductPriceVar = ({addState,prices,lang})=>{
         
     }
     const removeItem = (index)=>{
-        if(state.length === 1) return alert("Нельзя удалить последний элемент")
+        if(state.length === 1) return alert(t("admin-product-price-var-alert"))
         const newItems = state.filter((item,i)=>{
             if(i === index){
                 
@@ -29,7 +31,6 @@ const ProductPriceVar = ({addState,prices,lang})=>{
                 return {...item}
             }
         });
-        console.log(newItems)
         setState(newItems)
     }
     return(
@@ -40,17 +41,17 @@ const ProductPriceVar = ({addState,prices,lang})=>{
                         return(
                             <div key={kil++} className={s.var__item}>
                                 <div className={s.var__title}>
-                                    {lang == 'ge' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder="Вариация" onChange={(e)=>{
+                                    {lang == 'ge' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder={t("admin-product-price-var-var")} onChange={(e)=>{
                                         onClickHendler(index,'variable',replaceStr(e.target.value));
         addState(state)
                                         
                                     }}/>:null}
-                                    {lang == 'en' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder="Вариация" onChange={(e)=>{
+                                    {lang == 'en' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder={t("admin-product-price-var-var")} onChange={(e)=>{
                                         onClickHendler(index,'variable',replaceStr(e.target.value));
         addState(state)
                                        
                                     }}/>:null}
-                                    {lang == 'ru' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder="Вариация" onChange={(e)=>{
+                                    {lang == 'ru' ? <input className={s.var__title__inp} value={elem.variable[lang]} type="text" placeholder={t("admin-product-price-var-var")} onChange={(e)=>{
                                         onClickHendler(index,'variable',replaceStr(e.target.value));
         addState(state)
                                         
@@ -58,14 +59,14 @@ const ProductPriceVar = ({addState,prices,lang})=>{
                                 </div>
                                 <div className={s.var__price}>
                                     <div>
-                                        <input className={s.price__item} value={elem.price} type="number" placeholder="Цена" onChange={(e)=>{
+                                        <input className={s.price__item} value={elem.price} type="number" placeholder={t("admin-product-register-price")} onChange={(e)=>{
                                             onClickHendler(index,'price',replaceStr(e.target.value))
         addState(state)
                                           
                                         }}/>
                                     </div>
                                     <div>
-                                        <input className={s.price__item} value={elem.discountPrice} type="number" placeholder="Цена со скидкой" onChange={(e)=>{
+                                        <input className={s.price__item} value={elem.discountPrice} type="number" placeholder={t("admin-product-price-var-price-disk")} onChange={(e)=>{
                                             onClickHendler(index,'discountPrice',replaceStr(e.target.value))
         addState(state)
                                            

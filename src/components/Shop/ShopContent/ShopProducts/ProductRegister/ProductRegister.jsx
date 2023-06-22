@@ -105,11 +105,11 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                 <form action="" onSubmit={sendForm}> 
                     <div className={s.form__in}>
                         <div className={s.input__div}>
-                            <h2>Добавить товар</h2>
+                            <h2>{t("admin-product-register-add-product")}</h2>
                         </div>
                         <div className={s.input__div}>
                             <label className={s.input__label} htmlFor="">
-                                <p>Название</p> 
+                                <p>{t("admin-product-register-naming")}</p>
                                 <div className={s.langs}>
                                     <span className={`${s.input__lang} ${control.langGeName ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'ge', langGeName: true, langEnName: false, langeRuName: false})}}>Ge</span>
                                     <span className={`${s.input__lang} ${control.langEnName ? s.input__lang__spec : null}`} onClick={()=>{setControl({...control, lang: 'en', langGeName: false, langEnName: true, langeRuName: false})}}>En</span>
@@ -122,7 +122,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         </div>
                         <div className={s.input__div}>
                             <label className={s.input__label} htmlFor="">
-                                <p>Категория</p>
+                                <p>{t("admin-product-register-category")}</p>
                             </label>
                             <div className={s.cat__select}>
                                 <div className={s.cat__selected}>
@@ -146,7 +146,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                                         setControl({...control, 
                                         selectCategories: !control.selectCategories, 
                                         changeArrowCategory: !control.changeArrowCategory})}}>
-                                    <span>Выбрать категорию <span><img className={`${s.cat__arrow} ${control.changeArrowCategory ? s.active : ''}`} src={arrow} alt="" /></span></span>
+                                    <span>{t("admin-product-register-choose-category")} <span><img className={`${s.cat__arrow} ${control.changeArrowCategory ? s.active : ''}`} src={arrow} alt="" /></span></span>
                                     
                                 </div>
                                 {control.changeArrowCategory ? <div className={s.sel__cat}>
@@ -162,28 +162,29 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         </div>
                         <div className={s.input__div}>
                             <label className={s.input__label} htmlFor="">
-                                <p>Тип</p>
+                                <p>{t("admin-product-register-type")}</p>
                             </label>
+                            {/*Todo:///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
                             <div className={s.select}>
                                 <div className={s.select__in} onClick={()=>{setControl({...control, selectPrice: !control.selectPrice, changeArrowType: !control.changeArrowType})}}>
-                                    <input type="text" required disabled className={s.input__select} value={state.type.variable ? "Вариативный" : "Не вариативный"}/>
+                                    <input type="text" required disabled className={s.input__select} value={state.type.variable ? t("admin-product-register-variate") : t("admin-product-register-not-variate")}/>
                                     <img src={arrow} className={`${s.arrow} ${control.changeArrowType ? s.arrow__deg : null}`} alt="Стрелка"/>
                                 </div>
                                 {control.selectPrice ? <div className={s.select__input__wrap}>
                                     <p className={s.select__p} onClick={()=>{
                                         setState({...state, type: {...state.type, variable: true, defaulte: false}})
                                         setControl({...control, selectPrice: !control.selectPrice})
-                                    }}>Вариативный</p>
+                                    }}>{t("admin-product-register-variate")}</p>
                                     <p className={s.select__p} onClick={()=>{
                                        setState({...state, type: {...state.type, variable: false, defaulte: true}})  
                                        setControl({...control, selectPrice: !control.selectPrice})  
-                                    }}>Не вариативный</p>
+                                    }}>{t("admin-product-register-not-variate")}</p>
                                 </div> : null}
                             </div>
                         </div>
                         <div className={s.input__div}>
                             <label className={s.input__label} htmlFor="">
-                                <p>Цена</p>
+                                <p>{t("admin-product-register-price")}</p>
                             </label>
                             <div className={s.input__price__wrap}>
                                 {
@@ -197,7 +198,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         </div>
                         <div className={s.input__div}>
                             <label className={s.input__label} htmlFor="">
-                                <p>Количество на складе</p>
+                                <p>{t("admin-product-register-count")}</p>
                             </label>
                             <input type="number" value={state.inStock.amount} onChange={(e)=>{
                                 setState({...state,inStock:{...state.inStock,amount:e.target.value}})
@@ -207,7 +208,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         </div>
                         <div className={s.input__div}>
                             <label htmlFor="" className={s.input__label}>
-                                <p>Описание</p>
+                                <p>{t("admin-product-register-description")}</p>
                         
                             </label>
                             <textarea required value={state.description[control.lang]} className={s.textarea} name="" id="" cols="30" rows="10" onChange={(event)=>{
@@ -216,7 +217,7 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         </div>
                         <div className={s.input__div}>
                             <label htmlFor="" className={s.input__label}>
-                                <p>Характеристики</p>
+                                <p>{t("admin-product-register-char")}</p>
                                
                             </label>
                              <ProductCharacteristic char={state.characteristic} lang={control.lang} addState = {(arg)=>{setState({...state,characteristic:arg})}}/>
@@ -226,7 +227,6 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
                         addState={(arg)=>{}}/>
                         <ProductImages images={state.images} setState = {(arg)=>setState({...state,images:arg})} addState={(arg)=>{
                             uploadImages(arg);
-                            console.log(arg.files)
                             }} />
                         <Alert severity="warning">{t("admin-product-register-photo-alert")}</Alert>
                     </div>

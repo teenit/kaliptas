@@ -1,9 +1,12 @@
 import React from "react";
 import s from './../ProductRegister.module.css'
 import { useState } from "react";
+import {useTranslation} from "react-i18next";
 
 const ProductImages =({addState,images,setState})=>{
     const [previewImgS, setPreviewImgS] = useState([]);
+    const {t} = useTranslation()
+
     function handleFilesSelect(evt,setImg) {
             var files = evt.target.files;
             let a = [];
@@ -36,7 +39,7 @@ const ProductImages =({addState,images,setState})=>{
     return(
         <div className={s.input__div}>
         <label htmlFor="" className={s.input__label}>
-            <p>Дополнительные изображения</p>
+            <p>{t("admin-product-images-dop")}</p>
         </label>
         <input style={{display:"none"}} type="file" multiple name="images[]" id="mainImgS" onChange={(e)=>{
             handleFilesSelect(e,(arg)=>{setPreviewImgS(arg)});
