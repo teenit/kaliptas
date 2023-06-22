@@ -10,6 +10,14 @@
     "categories":"Категории",
     "logout":"Выйти",
 
+    "Add product": "Добавить товар",
+    "count": "Количество",
+    "articul" : "Артикул",
+    "items": "Товары",
+    "stats": "Статистика",
+    "support": "Поддержка",
+
+
     "products":"Товары",
     "category":"Категория",
     "parentCategory":"Родительская категория",

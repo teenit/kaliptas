@@ -14,11 +14,7 @@ const Header = ({menuItems,burgerItems}) =>{
       const [state, setState] = useState(false)
       const [burgMenu, setBurgMenu] = useState(false)
     const language = localStorage.getItem("LNG").toLowerCase();
-    useEffect(()=>{
-        apiResponse({search:1},'search-product.php').then((e)=>{
-            console.log(e)
-        }).catch((e)=>console.log(e))
-    },[])
+
     return(
         <div className={s.header}>
          

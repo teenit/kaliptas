@@ -13,6 +13,13 @@
     "price":"Price",
     "date start":"Checkout time",
 
+    "Add product": "Add item",
+    "count": "Quantity",
+    "articul" : "Vendor code",
+    "items": "Goods",
+    "stats": "Statistics",
+    "support": "Support",
+
     "products":"Products",
     "category":"Category",
     "parentCategory":"Parent Category",

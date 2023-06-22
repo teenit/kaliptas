@@ -4,11 +4,12 @@ import ss from './ShopProduct/style.module.css';
 import ProductRegister from "./ProductRegister/ProductRegister";
 import { api, apiResponse } from "../../../functions/api";
 import ShopProduct from "./ShopProduct/ShopProduct";
-import { t } from "i18next";
+import {useTranslation} from "react-i18next";
 
 const ShopProducts = ({shop})=>{
     const [closeModal, setCloseModal] = useState(false);
-    const [products,setProducts] = useState([])
+    const [products,setProducts] = useState([]);
+    const {t} = useTranslation()
     const [stateProduct, setStateProduct] = useState({
         shopID:shop.id,
         shopTitle:shop.shop.title,
@@ -99,13 +100,13 @@ const ShopProducts = ({shop})=>{
                     <span>№</span>
                 </div>
                 <div className={ss.image}>
-                    Фото
+                    {t("photo")}
                 </div>
-                <div className={ss.title}>Название</div>
-                <div className={ss.article}>Артикул</div>
-                <div className={ss.amount}>Количество</div>
-                <div className={ss.price}>Цена</div>
-                <div className={ss.status}>Статус</div>
+                <div className={ss.title}>{t("name")}</div>
+                <div className={ss.article}>{t("articul")}</div>
+                <div className={ss.amount}>{t("count")}</div>
+                <div className={ss.price}>{t("price")}</div>
+                <div className={ss.status}>{t("status")}</div>
             </div>
         </div>
             {

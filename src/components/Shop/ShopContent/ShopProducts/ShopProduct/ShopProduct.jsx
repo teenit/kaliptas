@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import s from './style.module.css'
 import editImg from './../../../../../img/admin/icons8-edit-50.png';
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import ProductRegister from "../ProductRegister/ProductRegister";
 import { api } from "../../../../functions/api";
 
 const ShopProduct = ({productItem,userType,index,shop}) =>{
     const [product, setProduct] = useState({...productItem.product});
+    const {t} = useTranslation();
     
     const [closeModal,setCloseModal] = useState(false)
     const number = index + 1
