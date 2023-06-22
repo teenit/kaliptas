@@ -127,6 +127,10 @@
     display: block;
     max-height: 100%;
 }
+.prod__dop__wrap{
+    height: max-content;
+    overflow: hidden;
+}
 
 
 .main__image{
@@ -536,8 +540,10 @@
     .prod__wrap{
         gap: 15px;
     }
-    .prod__slider{
+    .prod__dop__wrap{
         width: 90vw;
+    }
+    .prod__slider{
         height: 60px;
     }
     .desc__part{

@@ -233,23 +233,25 @@ const FrontProduct = () => {
                                         <img className={s.prod__dop__img} src={image} alt="Главное изображение" />
                                     </div>
                                 </div>
-                                {
-                                    allPhotosMas.length > 0 ? 
-                                        <div className={s.prod__slider}>
-                                            {
-                                                allPhotosMas.map((item, index) => {
-                                                    return (
-                                                        <div key={index} className={s.slide} onClick={() => {
-                                                            setImage(item)
-                                                        }}>
-                                                            <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    : null
-                                }
+                                <div className={s.prod__dop__wrap}>
+                                    {
+                                        allPhotosMas.length > 0 ? 
+                                            <div className={s.prod__slider}>
+                                                {
+                                                    allPhotosMas.map((item, index) => {
+                                                        return (
+                                                            <div key={index} className={s.slide} onClick={() => {
+                                                                setImage(item)
+                                                            }}>
+                                                                <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                        : null
+                                    }
+                                </div>
                             </div>
                             <div className={s.description}>
                                 <div className={s.desc__part}>
