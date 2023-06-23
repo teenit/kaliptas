@@ -59,7 +59,7 @@ const FrontProduct = () => {
         if(window.innerWidth < 600){
             setAmountInRow(1)
         }else{
-            setAmountInRow(2)
+            setAmountInRow(3)
         }
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
@@ -407,9 +407,9 @@ const FrontProduct = () => {
                                             <div className={s.prod__img__dop}>
                                                 <div className={s.dop__photos__wrap}>
                                                     {
-                                                        <ImageList sx={{ width: "100%", margin: "auto", marginTop: "20px"}} cols={amountInRow} rowHeight={300} gap={15}>
+                                                        <ImageList sx={{ width: "100%", margin: "auto", marginTop: "20px"}} cols={amountInRow}  gap={15}>
                                                             {allPhotosMas.map((item, index) => (
-                                                                <ImageListItem key={index} sx={{height: 300}} onClick={()=>{
+                                                                <ImageListItem key={index} onClick={()=>{
                                                                     handleOpen()
                                                                     setImageIndex(index)
                                                                 }}>
