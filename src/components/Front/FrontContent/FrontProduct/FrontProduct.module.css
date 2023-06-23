@@ -122,10 +122,16 @@
     cursor: pointer;
     margin: 0 5px;
     transition: all .5s;
+    min-width: 0;
+    display: contents;
 }
 .slide__dop{
     display: block;
     max-height: 100%;
+}
+.prod__dop__wrap{
+    height: max-content;
+    overflow: hidden;
 }
 
 
@@ -468,8 +474,6 @@
     font-size: 18px;
 }
 .dop__photo{
-    height: 100%!important;
-    width: 100%!important;
     border-radius: 10px;
 }
 .open__img__wrap{
@@ -536,8 +540,10 @@
     .prod__wrap{
         gap: 15px;
     }
-    .prod__slider{
+    .prod__dop__wrap{
         width: 90vw;
+    }
+    .prod__slider{
         height: 60px;
     }
     .desc__part{

@@ -59,7 +59,7 @@ const FrontProduct = () => {
         if(window.innerWidth < 600){
             setAmountInRow(1)
         }else{
-            setAmountInRow(2)
+            setAmountInRow(3)
         }
         api((response) => {
             let loadedProduct = new ProductObject(response, getRealLanguage());
@@ -233,23 +233,25 @@ const FrontProduct = () => {
                                         <img className={s.prod__dop__img} src={image} alt="Главное изображение" />
                                     </div>
                                 </div>
-                                {
-                                    allPhotosMas.length > 0 ? 
-                                        <div className={s.prod__slider}>
-                                            {
-                                                allPhotosMas.map((item, index) => {
-                                                    return (
-                                                        <div key={index} className={s.slide} onClick={() => {
-                                                            setImage(item)
-                                                        }}>
-                                                            <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    : null
-                                }
+                                <div className={s.prod__dop__wrap}>
+                                    {
+                                        allPhotosMas.length > 0 ? 
+                                            <div className={s.prod__slider}>
+                                                {
+                                                    allPhotosMas.map((item, index) => {
+                                                        return (
+                                                            <div key={index} className={s.slide} onClick={() => {
+                                                                setImage(item)
+                                                            }}>
+                                                                <img className={s.slide__dop} src={item} alt="Дополнительное изображение" />
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                        : null
+                                    }
+                                </div>
                             </div>
                             <div className={s.description}>
                                 <div className={s.desc__part}>
@@ -405,9 +407,9 @@ const FrontProduct = () => {
                                             <div className={s.prod__img__dop}>
                                                 <div className={s.dop__photos__wrap}>
                                                     {
-                                                        <ImageList sx={{ width: "100%", margin: "auto", marginTop: "20px"}} cols={amountInRow} rowHeight={300} gap={15}>
+                                                        <ImageList sx={{ width: "100%", margin: "auto", marginTop: "20px"}} cols={amountInRow}  gap={15}>
                                                             {allPhotosMas.map((item, index) => (
-                                                                <ImageListItem key={index} sx={{height: 300}} onClick={()=>{
+                                                                <ImageListItem key={index} onClick={()=>{
                                                                     handleOpen()
                                                                     setImageIndex(index)
                                                                 }}>
