@@ -90,11 +90,12 @@
 .delete{
     align-items: center;
 }
-.delete > img{
-    width: 14px;
+.delete > svg{
+    width: 16px;
     cursor: pointer;
     align-self: center;
     display: flex;
+    fill: var(--purple-color);
 }
 .main__line{
     width: 90%;
