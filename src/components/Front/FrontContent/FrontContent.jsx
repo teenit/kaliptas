@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Content.module.css'
-import { Route, Routes } from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import FrontPage from "./FrontPage/FrontPage";
 import FrontProduct from "./FrontProduct/FrontProduct";
 import Cart from "./Pages/Cart/Cart";
@@ -16,6 +16,7 @@ const FrontContent = () => {
     return (
         <div className={s.wrapper}>
             <Routes>
+                <Route path={'/ge'}  element={<Navigate to='/' />}/>
                 <Route path={''} element = {<FrontPage />}/>
                 <Route path={'/product/:id'} element = {<FrontProduct />}/>
                 <Route path={'/cart'} element = {<Cart />}/>
