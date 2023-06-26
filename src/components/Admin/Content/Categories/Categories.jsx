@@ -8,6 +8,7 @@ import imgArrow from "../../../../img/collapse-arrow-50.png";
 import imgLoading from "../../../../img/admin/loading.gif";
 import { use } from "i18next";
 import axios from "axios";
+import {useTranslation} from "react-i18next";
 
 const createTreeData = (arr, idProp, parentProp) => {
     const tree = Object.fromEntries(arr.map(n => [ n[idProp], { ...n, children: [] } ]));
@@ -20,6 +21,7 @@ const Categories = ()=>{
     const [showList, setShowList] = useState(false)
     const [showForm, setShowForm] = useState(false)
     const [showCateg, setShowCateg] = useState(true)
+    const {t} = useTranslation();
     useEffect(()=>{
         api((arg)=>{
             setCats(createTreeData(arg,'id','parent_id'));
@@ -85,7 +87,7 @@ const Categories = ()=>{
             <div className={s.add__wrap}>
                 <div className={s.add__in}>
                     <div className={s.title}>
-                        <h2>Добавить категорию</h2>
+                        <h2>{t("add-cat")}</h2>
                     </div>
                     <div className={s.add__shop} onClick={()=>setShowForm(!showForm)}>
                         <span className={`${s.span} ${s.span1}`}></span>
@@ -95,29 +97,29 @@ const Categories = ()=>{
                 {showForm ? <div className={s.in}>
                 <form className={s.form} onSubmit={sendForm}>
                     <div className={s.input__wrap}>
-                        <p>Введите название категории</p>
+                        <p>{t("enter-cat-name")}</p>
                         <div className={s.input__in}>
-                            <input className={s.inp} value={state.title.ge} required type="text" placeholder="Name of category GE" onChange={(e)=>{
+                            <input className={s.inp} value={state.title.ge} required type="text" placeholder="GE" onChange={(e)=>{
                                 setState({...state,title:{...state.title,ge:e.target.value}})
                             }}/>
-                            <input className={s.inp} value={state.title.en} required type="text" placeholder="Name of category EN" onChange={(e)=>{
+                            <input className={s.inp} value={state.title.en} required type="text" placeholder="EN" onChange={(e)=>{
                                 setState({...state,title:{...state.title,en:e.target.value}})
                             }}/>
-                            <input className={s.inp} value={state.title.ru} required type="text" placeholder="Name of category RU" onChange={(e)=>{
+                            <input className={s.inp} value={state.title.ru} required type="text" placeholder="RU" onChange={(e)=>{
                                 setState({...state,title:{...state.title,ru:e.target.value}})
                             }}/>
                         </div>
                     </div>
                     <div className={s.input__wrap}>
-                        <p>Введите описание категории</p>
+                        <p>{t("enter-cat-desk")}</p>
                         <div className={s.input__in}>
-                            <input className={s.inp} type="text" placeholder="Description of category GE" onChange={(e)=>{
+                            <input className={s.inp} type="text" placeholder="GE" onChange={(e)=>{
                                 setState({...state,description:{...state.description,ge:e.target.value}})
                             }}/>
-                            <input className={s.inp} type="text" placeholder="Description of category EN" onChange={(e)=>{
+                            <input className={s.inp} type="text" placeholder="EN" onChange={(e)=>{
                                 setState({...state,description:{...state.description,en:e.target.value}})
                             }}/>
-                            <input  className={s.inp} type="text" placeholder="Description of category RU" onChange={(e)=>{
+                            <input  className={s.inp} type="text" placeholder="RU" onChange={(e)=>{
                                 setState({...state,description:{...state.description,ru:e.target.value}})
                             }}/>
                         </div>
@@ -129,26 +131,27 @@ const Categories = ()=>{
                                 <input defaultChecked={true} id="cat0" type="radio" name="catRadio" onChange={(e)=>{
                                     setState({...state,"parent_id":0})
                                 }} /> 
-                                <span>Нет родительской категории</span>
+                                <span>{t("cat-no-parent")}</span>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div className={s.categories__wrap}>
                     <div className={s.categories__in} onClick={()=>setShowList(!showList)}>
-                        <h3>Родительские категории</h3>
+                        <h3>{t("parent-cats")}</h3>
                         <img className={`${s.imgArrow} ${showList ? s.active : ''}`} src={imgArrow} alt="Стрелка" />
                     </div>
                     {showList ? <CreateTreeList lng = {lng} data={cats} setState = {(arg)=>setState({...state,"parent_id":arg})}/>:null}
                 </div>
                 <div className={s.cat__in__img}>
+                    <h3>{t("cat-image")}</h3>
                     <div className={s.cat__img__load}>
                         <label htmlFor="cat__img">
                             <input type="file" id="cat__img" onChange={(e)=>{setState({...state,image:e.target.files})}}/>
                         </label>
                     </div>
                 </div>
-                <button disabled = {loading} className={s.btn}>Cоздать категорию</button>
+                <button disabled = {loading} className={s.btn}>{t("create-cat")}</button>
                 {loading ? <img className={s.load__img} src={imgLoading} alt="" />:null}
                 </form>
             </div> : null}
@@ -156,7 +159,7 @@ const Categories = ()=>{
             <div className={s.categories}>
                 <div className={s.categories_inner}>
                     <div className={s.categories__text} onClick={()=>{setShowCateg(!showCateg)}} >
-                        <h2>Категории</h2>
+                        <h2>{t("categories")}</h2>
                         <img className={`${s.categ__arrow} ${showCateg ? s.categ__arrow__change : null}`} src={imgArrow} alt="Стрелка"/>
                     </div>
                     {showCateg ? <div className={s.wrap__list__pad}><CreateTreeHTML data={cats}/></div>  : null}            
