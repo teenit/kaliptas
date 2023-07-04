@@ -1,4 +1,3 @@
-import React from "react";
 import s from './Content.module.css'
 import {Navigate, Route, Routes} from "react-router-dom";
 import FrontPage from "./FrontPage/FrontPage";

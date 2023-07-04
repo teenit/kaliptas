@@ -203,5 +203,6 @@
 
     "burger-profile":"Profile",
     "burger-list":"Wishlist",
-    "front-page-we-have-all":"We have everything and more"
+    "front-page-we-have-all":"We have everything and more",
+    "add-cart-item": "Item added to cart"
 }
