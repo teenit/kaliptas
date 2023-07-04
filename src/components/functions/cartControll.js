@@ -1,3 +1,6 @@
+import { store } from "../../Store";
+import { showTooltip } from "../../Store/Slices/cartSlice";
+
 const productListKey = "cart-content";
 export const EMPTY_VARIABLE_ID = "empty-var-id"
 
@@ -10,6 +13,7 @@ export function buy(id, variableId) {
     }
 
     let cartMap = getCart();
+    store.dispatch(showTooltip({text :"Test"}));
 
     cartMap.push(new CartItem(id, 1, variableId));
 
