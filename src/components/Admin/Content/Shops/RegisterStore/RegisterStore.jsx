@@ -45,7 +45,7 @@ const RegisterStore = ({close,newStore,setNewStore,regStore, btn}) =>{
                     </div>
                 </div>
                 <div className={s.input__div}>
-                    <button onClick={regStore} className={s.btn}>{btn}</button>
+                    <button onClick={regStore} className={s.btn}>Создать магазин</button>
                 </div>
             </form>
         </div>

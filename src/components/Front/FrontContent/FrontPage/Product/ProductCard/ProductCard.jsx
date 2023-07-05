@@ -14,6 +14,7 @@ import cartPlus from "../../../../../../img/front/cartPlus.png";
 import {getLanguageForRootLink, getRealLanguage} from "../../../../../functions/getLanguage";
 import {getCurrencyTag} from "../../../../../functions/utils";
 import { useTranslation } from "react-i18next";
+import CartModal from "../../../../../Modals/CartModal/CartModal";
 
 const ProductCard = ({ id }) => {
     const {t} = useTranslation()
@@ -23,6 +24,9 @@ const ProductCard = ({ id }) => {
     const [ready, setReady] = useState(false);
     const [product, setProduct] = useState({});
     const [countInCart, setCountInCart] = useState(0);
+    const [openedModalCart, setOpenedModalCart] = useState(false);
+    const closeModalCart = () => setOpenedModalCart(false); 
+    const openModalCart = () => setOpenedModalCart(true); 
 
     useEffect(()=>{
         api((response)=>{
@@ -65,14 +69,17 @@ const ProductCard = ({ id }) => {
                 </div>)
                 :
                 (<div className={s.buy} onClick={(event)=>{
+                    
                     buy(id, variableId);
                     setCountInCart(1);
+                    openModalCart();
                 }}>{t('frontProduct-buyButton')}</div>))
             : <div className={`${s.buy} ${s.inactive}`}>{t('frontProduct-buyButton')}</div>
     }
 
     return ready ? (
         <div className={s.in}>
+            {openedModalCart ? <CartModal close={closeModalCart} />:null}
             <div className={s.in__dop}>
                 <div className={s.section__img}>
                     <Link className={s.img__link} to={getLanguageForRootLink() + "/product/" + product.getLink()}>

@@ -8,7 +8,7 @@ import s from "./CartModal.module.css"
 import {Link, useLocation} from "react-router-dom";
 import {getCurrencyTag} from "../../functions/utils";
 
-const CartModal = ({close, }) =>{
+const CartModal = ({close}) =>{
     const {t}  = useTranslation();
     const [totalPrice, setTotalPrice] = useState(0);
     const [itemsCount, setItemsCount] = useState(getCartItemsCount())
