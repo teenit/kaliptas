@@ -58,7 +58,7 @@ const Catalog = ()=>{
 
     return(
         <div className={s.wrap}>
-            <h2 className={s.title__main}>Категории товаров</h2>
+            <h2 className={s.title__main}>{t('catalog-categ')}</h2>
             <div className={s.category__container}>
                 {dopLoadedCategories.map((item, index)=> {
                     return (

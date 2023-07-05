@@ -99,7 +99,7 @@ function Category(props) {
             <div className={s.mobile__filter} onClick={()=>{
                 setShowFilter(!showFilter)
             }}>
-                <p>Фильтры</p>
+                <p>{t('category-filters')}</p>
             </div>
             {
                 showFilter ? 

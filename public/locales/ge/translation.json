@@ -233,5 +233,8 @@
     "register-buyer-phone":"ტელეფონი",
     "register-buyer-date":"Დაბადების თარიღი",
     "register-buyer-pass":"პაროლი",
-    "register-buyer-more-pass":"Გაიმეორეთ პაროლი"
+    "register-buyer-more-pass":"Გაიმეორეთ პაროლი",
+
+    "catalog-categ":"Პროდუქტის კატეგორიები",
+    "category-filters":"ფილტრები"
 }

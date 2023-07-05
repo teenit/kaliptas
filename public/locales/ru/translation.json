@@ -207,5 +207,8 @@
     "register-buyer-phone":"Телефон",
     "register-buyer-date":"Дата рождения",
     "register-buyer-pass":"Пароль",
-    "register-buyer-more-pass":"Повторите пароль"
+    "register-buyer-more-pass":"Повторите пароль",
+
+    "catalog-categ":"Категории товаров",
+    "category-filters":"Фильтры"
 }

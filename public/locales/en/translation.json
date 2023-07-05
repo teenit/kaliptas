@@ -229,5 +229,8 @@
     "register-buyer-phone":"Phone",
     "register-buyer-date":"Birthday",
     "register-buyer-pass":"Password",
-    "register-buyer-more-pass":"Repeat password"
+    "register-buyer-more-pass":"Repeat password",
+
+    "catalog-categ":"Product categories",
+    "category-filters":"Filters"
 }
