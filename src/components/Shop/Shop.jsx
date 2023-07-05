@@ -35,7 +35,6 @@ const Shop = ()=>{
     return auth ?(
         <>
             <Header burgerItems = {burgerItems} menuItems = {menuItems} />
-
                <div style={{width:'80%',margin:"auto"}}><ShopContent /></div> 
             <Footer />
             

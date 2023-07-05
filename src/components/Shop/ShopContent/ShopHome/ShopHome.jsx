@@ -9,7 +9,7 @@ const ShopHome = ({link})=>{
         },{slug:link},"manage/shop/get-shop.php")
     },[])
     return(
-        <div>ShopHome</div>
+        <div>In development</div>
     )
 }
 export default ShopHome;

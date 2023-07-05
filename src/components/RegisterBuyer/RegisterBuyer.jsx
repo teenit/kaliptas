@@ -25,11 +25,11 @@ const RegisterBuyer = () =>{
 
 
     function sendForm(event){
+       
         event.preventDefault();
-        console.log(state);
-        
         api((arg)=>{
             alert(t(arg.message))
+           // window.location.reload()
         },{
             ...state, 
             userName: `${state.surname} ${state.name} ${state.fathersName}`.trim(),
@@ -80,7 +80,7 @@ const RegisterBuyer = () =>{
                     <input required value={state.checkPass} type="password" onChange={(event)=>{setState({...state, checkPass: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <Button className="btn" variant="contained" endIcon={<Send/>}>{t('Register')}</Button>
+                    <Button className="btn" onClick={sendForm} variant="contained" endIcon={<Send/>}>{t('Register')}</Button>
                     
                 </div>
             </form>

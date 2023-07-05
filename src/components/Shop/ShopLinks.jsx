@@ -54,9 +54,9 @@ const ShopLInks = ()=>{
         })
     },[])
     const regStore = () =>{
-        console.log(newStore)
         apiResponse({slug:newStore.slug,shop:{...newStore}},"manage/shops/create-shop.php").then((e)=>{
-            console.log(e)
+            window.alert("Магазин успешно создан, ожидайте активации");
+            window.location.reload()
         })
     }
     

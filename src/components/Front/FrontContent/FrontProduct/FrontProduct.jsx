@@ -23,6 +23,7 @@ import {CategoryObject} from "../Pages/Category/CategoryObject";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Backdrop from '@mui/material/Backdrop';
+import CartModal from "../../../Modals/CartModal/CartModal";
 
 const FrontProduct = () => {
     const { t } = useTranslation()
@@ -315,6 +316,7 @@ const FrontProduct = () => {
                         </div>
                     </div>
                 </div>
+                
                 <div className={s.wrap__in}>
                     <div className={s.dop__in}>
                         <div className={s.in__desc}>
