@@ -236,5 +236,21 @@
     "register-buyer-more-pass":"Გაიმეორეთ პაროლი",
 
     "catalog-categ":"Პროდუქტის კატეგორიები",
-    "category-filters":"ფილტრები"
+    "category-filters":"ფილტრები",
+
+    "register-store-shop-name":"მაღაზიის დასახელება",
+    "register-store-shop-desc":"მაღაზიის აღწერა",
+    "register-store-prod-type":"Პროდუქტის ტიპი",
+    "register-store-shop-unique":"შეიყვანეთ მაღაზიის უნიკალური სახელი, შეგიძლიათ გამოიყენოთ მხოლოდ ლათინური სიმბოლოები და ტირეები",
+    "register-store-shop-create":"შექმენით მაღაზია",
+    "register-store-gerg":"ქართულად*",
+    "register-store-enf":"Ინგლისურად",
+    "register-store-ru":"Რუსულად",
+    "register-store-exampla":"მაგალითი: my-store-big-food",
+
+    "shop-links-succes":"მაღაზია წარმატებით შეიქმნა, გთხოვთ დაელოდოთ გააქტიურებას",
+    "shop-links-stores":"Მაღაზიები",
+    "shop-links-name":"სახელი",
+    "shop-links-desc":"აღწერა",
+    "shop-links-go-to":"მაღაზიაში წასვლა"
 }

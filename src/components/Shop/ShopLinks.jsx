@@ -55,7 +55,7 @@ const ShopLInks = ()=>{
     },[])
     const regStore = () =>{
         apiResponse({slug:newStore.slug,shop:{...newStore}},"manage/shops/create-shop.php").then((e)=>{
-            window.alert("Магазин успешно создан, ожидайте активации");
+            window.alert(t('shop-links-succes'));
             window.location.reload()
         })
     }
@@ -72,7 +72,7 @@ const ShopLInks = ()=>{
             </div>
                 {state ? <RegisterStore regStore = {regStore} newStore = {newStore} setNewStore = {setNewStore} close = {()=>setState(!state)}/> : null}
                 
-            <h2>Магазины</h2>
+            <h2>{t('shop-links-stores')}</h2>
             <div className={s.cards}>
 
             
@@ -82,11 +82,11 @@ const ShopLInks = ()=>{
                     return(
                     <div key={item.slug} className={`${s.card} ${item.status.value ? s.active__shop : s.not__active__shop}`}>
                         <div>
-                            <p>Название - {item.shop.title[lng] == "" ? item.shop.title.ge :item.shop.title[lng]}</p>
-                            <p>Описание - {item.shop.description[lng] == "" ? item.shop.description.ge : item.shop.description[lng]}</p>
+                            <p>{t('shop-links-name')} - {item.shop.title[lng] == "" ? item.shop.title.ge :item.shop.title[lng]}</p>
+                            <p>{t('shop-links-desc')} - {item.shop.description[lng] == "" ? item.shop.description.ge : item.shop.description[lng]}</p>
                         </div>
                         {item.status.value ?<div>
-                            <NavLink key={item.slug} to={item.slug}>Перейти в магазин</NavLink>
+                            <NavLink key={item.slug} to={item.slug}>{t('shop-links-go-to')}</NavLink>
                         </div>:null}
                         
 

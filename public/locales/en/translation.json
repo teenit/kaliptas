@@ -232,5 +232,21 @@
     "register-buyer-more-pass":"Repeat password",
 
     "catalog-categ":"Product categories",
-    "category-filters":"Filters"
+    "category-filters":"Filters",
+
+    "register-store-shop-name":"Store name",
+    "register-store-shop-desc":"Store description",
+    "register-store-prod-type":"Product type",
+    "register-store-shop-unique":"Enter a unique store name, only Latin characters and dashes can be used",
+    "register-store-shop-create":"Create a store",
+    "register-store-gerg":"In Georgian*",
+    "register-store-enf":"In English",
+    "register-store-ru":"In Russian",
+    "register-store-exampla":"example: my-store-big-food",
+
+    "shop-links-succes":"Store successfully created, please wait for activation",
+    "shop-links-stores":"Stores",
+    "shop-links-name":"Naming",
+    "shop-links-desc":"Description",
+    "shop-links-go-to":"Go to store"
 }

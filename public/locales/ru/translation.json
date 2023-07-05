@@ -210,5 +210,21 @@
     "register-buyer-more-pass":"Повторите пароль",
 
     "catalog-categ":"Категории товаров",
-    "category-filters":"Фильтры"
+    "category-filters":"Фильтры",
+
+    "register-store-shop-name":"Название магазина",
+    "register-store-shop-desc":"Описание магазина",
+    "register-store-prod-type":"Тип продукции",
+    "register-store-shop-unique":"Введите уникальное имя магазина, можно использовать только латинские символы и тире",
+    "register-store-shop-create":"Создать магазин",
+    "register-store-gerg":"На грузинском*",
+    "register-store-enf":"На английском",
+    "register-store-ru":"На русском",
+    "register-store-exampla":"пример: my-store-big-food",
+
+    "shop-links-succes":"Магазин успешно создан, ожидайте активации",
+    "shop-links-stores":"Магазины",
+    "shop-links-name":"Название",
+    "shop-links-desc":"Описание",
+    "shop-links-go-to":"Перейти в магазин"
 }
