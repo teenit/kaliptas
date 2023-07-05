@@ -182,5 +182,30 @@
     "burger-profile": "Профиль",
     "burger-list": "Список желаний",
     "front-page-we-have-all": "У нас есть все и даже больше",
-    "add-cart-item": "Товар добавлен в корзину"
+    "add-cart-item": "Товар добавлен в корзину",
+
+    "auth-forgot-pass":"Забыли пароль",
+    "auth-remake-pass":"Восстановить",
+    "auth-no-acc":"Еше нет аккаунта",
+    "auth-register":"Зарегистрироваться",
+    "auth-have-acc":"Есть аккаунт",
+    "auth-auth":"Авторизоваться",
+    
+    "login-auth-auth":"Авторизация",
+
+    "login-form-pass":"Пароль",
+    "login-form-capcha":"Введите ответ на пример",
+
+    "login-form-code-capcha":"Код с почты",
+
+    "restore-form-restore":"Восстановление",
+
+    "register-buyer-register":"Регистрация",
+    "register-buyer-name":"Имя",
+    "register-buyer-surname":"Фамилия",
+    "register-buyer-fathersname":"Отчество",
+    "register-buyer-phone":"Телефон",
+    "register-buyer-date":"Дата рождения",
+    "register-buyer-pass":"Пароль",
+    "register-buyer-more-pass":"Повторите пароль"
 }

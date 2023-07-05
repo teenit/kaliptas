@@ -45,22 +45,22 @@ const RegisterBuyer = () =>{
     return(
         <div className={s.page}>
             <div className={s.wrap}>
-            <h2 className={s.title}>Регистрация</h2>
+            <h2 className={s.title}>{t('register-buyer-register')}</h2>
             <form  onSubmit={sendForm} className={s.form} action="">
                 <div className={s.inp__div}>
-                    <label htmlFor="">Имя</label>
+                    <label htmlFor="">{t('register-buyer-name')}</label>
                     <input required value={state.name} type="text" onChange={(event)=>{setState({...state, name: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <label htmlFor="">Фамилия</label>
+                    <label htmlFor="">{t('register-buyer-surname')}</label>
                     <input required value={state.surname} type="text" onChange={(event)=>{setState({...state, surname: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <label htmlFor="">Отчество</label>
+                    <label htmlFor="">{t('register-buyer-fathersname')}</label>
                     <input value={state.fathersName} type="text" onChange={(event)=>{setState({...state, fathersName: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <label htmlFor="">Телефон</label>
+                    <label htmlFor="">{t('register-buyer-phone')}</label>
                     <input required value={state.phone} type="number" onChange={(event)=>{setState({...state, phone: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
@@ -68,15 +68,15 @@ const RegisterBuyer = () =>{
                     <input required value={state.email} type="email" onChange={(event)=>{setState({...state, email: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <label htmlFor="">Дата рождения</label>
+                    <label htmlFor="">{t('register-buyer-date')}</label>
                     <input required value={state.happy} type="date" onChange={(event)=>{setState({...state, happy: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <label htmlFor="">Пароль</label>
+                    <label htmlFor="">{t('register-buyer-pass')}</label>
                     <input required value={state.pass} type="password" onChange={(event)=>{setState({...state, pass: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>
-                    <label htmlFor="">Повторите пароль</label>
+                    <label htmlFor="">{t('register-buyer-more-pass')}</label>
                     <input required value={state.checkPass} type="password" onChange={(event)=>{setState({...state, checkPass: event.target.value})}}/>
                 </div>
                 <div className={s.inp__div}>

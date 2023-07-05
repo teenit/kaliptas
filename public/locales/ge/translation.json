@@ -208,5 +208,30 @@
     "burger-profile":"პროფილი",
     "burger-list":"სურვილების სია",
     "front-page-we-have-all":"გვაქვს ყველაფერი და მეტი",
-    "add-cart-item": "საქონელი დამატებულია კალათაში"
+    "add-cart-item": "საქონელი დამატებულია კალათაში",
+
+    "auth-forgot-pass":"დაგავიწყდათ პაროლი",
+    "auth-remake-pass":"აღდგენა",
+    "auth-no-acc":"ჯერ არ არის ანგარიში",
+    "auth-register":"რეგისტრაცია",
+    "auth-have-acc":"გქონდეთ ანგარიში",
+    "auth-auth":"Შესვლა",
+
+    "login-auth-auth":"ავტორიზაცია",
+
+    "login-form-pass":"პაროლი",
+    "login-form-capcha":"შეიყვანეთ პასუხი მაგალითისთვის",
+
+    "login-form-code-capcha":"ელ.ფოსტის კოდი",
+
+    "restore-form-restore":"აღდგენა",
+
+    "register-buyer-register":"რეგისტრაცია",
+    "register-buyer-name":"სახელი",
+    "register-buyer-surname":"გვარი",
+    "register-buyer-fathersname":"გვარი",
+    "register-buyer-phone":"ტელეფონი",
+    "register-buyer-date":"Დაბადების თარიღი",
+    "register-buyer-pass":"პაროლი",
+    "register-buyer-more-pass":"Გაიმეორეთ პაროლი"
 }

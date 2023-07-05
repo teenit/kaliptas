@@ -4,8 +4,10 @@ import LoginForm from "./LoginForm";
 import { LoginFormCode } from "./LoginFormCode";
 import s from "./style.module.css";
 import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const LoginAuth = ()=>{ 
+    const {t} = useTranslation()
     const [emailCode, setEmailCode] = useState(false)
     const [state, setState] = useState({
         email:"",
@@ -45,7 +47,7 @@ const LoginAuth = ()=>{
     return(
         <div className={s.page}>
             <div className={s.wrap}>
-                <h2 className={s.title}>Авторизация</h2>
+                <h2 className={s.title}>{t('login-auth-auth')}</h2>
                 <div className={s.form__inner}>
                     {!emailCode ? <LoginForm 
                         errorEmailOrPass = {errorEmailOrPass} 

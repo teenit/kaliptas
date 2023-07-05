@@ -204,5 +204,30 @@
     "burger-profile":"Profile",
     "burger-list":"Wishlist",
     "front-page-we-have-all":"We have everything and more",
-    "add-cart-item": "Item added to cart"
+    "add-cart-item": "Item added to cart",
+
+    "auth-forgot-pass":"Forgot your password",
+    "auth-remake-pass":"Restore",
+    "auth-no-acc":"No account yet",
+    "auth-register":"Register",
+    "auth-have-acc":"Have account",
+    "auth-auth":"Login",
+
+    "login-auth-auth":"Authorization",
+
+    "login-form-pass":"Password",
+    "login-form-capcha":"Enter an answer for an example",
+
+    "login-form-code-capcha":"Email code",
+
+    "restore-form-restore":"Recovery",
+
+    "register-buyer-register":"Registration",
+    "register-buyer-name":"Name",
+    "register-buyer-surname":"Surname",
+    "register-buyer-fathersname":"Fathersname",
+    "register-buyer-phone":"Phone",
+    "register-buyer-date":"Birthday",
+    "register-buyer-pass":"Password",
+    "register-buyer-more-pass":"Repeat password"
 }

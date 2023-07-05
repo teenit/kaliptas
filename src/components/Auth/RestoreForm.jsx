@@ -101,7 +101,7 @@ const RestoreForm = ()=>{
     return(
         <div className={s.page}>
             <div className={s.form__wrap__restore}>
-                <h2 className={s.title__restore}>Восстановление</h2>
+                <h2 className={s.title__restore}>{t('restore-form-restore')}</h2>
                 <div className={s.form__inner__restore}>
                     <form onSubmit={sendForm} className={s.form}>
                         <div className={s.inp__div}>
