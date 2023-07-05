@@ -82,10 +82,8 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
     }
     
     useEffect(()=>{
-        console.log(stateProduct)
         api((arg)=>{
             api((arg1)=>{
-                console.log(arg,arg1)
                 onClickHendlerPso(arg,arg1);
             },{shopID:shop.id},"manage/categories/get-favorite.php");
         },{},"manage/categories/get-categories.php");
@@ -93,7 +91,6 @@ const ProductRegister = ({close,shop,stateProduct,saveProduct,btn}) =>{
        
     },[])
     const sendForm = (event) =>{
-        console.log(state)
         
     }
 

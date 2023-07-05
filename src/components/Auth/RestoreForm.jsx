@@ -48,7 +48,6 @@ const RestoreForm = ()=>{
     }
 
     const insertCode = ()=>{
-      //  return console.log(state.email)
         apiResponse({
             email:state.email.text,
             code:state.code.text,
@@ -76,7 +75,6 @@ const RestoreForm = ()=>{
             passTo:state.passTo.text
         },'user/restore-access.php').then((e)=>{
 
-          // return console.log(e)
             window.alert(t('Recovery password changed'));
             window.location.reload()
 

@@ -30,7 +30,6 @@ const FrontPage = () => {
             }))   
         })
     }, [])
-    console.log(categories[0]);
 
     const firstSliderContent = [
         {

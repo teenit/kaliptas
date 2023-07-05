@@ -248,5 +248,8 @@
     "shop-links-stores":"Stores",
     "shop-links-name":"Naming",
     "shop-links-desc":"Description",
-    "shop-links-go-to":"Go to store"
+    "shop-links-go-to":"Go to store",
+
+    "profile-get-to-admin":"Go to the store admin panel",
+    "in-development":"In development"
 }

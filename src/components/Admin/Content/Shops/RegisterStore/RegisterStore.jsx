@@ -8,7 +8,6 @@ const RegisterStore = ({close,newStore,setNewStore,regStore, btn}) =>{
     const {t} = useTranslation()
     function SendForm(event){
         event.preventDefault();
-        console.log(newStore);
     }
 
     return(

@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 const ShopLInks = ()=>{
     const [auth, setAuth] = useState( false);
     const lng = localStorage.getItem("LNG").toLowerCase()
-   // useAuth((arg)=>{console.log(arg); setAuth(arg)},'user/check-auth-shop.php')
 
     const {t} = useTranslation()
     const [state, setState] = useState(false);
@@ -38,7 +37,6 @@ const ShopLInks = ()=>{
         
        
         apiResponse({},"user/check-auth-shop.php").then((resolve)=>{
-          // return console.log(resolve)
             
             if(resolve.token !== null && resolve.email !== null){
                 
@@ -46,7 +44,6 @@ const ShopLInks = ()=>{
                 setShops(data)
                 setAuth(true)
             }).catch((err)=>{
-                console.log(err)
                 setErrorStatus(err?.response?.status ? err.response.status : err.message)
             })}
         }).catch((err)=>{

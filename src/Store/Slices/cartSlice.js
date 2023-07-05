@@ -11,7 +11,6 @@ const cartSlice = createSlice({
     initialState,
     reducers:{
         showTooltip(state, action){
-            console.log("Show");
             state.showAdded = true;
             state.text = action.payload.tootltipText;
         },

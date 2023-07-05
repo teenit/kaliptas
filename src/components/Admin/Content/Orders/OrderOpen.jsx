@@ -25,8 +25,7 @@ const OrderOpen = ({order, close})=>{
       ]
      
       const updateStatus = ()=>{
-       // return console.log(order)
-       if(window.confirm("Вы уверены что хотите изменить статус заказа")){apiResponse({status:selectedOption,orderID:order.id},"orders/update-order-status-by-id.php").then((e)=>console.log(e))}
+       if(window.confirm("Вы уверены что хотите изменить статус заказа")){apiResponse({status:selectedOption,orderID:order.id},"orders/update-order-status-by-id.php")}
     }
     return(
         <Modal>

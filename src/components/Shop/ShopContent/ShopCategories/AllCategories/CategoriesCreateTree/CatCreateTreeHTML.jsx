@@ -9,7 +9,6 @@ const CatCreateTreeHTML = ({data,addCategory}) => {
         <ul>
             {   
                 data.map((n)=>{
-                    console.log(n.category.title)
                     return(
                         <li data-id={['cat'+n.id]} 
                             className={`${s.cat__list} ${stateCat['cat'+n.id] ? s.active: ''} ${'cat'+n.id}`} 

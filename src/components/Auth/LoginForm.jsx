@@ -8,11 +8,9 @@ import { useTranslation } from "react-i18next";
 
 const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode})=>{ 
     function sendForm(event){
-        console.log(state);
         event.preventDefault();
         checkAnswer();
         if(!checkAnswer()){
-            console.log("uuuu")
             return;
         }
         api((arg)=>{

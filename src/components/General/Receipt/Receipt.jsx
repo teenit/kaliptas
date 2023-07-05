@@ -6,7 +6,6 @@ import { ChecklistOutlined } from "@mui/icons-material";
 
 const Receipt = ({products}) => {
     const [state,setState] = useState(products)
-    console.log(products)
     return (
         <div className={s.wrap}>
             <div className={s.inner}>

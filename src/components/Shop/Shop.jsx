@@ -17,8 +17,8 @@ const Shop = ()=>{
         link:'categories',
         title:"categories"
     },{
-        link:'statistics',
-        title:"statistics"
+        link:'stats',
+        title:"stats"
     },{
         link:'support',
         title:"support"

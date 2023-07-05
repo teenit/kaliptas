@@ -252,5 +252,8 @@
     "shop-links-stores":"Მაღაზიები",
     "shop-links-name":"სახელი",
     "shop-links-desc":"აღწერა",
-    "shop-links-go-to":"მაღაზიაში წასვლა"
+    "shop-links-go-to":"მაღაზიაში წასვლა",
+
+    "profile-get-to-admin":"გადადით მაღაზიის ადმინისტრაციულ პანელზე",
+    "in-development":"განვითარებაში"
 }

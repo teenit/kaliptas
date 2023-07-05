@@ -17,9 +17,8 @@ const LoginFormCode = ({email})=>{
     const dispatch = useDispatch()
     function sendForm(event){
         event.preventDefault();
-        console.log(state);
         if(state.secretCode.length !== 6){
-            return console.log("Error")
+            return 
         }
         api((arg)=>{
             alert(t(arg.message))

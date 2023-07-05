@@ -17,7 +17,6 @@ const Front = ()=>{
 
     store.subscribe(()=>{
         setTooltipState(store.getState().cart);
-        console.log("Hi");
     })
 
     const handleClose = () =>{

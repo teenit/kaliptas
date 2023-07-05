@@ -20,7 +20,6 @@ const Cart = ()=>{
                 apiResponse({},"user/get-user.php").then((data)=> {
                     setUser(data)
                     setEmail(data.email);
-                    console.log("User:",  data)
                     setPhone(phoneMask(data.phone))
                     setName(data.userData.name)
                     setSurname(data.userData.surname)
@@ -162,7 +161,6 @@ const Cart = ()=>{
     const sendForm = function () {
         let data = formData();
 
-        console.log(data)
         if (data !== emptyForm) {
             setPending(true);
 

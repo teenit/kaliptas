@@ -10,7 +10,9 @@ const Orders = ()=>{
     useEffect(()=>{
         apiResponse({},"orders/get-all-orders.php").then((e)=>{
             setOrders(e)
-        }).catch(err=>console.log(err))
+        }).catch((error)=>{
+            throw error
+        })
     },[])
 
     return(

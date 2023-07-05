@@ -17,24 +17,21 @@ export function api(apiFunc, obj, url){
         obj.email = localStorage.getItem('email');
     }
     obj.lang = getRealLanguage();
-   // console.log(obj)
     axios({
         url: serverAdress(url),
         method: "POST",
         header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
         data: JSON.stringify(obj),
         onUploadProgress: (event) => {
-            // console.log(event)
             document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
         } 
     })
     .then((data)=>{
-        // console.log("Received data: ", data);
         apiFunc(data.data)
         document.getElementById('lineLoading').style.width = 0;
     })
     .catch((error)=>{
-        console.log(error)
+        throw error
         
     })
 }
@@ -63,17 +60,14 @@ export async function apiResponse(obj, url){
          header: {'application/x-www-form-urlencoded': 'application/json;charset=utf-8'},
          data: JSON.stringify(obj),
          onUploadProgress: (event) => {
-             console.log(event)
              document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
          } 
      })
      .then((data)=>{
-         console.log("Received data: ", data.data);
          document.getElementById('lineLoading').style.width = 0;
          return (data.data)
      })
      .catch((error)=>{
-         //console.log(error)
          let obj = {
             "code":error.code
          }
@@ -102,7 +96,6 @@ export function apiMultipartUpload(apiFunc,links, files, url, index,shopID,count
         method: "POST",
         header: { "Content-Type": "multipart/form-data" },
         onUploadProgress: (event) => {
-            console.log(event.loaded)
            // document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
         },
         data: objImage,
@@ -113,7 +106,6 @@ export function apiMultipartUpload(apiFunc,links, files, url, index,shopID,count
            if(count === 0){
             return apiFunc(data.data)
            }
-           console.log(data.data)
             document.getElementById('lineLoading').style.width = 0;
             if(index + 1 == files.files.length){
                 links.push(data.data)
@@ -123,5 +115,7 @@ export function apiMultipartUpload(apiFunc,links, files, url, index,shopID,count
                 apiMultipartUpload(apiFunc,links, files, url, index + 1,shopID,1)
             }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            throw error
+        });
 }

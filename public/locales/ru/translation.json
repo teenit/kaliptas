@@ -226,5 +226,8 @@
     "shop-links-stores":"Магазины",
     "shop-links-name":"Название",
     "shop-links-desc":"Описание",
-    "shop-links-go-to":"Перейти в магазин"
+    "shop-links-go-to":"Перейти в магазин",
+
+    "profile-get-to-admin":"Перейти в админпанель магазина",
+    "in-development":"В разработке"
 }
