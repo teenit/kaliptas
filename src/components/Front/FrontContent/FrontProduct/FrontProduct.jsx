@@ -22,7 +22,6 @@ import {CategoryObject} from "../Pages/Category/CategoryObject";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Backdrop from '@mui/material/Backdrop';
-import CartModal from "../../../Modals/CartModal/CartModal";
 
 const FrontProduct = () => {
     const { t } = useTranslation()
