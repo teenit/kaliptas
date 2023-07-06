@@ -251,5 +251,9 @@
     "shop-links-go-to":"Go to store",
 
     "profile-get-to-admin":"Go to the store admin panel",
-    "in-development":"In development"
+    "in-development":"In development",
+
+    "profile-order-have-no-orders":"You have no orders",
+    "profil-get-order-status":"Order status",
+    "profil-get-order-summa":"Total"
 }

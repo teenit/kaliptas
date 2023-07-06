@@ -255,5 +255,9 @@
     "shop-links-go-to":"მაღაზიაში წასვლა",
 
     "profile-get-to-admin":"გადადით მაღაზიის ადმინისტრაციულ პანელზე",
-    "in-development":"განვითარებაში"
+    "in-development":"განვითარებაში",
+
+    "profile-order-have-no-orders":"შეკვეთა არ გაქვს",
+    "profil-get-order-status":"შეკვეთის სტატუსი",
+    "profil-get-order-summa":"ჯამი"
 }

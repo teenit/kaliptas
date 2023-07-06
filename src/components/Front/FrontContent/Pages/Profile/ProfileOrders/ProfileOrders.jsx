@@ -17,7 +17,7 @@ const ProfileOrders = ()=>{
         <div className={s.wrap}>
             <h2>{t('profile-ordersHistory')}</h2>
             {
-                orders.length === 0 ? <h4>У вас нет заказов</h4> :  null
+                orders.length === 0 ? <h4>{t('profile-order-have-no-orders')}</h4> :  null
             }
             <div className={s.history__orders}>
                 {

@@ -229,5 +229,9 @@
     "shop-links-go-to":"Перейти в магазин",
 
     "profile-get-to-admin":"Перейти в админпанель магазина",
-    "in-development":"В разработке"
+    "in-development":"В разработке",
+
+    "profile-order-have-no-orders":"У вас нет заказов",
+    "profil-get-order-status":"Статус заказа",
+    "profil-get-order-summa":"Сумма"
 }

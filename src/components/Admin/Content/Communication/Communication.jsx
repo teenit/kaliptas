@@ -1,11 +1,11 @@
 import React from "react";
 import s from './style.module.css'
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 const Communication = ()=>{
-
+    const {t} = useTranslation()
     return(
         <div className={s.wrap}>
-            {t('In development')}
+            {t('in-development')}
         </div>
     )
 }
