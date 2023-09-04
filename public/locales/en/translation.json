@@ -204,5 +204,56 @@
     "burger-profile":"Profile",
     "burger-list":"Wishlist",
     "front-page-we-have-all":"We have everything and more",
-    "add-cart-item": "Item added to cart"
+    "add-cart-item": "Item added to cart",
+
+    "auth-forgot-pass":"Forgot your password",
+    "auth-remake-pass":"Restore",
+    "auth-no-acc":"No account yet",
+    "auth-register":"Register",
+    "auth-have-acc":"Have account",
+    "auth-auth":"Login",
+
+    "login-auth-auth":"Authorization",
+
+    "login-form-pass":"Password",
+    "login-form-capcha":"Enter an answer for an example",
+
+    "login-form-code-capcha":"Email code",
+
+    "restore-form-restore":"Recovery",
+
+    "register-buyer-register":"Registration",
+    "register-buyer-name":"Name",
+    "register-buyer-surname":"Surname",
+    "register-buyer-fathersname":"Fathersname",
+    "register-buyer-phone":"Phone",
+    "register-buyer-date":"Birthday",
+    "register-buyer-pass":"Password",
+    "register-buyer-more-pass":"Repeat password",
+
+    "catalog-categ":"Product categories",
+    "category-filters":"Filters",
+
+    "register-store-shop-name":"Store name",
+    "register-store-shop-desc":"Store description",
+    "register-store-prod-type":"Product type",
+    "register-store-shop-unique":"Enter a unique store name, only Latin characters and dashes can be used",
+    "register-store-shop-create":"Create a store",
+    "register-store-gerg":"In Georgian*",
+    "register-store-enf":"In English",
+    "register-store-ru":"In Russian",
+    "register-store-exampla":"example: my-store-big-food",
+
+    "shop-links-succes":"Store successfully created, please wait for activation",
+    "shop-links-stores":"Stores",
+    "shop-links-name":"Naming",
+    "shop-links-desc":"Description",
+    "shop-links-go-to":"Go to store",
+
+    "profile-get-to-admin":"Go to the store admin panel",
+    "in-development":"In development",
+
+    "profile-order-have-no-orders":"You have no orders",
+    "profil-get-order-status":"Order status",
+    "profil-get-order-summa":"Total"
 }

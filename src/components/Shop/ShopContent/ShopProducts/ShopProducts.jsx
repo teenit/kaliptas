@@ -65,7 +65,6 @@ const ShopProducts = ({shop})=>{
     function saveProduct(objState,newMas,status){
         setStateProduct({...objState,categories:newMas,status:status})
         api((arg)=>{
-            console.log(arg)
             setCloseModal(!closeModal)
         },{...objState,categories:newMas,status:status},"manage/shop/add-product.php")
     }

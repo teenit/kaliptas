@@ -182,5 +182,56 @@
     "burger-profile": "Профиль",
     "burger-list": "Список желаний",
     "front-page-we-have-all": "У нас есть все и даже больше",
-    "add-cart-item": "Товар добавлен в корзину"
+    "add-cart-item": "Товар добавлен в корзину",
+
+    "auth-forgot-pass":"Забыли пароль",
+    "auth-remake-pass":"Восстановить",
+    "auth-no-acc":"Еше нет аккаунта",
+    "auth-register":"Зарегистрироваться",
+    "auth-have-acc":"Есть аккаунт",
+    "auth-auth":"Авторизоваться",
+    
+    "login-auth-auth":"Авторизация",
+
+    "login-form-pass":"Пароль",
+    "login-form-capcha":"Введите ответ на пример",
+
+    "login-form-code-capcha":"Код с почты",
+
+    "restore-form-restore":"Восстановление",
+
+    "register-buyer-register":"Регистрация",
+    "register-buyer-name":"Имя",
+    "register-buyer-surname":"Фамилия",
+    "register-buyer-fathersname":"Отчество",
+    "register-buyer-phone":"Телефон",
+    "register-buyer-date":"Дата рождения",
+    "register-buyer-pass":"Пароль",
+    "register-buyer-more-pass":"Повторите пароль",
+
+    "catalog-categ":"Категории товаров",
+    "category-filters":"Фильтры",
+
+    "register-store-shop-name":"Название магазина",
+    "register-store-shop-desc":"Описание магазина",
+    "register-store-prod-type":"Тип продукции",
+    "register-store-shop-unique":"Введите уникальное имя магазина, можно использовать только латинские символы и тире",
+    "register-store-shop-create":"Создать магазин",
+    "register-store-gerg":"На грузинском*",
+    "register-store-enf":"На английском",
+    "register-store-ru":"На русском",
+    "register-store-exampla":"пример: my-store-big-food",
+
+    "shop-links-succes":"Магазин успешно создан, ожидайте активации",
+    "shop-links-stores":"Магазины",
+    "shop-links-name":"Название",
+    "shop-links-desc":"Описание",
+    "shop-links-go-to":"Перейти в магазин",
+
+    "profile-get-to-admin":"Перейти в админпанель магазина",
+    "in-development":"В разработке",
+
+    "profile-order-have-no-orders":"У вас нет заказов",
+    "profil-get-order-status":"Статус заказа",
+    "profil-get-order-summa":"Сумма"
 }

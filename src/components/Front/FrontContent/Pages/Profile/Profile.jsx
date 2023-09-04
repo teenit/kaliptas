@@ -27,7 +27,7 @@ const Profile = ()=>{
                 apiResponse({},"user/get-user.php").then((data)=>setUser(data))
             }  
         }).catch((err,dar)=>{
-            console.log(err.propertyIsEnumerable())
+            throw err.propertyIsEnumerable()
         })
         
     },[])
@@ -79,7 +79,7 @@ const Profile = ()=>{
                                     user.type === 'saxon' || user.type === 'manager' ? <NavLink to={createLink('admin')}><p className={s.link__title}>{t('profile-adminPanel')}</p></NavLink> : null
                                 }
                                 {
-                                    user.type === 'seller' ? <NavLink to={createLink('shop')}><p className={s.link__title}>Перейти в админпанель магазина</p></NavLink> : null
+                                    user.type === 'seller' ? <NavLink to={createLink('shop')}><p className={s.link__title}>{t('profile-get-to-admin')}</p></NavLink> : null
                                 }
                             </div>
                         : null

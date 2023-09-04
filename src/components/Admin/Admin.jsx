@@ -43,7 +43,6 @@ const Admin = () =>{
     useEffect(()=>{
        
         apiResponse({},"user/check-auth-admin.php").then((e)=>{
-           // return console.log(e)
             setAuth(true)
             
         }).catch((err)=>setErrorStatus(err.response.status))

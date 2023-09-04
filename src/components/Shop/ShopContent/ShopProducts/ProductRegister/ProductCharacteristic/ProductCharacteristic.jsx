@@ -23,7 +23,6 @@ const ProductCharacteristic = ({char,lang,addState}) =>{
                 return {...item}
             }
         });
-        console.log(newItems)
         setState(newItems)
     }
 

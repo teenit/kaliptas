@@ -4,15 +4,13 @@ import s from "./style.module.css";
 import { Button } from "@mui/material";
 import { t } from "i18next";
 import { Send } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode})=>{ 
-
     function sendForm(event){
-        console.log(state);
         event.preventDefault();
         checkAnswer();
         if(!checkAnswer()){
-            console.log("uuuu")
             return;
         }
         api((arg)=>{
@@ -21,7 +19,7 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
             else errorEmailOrPass();
         }, state, "user/login.php")
     }    
-
+    const {t} = useTranslation()
     return(        
         <form onSubmit={sendForm} className={s.form}>
             <div className={s.inp__div}>
@@ -29,11 +27,11 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
                 <input className={`${state.answerServer ? s.inp__div__inp : s.inp__div__inp__err}`} required value={state.email} type="email" onChange={(event)=>{setState({...state, email: event.target.value})}}/>
             </div>
             <div className={s.inp__div}>
-                <label htmlFor="">Пароль</label>
+                <label htmlFor="">{t('login-form-pass')}</label>
                 <input className={`${state.answerServer ? s.inp__div__inp : s.inp__div__inp__err}`} required value={state.pass} type="password" onChange={(event)=>{setState({...state, pass: event.target.value})}}/>
             </div>
             <div className={s.inp__div}>
-                <label htmlFor="">Введите ответ на пример</label>
+                <label htmlFor="">{t('login-form-capcha')}</label>
                 <div className={s.inp__capcha}>
                     <div className={s.inp__capcha__number}>
                         <span className={s.inp__capcha__num}>{state.num1}</span>

@@ -17,9 +17,8 @@ const LoginFormCode = ({email})=>{
     const dispatch = useDispatch()
     function sendForm(event){
         event.preventDefault();
-        console.log(state);
         if(state.secretCode.length !== 6){
-            return console.log("Error")
+            return 
         }
         api((arg)=>{
             alert(t(arg.message))
@@ -36,7 +35,7 @@ const LoginFormCode = ({email})=>{
     return(
         <form onSubmit={sendForm} className={s.form}>
             <div className={s.inp__div}>
-                <label htmlFor="">Код с почты</label>
+                <label htmlFor="">{t('login-form-code-capcha')}</label>
                 <input className={s.inp__div__inp} required value={state.secretCode} type="text" onChange={(event)=>{setState({...state, secretCode: event.target.value})}}/>
             </div>
             <div className={s.inp__div}>

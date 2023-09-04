@@ -19,7 +19,6 @@ const ShopsRow = ({shop,index}) =>{
             window.location.reload()
         })
     }
-    console.log(state)
     const close = () => setChange(false)
     return(
         <tr className={s.tr}>

@@ -19,7 +19,6 @@ export async function useAuth(arg,url){
             method: "POST",
             header: {'Content-Type': 'application/json;charset=utf-8'},
             onUploadProgress: (event) => {
-                console.log(event)
                 document.getElementById('lineLoading').style.width = Math.round((event.loaded * 100) / event.total) + "%"
             },
             data: JSON.stringify({
@@ -29,17 +28,14 @@ export async function useAuth(arg,url){
 
         })
         .then((data)=>{
-            console.log(data)
             if(data.data.token !== null){
                 arg(true)
             }else{
                 dispatch(removeUser())
                 arg(false)
-                console.log("kkkk")
             }   
         })
         .catch((error)=>{
-            console.log(error)
             let div = document.createElement('div');
             div.innerHTML = t(error.response.status);
             div.className = "error__message"

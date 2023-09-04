@@ -22,7 +22,6 @@ const ShopContent = ()=>{
 
 
         // api((arg)=>{
-        //     console.log(arg)
         //     if(arg?.id){
         //         setShop({...shop,load:true,...arg})
         //     }

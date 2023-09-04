@@ -23,9 +23,7 @@ const ShopProduct = ({productItem,userType,index,shop}) =>{
     }
     function saveProduct(objState,newMas,status){
         setProduct({...objState,categories:newMas,status:status})
-      //  return console.log(shop)
         api((arg)=>{
-            console.log(arg)
             setCloseModal(!closeModal)
         },{categories:newMas,...productDef,...product,...objState,link:'',status:status,shopID:shop.id,shopTitle:shop.shop.title},"manage/shop/edit-product-from-user.php")
     }

@@ -29,7 +29,6 @@ const ProductImage = ({addState,uploadImage,image})=>{
                     <p>{t("admin-product-image-main")}</p>
                 </label>
                 <input style={{display:"none"}} type="file" name="mainImg" id="mainImg" onChange={(e)=>{
-                    //return console.log(e)
                     handleFileSelect(e,(arg)=>{setPreviewImg(arg)})
                     setShowImg(true)
                     addState(e.target)
