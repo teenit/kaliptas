@@ -6,7 +6,7 @@ const modal = document.querySelector('#modal');
 export class Modal extends Component {
     render()
     {
-     return createPortal(
+     return createPortal(       
          <div className={s.modal__wrap}>
                 {this.props.children}      
          </div>,
