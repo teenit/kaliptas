@@ -8,6 +8,8 @@ import {getLanguageForRootLink} from "../../../../functions/getLanguage";
 import {api, apiResponse} from "../../../../functions/api";
 import { useTranslation } from "react-i18next";
 import {getCurrencyTag} from "../../../../functions/utils";
+import Payment from "../../../Modules/Payment/Payment";
+
 const Cart = ()=>{
     const {t} = useTranslation()
     const [auth, setAuth] = useState(false);
@@ -187,6 +189,8 @@ const Cart = ()=>{
         </div>
     }
 
+    
+    
     const renderForm = function () {
         return <div className={s.wrap__form}>
             <div className={s.form__title}><h2>{t('cart-yourItems')}</h2></div>
@@ -257,6 +261,7 @@ const Cart = ()=>{
                        select
                        onChange={(event)=>{
                            setPaymentType(paymentTypes[event.target.value])
+                           console.log(paymentType);
                        }}
                        defaultValue={"card"}
                        label={t('cart-typePayment')}
@@ -267,6 +272,7 @@ const Cart = ()=>{
                         })
                     }
                     </TextField>
+                    <div><Payment/></div>
                 </div>
             </div>
 

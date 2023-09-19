@@ -13,12 +13,14 @@ const ProductList = ({categoryForId}) => {
 
     useEffect(()=>{
         if (categoryForId !== undefined) {
-            let productsForFirstList = apiResponse({
-                catID: categoryForId
-            }, "content/products/get-products-by-category-id.php");
+
             let loadCategoryById = apiResponse({
                 catID: categoryForId
             }, "content/category/get-id-category.php")
+
+            let productsForFirstList = apiResponse({
+                catID: categoryForId
+            }, "content/products/get-products-by-category-id.php");
 
             Promise.all([loadCategoryById, productsForFirstList]).then((responses)=>{
                 let localLoadedCategoriesName = responses[0].map((item)=>{
@@ -27,10 +29,11 @@ const ProductList = ({categoryForId}) => {
                 setCategoriesName(localLoadedCategoriesName.map((category)=>{
                     return category.title
                 }))
-
+                
                 let localLoadedProduct = responses[1].map((item)=>{
                     return new ProductObject(item, undefined, undefined, getRealLanguage())
                 })
+                
                 setProductList(localLoadedProduct.map((product)=>{
                     return product.id
                 }))

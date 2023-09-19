@@ -255,5 +255,10 @@
 
     "profile-order-have-no-orders":"You have no orders",
     "profil-get-order-status":"Order status",
-    "profil-get-order-summa":"Total"
+    "profil-get-order-summa":"Total",
+
+    "login-form-access":"Restore access",
+    "login-form-code":"Send code",
+
+    "privacy-policy-pricavy":"Privacy policy"
 }

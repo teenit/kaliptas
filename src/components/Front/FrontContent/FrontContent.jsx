@@ -26,7 +26,6 @@ const FrontContent = () => {
                 <Route path={'/order'} element = {<Order />}/>
                 <Route path={'/page/*'} element = {<TextPage />}/>
                 <Route path={'/*'} element = {<Default404 />}/>
-                
             </Routes>
         </div>
     )

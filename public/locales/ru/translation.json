@@ -233,5 +233,10 @@
 
     "profile-order-have-no-orders":"У вас нет заказов",
     "profil-get-order-status":"Статус заказа",
-    "profil-get-order-summa":"Сумма"
+    "profil-get-order-summa":"Сумма",
+
+    "login-form-access":"Восстановить доступ",
+    "login-form-code":"Код отправлен",
+
+    "privacy-policy-pricavy":"Политика конфиденциальности"
 }

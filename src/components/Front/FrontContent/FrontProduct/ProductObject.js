@@ -3,10 +3,10 @@ import {getLanguageForRootLink} from "../../../functions/getLanguage";
 
 export class ProductObject{
     constructor(product, language) {
-        if (product === undefined) {
+        if (product === undefined || product == "")  {
             return;
         }
-
+        console.log(product)
         this.isVariable = product.product.type.variable;
         this.id = product.productID;
         this.tag = product.link;

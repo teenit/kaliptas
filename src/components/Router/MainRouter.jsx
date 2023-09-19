@@ -33,8 +33,6 @@ const MainRouter = ()=>{
                 <Route path={`${langto}/shop/:link/*`} element={<Shop />} ></Route>
                 <Route path={`${langto}/shop`} element={<ShopLInks />} ></Route>
                 <Route path={`${langto}/register`} element={<RegisterBuyer />}/>
-               
-            
             </Routes>
         </div>
     )

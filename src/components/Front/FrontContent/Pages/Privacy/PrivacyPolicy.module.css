@@ -1,0 +1,10 @@
+.wrap{
+    width: 80%;
+    margin: auto;
+    min-height: 100vh;
+}
+.title{
+    font-size: 24px;
+    margin: 0;
+    margin-top: 55px;
+}
