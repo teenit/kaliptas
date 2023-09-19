@@ -56,3 +56,32 @@
 .restore{
     text-align: center;
 }
+
+
+.input__eye__wrap{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    border: none;
+    background-color: #ffffff;
+    padding: 0 10px;
+    overflow: hidden;
+}
+.input__eye{
+    width: max-content;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.input__eye > img{
+    width: 16px;
+}
+.input__eye__wrap > input{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+}

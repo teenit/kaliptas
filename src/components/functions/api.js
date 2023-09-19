@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { getRealLanguage } from "./getLanguage";
 
 export function serverAdress(arg){
-   // return "http://kaliptas/" + arg;
+   //return "http://kaliptas.com/" + arg;
    return "https://kaliptas.people-ua.org/" + arg;
 }
 

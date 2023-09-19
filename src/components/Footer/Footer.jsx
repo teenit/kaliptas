@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Footer.module.css"
 import footerLogo from "./../../img/admin/footerLogo.png"
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () =>{
     const {t} = useTranslation()
@@ -35,6 +35,7 @@ const Footer = () =>{
                             <a href="#">{t('deliveryAndPayment')}</a>
                             <a href="#">{t('guarantee')}</a>
                             <a href="#">{t('returnOfTheProduct')}</a>
+                            <NavLink to="/page/privacy-policy">Політика конфіденційності</NavLink>
                         </div>
                     </div>
                     <div className={s.card}>

@@ -4,7 +4,7 @@ import s from "./RegisterBuyer.module.css"
 import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
 import { Send } from "@mui/icons-material";
-
+import eyeIcon from "../../img/icons/icons8-eye-24.png"
 
 const RegisterBuyer = () =>{
     const {t} = useTranslation()
@@ -22,7 +22,10 @@ const RegisterBuyer = () =>{
             test: "test hak"
         }
     })
-
+    const [inputPassState, setInputPassState] = useState({
+        firstPasswordType: "password",
+        secondPasswordType: "password"
+    })
 
     function sendForm(event){
        
@@ -73,14 +76,30 @@ const RegisterBuyer = () =>{
                 </div>
                 <div className={s.inp__div}>
                     <label htmlFor="">{t('register-buyer-pass')}</label>
-                    <input required value={state.pass} type="password" onChange={(event)=>{setState({...state, pass: event.target.value})}}/>
+                    <div className={s.input__eye__wrap}>
+                        <input required value={state.pass} type={inputPassState.firstPasswordType} onChange={(event)=>{setState({...state, pass: event.target.value})}}/>
+                        <div className={s.input__eye} onClick={()=>{
+                            if(inputPassState.firstPasswordType === "password") setInputPassState({...inputPassState, firstPasswordType: "text"})
+                            else setInputPassState({...inputPassState, firstPasswordType: "password"})
+                        }}>
+                            <img src={eyeIcon} alt="Глазик" />
+                        </div>
+                    </div>
                 </div>
                 <div className={s.inp__div}>
                     <label htmlFor="">{t('register-buyer-more-pass')}</label>
-                    <input required value={state.checkPass} type="password" onChange={(event)=>{setState({...state, checkPass: event.target.value})}}/>
+                    <div className={s.input__eye__wrap}>
+                        <input required value={state.checkPass} type={inputPassState.secondPasswordType} onChange={(event)=>{setState({...state, checkPass: event.target.value})}}/>
+                        <div className={s.input__eye} onClick={()=>{
+                            if(inputPassState.secondPasswordType === "password") setInputPassState({...inputPassState, secondPasswordType: "text"})
+                            else setInputPassState({...inputPassState, secondPasswordType: "password"})
+                        }}>
+                            <img src={eyeIcon} alt="Глазик" />
+                        </div>
+                    </div>
                 </div>
                 <div className={s.inp__div}>
-                    <Button className="btn" onClick={sendForm} variant="contained" endIcon={<Send/>}>{t('Register')}</Button>
+                    <Button className="btn" onClick={sendForm} variant="contained" endIcon={<Send/>}>{t('auth-register')}</Button>
                     
                 </div>
             </form>

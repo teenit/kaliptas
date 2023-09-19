@@ -44,11 +44,11 @@ const ProfileInfo = ({item})=>{
                                 </div>
                                 <div className={s.item}>
                                     <p>{t('profile-birthday')}</p>
-                                    <span>{"13.06.1996"}</span> 
+                                    <span></span> 
                                 </div>
                                 <div className={s.item}>
                                     <p>{t('profile-sex')}</p>
-                                    <span>{t('profile-sexIn')}</span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@ const ProfileInfo = ({item})=>{
                                 </div>
                                 <div className={s.item}>
                                     <p>{t('profile-secondPhone')}</p>
-                                    <span>{"0688562345"}</span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
@@ -143,15 +143,15 @@ const ProfileInfo = ({item})=>{
                             <div className={s.item__info}>
                                 <div className={s.item}> 
                                     <p>{t('profile-city')}</p>
-                                    <span>{"Тбилиси"}</span>
+                                    <span></span>
                                 </div>
                                 <div className={s.item}>
                                     <p>{t('profile-street')}</p>
-                                    <span>{"Львови"}</span> 
+                                    <span></span> 
                                 </div>
                                 <div className={s.item}>
                                     <p>{t('profile-house')}</p>
-                                    <span>{"25"}</span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>

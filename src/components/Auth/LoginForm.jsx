@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { t } from "i18next";
 import { Send } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import eyeIcon from "../../img/icons/icons8-eye-24.png"
 
 const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode})=>{ 
     function sendForm(event){
@@ -19,6 +20,7 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
             else errorEmailOrPass();
         }, state, "user/login.php")
     }    
+    const [inputPassState, setInputPassState] = useState("password")
     const {t} = useTranslation()
     return(        
         <form onSubmit={sendForm} className={s.form}>
@@ -28,7 +30,15 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
             </div>
             <div className={s.inp__div}>
                 <label htmlFor="">{t('login-form-pass')}</label>
-                <input className={`${state.answerServer ? s.inp__div__inp : s.inp__div__inp__err}`} required value={state.pass} type="password" onChange={(event)=>{setState({...state, pass: event.target.value})}}/>
+                <div className={s.input__eye__wrap}>
+                    <input className={`${state.answerServer ? s.inp__div__inp : s.inp__div__inp__err}`} required value={state.pass} type={inputPassState} onChange={(event)=>{setState({...state, pass: event.target.value})}}/>
+                    <div className={s.input__eye} onClick={()=>{
+                        if(inputPassState === "password") setInputPassState("text")
+                        else setInputPassState("password")
+                    }}>
+                        <img src={eyeIcon} alt="Глазик" />
+                    </div>
+                </div>
             </div>
             <div className={s.inp__div}>
                 <label htmlFor="">{t('login-form-capcha')}</label>
@@ -45,7 +55,7 @@ const LoginForm = ({errorEmailOrPass, checkAnswer, state, setState, setEmailCode
                 </div>
             </div>
             <div className={s.inp__div}>
-                <Button onClick={sendForm} className="btn" variant="contained" endIcon={<Send />}>{t('Enter')}</Button>
+                <Button onClick={sendForm} className="btn" variant="contained" endIcon={<Send />}>{t('auth-auth')}</Button>
             </div>
         </form>
     )

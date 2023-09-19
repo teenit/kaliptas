@@ -259,5 +259,10 @@
 
     "profile-order-have-no-orders":"შეკვეთა არ გაქვს",
     "profil-get-order-status":"შეკვეთის სტატუსი",
-    "profil-get-order-summa":"ჯამი"
+    "profil-get-order-summa":"ჯამი",
+
+    "login-form-access":"წვდომის აღდგენა",
+    "login-form-code":"Კოდი გამოგზავნილია",
+
+    "privacy-policy-pricavy":"კონფიდენციალურობის პოლიტიკა"
 }

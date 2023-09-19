@@ -31,20 +31,20 @@ const RestoreForm = ()=>{
  
     const [status,setStatus] = useState({
         text:'email',
-        btn:'Restore access'
+        btn:'login-form-access'
     })
     const getCode = ()=>{
         apiResponse({email:state.email.text},'user/restore-get-code.php').then((e)=>{
             setStatus({
                 text:'code',
-                btn:'Send code'
+                btn:'login-form-code'
             })
             setState({...state,
                 code:{...state.code,show:true},
                 email:{...state.email,disabled:true},
             }) 
          
-        }).catch((e)=>window.alert("Ошибка"))
+        }).catch((e)=>window.alert("Mistake"))
     }
 
     const insertCode = ()=>{
@@ -53,7 +53,7 @@ const RestoreForm = ()=>{
             code:state.code.text,
             
         },'user/restore-insert-code.php').then((e)=>{
-            if(!e) return alert('Ошибка')
+            if(!e) return alert('Mistake')
             setStatus({
                 text:'pass',
                 btn:'Restore pass'
@@ -64,7 +64,7 @@ const RestoreForm = ()=>{
                 pass:{...state.pass,show:true},
                 passTo:{...state.passTo,show:true},
             }) 
-        }).catch((e)=>window.alert("Ошибка"))
+        }).catch((e)=>window.alert("Mistake"))
     }
     const restoreAccess = ()=>{
         if(state.pass.text !== state.passTo.text) return;
@@ -78,7 +78,7 @@ const RestoreForm = ()=>{
             window.alert(t('Recovery password changed'));
             window.location.reload()
 
-        }).catch((e)=>window.alert("Ошибка"))
+        }).catch((e)=>window.alert("Mistake"))
     }
 
     function sendForm(event){
