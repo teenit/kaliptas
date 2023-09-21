@@ -28,6 +28,47 @@ const RestoreForm = ()=>{
             show:false
         }
     })
+
+    const sxStyles = {
+        backgroundColor: '#fff',
+        border: 'solid 2px #c368e6',
+        borderRadius: '10px',
+        fontFamily: 'Montserrat',
+    }
+
+    const InputPropsStyles = {
+        sx: {
+            '& fieldset':{
+                border: 'none!important',
+                borderRadius: '10px',
+                transition: 'all .3s',
+            },
+            '&:hover fieldset': {
+                border: 'none!important',
+                boxShadow: '0 0 10px 2px #00000022',
+                borderRadius: '10px',
+            },
+            '&:focus-within fieldset, &:focus-visible fieldset': {
+                border: 'none!important',
+                boxShadow: '0 0 10px 2px #00000022',
+                borderRadius: '10px',
+            },
+            input: {
+                ':-webkit-autofill': {
+                    WebkitBoxShadow: '0 0 0 1000px white inset',
+                    borderRadius: '10px',
+                },
+                
+            }
+        },
+    }
+    const inputPropsStyles = {
+        sx: {
+            padding: '12px',    
+            color: '#000!important',
+            fontFamily: 'Montserrat',
+        },
+    }
  
     const [status,setStatus] = useState({
         text:'email',
@@ -103,12 +144,34 @@ const RestoreForm = ()=>{
                 <div className={s.form__inner__restore}>
                     <form onSubmit={sendForm} className={s.form}>
                         <div className={s.inp__div}>
-                            <TextField disabled={state.email.disabled} onChange={(e)=>setState({...state,email:{...state.email,text:e.target.value}})} value={state.email.text} type="text" required label="E-mail"/>
+                            <label htmlFor="">E-mail</label>
+                            <TextField
+                                className={s.textfield__restore}
+                                disabled={state.email.disabled} 
+                                onChange={(e)=>setState({...state,email:{...state.email,text:e.target.value}})} 
+                                value={state.email.text} 
+                                type="text" 
+                                required 
+                                sx={{...sxStyles}}
+                                inputProps={{...inputPropsStyles}}
+                                InputProps={{...InputPropsStyles}}>
+                            </TextField>
                         </div>
                         {
                             state.code.show ? 
                             <div className={s.inp__div}>
-                                <TextField disabled={state.code.disabled} onChange={(e)=>setState({...state,code:{...state.code,text:e.target.value}})} value={state.code.text} type="text" required label="Secret code"/>
+                                <label htmlFor="">Secret code</label>
+                                <TextField 
+                                    className={s.textfield__restore} 
+                                    disabled={state.code.disabled} 
+                                    onChange={(e)=>setState({...state,code:{...state.code,text:e.target.value}})} 
+                                    value={state.code.text} 
+                                    type="text" 
+                                    required 
+                                    sx={{...sxStyles}}
+                                    inputProps={{...inputPropsStyles}}
+                                    InputProps={{...InputPropsStyles}}>
+                            </TextField>
                             </div>:null
                         }
                         
@@ -116,10 +179,29 @@ const RestoreForm = ()=>{
                         state.pass.show ? 
                         <>
                         <div className={s.inp__div}>
-                            <TextField onChange={(e)=>setState({...state,pass:{...state.pass,text:e.target.value}})} value={state.pass.text} type="password" required label="New Password"/>
+                            <label htmlFor="">New Password</label>
+                            <TextField 
+                                className={s.textfield__restore} 
+                                onChange={(e)=>setState({...state,pass:{...state.pass,text:e.target.value}})} 
+                                value={state.pass.text} 
+                                type="password" 
+                                required 
+                                sx={{...sxStyles}}
+                                inputProps={{...inputPropsStyles}}
+                                InputProps={{...InputPropsStyles}}>        
+                            </TextField>
                         </div>
                         <div className={s.inp__div}>
-                            <TextField onChange={(e)=>setState({...state,passTo:{...state.passTo,text:e.target.value}})} value={state.passTo.text} type="password" required label="Repeat New Password"/>
+                            <label htmlFor="">Repeat New Password</label>
+                            <TextField 
+                                className={s.textfield__restore}
+                                onChange={(e)=>setState({...state,passTo:{...state.passTo,text:e.target.value}})} 
+                                value={state.passTo.text} 
+                                type="password" required 
+                                sx={{...sxStyles}}
+                                inputProps={{...inputPropsStyles}}
+                                InputProps={{...InputPropsStyles}}>
+                            </TextField>
                             {   state.pass.text !== state.passTo.text ?
                                 <span className={s.fail}>{t('Password mismatch')}</span>:null
                             }

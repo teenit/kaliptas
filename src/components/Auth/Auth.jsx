@@ -29,43 +29,43 @@ const Auth = ()=>{
     return(
         <div className={s.wrap}>
             <div className={s.inner}>
-                {
+                <div className={s.inner__in}>
+                    {
+                        state.login ? <LoginAuth />: null
+                    }
+                    {
+                        state.restore ? <RestoreForm />: null
+                    }
+                    {
+                        state.register ? <RegisterBuyer />: null
+                    }
+                    <div className={s.restore}>
+                        {   state.login ?
+                        <div>
+                                <p>{t('auth-forgot-pass')} - <span className={s.too} onClick={resIn}>{t('auth-remake-pass')}</span></p>
+                                <p>{t('auth-no-acc')} - <span className={s.too} onClick={regIn}>{t('auth-register')}</span></p>
+                        </div> 
+                        :null}
+                        {
+                            state.register ?
+                            <div>
+                                <p>{t('auth-forgot-pass')} - <span className={s.too} onClick={resIn}>{t('auth-remake-pass')}</span></p>
+                                <p>{t('auth-have-acc')} - <span className={s.too} onClick={logIn}>{t('auth-auth')}</span></p> 
+                            </div> 
+                            : null
+                        }
+                        {
+                            state.restore ?
+                            <div>
+                                
+                                <p>{t('auth-have-acc')} - <span className={s.too} onClick={logIn}>{t('auth-auth')}</span></p> 
+                                <p>{t('auth-no-acc')} - <span className={s.too} onClick={regIn}>{t('auth-register')}</span></p>
+                            </div> 
+                            : null
+                        }
 
-                    state.login ? <LoginAuth />: null
-                }
-                {
-                    state.restore ? <RestoreForm />: null
-                }
-                 {
-                    state.register ? <RegisterBuyer />: null
-                }
-               
-                <div className={s.restore}>
-                    {   state.login ?
-                       <div>
-                            <p>{t('auth-forgot-pass')} - <span className={s.too} onClick={resIn}>{t('auth-remake-pass')}</span></p>
-                            <p>{t('auth-no-acc')} - <span className={s.too} onClick={regIn}>{t('auth-register')}</span></p>
-                       </div> 
-                    :null}
-                    {
-                        state.register ?
-                        <div>
-                            <p>{t('auth-forgot-pass')} - <span className={s.too} onClick={resIn}>{t('auth-remake-pass')}</span></p>
-                            <p>{t('auth-have-acc')} - <span className={s.too} onClick={logIn}>{t('auth-auth')}</span></p> 
-                        </div> 
-                        : null
-                    }
-                    {
-                        state.restore ?
-                        <div>
-                            
-                            <p>{t('auth-have-acc')} - <span className={s.too} onClick={logIn}>{t('auth-auth')}</span></p> 
-                            <p>{t('auth-no-acc')} - <span className={s.too} onClick={regIn}>{t('auth-register')}</span></p>
-                        </div> 
-                        : null
-                    }
-                    
-                </div>    
+                    </div>  
+                </div>  
             </div> 
         </div>
     )

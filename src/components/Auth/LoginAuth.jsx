@@ -46,7 +46,7 @@ const LoginAuth = ()=>{
 
     return(
         <div className={s.page}>
-            <div className={s.wrap}>
+            <div className={s.login__wrap}>
                 <h2 className={s.title}>{t('login-auth-auth')}</h2>
                 <div className={s.form__inner}>
                     {!emailCode ? <LoginForm 

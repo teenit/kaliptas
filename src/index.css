@@ -72,6 +72,7 @@ li{
 	top: 0;
 	left: 0;
 }
+
 #error{
 	position: fixed;
 	top: 5px;
@@ -91,9 +92,12 @@ li{
 	border-radius: 30px;
 }
 .btn{
-    background-color: var(--purple-color)!important;
-    border-radius: 30px!important;
+    background-color: #c368e6!important;
+    border-radius: 10px!important;
+	padding: 10px!important;
+	font-weight: 600!important;
+
 }
 .btn:hover{
-    background-color: #8e20b6!important;
+    background-color: #c368e6!important;
 }
